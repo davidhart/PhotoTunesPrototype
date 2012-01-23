@@ -23,10 +23,10 @@
 		BB3ACB601483E5DE003014D1 /* ImageProcessingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3ACB5F1483E5DE003014D1 /* ImageProcessingTests.m */; };
 		BB3ACB6D1483E614003014D1 /* ImageProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3ACB6A1483E614003014D1 /* ImageProperties.m */; };
 		BB3ACB6E1483E614003014D1 /* ImageSlice.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3ACB6C1483E614003014D1 /* ImageSlice.m */; };
-		BB3ACB741483E7FB003014D1 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BB3ACB731483E7FB003014D1 /* images.jpeg */; };
-		BB9AE70A148D23A6004E608A /* libpd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9AE706148D2398004E608A /* libpd.a */; };
 		BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9AE722148D2868004E608A /* AudioToolbox.framework */; };
 		BB9AE725148D28DA004E608A /* wavetable.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB9AE724148D28DA004E608A /* wavetable.pd */; };
+		BBD3328314CD7C0900582A54 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BBD3328214CD7C0900582A54 /* images.jpeg */; };
+		BBE5ED0D14CD82E7005DB0DC /* libpd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5ED0C14CD817E005DB0DC /* libpd.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,18 +37,11 @@
 			remoteGlobalIDString = BB3ACB2C1483E5DD003014D1;
 			remoteInfo = ImageProcessing;
 		};
-		BB9AE705148D2398004E608A /* PBXContainerItemProxy */ = {
+		BBE5ED0B14CD817E005DB0DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BB9AE6FE148D2398004E608A /* libpd.xcodeproj */;
+			containerPortal = BBE5ED0414CD817E005DB0DC /* libpd.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = libpd;
-		};
-		BB9AE708148D23A2004E608A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BB9AE6FE148D2398004E608A /* libpd.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = libpd;
 		};
 /* End PBXContainerItemProxy section */
@@ -78,10 +71,10 @@
 		BB3ACB6A1483E614003014D1 /* ImageProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageProperties.m; sourceTree = "<group>"; };
 		BB3ACB6B1483E614003014D1 /* ImageSlice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageSlice.h; sourceTree = "<group>"; };
 		BB3ACB6C1483E614003014D1 /* ImageSlice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSlice.m; sourceTree = "<group>"; };
-		BB3ACB731483E7FB003014D1 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = images.jpeg; path = ../../images.jpeg; sourceTree = "<group>"; };
-		BB9AE6FE148D2398004E608A /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = "../pd-for-ios/libpd/libpd.xcodeproj"; sourceTree = "<group>"; };
 		BB9AE722148D2868004E608A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BB9AE724148D28DA004E608A /* wavetable.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wavetable.pd; sourceTree = "<group>"; };
+		BBD3328214CD7C0900582A54 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
+		BBE5ED0414CD817E005DB0DC /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = libpd/libpd.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,8 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBE5ED0D14CD82E7005DB0DC /* libpd.a in Frameworks */,
 				BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */,
-				BB9AE70A148D23A6004E608A /* libpd.a in Frameworks */,
 				BB3ACB321483E5DD003014D1 /* UIKit.framework in Frameworks */,
 				BB3ACB341483E5DD003014D1 /* Foundation.framework in Frameworks */,
 				BB3ACB361483E5DD003014D1 /* CoreGraphics.framework in Frameworks */,
@@ -113,8 +106,8 @@
 		BB3ACB221483E5DD003014D1 = {
 			isa = PBXGroup;
 			children = (
+				BBE5ED0414CD817E005DB0DC /* libpd.xcodeproj */,
 				BB9AE722148D2868004E608A /* AudioToolbox.framework */,
-				BB9AE6FE148D2398004E608A /* libpd.xcodeproj */,
 				BB3ACB371483E5DD003014D1 /* ImageProcessing */,
 				BB3ACB581483E5DE003014D1 /* ImageProcessingTests */,
 				BB3ACB301483E5DD003014D1 /* Frameworks */,
@@ -145,7 +138,7 @@
 		BB3ACB371483E5DD003014D1 /* ImageProcessing */ = {
 			isa = PBXGroup;
 			children = (
-				BB3ACB731483E7FB003014D1 /* images.jpeg */,
+				BBD3328214CD7C0900582A54 /* images.jpeg */,
 				BB3ACB691483E614003014D1 /* ImageProperties.h */,
 				BB3ACB6A1483E614003014D1 /* ImageProperties.m */,
 				BB3ACB6B1483E614003014D1 /* ImageSlice.h */,
@@ -192,10 +185,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		BB9AE6FF148D2398004E608A /* Products */ = {
+		BBE5ED0514CD817E005DB0DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BB9AE706148D2398004E608A /* libpd.a */,
+				BBE5ED0C14CD817E005DB0DC /* libpd.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,7 +207,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				BB9AE709148D23A2004E608A /* PBXTargetDependency */,
 			);
 			name = ImageProcessing;
 			productName = ImageProcessing;
@@ -260,8 +252,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = BB9AE6FF148D2398004E608A /* Products */;
-					ProjectRef = BB9AE6FE148D2398004E608A /* libpd.xcodeproj */;
+					ProductGroup = BBE5ED0514CD817E005DB0DC /* Products */;
+					ProjectRef = BBE5ED0414CD817E005DB0DC /* libpd.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -273,11 +265,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		BB9AE706148D2398004E608A /* libpd.a */ = {
+		BBE5ED0C14CD817E005DB0DC /* libpd.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libpd.a;
-			remoteRef = BB9AE705148D2398004E608A /* PBXContainerItemProxy */;
+			remoteRef = BBE5ED0B14CD817E005DB0DC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -290,8 +282,8 @@
 				BB3ACB3C1483E5DD003014D1 /* InfoPlist.strings in Resources */,
 				BB3ACB481483E5DE003014D1 /* ViewController_iPhone.xib in Resources */,
 				BB3ACB4B1483E5DE003014D1 /* ViewController_iPad.xib in Resources */,
-				BB3ACB741483E7FB003014D1 /* images.jpeg in Resources */,
 				BB9AE725148D28DA004E608A /* wavetable.pd in Resources */,
+				BBD3328314CD7C0900582A54 /* images.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,11 +341,6 @@
 			isa = PBXTargetDependency;
 			target = BB3ACB2C1483E5DD003014D1 /* ImageProcessing */;
 			targetProxy = BB3ACB561483E5DE003014D1 /* PBXContainerItemProxy */;
-		};
-		BB9AE709148D23A2004E608A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = libpd;
-			targetProxy = BB9AE708148D23A2004E608A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -445,7 +432,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageProcessing/ImageProcessing-Prefix.pch";
-				HEADER_SEARCH_PATHS = "../pd-for-ios/libpd/objc/**";
+				HEADER_SEARCH_PATHS = "./libpd/objc/**";
 				INFOPLIST_FILE = "ImageProcessing/ImageProcessing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -458,7 +445,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageProcessing/ImageProcessing-Prefix.pch";
-				HEADER_SEARCH_PATHS = "../pd-for-ios/libpd/objc/**";
+				HEADER_SEARCH_PATHS = "./libpd/objc/**";
 				INFOPLIST_FILE = "ImageProcessing/ImageProcessing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
