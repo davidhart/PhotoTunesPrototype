@@ -21,7 +21,7 @@
     col = [col initWithRed:[slice getAverageRed]/255.0f green:[slice getAverageGreen]/255.0f blue:[slice getAverageBlue]/255.0f alpha:1.0f];
     [self.view setBackgroundColor: col];
     
-    float f = 20.0f * [slice getAverageRed] / 255.0f + 70.0f;
+    float f = 20.0f * [slice getAverageHue] / 255.0f + 70.0f;
     [PdBase sendFloat:f toReceiver:[NSString stringWithFormat:@"%d-pitch", _patch.dollarZero]];
 }
 
