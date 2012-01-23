@@ -120,6 +120,8 @@
         STAssertEquals([slice getAverageRed], pixels[i*4], @"Error incorrect average red");
         STAssertEquals([slice getAverageGreen], pixels[i*4+1], @"Error incorrect average green");
         STAssertEquals([slice getAverageBlue], pixels[i*4+2], @"Error incorrect average blue");
+        
+        [slice log];
     }
 }
 

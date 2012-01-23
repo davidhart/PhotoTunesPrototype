@@ -30,13 +30,8 @@
         [_slices addObject: slice];
     }
     
-    [[_slices objectAtIndex:0] log];
-    
-    [ImageProperties LogPixel:pixels[0]];
-    [ImageProperties LogPixel:pixels[1]];
-    [ImageProperties LogPixel:pixels[2]];
-    [ImageProperties LogPixel:pixels[3]];
-    [ImageProperties LogPixel:pixels[86]];
+    //[[_slices objectAtIndex:0] log];
+    //[ImageProperties LogPixel:pixels[0]];
     
     _numSlices = width;
 }
