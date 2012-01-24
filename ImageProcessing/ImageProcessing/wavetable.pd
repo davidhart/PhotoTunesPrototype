@@ -37,7 +37,7 @@
 #X connect 5 0 6 0;
 #X connect 6 0 3 0;
 #X restore 32 214 pd output~;
-#N canvas 0 0 667 680 init 1;
+#N canvas 0 0 667 680 init 0;
 #X obj 85 207 s \$0-table-size;
 #X obj 85 182 + 3;
 #X text 114 182 interpolation points;
@@ -84,6 +84,8 @@
 #X connect 2 0 11 0;
 #X connect 5 0 0 0;
 #X connect 5 0 12 0;
+#X connect 5 0 14 0;
+#X connect 5 0 17 0;
 #X connect 7 0 8 0;
 #X connect 7 1 8 1;
 #X connect 8 0 9 0;
