@@ -23,5 +23,6 @@
 @property (nonatomic, retain) IBOutlet UISlider* slider;
 
 -(IBAction)sliderMoved:(id) sender;
+-(IBAction)sliderReleased:(id) sender;
 
 @end
