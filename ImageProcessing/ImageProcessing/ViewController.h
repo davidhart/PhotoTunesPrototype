@@ -25,4 +25,11 @@
 -(IBAction)sliderMoved:(id) sender;
 -(IBAction)sliderReleased:(id) sender;
 
+-(IBAction)playPressed:(id) sender;
+-(IBAction)pausePressed:(id) sender;
+-(IBAction)stopPressed:(id) sender;
+-(IBAction)sinePressed:(id) sender;
+-(IBAction)sawPressed:(id) sender;
+-(IBAction)harmonicPressed:(id) sender;
+
 @end

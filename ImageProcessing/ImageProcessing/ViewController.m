@@ -23,11 +23,38 @@
 }
 
 -(void)sliderReleased:(id)sender
-{
-    ImageSlice* slice = [_imagePropertes getSlice: (int)([slider value] * ([_imagePropertes numSlices]-1))];
-    
-    float f = 20.0f * [slice getAverageHue] / 255.0f + 60.0f;
-    [PdBase sendFloat:f toReceiver:[NSString stringWithFormat:@"%d-pitch", _patch.dollarZero]];
+{ 
+    [PdBase sendFloat: 60000.0f / ([slider value] * 400.0f + 60.0f) toReceiver:[NSString stringWithFormat:@"%d-tempo", _patch.dollarZero]];
+}
+
+-(void)playPressed:(id)sender
+{ 
+    [PdBase sendBangToReceiver:@"startPlayback"];
+}
+
+-(void)pausePressed:(id)sender
+{ 
+    [PdBase sendBangToReceiver:@"pausePlayback"];
+}
+
+-(void)stopPressed:(id)sender
+{ 
+    [PdBase sendBangToReceiver:@"stopPlayback"];
+}
+
+-(void)sinePressed:(id)sender
+{ 
+    [PdBase sendBangToReceiver:@"sine"];
+}
+
+-(void)sawPressed:(id)sender
+{ 
+    [PdBase sendBangToReceiver:@"saw"];
+}
+
+-(void)harmonicPressed:(id)sender
+{ 
+    [PdBase sendBangToReceiver:@"harm"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,6 +79,24 @@
     [PdBase setDelegate:self];
     
     _patch = [PdFile openFileNamed:@"wavetable.pd" path:[[NSBundle mainBundle] bundlePath]];
+    
+    const int length = 120;
+    
+    float values [length];
+    
+    for (int i = 0; i < length; i++)
+    {
+        ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)length) * ([_imagePropertes numSlices]-1))];
+        
+        float f = 20.0f * [slice getAverageHue] / 255.0f + 60.0f;
+        
+        NSLog(@"%f",f);
+        
+        values[i] = f;
+    }
+ 
+    [PdBase copyArray:values toArrayNamed:@"seq" withOffset:0 count:length];
+    [PdBase sendFloat:length toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
 }
 
 - (void)viewDidUnload
