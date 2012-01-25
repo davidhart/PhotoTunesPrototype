@@ -12,6 +12,7 @@
 
 @synthesize imageView;
 @synthesize slider;
+@synthesize progress;
 
 -(void)sliderMoved:(id)sender
 {
@@ -97,6 +98,8 @@
  
     [PdBase copyArray:values toArrayNamed:@"seq" withOffset:0 count:length];
     [PdBase sendFloat:length toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
+    
+    [PdBase subscribe:[NSString stringWithFormat:@"%d-notifyProgress", _patch.dollarZero]];
 }
 
 - (void)viewDidUnload
@@ -134,6 +137,24 @@
     } else {
         return YES;
     }
+}
+
+- (void)receiveFloat:(float)received fromSource:(NSString *)source
+{
+    NSString* pitch = [NSString stringWithFormat:@"%d-notifyProgress", _patch.dollarZero];
+    if ([pitch isEqualToString:source])
+    {
+        float temp = received / 119;
+        
+        _progressValue = temp;
+        
+        [self performSelectorOnMainThread:@selector(updateProgressView) withObject:nil waitUntilDone:NO];
+    }
+}
+
+-(void)updateProgressView
+{
+    [progress setProgress: _progressValue];
 }
 
 @end

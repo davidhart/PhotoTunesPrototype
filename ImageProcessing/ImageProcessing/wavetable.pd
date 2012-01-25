@@ -1,4 +1,4 @@
-#N canvas 187 0 1038 1009 10;
+#N canvas 591 31 1038 1009 10;
 #X obj 31 53 mtof;
 #N canvas 269 455 450 300 print-array 0;
 #X obj 62 126 t f f;
@@ -21,27 +21,27 @@
 #X connect 8 0 3 0;
 #X restore 69 353 pd print-array;
 #X obj 31 98 tabosc4~ \$0-array;
-#N canvas 0 22 236 237 output~ 0;
+#N canvas 0 22 236 218 output~ 0;
 #X obj 35 171 dac~;
 #X obj 35 137 *~;
 #X obj 88 115 line~;
-#X obj 88 83 pack 0 30;
 #X obj 35 87 inlet~;
 #X obj 88 26 r \$0-volume;
 #X obj 88 53 dbtorms;
+#X obj 88 82 pack 0 30;
 #X connect 1 0 0 0;
 #X connect 1 0 0 1;
 #X connect 2 0 1 1;
-#X connect 3 0 2 0;
-#X connect 4 0 1 0;
+#X connect 3 0 1 0;
+#X connect 4 0 5 0;
 #X connect 5 0 6 0;
-#X connect 6 0 3 0;
+#X connect 6 0 2 0;
 #X restore 32 214 pd output~;
 #X obj 32 -11 r \$0-pitch;
 #X obj 66 313 table \$0-array 259;
 #X obj 489 291 s \$0-pitch;
 #X obj 96 159 *~;
-#N canvas 1097 182 751 697 init 1;
+#N canvas 928 168 751 697 init 1;
 #X obj 78 240 s \$0-table-size;
 #X obj 70 209 + 3;
 #X msg 37 150 256;
@@ -61,7 +61,7 @@
 #X obj 548 191 r saw;
 #X obj 498 190 r harm;
 #X obj 589 192 r sine;
-#X text 92 164;
+#X text 92 164 comment;
 #X connect 1 0 0 0;
 #X connect 2 0 1 0;
 #X connect 2 0 4 0;
@@ -84,7 +84,7 @@
 #X obj 592 215 notein;
 #X obj 597 275 tabwrite seq;
 #X obj 662 219 hradio 15 1 0 20 empty empty empty 0 -8 0 10 -262144
--1 -1 19;
+-1 -1 9;
 #X obj 496 174 t f f;
 #X obj 496 210 tabread seq;
 #X floatatom 495 249 5 0 0 0 - - -;
@@ -115,6 +115,7 @@
 #X array seq 120 float 2;
 #X coords 0 140 120 0 200 140 1;
 #X restore 434 346 graph;
+#X obj 247 146 s \$0-notifyProgress;
 #X connect 0 0 2 0;
 #X connect 2 0 7 0;
 #X connect 4 0 0 0;
@@ -128,6 +129,7 @@
 #X connect 14 0 6 0;
 #X connect 15 0 12 0;
 #X connect 15 0 32 0;
+#X connect 15 0 36 0;
 #X connect 16 0 17 1;
 #X connect 17 0 16 0;
 #X connect 17 0 15 0;
