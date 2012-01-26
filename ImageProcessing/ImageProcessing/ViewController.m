@@ -58,6 +58,16 @@
     [PdBase sendBangToReceiver:@"harm"];
 }
 
+-(void)cameraPressed:(id)sender
+{ 
+    [self activateImageChooser: YES];
+}
+
+-(void)loadPressed:(id)sender
+{
+    [self activateImageChooser: NO];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -69,37 +79,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
-    UIImage* image = [UIImage imageNamed:@"images.jpeg"];
-    [imageView setImage: image];
+    // Init camera picker
+    imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = self;
     
     _imagePropertes = [ImageProperties alloc];
-    [_imagePropertes init:image];
     
     [PdBase setDelegate:self];
     
     _patch = [PdFile openFileNamed:@"wavetable.pd" path:[[NSBundle mainBundle] bundlePath]];
     
-    const int length = 120;
-    
-    float values [length];
-    
-    for (int i = 0; i < length; i++)
-    {
-        ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)length) * ([_imagePropertes numSlices]-1))];
-        
-        float f = 20.0f * [slice getAverageHue] / 255.0f + 60.0f;
-        
-        NSLog(@"%f",f);
-        
-        values[i] = f;
-    }
- 
-    [PdBase copyArray:values toArrayNamed:@"seq" withOffset:0 count:length];
-    [PdBase sendFloat:length toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
-    
     [PdBase subscribe:[NSString stringWithFormat:@"%d-notifyProgress", _patch.dollarZero]];
+    
+    UIImage* image = [UIImage imageNamed:@"images.jpeg"];
+    [self setImage: image];
 }
 
 - (void)viewDidUnload
@@ -155,6 +149,60 @@
 -(void)updateProgressView
 {
     [progress setProgress: _progressValue];
+}
+
+-(void)activateImageChooser:(BOOL) camera
+{
+    if(camera)
+    {
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else
+    {
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    [self presentModalViewController:imagePickerController animated:YES];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker
+        didFinishPickingImage:(UIImage *)image
+                  editingInfo:(NSDictionary *)editingInfo
+{
+    [picker dismissModalViewControllerAnimated:YES];
+    
+    [self setImage: image];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissModalViewControllerAnimated:YES];
+}
+
+-(void)setImage:(UIImage *)image
+{
+    [imageView setImage: image];
+    [_imagePropertes init:image];
+    
+    [self updateValues:image];
+}
+
+-(void)updateValues:(UIImage *)image
+{
+    const int length = 120;
+    
+    float values [length];
+    
+    for (int i = 0; i < length; i++)
+    {
+        ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)length) * ([_imagePropertes numSlices]-1))];
+        
+        float f = 20.0f * [slice getAverageVal] / 255.0f + 60.0f;        
+        values[i] = f;
+    }
+    
+    [PdBase copyArray:values toArrayNamed:@"seq" withOffset:0 count:length];
+    [PdBase sendFloat:length toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
 }
 
 @end

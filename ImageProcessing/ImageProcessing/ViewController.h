@@ -11,13 +11,15 @@
 #import "PdFile.h"
 #import "PdBase.h"
 
-@interface ViewController : UIViewController <PdReceiverDelegate>
+@interface ViewController : UIViewController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     PdFile * _patch;
     UIImageView* imageView;
     UISlider* slider;
     UIProgressView* progress;
     ImageProperties* _imagePropertes;
+
+    UIImagePickerController* imagePickerController;
     
     float _progressValue;
 }
@@ -36,8 +38,19 @@
 -(IBAction)sawPressed:(id) sender;
 -(IBAction)harmonicPressed:(id) sender;
 
+-(IBAction)cameraPressed:(id) sender;
+-(IBAction)loadPressed:(id)sender;
+
 -(void)receiveFloat:(float)received fromSource:(NSString *)source;
 
 -(void)updateProgressView;
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo;
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker;
+
+-(void)activateImageChooser:(BOOL) camera;
+
+-(void)setImage:(UIImage*) image;
+-(void)updateValues:(UIImage*) image;
 
 @end
