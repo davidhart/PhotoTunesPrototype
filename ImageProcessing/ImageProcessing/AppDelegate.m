@@ -12,19 +12,13 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize window;
+//@synthesize tabBarController;
+@synthesize viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPhone" bundle:nil];
-    } else {
-        self.viewController = [[ViewController alloc] initWithNibName:@"ViewController_iPad" bundle:nil];
-    }
-    self.window.rootViewController = self.viewController;
-
+    [self.window addSubview:[self.viewController view]];
     [self.window makeKeyAndVisible];
     
 #if TARGET_IPHONE_SIMULATOR	
@@ -39,6 +33,14 @@
 	[PdBase computeAudio:YES];
 	[_pdAudio play];
     
+    [viewController initialize];
+    
+    /*
+    UIImagePickerController* imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.delegate = viewController;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self.tabBarController presentModalViewController:imagePickerController animated:YES];
+    */
     return YES;
 }
 

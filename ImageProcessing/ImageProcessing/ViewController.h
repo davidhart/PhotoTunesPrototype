@@ -11,7 +11,7 @@
 #import "PdFile.h"
 #import "PdBase.h"
 
-@interface ViewController : UIViewController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     PdFile * _patch;
     UIImageView* imageView;
@@ -22,11 +22,14 @@
     UIImagePickerController* imagePickerController;
     
     float _progressValue;
+    int _numNotes;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;
 @property (nonatomic, retain) IBOutlet UISlider* slider;
 @property (nonatomic, retain) IBOutlet UIProgressView* progress;
+
+-(void)initialize;
 
 -(IBAction)sliderMoved:(id) sender;
 -(IBAction)sliderReleased:(id) sender;

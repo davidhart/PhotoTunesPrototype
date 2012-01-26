@@ -76,9 +76,9 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
+- (void)initialize
 {
-    [super viewDidLoad];
+    _numNotes = 20;
     
     // Init camera picker
     imagePickerController = [[UIImagePickerController alloc] init];
@@ -94,13 +94,6 @@
     
     UIImage* image = [UIImage imageNamed:@"images.jpeg"];
     [self setImage: image];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -138,7 +131,7 @@
     NSString* pitch = [NSString stringWithFormat:@"%d-notifyProgress", _patch.dollarZero];
     if ([pitch isEqualToString:source])
     {
-        float temp = received / 119;
+        float temp = received / (_numNotes - 1);
         
         _progressValue = temp;
         
@@ -189,20 +182,18 @@
 
 -(void)updateValues:(UIImage *)image
 {
-    const int length = 120;
+    float* values = malloc(_numNotes * sizeof(float));
     
-    float values [length];
-    
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < _numNotes; i++)
     {
-        ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)length) * ([_imagePropertes numSlices]-1))];
+        ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
         
         float f = 20.0f * [slice getAverageVal] / 255.0f + 60.0f;        
         values[i] = f;
     }
     
-    [PdBase copyArray:values toArrayNamed:@"seq" withOffset:0 count:length];
-    [PdBase sendFloat:length toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
+    [PdBase copyArray:values toArrayNamed:@"seq" withOffset:0 count:_numNotes];
+    [PdBase sendFloat:_numNotes toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
 }
 
 @end
