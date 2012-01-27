@@ -29,6 +29,9 @@
 @property (nonatomic, retain) IBOutlet UISlider* slider;
 @property (nonatomic, retain) IBOutlet UIProgressView* progress;
 
+@property (nonatomic, retain) IBOutlet UISwitch* repeatSwitch;
+@property (nonatomic, retain) IBOutlet UISwitch* drumsSwitch;
+
 -(void)initialize;
 
 -(IBAction)sliderMoved:(id) sender;
@@ -43,6 +46,9 @@
 
 -(IBAction)cameraPressed:(id) sender;
 -(IBAction)loadPressed:(id)sender;
+
+-(IBAction)repeatPressed:(id)sender;
+-(IBAction)drumsPressed:(id)sender;
 
 -(void)receiveFloat:(float)received fromSource:(NSString *)source;
 

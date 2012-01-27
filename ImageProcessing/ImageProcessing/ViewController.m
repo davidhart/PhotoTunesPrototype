@@ -14,6 +14,9 @@
 @synthesize slider;
 @synthesize progress;
 
+@synthesize repeatSwitch;
+@synthesize drumsSwitch;
+
 -(void)sliderMoved:(id)sender
 {
     ImageSlice* slice = [_imagePropertes getSlice: (int)([slider value] * ([_imagePropertes numSlices]-1))];
@@ -56,6 +59,28 @@
 -(void)harmonicPressed:(id)sender
 { 
     [PdBase sendBangToReceiver:@"harm"];
+}
+
+-(void)repeatPressed:(id)sender
+{ 
+    BOOL temp = [repeatSwitch isOn];
+    
+    if (temp)
+        [PdBase sendFloat:1 toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
+    
+    else if (!temp)
+        [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
+}
+
+-(void)drumsPressed:(id)sender
+{ 
+    BOOL temp = [drumsSwitch isOn];
+    
+    if (temp)
+        [PdBase sendFloat:1 toReceiver:[NSString stringWithFormat:@"%d-drumVolume", _patch.dollarZero]];
+    
+    else if (!temp)
+        [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-drumVolume", _patch.dollarZero]];
 }
 
 -(void)cameraPressed:(id)sender

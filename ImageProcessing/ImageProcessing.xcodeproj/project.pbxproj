@@ -27,6 +27,10 @@
 		BB46572614CDB41E00318F89 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46572514CDB41E00318F89 /* Util.m */; };
 		BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9AE722148D2868004E608A /* AudioToolbox.framework */; };
 		BB9AE725148D28DA004E608A /* wavetable.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB9AE724148D28DA004E608A /* wavetable.pd */; };
+		BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA514D2E81200D54C01 /* homeIcon.png */; };
+		BBD1BDA814D2E86C00D54C01 /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */; };
+		BBD1BDAB14D2EA9B00D54C01 /* snare~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA914D2EA9B00D54C01 /* snare~.pd */; };
+		BBD1BDAC14D2EA9B00D54C01 /* vead~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDAA14D2EA9B00D54C01 /* vead~.pd */; };
 		BBD3328314CD7C0900582A54 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BBD3328214CD7C0900582A54 /* images.jpeg */; };
 		BBE5ED0D14CD82E7005DB0DC /* libpd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5ED0C14CD817E005DB0DC /* libpd.a */; };
 /* End PBXBuildFile section */
@@ -77,6 +81,10 @@
 		BB46572514CDB41E00318F89 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		BB9AE722148D2868004E608A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BB9AE724148D28DA004E608A /* wavetable.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wavetable.pd; sourceTree = "<group>"; };
+		BBD1BDA514D2E81200D54C01 /* homeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeIcon.png; sourceTree = "<group>"; };
+		BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
+		BBD1BDA914D2EA9B00D54C01 /* snare~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "snare~.pd"; sourceTree = "<group>"; };
+		BBD1BDAA14D2EA9B00D54C01 /* vead~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "vead~.pd"; sourceTree = "<group>"; };
 		BBD3328214CD7C0900582A54 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
 		BBE5ED0414CD817E005DB0DC /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = libpd/libpd.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,6 +151,8 @@
 		BB3ACB371483E5DD003014D1 /* ImageProcessing */ = {
 			isa = PBXGroup;
 			children = (
+				BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */,
+				BBD1BDA514D2E81200D54C01 /* homeIcon.png */,
 				BBD3328214CD7C0900582A54 /* images.jpeg */,
 				BB3ACB691483E614003014D1 /* ImageProperties.h */,
 				BB3ACB6A1483E614003014D1 /* ImageProperties.m */,
@@ -164,6 +174,8 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BBD1BDA914D2EA9B00D54C01 /* snare~.pd */,
+				BBD1BDAA14D2EA9B00D54C01 /* vead~.pd */,
 				BB9AE724148D28DA004E608A /* wavetable.pd */,
 				BB3ACB391483E5DD003014D1 /* ImageProcessing-Info.plist */,
 				BB3ACB3A1483E5DD003014D1 /* InfoPlist.strings */,
@@ -291,6 +303,10 @@
 				BB3ACB4B1483E5DE003014D1 /* ViewController_iPad.xib in Resources */,
 				BB9AE725148D28DA004E608A /* wavetable.pd in Resources */,
 				BBD3328314CD7C0900582A54 /* images.jpeg in Resources */,
+				BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */,
+				BBD1BDA814D2E86C00D54C01 /* settingsIcon.png in Resources */,
+				BBD1BDAB14D2EA9B00D54C01 /* snare~.pd in Resources */,
+				BBD1BDAC14D2EA9B00D54C01 /* vead~.pd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
