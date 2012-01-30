@@ -20,7 +20,7 @@
     ImageProperties* _imagePropertes;
 
     UIImagePickerController* imagePickerController;
-    
+
     float _progressValue;
     int _numNotes;
 }

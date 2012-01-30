@@ -30,7 +30,6 @@
 		BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA514D2E81200D54C01 /* homeIcon.png */; };
 		BBD1BDA814D2E86C00D54C01 /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */; };
 		BBD1BDAB14D2EA9B00D54C01 /* snare~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA914D2EA9B00D54C01 /* snare~.pd */; };
-		BBD1BDAC14D2EA9B00D54C01 /* vead~.pd in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDAA14D2EA9B00D54C01 /* vead~.pd */; };
 		BBD3328314CD7C0900582A54 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BBD3328214CD7C0900582A54 /* images.jpeg */; };
 		BBE5ED0D14CD82E7005DB0DC /* libpd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5ED0C14CD817E005DB0DC /* libpd.a */; };
 /* End PBXBuildFile section */
@@ -84,7 +83,6 @@
 		BBD1BDA514D2E81200D54C01 /* homeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeIcon.png; sourceTree = "<group>"; };
 		BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
 		BBD1BDA914D2EA9B00D54C01 /* snare~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "snare~.pd"; sourceTree = "<group>"; };
-		BBD1BDAA14D2EA9B00D54C01 /* vead~.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "vead~.pd"; sourceTree = "<group>"; };
 		BBD3328214CD7C0900582A54 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
 		BBE5ED0414CD817E005DB0DC /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = libpd/libpd.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				BBD1BDA914D2EA9B00D54C01 /* snare~.pd */,
-				BBD1BDAA14D2EA9B00D54C01 /* vead~.pd */,
 				BB9AE724148D28DA004E608A /* wavetable.pd */,
 				BB3ACB391483E5DD003014D1 /* ImageProcessing-Info.plist */,
 				BB3ACB3A1483E5DD003014D1 /* InfoPlist.strings */,
@@ -306,7 +303,6 @@
 				BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */,
 				BBD1BDA814D2E86C00D54C01 /* settingsIcon.png in Resources */,
 				BBD1BDAB14D2EA9B00D54C01 /* snare~.pd in Resources */,
-				BBD1BDAC14D2EA9B00D54C01 /* vead~.pd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

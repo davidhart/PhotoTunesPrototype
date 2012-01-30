@@ -10,7 +10,6 @@
 
 @interface ImageSlice : NSObject
 {
-    NSMutableData* _pixels;
     unsigned int _height;
     
     UInt8 _averageRed;

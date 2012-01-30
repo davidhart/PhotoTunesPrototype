@@ -17,15 +17,6 @@
 @synthesize repeatSwitch;
 @synthesize drumsSwitch;
 
--(void)sliderMoved:(id)sender
-{
-    ImageSlice* slice = [_imagePropertes getSlice: (int)([slider value] * ([_imagePropertes numSlices]-1))];
-    
-    UIColor* col = [UIColor alloc];
-    col = [col initWithRed:[slice getAverageRed]/255.0f green:[slice getAverageGreen]/255.0f blue:[slice getAverageBlue]/255.0f alpha:1.0f];
-    [self.view setBackgroundColor: col];
-}
-
 -(void)sliderReleased:(id)sender
 { 
     [PdBase sendFloat: 60000.0f / ([slider value] * 400.0f + 60.0f) toReceiver:[NSString stringWithFormat:@"%d-tempo", _patch.dollarZero]];
@@ -44,6 +35,7 @@
 -(void)stopPressed:(id)sender
 { 
     [PdBase sendBangToReceiver:@"stopPlayback"];
+    [progress setProgress: 0];
 }
 
 -(void)sinePressed:(id)sender
@@ -115,6 +107,9 @@
     
     _patch = [PdFile openFileNamed:@"wavetable.pd" path:[[NSBundle mainBundle] bundlePath]];
     
+    [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-drumVolume", _patch.dollarZero]];
+    [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
+    
     [PdBase subscribe:[NSString stringWithFormat:@"%d-notifyProgress", _patch.dollarZero]];
     
     UIImage* image = [UIImage imageNamed:@"images.jpeg"];
@@ -171,6 +166,7 @@
 
 -(void)activateImageChooser:(BOOL) camera
 {
+    [self stopPressed:self];
     if(camera)
     {
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -190,6 +186,8 @@
     [picker dismissModalViewControllerAnimated:YES];
     
     [self setImage: image];
+    
+    self.selectedIndex = 0;
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -203,6 +201,8 @@
     [_imagePropertes init:image];
     
     [self updateValues:image];
+    
+    [self stopPressed: self];
 }
 
 -(void)updateValues:(UIImage *)image
