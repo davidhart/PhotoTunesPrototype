@@ -126,7 +126,7 @@
 #X obj 524 439 stripnote;
 #X obj 296 57 r \$0-notifyProgress;
 #X obj 181 541 hsl 195 15 0 120 0 0 \$0-notifyProgress \$0-notifyProgress
-empty -2 -8 0 10 -262144 -1 -1 808 1;
+empty -2 -8 0 10 -262144 -1 -1 2910 1;
 #X msg 568 471 0;
 #X obj 527 467 bang;
 #X obj 606 499 r \$0-length;
@@ -198,7 +198,7 @@ empty -2 -8 0 10 -262144 -1 -1 808 1;
 #X obj 121 158 *~;
 #X text 480 -59 Playback Controls;
 #X obj -145 -73 vsl 32 32 0 1 0 0 \$0-melodyVolume \$0-melodyVolume
-melody 0 -9 0 10 -262144 -1 -1 0 1;
+melody 0 -9 0 10 -262144 -1 -1 1400 1;
 #X text 130 7 Melody In;
 #X text 491 382 Midi Recorder;
 #X text 292 30 Melody Out;
