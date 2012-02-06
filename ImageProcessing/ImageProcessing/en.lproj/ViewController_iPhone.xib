@@ -111,7 +111,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{164, 49}, {72, 37}}</string>
 								<reference key="NSSuperview" ref="231033918"/>
-								<reference key="NSNextKeyView" ref="673031828"/>
+								<reference key="NSNextKeyView" ref="465970400"/>
 								<string key="NSReuseIdentifierKey">_NS:225</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -274,7 +274,7 @@
 								<reference key="IBUIFontDescription" ref="155964193"/>
 								<reference key="IBUIFont" ref="898098535"/>
 							</object>
-							<object class="IBUILabel" id="673031828">
+							<object class="IBUILabel" id="465970400">
 								<reference key="NSNextResponder" ref="231033918"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{139, 132}, {42, 21}}</string>
@@ -775,7 +775,7 @@
 							<reference ref="161392593"/>
 							<reference ref="186321038"/>
 							<reference ref="876650851"/>
-							<reference ref="673031828"/>
+							<reference ref="465970400"/>
 						</array>
 						<reference key="parent" ref="90786456"/>
 					</object>
@@ -831,7 +831,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">142</int>
-						<reference key="object" ref="673031828"/>
+						<reference key="object" ref="465970400"/>
 						<reference key="parent" ref="231033918"/>
 					</object>
 				</array>
@@ -874,7 +874,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">146</int>
+			<int key="maxID">147</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

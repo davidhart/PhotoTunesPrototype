@@ -78,6 +78,7 @@
 		BB3ACB6C1483E614003014D1 /* ImageSlice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSlice.m; sourceTree = "<group>"; };
 		BB46572414CDB41E00318F89 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		BB46572514CDB41E00318F89 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		BB873A3614DFF77400CE09FA /* ImageProcessing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ImageProcessing.entitlements; sourceTree = "<group>"; };
 		BB9AE722148D2868004E608A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BB9AE724148D28DA004E608A /* wavetable.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wavetable.pd; sourceTree = "<group>"; };
 		BBD1BDA514D2E81200D54C01 /* homeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeIcon.png; sourceTree = "<group>"; };
@@ -149,6 +150,7 @@
 		BB3ACB371483E5DD003014D1 /* ImageProcessing */ = {
 			isa = PBXGroup;
 			children = (
+				BB873A3614DFF77400CE09FA /* ImageProcessing.entitlements */,
 				BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */,
 				BBD1BDA514D2E81200D54C01 /* homeIcon.png */,
 				BBD3328214CD7C0900582A54 /* images.jpeg */,
@@ -406,7 +408,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -432,7 +435,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -450,12 +454,14 @@
 		BB3ACB641483E5DE003014D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Morris (GLQ83WZ2NR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageProcessing/ImageProcessing-Prefix.pch";
 				HEADER_SEARCH_PATHS = "./libpd/objc/**";
 				INFOPLIST_FILE = "ImageProcessing/ImageProcessing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9AD8D72B-C0EF-481E-AD1F-B1658EABE39E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -463,12 +469,14 @@
 		BB3ACB651483E5DE003014D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Morris (GLQ83WZ2NR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageProcessing/ImageProcessing-Prefix.pch";
 				HEADER_SEARCH_PATHS = "./libpd/objc/**";
 				INFOPLIST_FILE = "ImageProcessing/ImageProcessing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9AD8D72B-C0EF-481E-AD1F-B1658EABE39E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -511,6 +519,63 @@
 			};
 			name = Release;
 		};
+		BB873A3714E00F6200CE09FA /* Package */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Package;
+		};
+		BB873A3814E00F6200CE09FA /* Package */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Morris (GLQ83WZ2NR)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ImageProcessing/ImageProcessing-Prefix.pch";
+				HEADER_SEARCH_PATHS = "./libpd/objc/**";
+				INFOPLIST_FILE = "ImageProcessing/ImageProcessing-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9AD8D72B-C0EF-481E-AD1F-B1658EABE39E";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Package;
+		};
+		BB873A3914E00F6200CE09FA /* Package */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ImageProcessing.app/ImageProcessing";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ImageProcessing/ImageProcessing-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../pd-for-ios/libpd/objc/**";
+				INFOPLIST_FILE = "ImageProcessingTests/ImageProcessingTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				USER_HEADER_SEARCH_PATHS = "";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Package;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -519,6 +584,7 @@
 			buildConfigurations = (
 				BB3ACB611483E5DE003014D1 /* Debug */,
 				BB3ACB621483E5DE003014D1 /* Release */,
+				BB873A3714E00F6200CE09FA /* Package */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -528,6 +594,7 @@
 			buildConfigurations = (
 				BB3ACB641483E5DE003014D1 /* Debug */,
 				BB3ACB651483E5DE003014D1 /* Release */,
+				BB873A3814E00F6200CE09FA /* Package */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -537,6 +604,7 @@
 			buildConfigurations = (
 				BB3ACB671483E5DE003014D1 /* Debug */,
 				BB3ACB681483E5DE003014D1 /* Release */,
+				BB873A3914E00F6200CE09FA /* Package */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
