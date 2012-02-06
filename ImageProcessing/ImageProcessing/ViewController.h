@@ -34,7 +34,7 @@
 
 -(void)initialize;
 
--(IBAction)sliderMoved:(id) sender;
+
 -(IBAction)sliderReleased:(id) sender;
 
 -(IBAction)playPressed:(id) sender;
