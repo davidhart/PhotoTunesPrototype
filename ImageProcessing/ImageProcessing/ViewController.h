@@ -11,7 +11,7 @@
 #import "PdFile.h"
 #import "PdBase.h"
 
-@interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate>
 {
     PdFile * _patch;
     UIImageView* imageView;
@@ -23,6 +23,8 @@
 
     float _progressValue;
     int _numNotes;
+    
+    UIPickerView *myPickerView;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;
@@ -49,6 +51,8 @@
 
 -(IBAction)repeatPressed:(id)sender;
 -(IBAction)drumsPressed:(id)sender;
+
+-(IBAction)instrumentsPressed:(id)sender;
 
 -(void)receiveFloat:(float)received fromSource:(NSString *)source;
 

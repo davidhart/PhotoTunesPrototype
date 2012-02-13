@@ -85,6 +85,11 @@
     [self activateImageChooser: NO];
 }
 
+-(void)instrumentsPressed:(id)sender
+{
+    [myPickerView setHidden:FALSE];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -114,6 +119,12 @@
     
     UIImage* image = [UIImage imageNamed:@"images.jpeg"];
     [self setImage: image];
+    
+    myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 200, 320, 200)];
+    myPickerView.delegate = self;
+    myPickerView.showsSelectionIndicator = YES;
+    [self.view addSubview:myPickerView];
+    [myPickerView setHidden:TRUE];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -219,6 +230,39 @@
     
     [PdBase copyArray:values toArrayNamed:@"seq" withOffset:0 count:_numNotes];
     [PdBase sendFloat:_numNotes toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component 
+{    
+    // Handle the selection
+} 
+
+// tell the picker how many rows are available for a given component
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component 
+{    
+    NSUInteger numRows = 5;     
+    return numRows;
+} 
+
+// tell the picker how many components it will have
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView 
+{ 
+    return 1;
+} 
+
+// tell the picker the title for a given component
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component 
+{    
+    NSString *title;
+    title = [@"" stringByAppendingFormat:@"%d",row]; 
+    return title;
+} 
+
+// tell the picker the width of each row for a given component
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component 
+{ 
+    int sectionWidth = 300;  
+    return sectionWidth;
 }
 
 @end
