@@ -25,6 +25,8 @@
 		BB3ACB6E1483E614003014D1 /* ImageSlice.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3ACB6C1483E614003014D1 /* ImageSlice.m */; };
 		BB46572314CDAC9300318F89 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3ACB351483E5DD003014D1 /* CoreGraphics.framework */; };
 		BB46572614CDB41E00318F89 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46572514CDB41E00318F89 /* Util.m */; };
+		BB83BC5814F28F2200226E16 /* polytracker.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB83BC5714F28F2200226E16 /* polytracker.pd */; };
+		BB83BC5A14F2904D00226E16 /* bell.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BB83BC5914F2904D00226E16 /* bell.aiff */; };
 		BB873A5314E9214D00CE09FA /* vocoder.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5214E9214D00CE09FA /* vocoder.pd */; };
 		BB873A5514E9215C00CE09FA /* a.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5414E9215C00CE09FA /* a.wav */; };
 		BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9AE722148D2868004E608A /* AudioToolbox.framework */; };
@@ -79,6 +81,8 @@
 		BB3ACB6C1483E614003014D1 /* ImageSlice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSlice.m; sourceTree = "<group>"; };
 		BB46572414CDB41E00318F89 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		BB46572514CDB41E00318F89 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		BB83BC5714F28F2200226E16 /* polytracker.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = polytracker.pd; sourceTree = "<group>"; };
+		BB83BC5914F2904D00226E16 /* bell.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = bell.aiff; sourceTree = "<group>"; };
 		BB873A3614DFF77400CE09FA /* ImageProcessing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ImageProcessing.entitlements; sourceTree = "<group>"; };
 		BB873A5214E9214D00CE09FA /* vocoder.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vocoder.pd; sourceTree = "<group>"; };
 		BB873A5414E9215C00CE09FA /* a.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = a.wav; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB83BC5914F2904D00226E16 /* bell.aiff */,
+				BB83BC5714F28F2200226E16 /* polytracker.pd */,
 				BB873A5414E9215C00CE09FA /* a.wav */,
 				BB873A5214E9214D00CE09FA /* vocoder.pd */,
 				BB9AE724148D28DA004E608A /* wavetable.pd */,
@@ -309,6 +315,8 @@
 				BBD1BDA814D2E86C00D54C01 /* settingsIcon.png in Resources */,
 				BB873A5314E9214D00CE09FA /* vocoder.pd in Resources */,
 				BB873A5514E9215C00CE09FA /* a.wav in Resources */,
+				BB83BC5814F28F2200226E16 /* polytracker.pd in Resources */,
+				BB83BC5A14F2904D00226E16 /* bell.aiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -112,6 +112,7 @@
     
     _patch = [PdFile openFileNamed:@"wavetable.pd" path:[[NSBundle mainBundle] bundlePath]];
     
+     [PdBase sendFloat:1 toReceiver:[NSString stringWithFormat:@"%d-numInstruments", _patch.dollarZero]];
     [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-drumVolume", _patch.dollarZero]];
     [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
     
@@ -119,7 +120,6 @@
     
     UIImage* image = [UIImage imageNamed:@"images.jpeg"];
     [self setImage: image];
-    
     
     subView=[[UIView alloc] init];
     subView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
@@ -262,12 +262,12 @@
     {
         ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
         
-        float f = 20.0f * [slice getAverageVal] / 255.0f + 60.0f;        
+        float f = (2.0f * [slice getAverageVal] / 255.0f - 1.0f) * 20.0f;        
         values[i] = f;
     }
     
-    [PdBase copyArray:values toArrayNamed:@"seq" withOffset:0 count:_numNotes];
     [PdBase sendFloat:_numNotes toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
+    [PdBase copyArray:values toArrayNamed:@"pattern" withOffset:0 count:_numNotes];
     
     free(values);
 }
@@ -294,7 +294,7 @@
 // tell the picker the title for a given component
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component 
 {    
-    NSString *instrumentList[] = {@"Test 1", @"Test 2", @"Test 3", @"Test 4", @"Test 5"};
+    NSString *instrumentList[] = {@"Bell", @"Guitar", @"Test 3", @"Test 4", @"Test 5"};
 
     return instrumentList[row];
 } 
@@ -308,7 +308,10 @@
 
 -(void)toolBarDone
 {
-    //Send _activeInstrument to PD here;
+    NSString *instrumentList[] = {@"bell.aiff", @"a.wav", @"Test 3", @"Test 4", @"Test 5"};
+    
+    [PdBase sendMessage:instrumentList[_activeInstrument] withArguments:NULL toReceiver:[NSString stringWithFormat:@"%d-soundfile", _patch.dollarZero]];
+    
     [subView setHidden:TRUE];
 }
 
