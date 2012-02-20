@@ -87,7 +87,7 @@
 
 -(void)instrumentsPressed:(id)sender
 {
-    [myPickerView setHidden:FALSE];
+    [subView setHidden:FALSE];
 }
 
 - (void)didReceiveMemoryWarning
@@ -120,11 +120,49 @@
     UIImage* image = [UIImage imageNamed:@"images.jpeg"];
     [self setImage: image];
     
-    myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 200, 320, 200)];
+    
+    subView=[[UIView alloc] init];
+    subView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    subView.backgroundColor = [UIColor colorWithRed:0.0 
+                                              green:0.0 
+                                               blue:0.0 
+                                              alpha:1.0];
+    
+    myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 63, 320, 200)];
     myPickerView.delegate = self;
     myPickerView.showsSelectionIndicator = YES;
-    [self.view addSubview:myPickerView];
-    [myPickerView setHidden:TRUE];
+
+    toolbar = [[UIToolbar alloc] init];
+    toolbar.frame = CGRectMake(0, 19, self.view.frame.size.width, 44);
+    
+    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:@"Select" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarDone)];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 172, 23)];
+    label.textAlignment = UITextAlignmentCenter;
+    label.backgroundColor = [UIColor clearColor];
+    label.shadowColor = [UIColor colorWithRed:0.0 
+                                        green:0.0 
+                                         blue:0.0 
+                                        alpha:1.0];
+    label.shadowOffset = CGSizeMake(0, 1);
+    label.textColor = [UIColor colorWithRed:1.0 
+                                      green:1.0 
+                                       blue:1.0 
+                                      alpha:1.0];
+    label.text = @"Instruments";
+    label.font = [UIFont boldSystemFontOfSize:20.0];
+    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithCustomView:label];
+    
+    UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarBack)];  
+    
+    NSArray *buttons = [NSArray arrayWithObjects: item3, item2, item1, nil];
+    [toolbar setItems: buttons animated:NO];
+    
+    [self.view addSubview:subView];
+    [subView addSubview:myPickerView];
+    [subView addSubview:toolbar];
+    
+    [subView setHidden:TRUE];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -230,11 +268,14 @@
     
     [PdBase copyArray:values toArrayNamed:@"seq" withOffset:0 count:_numNotes];
     [PdBase sendFloat:_numNotes toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
+    
+    free(values);
 }
 
+// Handle the selection
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component 
 {    
-    // Handle the selection
+    _activeInstrument = row;
 } 
 
 // tell the picker how many rows are available for a given component
@@ -253,9 +294,9 @@
 // tell the picker the title for a given component
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component 
 {    
-    NSString *title;
-    title = [@"" stringByAppendingFormat:@"%d",row]; 
-    return title;
+    NSString *instrumentList[] = {@"Test 1", @"Test 2", @"Test 3", @"Test 4", @"Test 5"};
+
+    return instrumentList[row];
 } 
 
 // tell the picker the width of each row for a given component
@@ -263,6 +304,17 @@
 { 
     int sectionWidth = 300;  
     return sectionWidth;
+}
+
+-(void)toolBarDone
+{
+    //Send _activeInstrument to PD here;
+    [subView setHidden:TRUE];
+}
+
+-(void)toolBarBack
+{
+    [subView setHidden:TRUE];
 }
 
 @end

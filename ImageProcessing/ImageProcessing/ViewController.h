@@ -24,7 +24,11 @@
     float _progressValue;
     int _numNotes;
     
+    int _activeInstrument;
+    
     UIPickerView *myPickerView;
+    UIToolbar *toolbar;
+    UIView *subView;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;
@@ -53,6 +57,9 @@
 -(IBAction)drumsPressed:(id)sender;
 
 -(IBAction)instrumentsPressed:(id)sender;
+
+-(void)toolBarDone;
+-(void)toolBarBack;
 
 -(void)receiveFloat:(float)received fromSource:(NSString *)source;
 

@@ -155,7 +155,7 @@
 								<reference key="IBUIFontDescription" ref="517444728"/>
 								<reference key="IBUIFont" ref="619656430"/>
 							</object>
-							<object class="IBUIButton" id="952177890">
+							<object class="IBUIButton" id="605089426">
 								<reference key="NSNextResponder" ref="664708443"/>
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{111, 294}, {99, 37}}</string>
@@ -666,7 +666,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">instrumentsPressed:</string>
-						<reference key="source" ref="952177890"/>
+						<reference key="source" ref="605089426"/>
 						<reference key="destination" ref="843779117"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -749,7 +749,7 @@
 							<reference ref="712457917"/>
 							<reference ref="1004577516"/>
 							<reference ref="883690867"/>
-							<reference ref="952177890"/>
+							<reference ref="605089426"/>
 						</array>
 						<reference key="parent" ref="563994131"/>
 					</object>
@@ -858,7 +858,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">148</int>
-						<reference key="object" ref="952177890"/>
+						<reference key="object" ref="605089426"/>
 						<reference key="parent" ref="664708443"/>
 					</object>
 				</array>
