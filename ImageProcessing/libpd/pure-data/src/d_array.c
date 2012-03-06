@@ -425,10 +425,11 @@ static t_int *tabread4_tilde_perform(t_int *w)
         int index = findex;
         t_sample frac,  a,  b,  c,  d, cminusb;
         static int count;
-        if (index < 1)
-            index = 1, frac = 0;
-        else if (index > maxindex)
+        
+        if (index > maxindex)
             index = maxindex, frac = 1;
+        else if (index < 1)
+            index = 1, frac = 0;
         else frac = findex - index;
         wp = buf + index;
         a = wp[-1].w_float;

@@ -98,8 +98,9 @@
 
 #pragma mark - View lifecycle
 
-- (void)initialize
+- (void)initialize: (PdAudio*) audio
 {
+    _audio = audio;
     _numNotes = 20;
     
     // Init camera picker
@@ -112,7 +113,7 @@
     
     _patch = [PdFile openFileNamed:@"wavetable.pd" path:[[NSBundle mainBundle] bundlePath]];
     
-     [PdBase sendFloat:1 toReceiver:[NSString stringWithFormat:@"%d-numInstruments", _patch.dollarZero]];
+    [PdBase sendFloat:1 toReceiver:[NSString stringWithFormat:@"%d-numInstruments", _patch.dollarZero]];
     [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-drumVolume", _patch.dollarZero]];
     [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
     
@@ -163,6 +164,7 @@
     [subView addSubview:toolbar];
     
     [subView setHidden:TRUE];
+    [_audio play];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -216,6 +218,7 @@
 -(void)activateImageChooser:(BOOL) camera
 {
     [self stopPressed:self];
+    [_audio pause];
     if(camera)
     {
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -237,11 +240,15 @@
     [self setImage: image];
     
     self.selectedIndex = 0;
+    
+    [_audio play];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker dismissModalViewControllerAnimated:YES];
+    
+    [_audio play];
 }
 
 -(void)setImage:(UIImage *)image

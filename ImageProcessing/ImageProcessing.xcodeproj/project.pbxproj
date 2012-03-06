@@ -27,6 +27,7 @@
 		BB46572614CDB41E00318F89 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46572514CDB41E00318F89 /* Util.m */; };
 		BB83BC5814F28F2200226E16 /* polytracker.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB83BC5714F28F2200226E16 /* polytracker.pd */; };
 		BB83BC5A14F2904D00226E16 /* bell.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BB83BC5914F2904D00226E16 /* bell.aiff */; };
+		BB83BC5E14FBC09600226E16 /* libpd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5ED0C14CD817E005DB0DC /* libpd.a */; };
 		BB873A5314E9214D00CE09FA /* vocoder.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5214E9214D00CE09FA /* vocoder.pd */; };
 		BB873A5514E9215C00CE09FA /* a.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5414E9215C00CE09FA /* a.wav */; };
 		BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9AE722148D2868004E608A /* AudioToolbox.framework */; };
@@ -34,7 +35,6 @@
 		BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA514D2E81200D54C01 /* homeIcon.png */; };
 		BBD1BDA814D2E86C00D54C01 /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */; };
 		BBD3328314CD7C0900582A54 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BBD3328214CD7C0900582A54 /* images.jpeg */; };
-		BBE5ED0D14CD82E7005DB0DC /* libpd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5ED0C14CD817E005DB0DC /* libpd.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = BB3ACB2C1483E5DD003014D1;
 			remoteInfo = ImageProcessing;
+		};
+		BB83BC5C14FBC04A00226E16 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BBE5ED0414CD817E005DB0DC /* libpd.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = libpd;
 		};
 		BBE5ED0B14CD817E005DB0DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -99,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBE5ED0D14CD82E7005DB0DC /* libpd.a in Frameworks */,
+				BB83BC5E14FBC09600226E16 /* libpd.a in Frameworks */,
 				BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */,
 				BB3ACB321483E5DD003014D1 /* UIKit.framework in Frameworks */,
 				BB3ACB341483E5DD003014D1 /* Foundation.framework in Frameworks */,
@@ -234,6 +241,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				BB83BC5D14FBC04A00226E16 /* PBXTargetDependency */,
 			);
 			name = ImageProcessing;
 			productName = ImageProcessing;
@@ -376,6 +384,11 @@
 			target = BB3ACB2C1483E5DD003014D1 /* ImageProcessing */;
 			targetProxy = BB3ACB561483E5DE003014D1 /* PBXContainerItemProxy */;
 		};
+		BB83BC5D14FBC04A00226E16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libpd;
+			targetProxy = BB83BC5C14FBC04A00226E16 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -425,6 +438,12 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = NO;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_FAST_MATH = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -436,6 +455,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				LLVM_LTO = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -451,11 +471,19 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = NO;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_FAST_MATH = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				LLVM_LTO = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -473,7 +501,6 @@
 				INFOPLIST_FILE = "ImageProcessing/ImageProcessing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9AD8D72B-C0EF-481E-AD1F-B1658EABE39E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -488,7 +515,6 @@
 				INFOPLIST_FILE = "ImageProcessing/ImageProcessing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9AD8D72B-C0EF-481E-AD1F-B1658EABE39E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -538,16 +564,23 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = NO;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SSE41_EXTENSIONS = YES;
+				GCC_ENABLE_SSE42_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_FAST_MATH = YES;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
+				LLVM_LTO = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -564,7 +597,6 @@
 				INFOPLIST_FILE = "ImageProcessing/ImageProcessing-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9AD8D72B-C0EF-481E-AD1F-B1658EABE39E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Package;

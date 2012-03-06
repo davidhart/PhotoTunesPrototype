@@ -23,17 +23,19 @@
     
 #if TARGET_IPHONE_SIMULATOR	
 	int ticksPerBuffer = 512 / [PdBase getBlockSize]; // apparently the only way to get clean audio output with the simulator
+    int sampleRate = 44100;
 #else
-    int ticksPerBuffer = 64;
+    int ticksPerBuffer = 32;
+    int sampleRate = 22050;
 #endif
 	
-	_pdAudio = [[PdAudio alloc] initWithSampleRate:44100 andTicksPerBuffer:ticksPerBuffer andNumberOfInputChannels:2 andNumberOfOutputChannels:2 
+	_pdAudio = [[PdAudio alloc] initWithSampleRate:sampleRate andTicksPerBuffer:ticksPerBuffer andNumberOfInputChannels:1 andNumberOfOutputChannels:1 
                                                   andAudioSessionCategory:kAudioSessionCategory_MediaPlayback];
     
 	[PdBase computeAudio:YES];
-	[_pdAudio play];
+    [_pdAudio pause];
 
-    [viewController initialize];
+    [viewController initialize: _pdAudio];
     
     /*
     UIImagePickerController* imagePickerController = [[UIImagePickerController alloc] init];

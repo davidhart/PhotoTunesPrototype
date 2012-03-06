@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ImageProperties.h"
 #import "PdFile.h"
+#import "PdAudio.h"
 #import "PdBase.h"
 
 @interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate>
 {
     PdFile * _patch;
+    PdAudio * _audio;
     UIImageView* imageView;
     UISlider* slider;
     UIProgressView* progress;
@@ -38,7 +40,7 @@
 @property (nonatomic, retain) IBOutlet UISwitch* repeatSwitch;
 @property (nonatomic, retain) IBOutlet UISwitch* drumsSwitch;
 
--(void)initialize;
+-(void)initialize: (PdAudio*) audio;
 
 
 -(IBAction)sliderReleased:(id) sender;
