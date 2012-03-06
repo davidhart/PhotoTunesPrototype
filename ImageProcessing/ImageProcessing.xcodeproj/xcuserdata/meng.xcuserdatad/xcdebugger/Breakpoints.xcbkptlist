@@ -9,21 +9,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "ImageProcessing/ViewController.m"
-         timestampString = "352725933.868569"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "258"
-         endingLineNumber = "258"
-         landmarkName = "-updateValues:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "ImageProcessing/ViewController.m"
-         timestampString = "352725954.934385"
+         timestampString = "352735402.498541"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "259"
@@ -37,11 +23,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "ImageProcessing/ViewController.m"
-         timestampString = "352725955.318326"
+         timestampString = "352738315.670573"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "260"
-         endingLineNumber = "260"
+         startingLineNumber = "265"
+         endingLineNumber = "265"
          landmarkName = "-updateValues:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -51,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "ImageProcessing/ViewController.m"
-         timestampString = "352725955.646344"
+         timestampString = "352740074.354404"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "261"
-         endingLineNumber = "261"
+         startingLineNumber = "279"
+         endingLineNumber = "279"
          landmarkName = "-updateValues:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -65,11 +51,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "ImageProcessing/ViewController.m"
-         timestampString = "352725955.98251"
+         timestampString = "352740125.862871"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "262"
-         endingLineNumber = "262"
+         startingLineNumber = "283"
+         endingLineNumber = "283"
          landmarkName = "-updateValues:"
          landmarkType = "5">
       </FileBreakpoint>

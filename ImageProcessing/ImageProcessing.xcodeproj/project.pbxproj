@@ -27,6 +27,11 @@
 		BB3ACB6E1483E614003014D1 /* ImageSlice.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3ACB6C1483E614003014D1 /* ImageSlice.m */; };
 		BB46572314CDAC9300318F89 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3ACB351483E5DD003014D1 /* CoreGraphics.framework */; };
 		BB46572614CDB41E00318F89 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46572514CDB41E00318F89 /* Util.m */; };
+		BB67251615064D9600D96D0D /* bass.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB67251115064D9600D96D0D /* bass.wav */; };
+		BB67251715064D9600D96D0D /* hihat.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB67251215064D9600D96D0D /* hihat.wav */; };
+		BB67251815064D9600D96D0D /* ride.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB67251315064D9600D96D0D /* ride.wav */; };
+		BB67251915064D9600D96D0D /* snare.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB67251415064D9600D96D0D /* snare.wav */; };
+		BB67251A15064D9600D96D0D /* splash.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB67251515064D9600D96D0D /* splash.wav */; };
 		BB83BC5814F28F2200226E16 /* polytracker.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB83BC5714F28F2200226E16 /* polytracker.pd */; };
 		BB83BC5A14F2904D00226E16 /* bell.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BB83BC5914F2904D00226E16 /* bell.aiff */; };
 		BB83BC5E14FBC09600226E16 /* libpd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5ED0C14CD817E005DB0DC /* libpd.a */; };
@@ -92,6 +97,11 @@
 		BB3ACB6C1483E614003014D1 /* ImageSlice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSlice.m; sourceTree = "<group>"; };
 		BB46572414CDB41E00318F89 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		BB46572514CDB41E00318F89 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		BB67251115064D9600D96D0D /* bass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bass.wav; sourceTree = "<group>"; };
+		BB67251215064D9600D96D0D /* hihat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hihat.wav; sourceTree = "<group>"; };
+		BB67251315064D9600D96D0D /* ride.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ride.wav; sourceTree = "<group>"; };
+		BB67251415064D9600D96D0D /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
+		BB67251515064D9600D96D0D /* splash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = splash.wav; sourceTree = "<group>"; };
 		BB83BC5714F28F2200226E16 /* polytracker.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = polytracker.pd; sourceTree = "<group>"; };
 		BB83BC5914F2904D00226E16 /* bell.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = bell.aiff; sourceTree = "<group>"; };
 		BB873A3614DFF77400CE09FA /* ImageProcessing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ImageProcessing.entitlements; sourceTree = "<group>"; };
@@ -191,6 +201,11 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB67251115064D9600D96D0D /* bass.wav */,
+				BB67251215064D9600D96D0D /* hihat.wav */,
+				BB67251315064D9600D96D0D /* ride.wav */,
+				BB67251415064D9600D96D0D /* snare.wav */,
+				BB67251515064D9600D96D0D /* splash.wav */,
 				BB36870D150623DC002624BB /* filterzero.pd */,
 				BB36870B150623D3002624BB /* simpleinstrument.pd */,
 				BB83BC5914F2904D00226E16 /* bell.aiff */,
@@ -333,6 +348,11 @@
 				BB83BC5A14F2904D00226E16 /* bell.aiff in Resources */,
 				BB36870C150623D3002624BB /* simpleinstrument.pd in Resources */,
 				BB36870E150623DC002624BB /* filterzero.pd in Resources */,
+				BB67251615064D9600D96D0D /* bass.wav in Resources */,
+				BB67251715064D9600D96D0D /* hihat.wav in Resources */,
+				BB67251815064D9600D96D0D /* ride.wav in Resources */,
+				BB67251915064D9600D96D0D /* snare.wav in Resources */,
+				BB67251A15064D9600D96D0D /* splash.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

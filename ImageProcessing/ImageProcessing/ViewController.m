@@ -86,7 +86,7 @@
 - (void)initialize: (PdAudio*) audio
 {
     _audio = audio;
-    _numNotes = 20;
+    _numNotes = 24;
     
     // Init camera picker
     imagePickerController = [[UIImagePickerController alloc] init];
@@ -98,7 +98,7 @@
     
     _patch = [PdFile openFileNamed:@"wavetable.pd" path:[[NSBundle mainBundle] bundlePath]];
     
-    [PdBase sendFloat:1 toReceiver:[NSString stringWithFormat:@"%d-numInstruments", _patch.dollarZero]];
+    [PdBase sendFloat:5 toReceiver:[NSString stringWithFormat:@"%d-numInstruments", _patch.dollarZero]];
     [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-drumVolume", _patch.dollarZero]];
     [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
     
@@ -255,37 +255,38 @@
 
 -(void)updateValues:(UIImage *)image
 {
-    float* values = malloc(_numNotes * sizeof(float));
+    float* values = malloc(_numNotes * sizeof(float) * 5);
     
-    ImageSlice* slice0 = [_imagePropertes getSlice: (int)((0 / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
-    ImageSlice* slice1 = [_imagePropertes getSlice: (int)((1 / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
+    float* bassNotes = values;
+    float* hihatNotes = values + _numNotes;
+    float* rideNotes = values + _numNotes * 2;
+    float* snareNotes = values + _numNotes * 3;
+    float* splashNotes = values + _numNotes * 4;
     
-    float val = ([slice1 getAverageSat] - [slice0 getAverageSat]);
-    NSLog(@"%f", val);
-    values[0] = abs(val) > 20 ? 1.0f : 0.0f;
-    
-    for (int i = 1; i < _numNotes - 1; i++)
-    {
-        slice0 = [_imagePropertes getSlice: (int)(((i - 1) / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
-        slice1 = [_imagePropertes getSlice: (int)(((i + 1) / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
-        val = ([slice1 getAverageSat] - [slice0 getAverageSat]);
-        NSLog(@"%f", val);
-        values[i] = abs(val) > 20 ? 1.0 : 0.0f;
-    }
-    
-    slice0 = [_imagePropertes getSlice: (int)(((_numNotes - 2) / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
-    slice1 = [_imagePropertes getSlice: (int)(((_numNotes - 1) / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
-    val = ([slice1 getAverageSat] - [slice0 getAverageSat]);
-    NSLog(@"%f", val);
-    values[_numNotes - 1] = abs(val) > 20 ? 1.0 : 0.0f;
+    //ImageSlice* slice0 = [_imagePropertes getSlice: (int)((0 / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
     
     for (int i = 0; i < _numNotes; i++)
     {
-        NSLog(@"%f", values[i]);
+        bassNotes[i] = i % 4 == 0 ? 1.0f : 0.0f;
+     
+        ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
+
+        hihatNotes[i] = [slice getAverageVal] < 60 ? 1.0f : 0.0f;
+        rideNotes[i] = 1 - hihatNotes[i];
+        
+        snareNotes[i] = i % 4 == 2 ? 1.0f : 0.0f;
+        
+        float change = ([slice getAverageSat] - [_imagePropertes getAverageSat]) / 255.0f;
+        float splash = fabs(change) > ([_imagePropertes getDeviationSat]) ? 1.0f : 0.0f;
+        NSLog(@"%f", change);
+        
+        splashNotes[i] = splash;
     }
     
+    NSLog(@"deviation: %f", [_imagePropertes getDeviationSat]);
+    
     [PdBase sendFloat:_numNotes toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
-    [PdBase copyArray:values toArrayNamed:@"pattern" withOffset:0 count:_numNotes];
+    [PdBase copyArray:values toArrayNamed:@"pattern" withOffset:0 count:_numNotes * 5];
     
     free(values);
 }
