@@ -48,9 +48,6 @@
 -(IBAction)playPressed:(id) sender;
 -(IBAction)pausePressed:(id) sender;
 -(IBAction)stopPressed:(id) sender;
--(IBAction)sinePressed:(id) sender;
--(IBAction)sawPressed:(id) sender;
--(IBAction)harmonicPressed:(id) sender;
 
 -(IBAction)cameraPressed:(id) sender;
 -(IBAction)loadPressed:(id)sender;

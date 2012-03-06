@@ -38,21 +38,6 @@
     [progress setProgress: 0];
 }
 
--(void)sinePressed:(id)sender
-{ 
-    [PdBase sendBangToReceiver:@"sine"];
-}
-
--(void)sawPressed:(id)sender
-{ 
-    [PdBase sendBangToReceiver:@"saw"];
-}
-
--(void)harmonicPressed:(id)sender
-{ 
-    [PdBase sendBangToReceiver:@"harm"];
-}
-
 -(void)repeatPressed:(id)sender
 { 
     BOOL temp = [repeatSwitch isOn];
@@ -129,15 +114,19 @@
                                                blue:0.0 
                                               alpha:1.0];
     
+    //  Make a new picker view for instrument selector subview
     myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 63, 320, 200)];
     myPickerView.delegate = self;
     myPickerView.showsSelectionIndicator = YES;
 
+    // Make a new toolbar for instrument selector subview
     toolbar = [[UIToolbar alloc] init];
     toolbar.frame = CGRectMake(0, 19, self.view.frame.size.width, 44);
     
+    //Add a done button
     UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:@"Select" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarDone)];
     
+    // Add a title and padding to centre the title
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 172, 23)];
     label.textAlignment = UITextAlignmentCenter;
     label.backgroundColor = [UIColor clearColor];
@@ -154,16 +143,19 @@
     label.font = [UIFont boldSystemFontOfSize:20.0];
     UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithCustomView:label];
     
+    // Add a cancel button
     UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarBack)];  
     
+    // Add buttons to toolbar
     NSArray *buttons = [NSArray arrayWithObjects: item3, item2, item1, nil];
     [toolbar setItems: buttons animated:NO];
     
+    // Set up the subview for the instruments selector and hide it untill used
     [self.view addSubview:subView];
     [subView addSubview:myPickerView];
     [subView addSubview:toolbar];
-    
     [subView setHidden:TRUE];
+    
     [_audio play];
 }
 
@@ -265,12 +257,31 @@
 {
     float* values = malloc(_numNotes * sizeof(float));
     
+    ImageSlice* slice0 = [_imagePropertes getSlice: (int)((0 / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
+    ImageSlice* slice1 = [_imagePropertes getSlice: (int)((1 / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
+    
+    float val = ([slice1 getAverageSat] - [slice0 getAverageSat]);
+    NSLog(@"%f", val);
+    values[0] = abs(val) > 20 ? 1.0f : 0.0f;
+    
+    for (int i = 1; i < _numNotes - 1; i++)
+    {
+        slice0 = [_imagePropertes getSlice: (int)(((i - 1) / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
+        slice1 = [_imagePropertes getSlice: (int)(((i + 1) / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
+        val = ([slice1 getAverageSat] - [slice0 getAverageSat]);
+        NSLog(@"%f", val);
+        values[i] = abs(val) > 20 ? 1.0 : 0.0f;
+    }
+    
+    slice0 = [_imagePropertes getSlice: (int)(((_numNotes - 2) / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
+    slice1 = [_imagePropertes getSlice: (int)(((_numNotes - 1) / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
+    val = ([slice1 getAverageSat] - [slice0 getAverageSat]);
+    NSLog(@"%f", val);
+    values[_numNotes - 1] = abs(val) > 20 ? 1.0 : 0.0f;
+    
     for (int i = 0; i < _numNotes; i++)
     {
-        ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
-        
-        float f = (2.0f * [slice getAverageVal] / 255.0f - 1.0f) * 20.0f;        
-        values[i] = f;
+        NSLog(@"%f", values[i]);
     }
     
     [PdBase sendFloat:_numNotes toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
@@ -313,6 +324,7 @@
     return sectionWidth;
 }
 
+// Done button on toolbar in UIPicker
 -(void)toolBarDone
 {
     NSString *instrumentList[] = {@"bell.aiff", @"a.wav", @"Test 3", @"Test 4", @"Test 5"};
@@ -322,6 +334,7 @@
     [subView setHidden:TRUE];
 }
 
+// Back button on toolbar in UIPicker
 -(void)toolBarBack
 {
     [subView setHidden:TRUE];

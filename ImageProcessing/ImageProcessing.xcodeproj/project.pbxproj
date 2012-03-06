@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB36870C150623D3002624BB /* simpleinstrument.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB36870B150623D3002624BB /* simpleinstrument.pd */; };
+		BB36870E150623DC002624BB /* filterzero.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB36870D150623DC002624BB /* filterzero.pd */; };
 		BB3ACB321483E5DD003014D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3ACB311483E5DD003014D1 /* UIKit.framework */; };
 		BB3ACB341483E5DD003014D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3ACB331483E5DD003014D1 /* Foundation.framework */; };
 		BB3ACB361483E5DD003014D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3ACB351483E5DD003014D1 /* CoreGraphics.framework */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB36870B150623D3002624BB /* simpleinstrument.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simpleinstrument.pd; sourceTree = "<group>"; };
+		BB36870D150623DC002624BB /* filterzero.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = filterzero.pd; sourceTree = "<group>"; };
 		BB3ACB2D1483E5DD003014D1 /* ImageProcessing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageProcessing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3ACB311483E5DD003014D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BB3ACB331483E5DD003014D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -187,6 +191,8 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB36870D150623DC002624BB /* filterzero.pd */,
+				BB36870B150623D3002624BB /* simpleinstrument.pd */,
 				BB83BC5914F2904D00226E16 /* bell.aiff */,
 				BB83BC5714F28F2200226E16 /* polytracker.pd */,
 				BB873A5414E9215C00CE09FA /* a.wav */,
@@ -325,6 +331,8 @@
 				BB873A5514E9215C00CE09FA /* a.wav in Resources */,
 				BB83BC5814F28F2200226E16 /* polytracker.pd in Resources */,
 				BB83BC5A14F2904D00226E16 /* bell.aiff in Resources */,
+				BB36870C150623D3002624BB /* simpleinstrument.pd in Resources */,
+				BB36870E150623DC002624BB /* filterzero.pd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,10 +447,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = NO;
-				GCC_ENABLE_SSE3_EXTENSIONS = YES;
-				GCC_ENABLE_SSE41_EXTENSIONS = YES;
-				GCC_ENABLE_SSE42_EXTENSIONS = YES;
-				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = NO;
+				GCC_ENABLE_SSE41_EXTENSIONS = NO;
+				GCC_ENABLE_SSE42_EXTENSIONS = NO;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = NO;
 				GCC_FAST_MATH = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -455,7 +463,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
-				LLVM_LTO = YES;
+				LLVM_LTO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -472,10 +480,10 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = NO;
-				GCC_ENABLE_SSE3_EXTENSIONS = YES;
-				GCC_ENABLE_SSE41_EXTENSIONS = YES;
-				GCC_ENABLE_SSE42_EXTENSIONS = YES;
-				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = NO;
+				GCC_ENABLE_SSE41_EXTENSIONS = NO;
+				GCC_ENABLE_SSE42_EXTENSIONS = NO;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = NO;
 				GCC_FAST_MATH = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -568,10 +576,10 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = NO;
-				GCC_ENABLE_SSE3_EXTENSIONS = YES;
-				GCC_ENABLE_SSE41_EXTENSIONS = YES;
-				GCC_ENABLE_SSE42_EXTENSIONS = YES;
-				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = NO;
+				GCC_ENABLE_SSE41_EXTENSIONS = NO;
+				GCC_ENABLE_SSE42_EXTENSIONS = NO;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = NO;
 				GCC_FAST_MATH = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;

@@ -1,7 +1,7 @@
-#N canvas 1104 194 708 688 12;
+#N canvas 658 80 708 688 12;
 #X floatatom 143 228 3 0 0 0 - #0-speed-set -;
 #X floatatom 22 229 7 0 0 0 - #0-location-set -;
-#N canvas 426 122 1349 696 fft-analysis 1;
+#N canvas 426 122 1349 696 fft-analysis 0;
 #X obj 51 477 *~;
 #X obj 18 477 *~;
 #X obj 18 499 -~;
@@ -25,12 +25,12 @@
 #X obj 18 431 *~;
 #X obj 51 432 *~;
 #X obj 426 644 block~;
-#X obj 19 349 +~ 1e-15;
+#X obj 19 349 +~ 1e-015;
 #X obj 19 598 *~;
 #X obj 52 598 tabreceive~ \$0-hann;
 #X obj 591 563 loadbang;
 #X msg 426 619 set \$1 4;
-#N canvas 169 270 1920 970 read-windows 1;
+#N canvas 169 270 1920 970 read-windows 0;
 #X obj 18 693 *~;
 #X obj 156 300 f;
 #X obj 102 139 /;
@@ -225,7 +225,7 @@ sound.;
 #X obj 89 69 *~;
 #X obj 89 91 +~;
 #X obj 159 94 q8_rsqrt~;
-#X obj 159 71 +~ 1e-20;
+#X obj 159 71 +~ 1e-020;
 #X obj 73 119 *~;
 #X obj 19 118 *~;
 #X obj 181 290 r lock;
@@ -238,14 +238,14 @@ sound.;
 #X obj 19 325 +~;
 #X obj 125 331 +~;
 #X text 247 66 divide by the magnitude to make a unit-magnitude complex
-amplitude (phase only). The 1e-20 is to prevent overflows. q8_rsqrt~
+amplitude (phase only). The 1e-020 is to prevent overflows. q8_rsqrt~
 is reciprocal square root.;
 #X text 247 165 Take FT of the window in back. Multiply its conjugate
 by the normalized previous output. The result has the magnitude of
 the input sound and phase (previous output phase) minus (back window
 phase).;
 #X text 249 370 Normalize again \, this time taking care to salt each
-channel with 1e-15 so that we get a unit complex number even if everything
+channel with 1e-015 so that we get a unit complex number even if everything
 was zero heretofore.;
 #X text 290 427 Now take the FT of the forward window and multiply
 it by the unit complex number from above. The magnitude will be that
@@ -520,8 +520,6 @@ and window-msec (analysis window size in seconds and msec).;
 #X obj 500 326 s \$0-lock;
 #X msg 589 282 512;
 #X msg 265 281 0;
-#X obj 32 357 print;
-#X obj 32 331 r \$0-location-set;
 #X connect 0 0 40 0;
 #X connect 1 0 42 0;
 #X connect 2 0 34 0;
@@ -537,4 +535,3 @@ and window-msec (analysis window size in seconds and msec).;
 #X connect 33 0 37 0;
 #X connect 45 0 43 0;
 #X connect 46 0 39 0;
-#X connect 48 0 47 0;
