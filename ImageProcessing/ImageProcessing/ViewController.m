@@ -182,12 +182,14 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
+//    // Return YES for supported orientations
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+//        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+//    } else {
+//        return YES;
+//    }
+    
+    return NO;
 }
 
 - (void)receiveFloat:(float)received fromSource:(NSString *)source
@@ -266,7 +268,8 @@
     
     float* melodyNotes = values + _numNotes * 5;
     
-    float scale[] = { 0.0f, 100.0f, 200.0f, 300.0f, 400.0f, 500.0f, 600.0f };
+    float scale[] = { 0.0f, 100.0f, 200.0f, 300.0f, 400.0f, 500.0f, 600.0f,
+                        700.0f, 800.0f, 900.0f, 1000.0f, 1100.0f, 1200.0f, 1300.0f};
     
     const float bassVolume = 0.6f;
     const float hihatVolume = 0.6f;
@@ -283,7 +286,6 @@
     for (int i = 0; i < _numNotes; i++)
     {
         ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
-
         
         bassNotes[i] = i % 4 == 0 ? 1.0f : 0.0f;
         //hihatNotes[i] = [slice getAverageVal] < 60? 1.0f : 0.0f;
@@ -318,9 +320,8 @@
         snareNotes[i] *= snareVolume;
         splashNotes[i] *= splashVolume;
         
-        NSLog(@"%d ,  %f ", [slice getAverageGreen], hihatNotes[i]);
         
-        melodyNotes[i] = [ViewController getNote:scale :7 :[slice getAverageHue] / 255.0f];
+        melodyNotes[i] = [ViewController getNote:scale :14 :[slice getAverageHue] / 255.0f];
     }
     
     [PdBase sendFloat:_numNotes toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
