@@ -87,6 +87,7 @@
 {
     _audio = audio;
     _numNotes = 24;
+    _numIntruments = 6;
     
     // Init camera picker
     imagePickerController = [[UIImagePickerController alloc] init];
@@ -98,7 +99,7 @@
     
     _patch = [PdFile openFileNamed:@"wavetable.pd" path:[[NSBundle mainBundle] bundlePath]];
     
-    [PdBase sendFloat:5 toReceiver:[NSString stringWithFormat:@"%d-numInstruments", _patch.dollarZero]];
+    [PdBase sendFloat:_numIntruments toReceiver:[NSString stringWithFormat:@"%d-numInstruments", _patch.dollarZero]];
     [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-drumVolume", _patch.dollarZero]];
     [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
     
@@ -228,7 +229,7 @@
                   editingInfo:(NSDictionary *)editingInfo
 {
     [picker dismissModalViewControllerAnimated:YES];
-    
+ 
     [self setImage: image];
     
     self.selectedIndex = 0;
@@ -255,7 +256,7 @@
 
 -(void)updateValues:(UIImage *)image
 {
-    float* values = malloc(_numNotes * sizeof(float) * 5);
+    float* values = malloc(_numNotes * sizeof(float) * _numIntruments);
     
     float* bassNotes = values;
     float* hihatNotes = values + _numNotes;
@@ -263,30 +264,67 @@
     float* snareNotes = values + _numNotes * 3;
     float* splashNotes = values + _numNotes * 4;
     
-    //ImageSlice* slice0 = [_imagePropertes getSlice: (int)((0 / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
+    float* melodyNotes = values + _numNotes * 5;
+    
+    float scale[] = { 0.0f, 100.0f, 200.0f, 300.0f, 400.0f, 500.0f, 600.0f };
+    
+    const float bassVolume = 0.6f;
+    const float hihatVolume = 0.6f;
+    const float rideVolume = 0.6f;
+    const float snareVolume = 0.6f;
+    const float splashVolume = 0.6f;
+    
+    const float bassVariation = 0.5;
+    const float hihatVariation = 0.5f;
+    const float rideVariation = 0.5f;
+    const float snareVariation = 0.5f;
+    const float splashVariation = 0.5f;
     
     for (int i = 0; i < _numNotes; i++)
     {
-        bassNotes[i] = i % 4 == 0 ? 1.0f : 0.0f;
-     
         ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
 
-        hihatNotes[i] = [slice getAverageVal] < 60 ? 1.0f : 0.0f;
-        rideNotes[i] = 1 - hihatNotes[i];
         
+        bassNotes[i] = i % 4 == 0 ? 1.0f : 0.0f;
+        //hihatNotes[i] = [slice getAverageVal] < 60? 1.0f : 0.0f;
+        hihatNotes[i] = 1;
+        rideNotes[i] =  1 - hihatNotes[i];
         snareNotes[i] = i % 4 == 2 ? 1.0f : 0.0f;
         
         float change = ([slice getAverageSat] - [_imagePropertes getAverageSat]) / 255.0f;
         float splash = fabs(change) > ([_imagePropertes getDeviationSat]) ? 1.0f : 0.0f;
-        NSLog(@"%f", change);
-        
         splashNotes[i] = splash;
+        
+        
+        if (bassNotes[i] > 0)
+            bassNotes[i] += - bassVariation / 2 - bassVariation * [slice getAverageRed] / 255.0f;
+        
+        if (hihatNotes[i] > 0)
+            hihatNotes[i] += - hihatVariation / 2 + hihatVariation * [slice getAverageGreen] / 255.0f;
+        
+        if (rideNotes[i] > 0)
+            rideNotes[i] += - rideVariation / 2 - rideVariation * [slice getAverageBlue] / 255.0f;
+        
+        if (snareNotes[i] > 0)
+            snareNotes[i] += - rideVariation / 2 - snareVariation * [slice getAverageRed] / 255.0f;
+        
+        if (splashNotes[i] > 0)
+            splashNotes[i] += - splashVariation / 2 - splashVariation * [slice getAverageGreen] / 255.0f;
+            
+        
+        bassNotes[i] *= bassVolume;
+        hihatNotes[i] *= hihatVolume;
+        rideNotes[i] *= rideVolume;
+        snareNotes[i] *= snareVolume;
+        splashNotes[i] *= splashVolume;
+        
+        NSLog(@"%d ,  %f ", [slice getAverageGreen], hihatNotes[i]);
+        
+        melodyNotes[i] = [ViewController getNote:scale :7 :[slice getAverageHue] / 255.0f];
     }
     
-    NSLog(@"deviation: %f", [_imagePropertes getDeviationSat]);
-    
     [PdBase sendFloat:_numNotes toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
-    [PdBase copyArray:values toArrayNamed:@"pattern" withOffset:0 count:_numNotes * 5];
+    [PdBase copyArray:values toArrayNamed:@"pattern" withOffset:0 count:_numNotes * _numIntruments];
     
     free(values);
 }
@@ -330,7 +368,7 @@
 {
     NSString *instrumentList[] = {@"bell.aiff", @"a.wav", @"Test 3", @"Test 4", @"Test 5"};
     
-    [PdBase sendMessage:instrumentList[_activeInstrument] withArguments:NULL toReceiver:[NSString stringWithFormat:@"%d-soundfile", _patch.dollarZero]];
+    [PdBase sendMessage:instrumentList[_activeInstrument] withArguments:NULL toReceiver:[NSString stringWithFormat:@"%d-soundfile5", _patch.dollarZero]];
     
     [subView setHidden:TRUE];
 }
@@ -339,6 +377,12 @@
 -(void)toolBarBack
 {
     [subView setHidden:TRUE];
+}
+
++(float)getNote:(float*)scale :(int)size :(float)locationOnScale
+{
+    int index = (int)(locationOnScale * (size - 1) + 0.5f);
+    return scale[index];
 }
 
 @end

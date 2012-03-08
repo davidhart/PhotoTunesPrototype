@@ -25,6 +25,7 @@
 
     float _progressValue;
     int _numNotes;
+    int _numIntruments;
     
     int _activeInstrument;
     
@@ -63,6 +64,8 @@
 -(void)receiveFloat:(float)received fromSource:(NSString *)source;
 
 -(void)updateProgressView;
+
++(float)getNote:(float*)scale :(int)size :(float)locationOnScale;
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo;
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker;
