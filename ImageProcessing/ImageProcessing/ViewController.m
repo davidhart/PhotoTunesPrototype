@@ -268,8 +268,10 @@
     
     float* melodyNotes = values + _numNotes * 5;
     
-    float scale[] = { 0.0f, 100.0f, 200.0f, 300.0f, 400.0f, 500.0f, 600.0f,
-                        700.0f, 800.0f, 900.0f, 1000.0f, 1100.0f, 1200.0f, 1300.0f};
+    float scale[] = { 400.0f, 550.0f, 650.0f, 700.0f, 750.0f, 900.0f, 1000.0f,
+        1150.0f, 1250.0f, 1300.0f, 1400.0f, 1550.0f, 1650.0f, 1800.0f, 1900.0f,
+        1950.0f, 2000.0f, 2150.0f, 2250.0f, 2400.0f, 2500.0f, 2550.0f, 2650.0f,
+        2800.0f, 2900.0f, 3050.0f };
     
     const float bassVolume = 0.6f;
     const float hihatVolume = 0.6f;
@@ -321,7 +323,7 @@
         splashNotes[i] *= splashVolume;
         
         
-        melodyNotes[i] = [ViewController getNote:scale :14 :[slice getAverageHue] / 255.0f];
+        melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :[slice getAverageHue] / 255.0f];
     }
     
     [PdBase sendFloat:_numNotes toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
