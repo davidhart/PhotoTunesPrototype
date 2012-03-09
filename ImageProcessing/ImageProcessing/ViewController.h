@@ -26,8 +26,13 @@
     float _progressValue;
     int _numNotes;
     int _numIntruments;
-    
     int _activeInstrument;
+ 
+    float _currentDrumVolume;
+    float _currentMelodyVolume;
+    
+    bool _repeatOn;
+    bool _playing;
     
     UIPickerView *myPickerView;
     UIToolbar *toolbar;
@@ -35,26 +40,30 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;
-@property (nonatomic, retain) IBOutlet UISlider* slider;
 @property (nonatomic, retain) IBOutlet UIProgressView* progress;
 
-@property (nonatomic, retain) IBOutlet UISwitch* repeatSwitch;
-@property (nonatomic, retain) IBOutlet UISwitch* drumsSwitch;
+@property (nonatomic, retain) IBOutlet UIButton* buttonPlay;
+@property (nonatomic, retain) IBOutlet UIButton* buttonRepeat;
+
+@property (nonatomic, retain) IBOutlet UISlider* sliderTempo;
+@property (nonatomic, retain) IBOutlet UISlider* sliderDrumVolume;
+@property (nonatomic, retain) IBOutlet UISlider* sliderMelodyVolume;
+@property (nonatomic, retain) IBOutlet UISlider* sliderSongLength;
 
 -(void)initialize: (PdAudio*) audio;
 
-
--(IBAction)sliderReleased:(id) sender;
-
 -(IBAction)playPressed:(id) sender;
--(IBAction)pausePressed:(id) sender;
 -(IBAction)stopPressed:(id) sender;
+-(IBAction)repeatPressed:(id)sender;
 
 -(IBAction)cameraPressed:(id) sender;
 -(IBAction)loadPressed:(id)sender;
 
--(IBAction)repeatPressed:(id)sender;
--(IBAction)drumsPressed:(id)sender;
+
+-(IBAction)sliderTempoReleased:(id) sender;
+-(IBAction)sliderDrumVolumeReleased:(id) sender;
+-(IBAction)sliderMelodyVolumeReleased:(id) sender;
+-(IBAction)sliderSongLengthReleased:(id) sender;
 
 -(IBAction)instrumentsPressed:(id)sender;
 
@@ -69,6 +78,9 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo;
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker;
+
+-(void)startedPlaying;
+-(void)stoppedPlaying;
 
 -(void)activateImageChooser:(BOOL) camera;
 

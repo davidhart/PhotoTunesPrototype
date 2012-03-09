@@ -164,6 +164,11 @@ UIImage *scaleAndRotateImage(UIImage *image)
             
         case UIImageOrientationUp: //EXIF = 1
             transform = CGAffineTransformIdentity;
+            
+            if (scaleRatio == 1.0f)
+            {
+                return image;
+            }
             break;
             
         case UIImageOrientationUpMirrored: //EXIF = 2

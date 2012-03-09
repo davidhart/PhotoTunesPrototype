@@ -11,53 +11,69 @@
 @implementation ViewController
 
 @synthesize imageView;
-@synthesize slider;
 @synthesize progress;
 
-@synthesize repeatSwitch;
-@synthesize drumsSwitch;
+@synthesize buttonPlay;
+@synthesize buttonRepeat;
 
--(void)sliderReleased:(id)sender
+@synthesize sliderTempo;
+@synthesize sliderDrumVolume;
+@synthesize sliderMelodyVolume;
+@synthesize sliderSongLength;
+
+-(void)sliderTempoReleased:(id)sender
 { 
-    [PdBase sendFloat: 60000.0f / ([slider value] * 400.0f + 60.0f) toReceiver:[NSString stringWithFormat:@"%d-tempo", _patch.dollarZero]];
+    [PdBase sendFloat: 60000.0f / ([sliderTempo value] * 400.0f + 60.0f) toReceiver:[NSString stringWithFormat:@"%d-tempo", _patch.dollarZero]];
+}
+
+-(void)sliderDrumVolumeReleased:(id)sender
+{
+    [PdBase sendFloat: [sliderDrumVolume value] toReceiver:[NSString stringWithFormat:@"%d-drumVolume", _patch.dollarZero]];     
+}
+
+-(void)sliderMelodyVolumeReleased:(id)sender
+{
+    [PdBase sendFloat: [sliderMelodyVolume value] toReceiver:[NSString stringWithFormat:@"%d-melodyVolume", _patch.dollarZero]];  
+}
+
+-(void)sliderSongLengthReleased:(id)sender
+{
+    //_numNotes = ((int)[sliderSongLength value]) * 4;
+    //
 }
 
 -(void)playPressed:(id)sender
 { 
-    [PdBase sendBangToReceiver:@"startPlayback"];
+    _playing = !_playing;
+    
+    if (_playing)
+    {
+        [PdBase sendBangToReceiver:@"startPlayback"];
+        [self startedPlaying];
+    }
+    else
+    {
+        [PdBase sendBangToReceiver:@"pausePlayback"];
+        [self stoppedPlaying];
+    }
 }
 
--(void)pausePressed:(id)sender
-{ 
-    [PdBase sendBangToReceiver:@"pausePlayback"];
+-(void)repeatPressed:(id)sender
+{
+    _repeatOn = !_repeatOn;
+    
+    [PdBase sendFloat: _repeatOn ? 1.0f : 0.0f toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
+    
+    if (_repeatOn)
+        [buttonRepeat setTitle:@"1" forState:UIControlStateNormal];
+    else
+        [buttonRepeat setTitle:@"0" forState:UIControlStateNormal];
 }
 
 -(void)stopPressed:(id)sender
 { 
     [PdBase sendBangToReceiver:@"stopPlayback"];
     [progress setProgress: 0];
-}
-
--(void)repeatPressed:(id)sender
-{ 
-    BOOL temp = [repeatSwitch isOn];
-    
-    if (temp)
-        [PdBase sendFloat:1 toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
-    
-    else if (!temp)
-        [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
-}
-
--(void)drumsPressed:(id)sender
-{ 
-    BOOL temp = [drumsSwitch isOn];
-    
-    if (temp)
-        [PdBase sendFloat:1 toReceiver:[NSString stringWithFormat:@"%d-drumVolume", _patch.dollarZero]];
-    
-    else if (!temp)
-        [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-drumVolume", _patch.dollarZero]];
 }
 
 -(void)cameraPressed:(id)sender
@@ -81,13 +97,14 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
 - (void)initialize: (PdAudio*) audio
 {
     _audio = audio;
     _numNotes = 24;
     _numIntruments = 6;
+    
+    _repeatOn = false;
+    _playing = false;
     
     // Init camera picker
     imagePickerController = [[UIImagePickerController alloc] init];
@@ -100,10 +117,10 @@
     _patch = [PdFile openFileNamed:@"wavetable.pd" path:[[NSBundle mainBundle] bundlePath]];
     
     [PdBase sendFloat:_numIntruments toReceiver:[NSString stringWithFormat:@"%d-numInstruments", _patch.dollarZero]];
-    [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-drumVolume", _patch.dollarZero]];
     [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
     
     [PdBase subscribe:[NSString stringWithFormat:@"%d-notifyProgress", _patch.dollarZero]];
+    [PdBase subscribe:@"stopPlayback"];
     
     UIImage* image = [UIImage imageNamed:@"images.jpeg"];
     [self setImage: image];
@@ -194,14 +211,26 @@
 
 - (void)receiveFloat:(float)received fromSource:(NSString *)source
 {
-    NSString* pitch = [NSString stringWithFormat:@"%d-notifyProgress", _patch.dollarZero];
-    if ([pitch isEqualToString:source])
+    NSString* notifyProgress = [NSString stringWithFormat:@"%d-notifyProgress", _patch.dollarZero];
+    
+    
+    if ([notifyProgress isEqualToString:source])
     {
         float temp = received / (_numNotes - 1);
         
         _progressValue = temp;
         
         [self performSelectorOnMainThread:@selector(updateProgressView) withObject:nil waitUntilDone:NO];
+    }
+}
+
+- (void)receiveBangFromSource:(NSString *)source
+{
+    NSString* stopPlayback = @"stopPlayback";
+    
+    if ([stopPlayback isEqualToString:source])
+    {
+        [self performSelectorOnMainThread:@selector(stoppedPlaying) withObject:nil waitUntilDone:NO];
     }
 }
 
@@ -216,7 +245,9 @@
     [_audio pause];
     if(camera)
     {
+#if !TARGET_IPHONE_SIMULATOR	
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+#endif        
     }
     else
     {
@@ -386,6 +417,21 @@
 {
     int index = (int)(locationOnScale * (size - 1) + 0.5f);
     return scale[index];
+}
+
+-(void)startedPlaying
+{
+    [buttonPlay setTitle:@"Pause" forState:UIControlStateNormal];
+    _playing = true;
+}
+
+-(void)stoppedPlaying
+{
+    [buttonPlay setTitle:@"Play" forState:UIControlStateNormal];
+    _playing = false;
+    
+    _progressValue = 0;
+    [self updateProgressView];
 }
 
 @end
