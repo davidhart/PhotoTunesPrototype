@@ -91,6 +91,11 @@
     [subView setHidden:FALSE];
 }
 
+-(void)recordPressed:(id)sender
+{
+    [PdBase sendBangToReceiver: @"recordSong"];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -121,6 +126,13 @@
     
     [PdBase subscribe:[NSString stringWithFormat:@"%d-notifyProgress", _patch.dollarZero]];
     [PdBase subscribe:@"stopPlayback"];
+    
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *samplePath = [path stringByAppendingPathComponent:@"sample.wav"];
+    
+    [PdBase sendMessage:samplePath withArguments:NULL toReceiver:[NSString stringWithFormat:@"%d-saveFile", _patch.dollarZero]];
     
     UIImage* image = [UIImage imageNamed:@"images.jpeg"];
     [self setImage: image];

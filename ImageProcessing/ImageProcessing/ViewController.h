@@ -67,6 +67,8 @@
 
 -(IBAction)instrumentsPressed:(id)sender;
 
+-(IBAction)recordPressed:(id) sender;
+
 -(void)toolBarDone;
 -(void)toolBarBack;
 
