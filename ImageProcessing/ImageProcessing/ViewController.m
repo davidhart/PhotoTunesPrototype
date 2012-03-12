@@ -218,7 +218,7 @@
 //        return YES;
 //    }
     
-    return NO;
+    return interfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
 - (void)receiveFloat:(float)received fromSource:(NSString *)source
@@ -227,10 +227,8 @@
     
     
     if ([notifyProgress isEqualToString:source])
-    {
-        float temp = received / (_numNotes - 1);
-        
-        _progressValue = temp;
+    {        
+        _progressValue = received;
         
         [self performSelectorOnMainThread:@selector(updateProgressView) withObject:nil waitUntilDone:NO];
     }
@@ -248,7 +246,9 @@
 
 -(void)updateProgressView
 {
-    [progress setProgress: _progressValue];
+    float temp = _progressValue / (_numNotes - 1);
+    
+    [progress setProgress: temp];
 }
 
 -(void)activateImageChooser:(BOOL) camera
@@ -433,17 +433,23 @@
 
 -(void)startedPlaying
 {
-    [buttonPlay setTitle:@"Pause" forState:UIControlStateNormal];
+    //[buttonPlay setTitle:@"Pause" forState:UIControlStateNormal];
+    [buttonPlay setImage:[UIImage imageNamed:@"pausebutton.png"] forState:UIControlStateNormal];
+    
     _playing = true;
 }
 
 -(void)stoppedPlaying
 {
-    [buttonPlay setTitle:@"Play" forState:UIControlStateNormal];
-    _playing = false;
+    if (_progressValue == _numNotes - 1)
+    {
+        _progressValue = 0;
+        [self updateProgressView];
+    }
     
-    _progressValue = 0;
-    [self updateProgressView];
+    //[buttonPlay setTitle:@"Play" forState:UIControlStateNormal];
+    [buttonPlay setImage:[UIImage imageNamed:@"playbutton.png"] forState:UIControlStateNormal];
+    _playing = false;
 }
 
 @end
