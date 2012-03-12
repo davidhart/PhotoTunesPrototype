@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB2B1350150E443400443348 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2B134F150E443400443348 /* AVFoundation.framework */; };
 		BB36870C150623D3002624BB /* simpleinstrument.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB36870B150623D3002624BB /* simpleinstrument.pd */; };
 		BB36870E150623DC002624BB /* filterzero.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB36870D150623DC002624BB /* filterzero.pd */; };
 		BB3ACB321483E5DD003014D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3ACB311483E5DD003014D1 /* UIKit.framework */; };
@@ -38,7 +39,7 @@
 		BB83378C150A5BF400D1E52E /* pausebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = BB83378B150A5BF400D1E52E /* pausebutton.png */; };
 		BB83BC5814F28F2200226E16 /* polytracker.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB83BC5714F28F2200226E16 /* polytracker.pd */; };
 		BB83BC5A14F2904D00226E16 /* bell.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BB83BC5914F2904D00226E16 /* bell.aiff */; };
-		BB83BC5E14FBC09600226E16 /* libpd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5ED0C14CD817E005DB0DC /* libpd.a */; };
+		BB83BC5E14FBC09600226E16 /* libpd-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5ED0C14CD817E005DB0DC /* libpd-ios.a */; };
 		BB873A5314E9214D00CE09FA /* vocoder.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5214E9214D00CE09FA /* vocoder.pd */; };
 		BB873A5514E9215C00CE09FA /* a.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5414E9215C00CE09FA /* a.wav */; };
 		BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9AE722148D2868004E608A /* AudioToolbox.framework */; };
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB2B134F150E443400443348 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BB36870B150623D3002624BB /* simpleinstrument.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simpleinstrument.pd; sourceTree = "<group>"; };
 		BB36870D150623DC002624BB /* filterzero.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = filterzero.pd; sourceTree = "<group>"; };
 		BB3ACB2D1483E5DD003014D1 /* ImageProcessing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageProcessing.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +130,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB83BC5E14FBC09600226E16 /* libpd.a in Frameworks */,
+				BB2B1350150E443400443348 /* AVFoundation.framework in Frameworks */,
+				BB83BC5E14FBC09600226E16 /* libpd-ios.a in Frameworks */,
 				BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */,
 				BB3ACB321483E5DD003014D1 /* UIKit.framework in Frameworks */,
 				BB3ACB341483E5DD003014D1 /* Foundation.framework in Frameworks */,
@@ -153,6 +156,7 @@
 		BB3ACB221483E5DD003014D1 = {
 			isa = PBXGroup;
 			children = (
+				BB2B134F150E443400443348 /* AVFoundation.framework */,
 				BBE5ED0414CD817E005DB0DC /* libpd.xcodeproj */,
 				BB9AE722148D2868004E608A /* AudioToolbox.framework */,
 				BB3ACB371483E5DD003014D1 /* ImageProcessing */,
@@ -255,7 +259,7 @@
 		BBE5ED0514CD817E005DB0DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BBE5ED0C14CD817E005DB0DC /* libpd.a */,
+				BBE5ED0C14CD817E005DB0DC /* libpd-ios.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -306,7 +310,7 @@
 		BB3ACB241483E5DD003014D1 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = BB3ACB271483E5DD003014D1 /* Build configuration list for PBXProject "ImageProcessing" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -333,10 +337,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		BBE5ED0C14CD817E005DB0DC /* libpd.a */ = {
+		BBE5ED0C14CD817E005DB0DC /* libpd-ios.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libpd.a;
+			path = "libpd-ios.a";
 			remoteRef = BBE5ED0B14CD817E005DB0DC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};

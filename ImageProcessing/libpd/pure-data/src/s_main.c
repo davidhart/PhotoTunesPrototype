@@ -16,7 +16,7 @@
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
-#ifdef MSW
+#ifdef _WIN32
 #include <io.h>
 #include <windows.h>
 #include <winbase.h>
@@ -124,8 +124,8 @@ typedef struct _fontinfo
     in the six fonts.  */
 
 static t_fontinfo sys_fontlist[] = {
-    {8, 6, 10, 0, 0, 0}, {10, 7, 13, 0, 0, 0}, {12, 9, 16, 0, 0, 0},
-    {16, 10, 20, 0, 0, 0}, {24, 15, 25, 0, 0, 0}, {36, 25, 45, 0, 0, 0}};
+    {8, 6, 10, 1, 1, 1}, {10, 7, 13, 1, 1, 1}, {12, 9, 16, 1, 1, 1},
+    {16, 10, 21, 1, 1, 1}, {24, 15, 25, 1, 1, 1}, {36, 25, 45, 1, 1, 1}};
 #define NFONT (sizeof(sys_fontlist)/sizeof(*sys_fontlist))
 
 /* here are the actual font size structs on msp's systems:
@@ -176,11 +176,7 @@ int sys_fontheight(int fontsize)
 }
 
 int sys_defaultfont;
-#ifdef MSW
-#define DEFAULTFONT 12
-#else
 #define DEFAULTFONT 10
-#endif
 
 static void openit(const char *dirname, const char *filename)
 {
@@ -279,7 +275,7 @@ int sys_main(int argc, char **argv)
             noprefs = 1;
     if (!noprefs)
         sys_loadpreferences();                  /* load default settings */
-#ifndef MSW
+#ifndef _WIN32
     if (!noprefs)
         sys_rcfile();                           /* parse the startup file */
 #endif
@@ -339,7 +335,7 @@ static char *(usagemessage[]) = {
 #endif
 
 #ifdef USEAPI_PORTAUDIO
-#ifdef MSW
+#ifdef _WIN32
 "-asio            -- use ASIO audio driver (via Portaudio)\n",
 "-pa              -- synonym for -asio\n",
 #else
@@ -499,7 +495,7 @@ void sys_findprogdir(char *progname)
             .../bin/wish80.exe
             .../doc
         */
-#ifdef MSW
+#ifdef _WIN32
     sys_libdir = gensym(sbuf2);
 #else
     strncpy(sbuf, sbuf2, MAXPDSTRING-30);
@@ -518,7 +514,7 @@ void sys_findprogdir(char *progname)
 #endif
 }
 
-#ifdef MSW
+#ifdef _WIN32
 static int sys_mmio = 1;
 #else
 static int sys_mmio = 0;
@@ -641,7 +637,7 @@ int sys_argparse(int argc, char **argv)
 #endif
 #ifdef USEAPI_PORTAUDIO
         else if (!strcmp(*argv, "-pa") || !strcmp(*argv, "-portaudio")
-#ifdef MSW
+#ifdef _WIN32
             || !strcmp(*argv, "-asio")
 #endif
             )

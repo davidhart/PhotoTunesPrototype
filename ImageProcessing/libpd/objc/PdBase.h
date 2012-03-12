@@ -34,49 +34,73 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol PdReceiverDelegate
 
+// Listener interface for messages from Pd.
+@protocol PdListener
 @optional
-- (void)receivePrint:(NSString *)message;
 - (void)receiveBangFromSource:(NSString *)source;
 - (void)receiveFloat:(float)received fromSource:(NSString *)source;
 - (void)receiveSymbol:(NSString *)symbol fromSource:(NSString *)source;
 - (void)receiveList:(NSArray *)list fromSource:(NSString *)source;
 - (void)receiveMessage:(NSString *)message withArguments:(NSArray *)arguments fromSource:(NSString *)source;
-
 @end
+
+// Receiver interface for printing and receiving messages from Pd
+@protocol PdReceiverDelegate<PdListener>
+@optional
+- (void)receivePrint:(NSString *)message;
+@end
+
 
 @interface PdBase {
   // Not meant to be instantiated. No member variables.
 }
 
-/** http://www.gitorious.org/pdlib/pages/Libpd */
-
 + (void)initialize;
-/** PdBase retains the delegate: call setDelegate with nil in order to release delegate. */
-+ (void)setDelegate:(NSObject<PdReceiverDelegate> *)newDelegate;
-+ (void *)subscribe:(NSString *)symbol;
-+ (void)unsubscribe:(void *)subscription;
-+ (int)sendBangToReceiver:(NSString *)receiverName;
-+ (int)sendFloat:(float)value toReceiver:(NSString *)receiverName;
-+ (int)sendSymbol:(NSString *)symbol toReceiver:(NSString *)receiverName;
-+ (int)sendList:(NSArray *)list toReceiver:(NSString *)receiverName;
-+ (int)sendMessage:(NSString *)message withArguments:(NSArray *)list toReceiver:(NSString *)receiverName;
++ (size_t)setMessageBufferSize:(size_t)size;
++ (void)setDelegate:(NSObject<PdReceiverDelegate> *)newDelegate;  // PdBase retains the delegate: call setDelegate with nil in order to release delegate.
++ (NSObject<PdReceiverDelegate> *)delegate;
+
 + (void)clearSearchPath;
 + (void)addToSearchPath:(NSString *)path;
-+ (int)getBlockSize;
-+ (BOOL)exists:(NSString *)symbol;
-+ (int)openAudioWithSampleRate:(int)samplerate andInputChannels:(int)inputChannels 
-    andOutputChannels:(int)outputchannels andTicksPerBuffer:(int)ticksPerBuffer;
-+ (int)processFloatWithInputBuffer:(float *)inputBuffer andOutputBuffer:(float *)outputBuffer;
-+ (int)processDoubleWithInputBuffer:(double *)inputBuffer andOutputBuffer:(double *)outputBuffer;
-+ (int)processShortWithInputBuffer:(short *)inputBuffer andOutputBuffer:(short *)outputBuffer;
-+ (void)computeAudio:(BOOL)enable;
+
 + (void *)openFile:(NSString *)baseName path:(NSString *)pathName;
 + (void)closeFile:(void *)x;
 + (int)dollarZeroForFile:(void *)x;
+
++ (int)getBlockSize;
++ (int)openAudioWithSampleRate:(int)samplerate
+    inputChannels:(int)inputChannels 
+    outputChannels:(int)outputchannels;
++ (int)processFloatWithInputBuffer:(float *)inputBuffer
+    outputBuffer:(float *)outputBuffer ticks:(int)ticks;
++ (int)processDoubleWithInputBuffer:(double *)inputBuffer
+    outputBuffer:(double *)outputBuffer ticks:(int)ticks;
++ (int)processShortWithInputBuffer:(short *)inputBuffer
+    outputBuffer:(short *)outputBuffer ticks:(int)ticks;
++ (void)computeAudio:(BOOL)enable;
++ (void *)subscribe:(NSString *)symbol;
++ (void)unsubscribe:(void *)subscription;
++ (BOOL)exists:(NSString *)symbol;
+
++ (int)sendBangToReceiver:(NSString *)receiverName;
++ (int)sendFloat:(float)value toReceiver:(NSString *)receiverName;
++ (int)sendSymbol:(NSString *)symbol toReceiver:(NSString *)receiverName;
++ (int)sendList:(NSArray *)list toReceiver:(NSString *)receiverName;  // list may be nil
++ (int)sendMessage:(NSString *)message withArguments:(NSArray *)list toReceiver:(NSString *)receiverName;  // list may be nil
+
 + (int)arraySizeForArrayNamed:(NSString *)arrayName;
 + (int)copyArrayNamed:(NSString *)arrayName withOffset:(int)offset toArray:(float *)destinationArray count:(int)n;
 + (int)copyArray:(float *)sourceArray toArrayNamed:(NSString *)arrayName withOffset:(int)offset count:(int)n;
+
++ (int)sendNoteOn:(int)channel pitch:(int)pitch velocity:(int)velocity;
++ (int)sendControlChange:(int)channel controller:(int)controller value:(int)value;
++ (int)sendProgramChange:(int)channel value:(int)value;
++ (int)sendPitchBend:(int)channel value:(int)value;
++ (int)sendAftertouch:(int)channel value:(int)value;
++ (int)sendPolyAftertouch:(int)channel pitch:(int)pitch value:(int)value;
++ (int)sendMidiByte:(int)port byte:(int)byte;
++ (int)sendSysex:(int)port byte:(int)byte;
++ (int)sendSysRealTime:(int)port byte:(int)byte;
 
 @end

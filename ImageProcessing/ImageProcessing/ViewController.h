@@ -9,13 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "ImageProperties.h"
 #import "PdFile.h"
-#import "PdAudio.h"
+#import "PdAudioController.h"
 #import "PdBase.h"
 
 @interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate>
 {
     PdFile * _patch;
-    PdAudio * _audio;
+    PdAudioController * _audio;
     UIImageView* imageView;
     UISlider* slider;
     UIProgressView* progress;
@@ -50,7 +50,7 @@
 @property (nonatomic, retain) IBOutlet UISlider* sliderMelodyVolume;
 @property (nonatomic, retain) IBOutlet UISlider* sliderSongLength;
 
--(void)initialize: (PdAudio*) audio;
+-(void)initialize: (PdAudioController*) audio;
 
 -(IBAction)playPressed:(id) sender;
 -(IBAction)stopPressed:(id) sender;

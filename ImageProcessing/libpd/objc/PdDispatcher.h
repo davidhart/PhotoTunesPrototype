@@ -12,22 +12,6 @@
 #import "PdBase.h"
 
 
-// Listener class for messages from Pd.  The idea is that there will be (at least)
-// one listener for each source (i.e., send symbol) in Pd that client code is
-// supposed to receive messages from, with the routing of messages being done by an
-// instance of PdDispatcher that's handling all messages from Pd.
-@protocol PdListener
-
-@optional
-- (void)receiveBang;
-- (void)receiveFloat:(float)val;
-- (void)receiveSymbol:(NSString *)symbol;
-- (void)receiveList:(NSArray *)list;
-- (void)receiveMessage:(NSString *)message withArguments:(NSArray *)arguments;
-
-@end
-
-
 // Implementation of the PdReceiverDelegate protocol from PdBase.h.  Client code
 // registers one instance of this class with PdBase, and then listeners for individual
 // sources will be registered with the dispatcher object.
@@ -49,10 +33,6 @@
 - (int)removeListener:(NSObject<PdListener> *)listener forSource:(NSString *)source;
 @end
 
-
-// Subclass of PdDispatcher that invokes its receive* methods on the main UI thread.
-// This class is very experimental and may disappear again without
-// warning.  Use at your own risk!
-@interface PdUiDispatcher : PdDispatcher {}
+// Subclass of PdDispatcher that logs all callbacks, mostly for development and debugging.
+@interface LoggingDispatcher : PdDispatcher {}
 @end
-

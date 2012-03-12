@@ -7,20 +7,28 @@
 //
 
 #import "AppDelegate.h"
-
+#import "PdAudioController.h"
 #import "ViewController.h"
+
+@interface AppDelegate ()
+
+@property (nonatomic, retain) PdAudioController *audioController;
+
+@end
 
 @implementation AppDelegate
 
 @synthesize window;
-//@synthesize tabBarController;
 @synthesize viewController;
+@synthesize audioController = audioController;
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self.window addSubview:[self.viewController view]];
     [self.window makeKeyAndVisible];
     
+    /*
 #if TARGET_IPHONE_SIMULATOR	
 	int ticksPerBuffer = 512 / [PdBase getBlockSize]; // apparently the only way to get clean audio output with the simulator
     int sampleRate = 44100;
@@ -28,14 +36,18 @@
     int ticksPerBuffer = 32;
     int sampleRate = 22050;
 #endif
-	
 	_pdAudio = [[PdAudio alloc] initWithSampleRate:sampleRate andTicksPerBuffer:ticksPerBuffer andNumberOfInputChannels:1 andNumberOfOutputChannels:1 
                                                   andAudioSessionCategory:kAudioSessionCategory_MediaPlayback];
     
 	[PdBase computeAudio:YES];
-    [_pdAudio pause];
+    [_pdAudio pause];*/
+    
+    self.audioController = [[PdAudioController alloc] init];
+	[self.audioController configureAmbientWithSampleRate:22050 numberChannels:2 mixingEnabled:YES];
+	[self.audioController setActive:YES];
+	[self.audioController print];
 
-    [viewController initialize: _pdAudio];
+    [viewController initialize: audioController];
     
     /*
     UIImagePickerController* imagePickerController = [[UIImagePickerController alloc] init];

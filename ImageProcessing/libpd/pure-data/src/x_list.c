@@ -4,7 +4,7 @@
 
 #include "m_pd.h"
 /* #include <string.h> */
-#ifdef MSW
+#ifdef _WIN32
 #include <malloc.h>
 #else
 #include <alloca.h>
@@ -156,7 +156,7 @@ static void alist_anything(t_alist *x, t_symbol *s, int argc, t_atom *argv)
         {
             x->l_npointer++;            
             gpointer_copy(x->l_vec[i+1].l_a.a_w.w_gpointer, &x->l_vec[i+1].l_p);
-            x->l_vec[i].l_a.a_w.w_gpointer = &x->l_vec[i].l_p;
+            x->l_vec[i+1].l_a.a_w.w_gpointer = &x->l_vec[i+1].l_p;
         }
     }
 }

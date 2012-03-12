@@ -8,6 +8,7 @@
  *
  */
 
+#include <signal.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -18,11 +19,7 @@
 #include "m_imp.h"
 #include "g_all_guis.h"
 
-/* some missing prototypes... */
 void pd_init(void);
-void inmidi_byte(int, int);
-void inmidi_sysex(int, int);
-void inmidi_realtimein(int, int);
 
 t_libpd_printhook libpd_printhook = NULL;
 t_libpd_banghook libpd_banghook = NULL;
@@ -39,8 +36,6 @@ t_libpd_aftertouchhook libpd_aftertouchhook = NULL;
 t_libpd_polyaftertouchhook libpd_polyaftertouchhook = NULL;
 t_libpd_midibytehook libpd_midibytehook = NULL;
 
-static int ticks_per_buffer;
-
 static t_atom *argv = NULL, *curr;
 static int argm = 0, argc;
 
@@ -51,6 +46,7 @@ static void *get_object(const char *s) {
 
 /* this is called instead of sys_main() to start things */
 void libpd_init(void) {
+  signal(SIGFPE, SIG_IGN);
   libpd_start_message(32); // allocate array for message assembly
   sys_printhook = (t_printhook) libpd_printhook;
   sys_soundin = NULL;
@@ -83,10 +79,9 @@ void libpd_add_to_search_path(const char *s) {
   sys_searchpath = namelist_append(sys_searchpath, s, 0);
 }
 
-int libpd_init_audio(int inChans, int outChans, int sampleRate, int tpb) {
+int libpd_init_audio(int inChans, int outChans, int sampleRate) {
   int indev[MAXAUDIOINDEV], inch[MAXAUDIOINDEV],
        outdev[MAXAUDIOOUTDEV], outch[MAXAUDIOOUTDEV];
-  ticks_per_buffer = tpb;
   indev[0] = outdev[0] = DEFAULTAUDIODEV;
   inch[0] = inChans;
   outch[0] = outChans;
@@ -119,7 +114,7 @@ static const t_sample sample_to_short = SHRT_MAX,
 #define PROCESS(_x, _y) \
   int i, j, k; \
   t_sample *p0, *p1; \
-  for (i = 0; i < ticks_per_buffer; i++) { \
+  for (i = 0; i < ticks; i++) { \
     for (j = 0, p0 = sys_soundin; j < DEFDACBLKSIZE; j++, p0++) { \
       for (k = 0, p1 = p0; k < sys_inchannels; k++, p1 += DEFDACBLKSIZE) { \
         *p1 = *inBuffer++ _x; \
@@ -135,15 +130,15 @@ static const t_sample sample_to_short = SHRT_MAX,
   } \
   return 0;
 
-int libpd_process_short(short *inBuffer, short *outBuffer) {
+int libpd_process_short(int ticks, short *inBuffer, short *outBuffer) {
   PROCESS(* short_to_sample, * sample_to_short)
 }
 
-int libpd_process_float(float *inBuffer, float *outBuffer) {
+int libpd_process_float(int ticks, float *inBuffer, float *outBuffer) {
   PROCESS(,)
 }
 
-int libpd_process_double(double *inBuffer, double *outBuffer) {
+int libpd_process_double(int ticks, double *inBuffer, double *outBuffer) {
   PROCESS(,)
 }
  
@@ -169,7 +164,7 @@ int libpd_read_array(float *dest, const char *name, int offset, int n) {
 }
 
 int libpd_write_array(const char *name, int offset, float *src, int n) {
-  MEMCPY(*vec++, (t_word) *src++)
+  MEMCPY((vec++)->w_float, *src++)
   return 0;
 }
 

@@ -102,7 +102,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (void)initialize: (PdAudio*) audio
+- (void)initialize: (PdAudioController*) audio
 {
     _audio = audio;
     _numNotes = 24;
@@ -186,7 +186,7 @@
     [subView addSubview:toolbar];
     [subView setHidden:TRUE];
     
-    [_audio play];
+    [_audio setActive:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -254,7 +254,7 @@
 -(void)activateImageChooser:(BOOL) camera
 {
     [self stopPressed:self];
-    [_audio pause];
+    [_audio setActive:NO];
     if(camera)
     {
 #if !TARGET_IPHONE_SIMULATOR	
@@ -279,14 +279,14 @@
     
     self.selectedIndex = 0;
     
-    [_audio play];
+    [_audio setActive:YES];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker dismissModalViewControllerAnimated:YES];
     
-    [_audio play];
+    [_audio setActive:YES];
 }
 
 -(void)setImage:(UIImage *)image

@@ -38,8 +38,10 @@
 
 #import "PdBase.h"
 
+__attribute__((deprecated))
 @interface PdAudio : NSObject {
   AudioUnit audioUnit;
+  int ticksPerBuffer;
   int numInputChannels;
   int numOutputChannels;
   Float64 sampleRate;
@@ -49,6 +51,7 @@
 }
 
 @property (nonatomic, readonly) AudioUnit audioUnit;
+@property (nonatomic, readonly) int ticksPerBuffer;
 @property (nonatomic, readonly) int numInputChannels;
 @property (nonatomic, readonly) int numOutputChannels;
 @property (nonatomic, readonly) Float64 sampleRate;
