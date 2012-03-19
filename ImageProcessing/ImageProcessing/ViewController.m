@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Util.h"
+#import "InstrumentSelector.h"
 
 @implementation ViewController
 
@@ -98,12 +99,26 @@
 
 -(void)instrumentsPressed:(id)sender
 {
-    [subView setHidden:FALSE];
+    [_instrumentSelector show];
 }
 
 -(void)recordPressed:(id)sender
 {
+    // Make sure looping is disabled while recording
+    if (_repeatOn)
+        [PdBase sendFloat: 0.0f toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
+    
+    // Start recording
     [PdBase sendBangToReceiver: @"recordSong"];
+}
+
+-(void)recordDone
+{
+    NSLog(@"recordDone");
+    
+    // Re-enable looping
+    if (_repeatOn)
+        [PdBase sendFloat: 1.0f toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -115,7 +130,11 @@
 - (void)initialize: (PdAudioController*) audio
 {
     _audio = audio;
-    _numNotes = 24;
+    
+    // Initialise song length
+    _numNotes = 8;
+    
+    // 5 drums + 1 instrument
     _numIntruments = 6;
     
     _repeatOn = false;
@@ -127,74 +146,33 @@
     
     _imagePropertes = [ImageProperties alloc];
     
+    // Initialise PD
     [PdBase setDelegate:self];
+    _patch = [PdFile openFileNamed:@"soundsystem.pd" path:[[NSBundle mainBundle] bundlePath]];
     
-    _patch = [PdFile openFileNamed:@"wavetable.pd" path:[[NSBundle mainBundle] bundlePath]];
-    
+    // Initialise number of instruments
     [PdBase sendFloat:_numIntruments toReceiver:[NSString stringWithFormat:@"%d-numInstruments", _patch.dollarZero]];
+    
+    // disable looping by default
     [PdBase sendFloat:0 toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
     
+    // listen for changes in progress bar & stop event
     [PdBase subscribe:[NSString stringWithFormat:@"%d-notifyProgress", _patch.dollarZero]];
     [PdBase subscribe:@"stopPlayback"];
+    [PdBase subscribe:@"recordDone"];
     
-    
+    // Setup path in appdata folder for streaming the audio
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
     NSString *samplePath = [path stringByAppendingPathComponent:@"sample.wav"];
-    
     [PdBase sendMessage:samplePath withArguments:NULL toReceiver:[NSString stringWithFormat:@"%d-saveFile", _patch.dollarZero]];
     
+    // Initialise default image
     UIImage* image = [UIImage imageNamed:@"images.jpeg"];
     [self setImage: image];
     
-    subView=[[UIView alloc] init];
-    subView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    subView.backgroundColor = [UIColor colorWithRed:0.0 
-                                              green:0.0 
-                                               blue:0.0 
-                                              alpha:1.0];
+    _instrumentSelector = [[InstrumentSelector alloc] init: self];
     
-    //  Make a new picker view for instrument selector subview
-    myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 63, 320, 200)];
-    myPickerView.delegate = self;
-    myPickerView.showsSelectionIndicator = YES;
-
-    // Make a new toolbar for instrument selector subview
-    toolbar = [[UIToolbar alloc] init];
-    toolbar.frame = CGRectMake(0, 19, self.view.frame.size.width, 44);
-    
-    //Add a done button
-    UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithTitle:@"Select" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarDone)];
-    
-    // Add a title and padding to centre the title
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 172, 23)];
-    label.textAlignment = UITextAlignmentCenter;
-    label.backgroundColor = [UIColor clearColor];
-    label.shadowColor = [UIColor colorWithRed:0.0 
-                                        green:0.0 
-                                         blue:0.0 
-                                        alpha:1.0];
-    label.shadowOffset = CGSizeMake(0, 1);
-    label.textColor = [UIColor colorWithRed:1.0 
-                                      green:1.0 
-                                       blue:1.0 
-                                      alpha:1.0];
-    label.text = @"Instruments";
-    label.font = [UIFont boldSystemFontOfSize:20.0];
-    UIBarButtonItem *item2 = [[UIBarButtonItem alloc] initWithCustomView:label];
-    
-    // Add a cancel button
-    UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarBack)];  
-    
-    // Add buttons to toolbar
-    NSArray *buttons = [NSArray arrayWithObjects: item3, item2, item1, nil];
-    [toolbar setItems: buttons animated:NO];
-    
-    // Set up the subview for the instruments selector and hide it untill used
-    [self.view addSubview:subView];
-    [subView addSubview:myPickerView];
-    [subView addSubview:toolbar];
-    [subView setHidden:TRUE];
     
     [_audio setActive:YES];
 }
@@ -221,20 +199,13 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-//    // Return YES for supported orientations
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-//        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-//    } else {
-//        return YES;
-//    }
-    
+    // Allow only upright portrait orientation
     return interfaceOrientation == UIInterfaceOrientationPortrait;
 }
 
 - (void)receiveFloat:(float)received fromSource:(NSString *)source
 {
     NSString* notifyProgress = [NSString stringWithFormat:@"%d-notifyProgress", _patch.dollarZero];
-    
     
     if ([notifyProgress isEqualToString:source])
     {        
@@ -247,10 +218,15 @@
 - (void)receiveBangFromSource:(NSString *)source
 {
     NSString* stopPlayback = @"stopPlayback";
+    NSString* recordDone = @"recordDone";
     
     if ([stopPlayback isEqualToString:source])
     {
         [self performSelectorOnMainThread:@selector(stoppedPlaying) withObject:nil waitUntilDone:NO];
+    }
+    else if ([recordDone isEqualToString:source])
+    {
+        [self performSelectorOnMainThread:@selector(recordDone) withObject:nil waitUntilDone:NO];         
     }
 }
 
@@ -265,6 +241,7 @@
 {
     [self stopPressed:self];
     [_audio setActive:NO];
+    
     if(camera)
     {
 #if !TARGET_IPHONE_SIMULATOR	
@@ -301,25 +278,30 @@
 
 -(void)setImage:(UIImage *)image
 {
+    // Display image
     [imageView setImage: image];
+    
+    // Calculate image properties
     [_imagePropertes init:image];
     
+    // Update the song
     [self updateSongValues];
     
+    // Resize progress bar to fit underneath scaled image
     CGRect onScreenRect = [Util frameForImage:image inImageViewAspectFit:imageView];
-    
     onScreenRect.origin.y = onScreenRect.origin.y + onScreenRect.size.height;
     onScreenRect.size.height = progress.frame.size.height;
-    
     progress.frame = onScreenRect;
     
+    // Stop playback
     [self stopPressed: self];
 }
 
-
-
 -(void)updateSongValues
 {
+    // Stop playback first
+    [self stopPressed:self];
+    
     float* values = malloc(_numNotes * sizeof(float) * _numIntruments);
     
     float* bassNotes = values;
@@ -394,56 +376,6 @@
     free(values);
 }
 
-// Handle the selection
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow: (NSInteger)row inComponent:(NSInteger)component 
-{    
-    _activeInstrument = row;
-} 
-
-// tell the picker how many rows are available for a given component
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component 
-{    
-    NSUInteger numRows = 5;     
-    return numRows;
-} 
-
-// tell the picker how many components it will have
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView 
-{ 
-    return 1;
-} 
-
-// tell the picker the title for a given component
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component 
-{    
-    NSString *instrumentList[] = {@"Bell", @"Guitar", @"Test 3", @"Test 4", @"Test 5"};
-
-    return instrumentList[row];
-} 
-
-// tell the picker the width of each row for a given component
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component 
-{ 
-    int sectionWidth = 300;  
-    return sectionWidth;
-}
-
-// Done button on toolbar in UIPicker
--(void)toolBarDone
-{
-    NSString *instrumentList[] = {@"bell.aiff", @"a.wav", @"Test 3", @"Test 4", @"Test 5"};
-    
-    [PdBase sendMessage:instrumentList[_activeInstrument] withArguments:NULL toReceiver:[NSString stringWithFormat:@"%d-soundfile5", _patch.dollarZero]];
-    
-    [subView setHidden:TRUE];
-}
-
-// Back button on toolbar in UIPicker
--(void)toolBarBack
-{
-    [subView setHidden:TRUE];
-}
-
 +(float)getNote:(float*)scale :(int)size :(float)locationOnScale
 {
     int index = (int)(locationOnScale * (size - 1) + 0.5f);
@@ -465,10 +397,14 @@
         _progressValue = 0;
         [self updateProgressView];
     }
-    
-    //[buttonPlay setTitle:@"Play" forState:UIControlStateNormal];
+
     [buttonPlay setImage:[UIImage imageNamed:@"playbutton.png"] forState:UIControlStateNormal];
     _playing = false;
+}
+
+-(void)changeInstrument:(NSString *)soundFile
+{
+    [PdBase sendMessage:soundFile withArguments:NULL toReceiver:[NSString stringWithFormat:@"%d-soundfile5", _patch.dollarZero]];
 }
 
 @end

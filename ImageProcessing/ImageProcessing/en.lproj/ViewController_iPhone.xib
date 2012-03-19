@@ -61,7 +61,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{18, 56}, {284, 23}}</string>
 								<reference key="NSSuperview" ref="231033918"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="797792265"/>
 								<string key="NSReuseIdentifierKey">_NS:623</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -84,7 +83,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 20}, {73, 28}}</string>
 								<reference key="NSSuperview" ref="231033918"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="186321038"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -119,7 +117,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{18, 122}, {284, 23}}</string>
 								<reference key="NSSuperview" ref="231033918"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="503824115"/>
 								<string key="NSReuseIdentifierKey">_NS:623</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -139,7 +136,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 86}, {188, 28}}</string>
 								<reference key="NSSuperview" ref="231033918"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="556612504"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -161,7 +157,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{18, 189}, {284, 23}}</string>
 								<reference key="NSSuperview" ref="231033918"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="18079341"/>
 								<string key="NSReuseIdentifierKey">_NS:623</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -178,7 +173,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 152}, {188, 28}}</string>
 								<reference key="NSSuperview" ref="231033918"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="808466858"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -200,7 +194,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{18, 255}, {284, 23}}</string>
 								<reference key="NSSuperview" ref="231033918"/>
-								<reference key="NSWindow"/>
 								<string key="NSReuseIdentifierKey">_NS:623</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -218,7 +211,6 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{20, 219}, {188, 28}}</string>
 								<reference key="NSSuperview" ref="231033918"/>
-								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="267254174"/>
 								<string key="NSReuseIdentifierKey">_NS:328</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -238,7 +230,6 @@
 						</array>
 						<string key="NSFrame">{{0, 20}, {320, 411}}</string>
 						<reference key="NSSuperview"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="465970400"/>
 						<string key="NSReuseIdentifierKey">_NS:196</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="930329807">
@@ -254,7 +245,6 @@
 							<string key="NSResourceName">settingsIcon.png</string>
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<reference key="IBUITabBar" ref="495638371"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="626395789"/>
 					<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
@@ -414,7 +404,6 @@
 								<string key="NSResourceName">homeIcon.png</string>
 							</object>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<reference key="IBUITabBar" ref="495638371"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="626395789"/>
 						<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
@@ -482,7 +471,6 @@
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="8161082">
 							<string key="IBUITitle">Select Image</string>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<reference key="IBUITabBar" ref="495638371"/>
 						</object>
 						<array key="IBUIToolbarItems" id="0"/>
 						<reference key="IBUIParentViewController" ref="626395789"/>
@@ -529,7 +517,6 @@
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="891259727">
 							<string key="IBUITitle">Share</string>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<reference key="IBUITabBar" ref="495638371"/>
 						</object>
 						<reference key="IBUIToolbarItems" ref="0"/>
 						<reference key="IBUIParentViewController" ref="626395789"/>
@@ -553,7 +540,6 @@
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="984592467">
 							<string key="IBUITitle">Help</string>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<reference key="IBUITabBar" ref="495638371"/>
 						</object>
 						<reference key="IBUIToolbarItems" ref="0"/>
 						<reference key="IBUIParentViewController" ref="626395789"/>
@@ -570,21 +556,12 @@
 					<int key="NSvFlags">266</int>
 					<string key="NSFrame">{{0, 431}, {320, 49}}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<string key="NSReuseIdentifierKey">_NS:473</string>
 					<object class="NSColor" key="IBUIBackgroundColor">
 						<int key="NSColorSpace">3</int>
 						<bytes key="NSWhite">MCAwAA</bytes>
 					</object>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					<array class="NSMutableArray" key="IBUIItems">
-						<reference ref="1061167378"/>
-						<reference ref="8161082"/>
-						<reference ref="891259727"/>
-						<reference ref="42089140"/>
-						<reference ref="984592467"/>
-					</array>
-					<reference key="IBUISelectedItem" ref="42089140"/>
 				</object>
 			</object>
 			<object class="IBUICustomObject" id="180658921">

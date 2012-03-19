@@ -12,7 +12,9 @@
 #import "PdAudioController.h"
 #import "PdBase.h"
 
-@interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate>
+@class InstrumentSelector;
+
+@interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
     PdFile * _patch;
     PdAudioController * _audio;
@@ -21,6 +23,8 @@
     ImageProperties* _imagePropertes;
 
     UIImagePickerController* imagePickerController;
+    
+    InstrumentSelector* _instrumentSelector;
 
     float _progressValue;
     int _numNotes;
@@ -32,10 +36,6 @@
     
     bool _repeatOn;
     bool _playing;
-    
-    UIPickerView *myPickerView;
-    UIToolbar *toolbar;
-    UIView *subView;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;
@@ -57,7 +57,6 @@
 
 -(IBAction)cameraPressed:(id) sender;
 -(IBAction)loadPressed:(id)sender;
-
 
 -(IBAction)sliderTempoReleased:(id) sender;
 -(IBAction)sliderDrumVolumeReleased:(id) sender;
@@ -88,5 +87,7 @@
 
 -(void)setImage:(UIImage*) image;
 -(void)updateSongValues;
+
+-(void)changeInstrument:(NSString*) soundFile;
 
 @end

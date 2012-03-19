@@ -43,7 +43,8 @@
 		BB873A5314E9214D00CE09FA /* vocoder.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5214E9214D00CE09FA /* vocoder.pd */; };
 		BB873A5514E9215C00CE09FA /* a.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5414E9215C00CE09FA /* a.wav */; };
 		BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9AE722148D2868004E608A /* AudioToolbox.framework */; };
-		BB9AE725148D28DA004E608A /* wavetable.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB9AE724148D28DA004E608A /* wavetable.pd */; };
+		BB9AE725148D28DA004E608A /* soundsystem.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB9AE724148D28DA004E608A /* soundsystem.pd */; };
+		BBCFADD01517471B00671008 /* InstrumentSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCFADCF1517471B00671008 /* InstrumentSelector.m */; };
 		BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA514D2E81200D54C01 /* homeIcon.png */; };
 		BBD1BDA814D2E86C00D54C01 /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */; };
 		BBD3328314CD7C0900582A54 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BBD3328214CD7C0900582A54 /* images.jpeg */; };
@@ -118,7 +119,9 @@
 		BB873A5214E9214D00CE09FA /* vocoder.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vocoder.pd; sourceTree = "<group>"; };
 		BB873A5414E9215C00CE09FA /* a.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = a.wav; sourceTree = "<group>"; };
 		BB9AE722148D2868004E608A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		BB9AE724148D28DA004E608A /* wavetable.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = wavetable.pd; sourceTree = "<group>"; };
+		BB9AE724148D28DA004E608A /* soundsystem.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = soundsystem.pd; sourceTree = "<group>"; };
+		BBCFADCE1517471A00671008 /* InstrumentSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstrumentSelector.h; sourceTree = "<group>"; };
+		BBCFADCF1517471B00671008 /* InstrumentSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstrumentSelector.m; sourceTree = "<group>"; };
 		BBD1BDA514D2E81200D54C01 /* homeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeIcon.png; sourceTree = "<group>"; };
 		BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
 		BBD3328214CD7C0900582A54 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
@@ -189,22 +192,24 @@
 		BB3ACB371483E5DD003014D1 /* ImageProcessing */ = {
 			isa = PBXGroup;
 			children = (
-				BB873A3614DFF77400CE09FA /* ImageProcessing.entitlements */,
-				BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */,
-				BBD1BDA514D2E81200D54C01 /* homeIcon.png */,
-				BBD3328214CD7C0900582A54 /* images.jpeg */,
-				BB3ACB691483E614003014D1 /* ImageProperties.h */,
-				BB3ACB6A1483E614003014D1 /* ImageProperties.m */,
-				BB3ACB6B1483E614003014D1 /* ImageSlice.h */,
-				BB3ACB6C1483E614003014D1 /* ImageSlice.m */,
 				BB3ACB401483E5DD003014D1 /* AppDelegate.h */,
 				BB3ACB411483E5DE003014D1 /* AppDelegate.m */,
-				BB3ACB431483E5DE003014D1 /* ViewController.h */,
-				BB3ACB441483E5DE003014D1 /* ViewController.m */,
-				BB3ACB461483E5DE003014D1 /* ViewController_iPhone.xib */,
-				BB3ACB491483E5DE003014D1 /* ViewController_iPad.xib */,
+				BBD1BDA514D2E81200D54C01 /* homeIcon.png */,
+				BB873A3614DFF77400CE09FA /* ImageProcessing.entitlements */,
+				BB3ACB691483E614003014D1 /* ImageProperties.h */,
+				BB3ACB6A1483E614003014D1 /* ImageProperties.m */,
+				BBD3328214CD7C0900582A54 /* images.jpeg */,
+				BB3ACB6B1483E614003014D1 /* ImageSlice.h */,
+				BB3ACB6C1483E614003014D1 /* ImageSlice.m */,
+				BBCFADCE1517471A00671008 /* InstrumentSelector.h */,
+				BBCFADCF1517471B00671008 /* InstrumentSelector.m */,
+				BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */,
 				BB46572414CDB41E00318F89 /* Util.h */,
 				BB46572514CDB41E00318F89 /* Util.m */,
+				BB3ACB431483E5DE003014D1 /* ViewController.h */,
+				BB3ACB441483E5DE003014D1 /* ViewController.m */,
+				BB3ACB491483E5DE003014D1 /* ViewController_iPad.xib */,
+				BB3ACB461483E5DE003014D1 /* ViewController_iPhone.xib */,
 				BB3ACB381483E5DD003014D1 /* Supporting Files */,
 			);
 			path = ImageProcessing;
@@ -228,7 +233,7 @@
 				BB83BC5714F28F2200226E16 /* polytracker.pd */,
 				BB873A5414E9215C00CE09FA /* a.wav */,
 				BB873A5214E9214D00CE09FA /* vocoder.pd */,
-				BB9AE724148D28DA004E608A /* wavetable.pd */,
+				BB9AE724148D28DA004E608A /* soundsystem.pd */,
 				BB3ACB391483E5DD003014D1 /* ImageProcessing-Info.plist */,
 				BB3ACB3A1483E5DD003014D1 /* InfoPlist.strings */,
 				BB3ACB3D1483E5DD003014D1 /* main.m */,
@@ -354,7 +359,7 @@
 				BB3ACB3C1483E5DD003014D1 /* InfoPlist.strings in Resources */,
 				BB3ACB481483E5DE003014D1 /* ViewController_iPhone.xib in Resources */,
 				BB3ACB4B1483E5DE003014D1 /* ViewController_iPad.xib in Resources */,
-				BB9AE725148D28DA004E608A /* wavetable.pd in Resources */,
+				BB9AE725148D28DA004E608A /* soundsystem.pd in Resources */,
 				BBD3328314CD7C0900582A54 /* images.jpeg in Resources */,
 				BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */,
 				BBD1BDA814D2E86C00D54C01 /* settingsIcon.png in Resources */,
@@ -413,6 +418,7 @@
 				BB3ACB6D1483E614003014D1 /* ImageProperties.m in Sources */,
 				BB3ACB6E1483E614003014D1 /* ImageSlice.m in Sources */,
 				BB46572614CDB41E00318F89 /* Util.m in Sources */,
+				BBCFADD01517471B00671008 /* InstrumentSelector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
