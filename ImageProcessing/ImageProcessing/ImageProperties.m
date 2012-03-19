@@ -70,6 +70,7 @@ UIImage* scaleAndRotateImage(UIImage* image);
     
     _deviationVal = sqrt(val / (float)width) / 255.0f;
     _deviationSat = sqrt(sat / (float)width) / 255.0f;
+
     
     _numSlices = width;
 }
@@ -123,6 +124,7 @@ UIImage* scaleAndRotateImage(UIImage* image);
 {
     return _deviationVal;
 }
+
 
 +(void)LogPixel:(UInt32)pixel
 {

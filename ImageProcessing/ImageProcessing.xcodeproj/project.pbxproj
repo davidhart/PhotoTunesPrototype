@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB037C27151799FB00DE56C1 /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB037C26151799FB00DE56C1 /* test2.jpg */; };
 		BB2B1350150E443400443348 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2B134F150E443400443348 /* AVFoundation.framework */; };
 		BB36870C150623D3002624BB /* simpleinstrument.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB36870B150623D3002624BB /* simpleinstrument.pd */; };
 		BB36870E150623DC002624BB /* filterzero.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB36870D150623DC002624BB /* filterzero.pd */; };
@@ -76,6 +77,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB037C26151799FB00DE56C1 /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
 		BB2B134F150E443400443348 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BB36870B150623D3002624BB /* simpleinstrument.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simpleinstrument.pd; sourceTree = "<group>"; };
 		BB36870D150623DC002624BB /* filterzero.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = filterzero.pd; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				BB67251515064D9600D96D0D /* splash.wav */,
 				BB36870D150623DC002624BB /* filterzero.pd */,
 				BB36870B150623D3002624BB /* simpleinstrument.pd */,
+				BB037C26151799FB00DE56C1 /* test2.jpg */,
 				BB83BC5914F2904D00226E16 /* bell.aiff */,
 				BB83BC5714F28F2200226E16 /* polytracker.pd */,
 				BB873A5414E9215C00CE09FA /* a.wav */,
@@ -383,6 +386,7 @@
 				BB833788150A5AFB00D1E52E /* stopbutton.png in Resources */,
 				BB83378A150A5B1A00D1E52E /* replaybutton.png in Resources */,
 				BB83378C150A5BF400D1E52E /* pausebutton.png in Resources */,
+				BB037C27151799FB00DE56C1 /* test2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

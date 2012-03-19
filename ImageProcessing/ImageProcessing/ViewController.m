@@ -171,6 +171,7 @@
     
     // Initialise default image
     UIImage* image = [UIImage imageNamed:@"images.jpeg"];
+    //UIImage* image = [UIImage imageNamed:@"test2.jpg"];
     [self setImage: image];
     
     _instrumentSelector = [[InstrumentSelector alloc] init: self];
@@ -338,17 +339,55 @@
     const float rideVariation = 0.5f;
     const float snareVariation = 0.5f;
     const float splashVariation = 0.5f;
+    //float tempNum = 0;
+    int prevSliceNumber = 0;
+    
     
     for (int i = 0; i < _numNotes; i++)
     {
-        ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
+        //ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
+        
+        
+        //OPTTIMISATION - move i != 0 check out of loop
+        //TOMS SHIT <-----
+        int sliceBack;
+        ImageSlice* slice;
+        if ( i != 0 )
+        {
+            sliceBack = (int)(((i / (float)_numNotes) * ([_imagePropertes numSlices])) - prevSliceNumber) - 1;
+
+            float sliceAv;
+            int numOfLoops = 0;
+
+            for (int j = i; (j - i) < sliceBack; j++)
+            {
+                //-2 due to end slice and due to not wanting to go as far back as previous slice
+                slice = [_imagePropertes getSlice: (int)(((i) / (float)_numNotes) * ([_imagePropertes numSlices]-1)-j-1)];
+                sliceAv += ([slice getAverageVal] / 255.0f);
+                numOfLoops++;    
+            }
+            sliceAv /= numOfLoops;
+            numOfLoops = 0;
+            melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :(sliceAv)];
+            NSLog(@"%f", sliceAv);
+        }
+        else 
+        {
+            slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];        
+            melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :([slice getAverageVal] / 255.0f)];
+        }
+        
+        prevSliceNumber = (int)((i / (float)_numNotes) * [_imagePropertes numSlices]);
+
+        
+        //END OF TOMS SHIT <-----
         
         bassNotes[i] = i % 4 == 0 ? 1.0f : 0.0f;
         //hihatNotes[i] = [slice getAverageVal] < 60? 1.0f : 0.0f;
         hihatNotes[i] = 1;
         rideNotes[i] =  1 - hihatNotes[i];
         snareNotes[i] = i % 4 == 2 ? 1.0f : 0.0f;
-        
+    
         float change = ([slice getAverageSat] - [_imagePropertes getAverageSat]) / 255.0f;
         float splash = fabs(change) > ([_imagePropertes getDeviationSat]) ? 1.0f : 0.0f;
         splashNotes[i] = splash;
@@ -377,7 +416,10 @@
         splashNotes[i] *= splashVolume;
         
         
-        melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :[slice getAverageHue] / 255.0f];
+        //melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :([slice getAverageVal] / 255.0f)];
+        //tempNum += 0.02;
+        
+        //melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :tempNum];
     }
     
     [PdBase sendFloat:_numNotes toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];

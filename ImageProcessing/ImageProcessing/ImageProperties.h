@@ -25,6 +25,7 @@
     
     float _deviationVal;
     float _deviationSat;
+
     
 }
 
@@ -42,6 +43,7 @@
 
 -(float)getDeviationSat;
 -(float)getDeviationVal;
+
 
 +(void)LogPixel:(UInt32)pixel;
 
