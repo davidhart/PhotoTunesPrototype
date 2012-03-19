@@ -17,7 +17,6 @@
     PdFile * _patch;
     PdAudioController * _audio;
     UIImageView* imageView;
-    UISlider* slider;
     UIProgressView* progress;
     ImageProperties* _imagePropertes;
 
@@ -64,6 +63,7 @@
 -(IBAction)sliderDrumVolumeReleased:(id) sender;
 -(IBAction)sliderMelodyVolumeReleased:(id) sender;
 -(IBAction)sliderSongLengthReleased:(id) sender;
+-(IBAction)sliderSongLengthChanged:(id)sender;
 
 -(IBAction)instrumentsPressed:(id)sender;
 
@@ -87,6 +87,6 @@
 -(void)activateImageChooser:(BOOL) camera;
 
 -(void)setImage:(UIImage*) image;
--(void)updateValues:(UIImage*) image;
+-(void)updateSongValues;
 
 @end

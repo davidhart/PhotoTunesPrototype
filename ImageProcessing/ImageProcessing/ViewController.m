@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Util.h"
 
 @implementation ViewController
 
@@ -40,6 +41,15 @@
 {
     //_numNotes = ((int)[sliderSongLength value]) * 4;
     //
+    
+    _numNotes = (int)(sliderSongLength.value + 0.5f) * 4; // 4 notes per notch on slider
+    
+    [self updateSongValues];
+}
+
+-(void)sliderSongLengthChanged:(id)sender
+{
+    sliderSongLength.value = (int)(sliderSongLength.value + 0.5f);
 }
 
 -(void)playPressed:(id)sender
@@ -294,9 +304,9 @@
     [imageView setImage: image];
     [_imagePropertes init:image];
     
-    [self updateValues:image];
+    [self updateSongValues];
     
-    CGRect onScreenRect = [ViewController frameForImage:image inImageViewAspectFit:imageView];
+    CGRect onScreenRect = [Util frameForImage:image inImageViewAspectFit:imageView];
     
     onScreenRect.origin.y = onScreenRect.origin.y + onScreenRect.size.height;
     onScreenRect.size.height = progress.frame.size.height;
@@ -306,35 +316,9 @@
     [self stopPressed: self];
 }
 
-+(CGRect)frameForImage:(UIImage*)image inImageViewAspectFit:(UIImageView*)imageView
-{
-    float imageRatio = image.size.width / image.size.height;
-    
-    float viewRatio = imageView.frame.size.width / imageView.frame.size.height;
-    
-    if(imageRatio < viewRatio)
-    {
-        float scale = imageView.frame.size.height / image.size.height;
-        
-        float width = scale * image.size.width;
-        
-        float topLeftX = (imageView.frame.size.width - width) * 0.5;
-        
-        return CGRectMake(topLeftX, 0, width, imageView.frame.size.height);
-    }
-    else
-    {
-        float scale = imageView.frame.size.width / image.size.width;
-        
-        float height = scale * image.size.height;
-        
-        float topLeftY = (imageView.frame.size.height - height) * 0.5;
-        
-        return CGRectMake(0, topLeftY, imageView.frame.size.width, height);
-    }
-}
 
--(void)updateValues:(UIImage *)image
+
+-(void)updateSongValues
 {
     float* values = malloc(_numNotes * sizeof(float) * _numIntruments);
     
