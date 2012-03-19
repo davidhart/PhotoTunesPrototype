@@ -45,6 +45,7 @@
 		BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9AE722148D2868004E608A /* AudioToolbox.framework */; };
 		BB9AE725148D28DA004E608A /* soundsystem.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB9AE724148D28DA004E608A /* soundsystem.pd */; };
 		BBCFADD01517471B00671008 /* InstrumentSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCFADCF1517471B00671008 /* InstrumentSelector.m */; };
+		BBCFADD3151773B500671008 /* ProgressScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCFADD2151773B500671008 /* ProgressScreen.m */; };
 		BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA514D2E81200D54C01 /* homeIcon.png */; };
 		BBD1BDA814D2E86C00D54C01 /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */; };
 		BBD3328314CD7C0900582A54 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BBD3328214CD7C0900582A54 /* images.jpeg */; };
@@ -122,6 +123,8 @@
 		BB9AE724148D28DA004E608A /* soundsystem.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = soundsystem.pd; sourceTree = "<group>"; };
 		BBCFADCE1517471A00671008 /* InstrumentSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstrumentSelector.h; sourceTree = "<group>"; };
 		BBCFADCF1517471B00671008 /* InstrumentSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstrumentSelector.m; sourceTree = "<group>"; };
+		BBCFADD1151773B500671008 /* ProgressScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressScreen.h; sourceTree = "<group>"; };
+		BBCFADD2151773B500671008 /* ProgressScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressScreen.m; sourceTree = "<group>"; };
 		BBD1BDA514D2E81200D54C01 /* homeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeIcon.png; sourceTree = "<group>"; };
 		BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
 		BBD3328214CD7C0900582A54 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
@@ -203,6 +206,8 @@
 				BB3ACB6C1483E614003014D1 /* ImageSlice.m */,
 				BBCFADCE1517471A00671008 /* InstrumentSelector.h */,
 				BBCFADCF1517471B00671008 /* InstrumentSelector.m */,
+				BBCFADD1151773B500671008 /* ProgressScreen.h */,
+				BBCFADD2151773B500671008 /* ProgressScreen.m */,
 				BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */,
 				BB46572414CDB41E00318F89 /* Util.h */,
 				BB46572514CDB41E00318F89 /* Util.m */,
@@ -419,6 +424,7 @@
 				BB3ACB6E1483E614003014D1 /* ImageSlice.m in Sources */,
 				BB46572614CDB41E00318F89 /* Util.m in Sources */,
 				BBCFADD01517471B00671008 /* InstrumentSelector.m in Sources */,
+				BBCFADD3151773B500671008 /* ProgressScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

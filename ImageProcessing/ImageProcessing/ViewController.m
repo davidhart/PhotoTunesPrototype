@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Util.h"
 #import "InstrumentSelector.h"
+#import "ProgressScreen.h"
 
 @implementation ViewController
 
@@ -39,10 +40,7 @@
 }
 
 -(void)sliderSongLengthReleased:(id)sender
-{
-    //_numNotes = ((int)[sliderSongLength value]) * 4;
-    //
-    
+{    
     _numNotes = (int)(sliderSongLength.value + 0.5f) * 4; // 4 notes per notch on slider
     
     [self updateSongValues];
@@ -110,15 +108,19 @@
     
     // Start recording
     [PdBase sendBangToReceiver: @"recordSong"];
+    
+    [_progressScreen setTitle: @"Saving"];
+    [_progressScreen setProgress:0];
+    [_progressScreen show];
 }
 
 -(void)recordDone
-{
-    NSLog(@"recordDone");
-    
+{    
     // Re-enable looping
     if (_repeatOn)
         [PdBase sendFloat: 1.0f toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
+    
+    [_progressScreen hide];
 }
 
 - (void)didReceiveMemoryWarning
@@ -172,7 +174,7 @@
     [self setImage: image];
     
     _instrumentSelector = [[InstrumentSelector alloc] init: self];
-    
+    _progressScreen = [[ProgressScreen alloc] init: self];
     
     [_audio setActive:YES];
 }
@@ -234,7 +236,15 @@
 {
     float temp = _progressValue / (_numNotes - 1);
     
-    [progress setProgress: temp];
+    if ([_progressScreen isVisible])
+    {
+        if (temp != 0)
+            [_progressScreen setProgress:temp];
+    }
+    else
+    {
+        [progress setProgress: temp];
+    }
 }
 
 -(void)activateImageChooser:(BOOL) camera

@@ -13,6 +13,7 @@
 #import "PdBase.h"
 
 @class InstrumentSelector;
+@class ProgressScreen;
 
 @interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
@@ -25,7 +26,8 @@
     UIImagePickerController* imagePickerController;
     
     InstrumentSelector* _instrumentSelector;
-
+    ProgressScreen* _progressScreen;
+    
     float _progressValue;
     int _numNotes;
     int _numIntruments;

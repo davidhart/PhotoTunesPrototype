@@ -59,7 +59,7 @@
     
     // Add a cancel button
     UIBarButtonItem *item3 = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(toolBarBack)];  
-    
+
     // Add buttons to toolbar
     NSArray *buttons = [NSArray arrayWithObjects: item3, item2, item1, nil];
     [_toolbar setItems: buttons animated:NO];
@@ -75,20 +75,20 @@
 }
 
 // tell the picker how many components it will have
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView 
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView 
 { 
     return 1;
 } 
 
-- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component
+-(NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component
 {    
     return 5;
 }
 
 // tell the picker the title for a given component
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component 
+-(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component 
 {    
-    NSString *instrumentList[] = {@"Bell", @"Guitar", @"Test 3", @"Test 4", @"Test 5"};
+    NSString *instrumentList[] = {@"Guitar", @"Bell", @"Test 3", @"Test 4", @"Test 5"};
     
     return instrumentList[row];
 } 
@@ -103,7 +103,7 @@
 // Done button on toolbar in UIPicker
 -(void)toolBarDone
 {
-    NSString *instrumentList[] = {@"bell.aiff", @"a.wav", @"Test 3", @"Test 4", @"Test 5"};
+    NSString *instrumentList[] = {@"guitar.wav", @"bell.aiff", @"Test 3", @"Test 4", @"Test 5"};
     
     _activeSelection = _currentSelection;
     [_parent changeInstrument:instrumentList[_activeSelection]];
