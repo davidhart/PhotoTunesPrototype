@@ -12,67 +12,76 @@ UIImage* scaleAndRotateImage(UIImage* image);
 
 @implementation ImageProperties
 
--(void)init:(UIImage*) image
+-(id)init:(UIImage*) image
 {
-    _image = scaleAndRotateImage(image);
+    self = [super init];
     
-    CFDataRef imageData = CGDataProviderCopyData(CGImageGetDataProvider(_image.CGImage));
-    const UInt32 *pixels = (const UInt32*)CFDataGetBytePtr(imageData);
-    
-    uint width = CGImageGetWidth(_image.CGImage);
-    uint height = CGImageGetHeight(_image.CGImage);
-    NSLog(@"width: %u height: %u", width, height);
-    
-    _slices = [NSMutableArray arrayWithCapacity:width];
-    
-    unsigned int red = 0;
-    unsigned int green = 0;
-    unsigned int blue = 0;
-    
-    unsigned int hue = 0;
-    unsigned int sat = 0;
-    unsigned int val = 0;    
-    
-    for (int x = 0; x < width; ++x)
+    if (self)
     {
-        ImageSlice* slice = [ImageSlice alloc];
-        [slice init: (UInt8*)(pixels)+x*4: width*4: height];
-        [_slices addObject: slice];
+        _image = scaleAndRotateImage(image);
         
-        red += [slice getAverageRed];
-        green += [slice getAverageGreen];
-        blue += [slice getAverageBlue];
+        CGDataProviderRef provider = CGImageGetDataProvider([_image CGImage]);
+        CFDataRef imageData = CGDataProviderCopyData(provider);
+        const UInt32 *pixels = (const UInt32*)CFDataGetBytePtr(imageData);
         
-        hue += [slice getAverageHue];
-        sat += [slice getAverageSat];
-        val += [slice getAverageVal];
+        uint width = CGImageGetWidth(_image.CGImage);
+        uint height = CGImageGetHeight(_image.CGImage);
+        NSLog(@"width: %u height: %u", width, height);
+        
+        _slices = [NSMutableArray arrayWithCapacity:width];
+        
+        unsigned int red = 0;
+        unsigned int green = 0;
+        unsigned int blue = 0;
+        
+        unsigned int hue = 0;
+        unsigned int sat = 0;
+        unsigned int val = 0;    
+        
+        for (int x = 0; x < width; ++x)
+        {
+            ImageSlice* slice = [[ImageSlice alloc] init: (UInt8*)(pixels)+x*4: width*4: height];
+            [_slices addObject: slice];
+            
+            red += [slice getAverageRed];
+            green += [slice getAverageGreen];
+            blue += [slice getAverageBlue];
+            
+            hue += [slice getAverageHue];
+            sat += [slice getAverageSat];
+            val += [slice getAverageVal];
+        }
+        
+        CGDataProviderRelease(provider);
+        CFRelease(imageData);
+        
+        _averageRed = (UInt8)(red / width);
+        _averageGreen = (UInt8)(green / width);
+        _averageBlue = (UInt8)(blue / width);
+        
+        _averageHue = (UInt8)(hue / width);
+        _averageSat = (UInt8)(sat / width);
+        _averageVal = (UInt8)(val / width);
+        
+        sat = 0;
+        val = 0;
+        
+        for (int x = 0; x < width; ++x)
+        {
+            ImageSlice* slice = [self getSlice:x];
+            int deltaSat = [slice getAverageSat] - _averageSat;
+            sat += deltaSat * deltaSat;
+            int deltaVal = [slice getAverageVal] - _averageVal;
+            val += deltaVal * deltaVal;
+        }
+        
+        _deviationVal = sqrt(val / (float)width) / 255.0f;
+        _deviationSat = sqrt(sat / (float)width) / 255.0f;
+        
+        
+        _numSlices = width;
     }
-    
-    _averageRed = (UInt8)(red / width);
-    _averageGreen = (UInt8)(green / width);
-    _averageBlue = (UInt8)(blue / width);
-    
-    _averageHue = (UInt8)(hue / width);
-    _averageSat = (UInt8)(sat / width);
-    _averageVal = (UInt8)(val / width);
-    
-    sat = 0;
-    val = 0;
-    
-    for (int x = 0; x < width; ++x)
-    {
-        ImageSlice* slice = [self getSlice:x];
-        int deltaSat = [slice getAverageSat] - _averageSat;
-        sat += deltaSat * deltaSat;
-        int deltaVal = [slice getAverageVal] - _averageVal;
-        val += deltaVal * deltaVal;
-    }
-    
-    _deviationVal = sqrt(val / (float)width) / 255.0f;
-    _deviationSat = sqrt(sat / (float)width) / 255.0f;
-
-    
-    _numSlices = width;
+    return self;
 }
 
 -(ImageSlice*)getSlice:(int)slice

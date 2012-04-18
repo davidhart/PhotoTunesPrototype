@@ -11,35 +11,42 @@
 
 @implementation ImageSlice
 
--(void)init:(const UInt8*)data: (uint)stride: (uint)height
+-(id)init:(const UInt8*)data: (uint)stride: (uint)height
 {
-    _height = height;
+    self = [super init];
     
-    int averageRed = 0, averageGreen = 0, averageBlue = 0;
-    
-    for (int y = 0; y < height; y++)
+    if (self)
     {
-        averageRed += data[y*stride];
-        averageGreen += data[y*stride+1];
-        averageBlue +=  data[y*stride+2];
+        _height = height;
+    
+        int averageRed = 0, averageGreen = 0, averageBlue = 0;
+    
+        for (int y = 0; y < height; y++)
+        {
+            averageRed += data[y*stride];
+            averageGreen += data[y*stride+1];
+            averageBlue +=  data[y*stride+2];
+        }
+    
+        _averageRed = averageRed /= height;
+        _averageGreen = averageGreen /= height;
+        _averageBlue = averageBlue /= height;
+    
+        struct RGBfloat rgb;
+        struct HSVfloat hsv;
+    
+        rgb.red = _averageRed / 255.0f;
+        rgb.green = _averageGreen / 255.0f;
+        rgb.blue = _averageBlue / 255.0f;
+        
+        [Util RGBtoHSV: &rgb: &hsv];
+    
+        _averageHue = (hsv.hue / 360.0f) * 255.0f;
+        _averageSat = hsv.sat * 255.0f;
+        _averageVal = hsv.val * 255.0f;
     }
     
-    _averageRed = averageRed /= height;
-    _averageGreen = averageGreen /= height;
-    _averageBlue = averageBlue /= height;
-    
-    struct RGBfloat rgb;
-    struct HSVfloat hsv;
-    
-    rgb.red = _averageRed / 255.0f;
-    rgb.green = _averageGreen / 255.0f;
-    rgb.blue = _averageBlue / 255.0f;
-    
-    [Util RGBtoHSV: &rgb: &hsv];
-    
-    _averageHue = (hsv.hue / 360.0f) * 255.0f;
-    _averageSat = hsv.sat * 255.0f;
-    _averageVal = hsv.val * 255.0f;
+    return self;
 }
 
 -(void)log

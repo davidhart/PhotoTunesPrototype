@@ -40,6 +40,8 @@
     bool _playing;
 }
 
+@property (nonatomic, unsafe_unretained) PdAudioController* _audio;
+
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;
 @property (nonatomic, retain) IBOutlet UIProgressView* progress;
 
@@ -69,9 +71,6 @@
 -(IBAction)instrumentsPressed:(id)sender;
 
 -(IBAction)recordPressed:(id) sender;
-
--(void)toolBarDone;
--(void)toolBarBack;
 
 -(void)receiveFloat:(float)received fromSource:(NSString *)source;
 

@@ -21,7 +21,7 @@
     ViewController* _parent;
 }
 
--(ProgressScreen*)init:(ViewController*)parent;
+-(id)init:(ViewController*)parent;
 
 -(void)show;
 -(void)hide;

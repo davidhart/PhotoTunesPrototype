@@ -11,6 +11,8 @@
 #import "InstrumentSelector.h"
 #import "ProgressScreen.h"
 
+#import <objc/objc-auto.h>
+
 @implementation ViewController
 
 @synthesize imageView;
@@ -145,9 +147,7 @@
     // Init camera picker
     imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.delegate = self;
-    
-    _imagePropertes = [ImageProperties alloc];
-    
+
     // Initialise PD
     [PdBase setDelegate:self];
     _patch = [PdFile openFileNamed:@"soundsystem.pd" path:[[NSBundle mainBundle] bundlePath]];
@@ -293,7 +293,7 @@
     [imageView setImage: image];
     
     // Calculate image properties
-    [_imagePropertes init:image];
+    _imagePropertes = [[ImageProperties alloc] init:image];
     
     // Update the song
     [self updateSongValues];
@@ -370,6 +370,7 @@
             numOfLoops = 0;
             melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :(sliceAv)];
             NSLog(@"%f", sliceAv);
+            objc_collect(OBJC_COLLECT_IF_NEEDED);
         }
         else 
         {

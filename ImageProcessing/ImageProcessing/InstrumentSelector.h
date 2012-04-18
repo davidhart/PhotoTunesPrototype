@@ -22,7 +22,7 @@
     ViewController* _parent;
 }
 
--(InstrumentSelector*)init:(ViewController*) parent;
+-(id)init:(ViewController*) parent;
 
 -(void)show;
 -(void)hide;

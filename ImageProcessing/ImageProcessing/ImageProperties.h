@@ -29,7 +29,7 @@
     
 }
 
--(void)init:(UIImage*)image;
+-(id)init:(UIImage*)image;
 -(ImageSlice*)getSlice:(int)slice;
 -(unsigned int)numSlices;
 
