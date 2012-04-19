@@ -11,22 +11,20 @@
 
 @interface ImageProperties : NSObject
 {
-    UIImage* _image;
-    NSMutableArray* _slices;
-    unsigned int _numSlices;
+    @private UIImage* _image;
+    @private NSMutableArray* _slices;
+    @private unsigned int _numSlices;
     
-    UInt8 _averageRed;
-    UInt8 _averageGreen;
-    UInt8 _averageBlue;
+    @private UInt8 _averageRed;
+    @private UInt8 _averageGreen;
+    @private UInt8 _averageBlue;
     
-    UInt8 _averageHue;
-    UInt8 _averageSat;
-    UInt8 _averageVal;
+    @private UInt8 _averageHue;
+    @private UInt8 _averageSat;
+    @private UInt8 _averageVal;
     
-    float _deviationVal;
-    float _deviationSat;
-
-    
+    @private float _deviationVal;
+    @private float _deviationSat;
 }
 
 -(id)init:(UIImage*)image;

@@ -17,30 +17,28 @@
 
 @interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
-    PdFile * _patch;
-    PdAudioController * _audio;
-    UIImageView* imageView;
-    UIProgressView* progress;
-    ImageProperties* _imagePropertes;
+    @private PdFile * _patch;
+    @private __unsafe_unretained PdAudioController * _audio;
+    @private UIImageView* imageView;
+    @private UIProgressView* progress;
+    @private ImageProperties* _imagePropertes;
 
-    UIImagePickerController* imagePickerController;
+    @private UIImagePickerController* imagePickerController;
     
-    InstrumentSelector* _instrumentSelector;
-    ProgressScreen* _progressScreen;
+    @private InstrumentSelector* _instrumentSelector;
+    @private ProgressScreen* _progressScreen;
     
-    float _progressValue;
-    int _numNotes;
-    int _numIntruments;
-    int _activeInstrument;
+    @private float _progressValue;
+    @private int _numNotes;
+    @private int _numIntruments;
+    @private int _activeInstrument;
  
-    float _currentDrumVolume;
-    float _currentMelodyVolume;
+    @private float _currentDrumVolume;
+    @private float _currentMelodyVolume;
     
-    bool _repeatOn;
-    bool _playing;
+    @private bool _repeatOn;
+    @private bool _playing;
 }
-
-@property (nonatomic, unsafe_unretained) PdAudioController* _audio;
 
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;
 @property (nonatomic, retain) IBOutlet UIProgressView* progress;

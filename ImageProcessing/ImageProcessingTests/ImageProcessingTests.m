@@ -28,11 +28,11 @@
 
 - (void)testImageSlice
 {
-    ImageSlice* slice = [ImageSlice alloc];
+    UInt8 pixels [] = { 0xFFu, 0xFFu, 0xFFu, 0xFFu };
+    
+    ImageSlice* slice = [[ImageSlice alloc] init: pixels: 4: 1];
     STAssertNotNil(slice, @"Error creating slice");
     
-    UInt8 pixels [] = { 0xFFu, 0xFFu, 0xFFu, 0xFFu };
-    [slice init: pixels: 4: 1];
     
     STAssertEquals([slice getAverageRed], pixels[0], @"Error average red value incorrect (1x1 image)");
     STAssertEquals([slice getAverageGreen], pixels[1], @"Error average green value incorrect (1x1 image)");
@@ -41,7 +41,8 @@
     UInt8 pixels2 [] ={ 0xFFu, 0xFFu, 0xFFu, 0xFFu, 
         0x0u, 0x0u, 0x0u, 0xFFu };
     
-    [slice init: pixels2: 4: 2];
+    slice = [[ImageSlice alloc] init: pixels2: 4: 2];
+    STAssertNotNil(slice, @"Error creating slice");
     
     STAssertEquals([slice getAverageRed], (UInt8)127, @"Error average red value incorrect (1x2 image)");
     STAssertEquals([slice getAverageGreen], (UInt8)127, @"Error average green value incorrect (1x2 image)");
@@ -51,7 +52,8 @@
     UInt8 pixels3 [] ={ 0x2u, 0x2u, 0x2u, 0x2u, 0x20u, 0x20u, 0x20u, 0xFFu, 
         0x0u, 0x0u, 0x0u, 0xFFu, 0x0u, 0x0u, 0x0u, 0xFFu };
     
-    [slice init: pixels3: 8: 2];
+    slice = [[ImageSlice alloc] init: pixels3: 8: 2];
+    STAssertNotNil(slice, @"Error creating slice");
     
     STAssertEquals([slice getAverageRed], (UInt8)0x1u, @"Error average red value incorrect (2x2 image)");
     STAssertEquals([slice getAverageGreen], (UInt8)0x1u, @"Error average green value incorrect (2x2 image)");
@@ -105,11 +107,8 @@
 	UIImage *image = [UIImage imageWithCGImage:newCGImage];
 	CGContextRelease(context);
     
-    ImageProperties* imageProperties = [ImageProperties alloc];
-    STAssertNotNil(imageProperties, @"Error could not create image properties");
-    
-    [imageProperties init:image];
-    
+    ImageProperties* imageProperties = [[ImageProperties alloc] init: image];
+    STAssertNotNil(imageProperties, @"Error could not create image properties");    
     STAssertEquals([imageProperties numSlices], 5u, @"Error incorrect number of slices");
     
     for (int i = 0; i < 5; ++i)

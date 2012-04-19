@@ -12,13 +12,12 @@
 
 @interface ProgressScreen : NSObject
 {
-    UIToolbar* _toolbar;
-    UIView* _subView;
-    UILabel* _titleLabel;
+    @private UIToolbar* _toolbar;
+    @private UIView* _subView;
+    @private UILabel* _titleLabel;
+    @private UIProgressView* _progressView;
     
-    UIProgressView* _progressView;
-    
-    ViewController* _parent;
+    @private __unsafe_unretained ViewController* _parent;
 }
 
 -(id)init:(ViewController*)parent;

@@ -10,17 +10,10 @@
 #import "PdAudioController.h"
 #import "ViewController.h"
 
-@interface AppDelegate ()
-
-@property (nonatomic, retain) PdAudioController *audioController;
-
-@end
-
 @implementation AppDelegate
 
 @synthesize window;
 @synthesize viewController;
-@synthesize audioController = audioController;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -28,10 +21,10 @@
     [self.window addSubview:[self.viewController view]];
     [self.window makeKeyAndVisible];
     
-    self.audioController = [[PdAudioController alloc] init];
-	[self.audioController configureAmbientWithSampleRate:22050 numberChannels:1 mixingEnabled:YES];
-	[self.audioController setActive:YES];
-	[self.audioController print];
+    audioController = [[PdAudioController alloc] init];
+	[audioController configureAmbientWithSampleRate:22050 numberChannels:1 mixingEnabled:YES];
+	[audioController setActive:YES];
+	[audioController print];
 
     [viewController initialize: audioController];
     

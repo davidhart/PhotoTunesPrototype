@@ -10,15 +10,15 @@
 
 @interface ImageSlice : NSObject
 {
-    unsigned int _height;
+    @private unsigned int _height;
     
-    UInt8 _averageRed;
-    UInt8 _averageBlue;
-    UInt8 _averageGreen;
+    @private UInt8 _averageRed;
+    @private UInt8 _averageBlue;
+    @private UInt8 _averageGreen;
     
-    UInt8 _averageHue;
-    UInt8 _averageSat;
-    UInt8 _averageVal;
+    @private UInt8 _averageHue;
+    @private UInt8 _averageSat;
+    @private UInt8 _averageVal;
 }
 
 -(id)init:(const UInt8*)data: (uint)stride: (uint)height;

@@ -12,14 +12,14 @@
 
 @interface InstrumentSelector : NSObject <UIPickerViewDataSource, UIPickerViewDelegate>
 {
-    int _activeSelection;
-    int _currentSelection;
+    @private int _activeSelection;
+    @private int _currentSelection;
     
-    UIPickerView* _myPickerView;
-    UIToolbar* _toolbar;
-    UIView* _subView;
+    @private UIPickerView* _myPickerView;
+    @private UIToolbar* _toolbar;
+    @private UIView* _subView;
     
-    ViewController* _parent;
+    @private __unsafe_unretained ViewController* _parent;
 }
 
 -(id)init:(ViewController*) parent;

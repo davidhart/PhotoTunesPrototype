@@ -13,7 +13,7 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 {
-    PdAudioController* audioController;
+    @private PdAudioController* audioController;
 }
 
 @property (nonatomic, strong) IBOutlet UIWindow* window;
