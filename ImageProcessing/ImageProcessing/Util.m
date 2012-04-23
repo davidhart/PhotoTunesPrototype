@@ -62,6 +62,8 @@
 
 +(CGRect)frameForImage:(UIImage*)image inImageViewAspectFit:(UIImageView*)imageView
 {
+    // image.size.height returning wrong size on ios 4????
+    
     float imageRatio = image.size.width / image.size.height;
     
     float viewRatio = imageView.frame.size.width / imageView.frame.size.height;

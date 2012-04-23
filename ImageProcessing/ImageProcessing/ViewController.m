@@ -301,7 +301,7 @@
     // Resize progress bar to fit underneath scaled image
     CGRect onScreenRect = [Util frameForImage:image inImageViewAspectFit:imageView];
     onScreenRect.origin.y = onScreenRect.origin.y + onScreenRect.size.height;
-    onScreenRect.size.height = progress.frame.size.height;
+    onScreenRect.size.height = 10; //progress.frame.size.height;
     progress.frame = onScreenRect;
     
     // Stop playback
@@ -312,7 +312,6 @@
 {
     // Stop playback first
     [self stopPressed:self];
-    
     float* values = malloc(_numNotes * sizeof(float) * _numIntruments);
     
     float* bassNotes = values;
@@ -342,27 +341,26 @@
     //float tempNum = 0;
     int prevSliceNumber = 0;
     
-    
     for (int i = 0; i < _numNotes; i++)
     {
-        //ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
-        
+        ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
         
         //OPTTIMISATION - move i != 0 check out of loop
         //TOMS SHIT <-----
         int sliceBack;
-        ImageSlice* slice;
+        //ImageSlice* slice;
         if ( i != 0 )
         {
             sliceBack = (int)(((i / (float)_numNotes) * ([_imagePropertes numSlices])) - prevSliceNumber) - 1;
 
-            float sliceAv;
+            float sliceAv = 0;
             int numOfLoops = 0;
 
             for (int j = i; (j - i) < sliceBack; j++)
             {
                 //-2 due to end slice and due to not wanting to go as far back as previous slice
-                slice = [_imagePropertes getSlice: (int)(((i) / (float)_numNotes) * ([_imagePropertes numSlices]-1)-j-1)];
+                int sliceIndex = (int)(((i) / (float)_numNotes) * ([_imagePropertes numSlices]-1)-j-1);
+                slice = [_imagePropertes getSlice: sliceIndex];
                 sliceAv += ([slice getAverageVal] / 255.0f);
                 numOfLoops++;    
             }
@@ -371,6 +369,7 @@
             melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :(sliceAv)];
             NSLog(@"%f", sliceAv);
             objc_collect(OBJC_COLLECT_IF_NEEDED);
+            fflush(stderr);
         }
         else 
         {
@@ -408,7 +407,7 @@
         
         if (splashNotes[i] > 0)
             splashNotes[i] += - splashVariation / 2 - splashVariation * [slice getAverageGreen] / 255.0f;
-            
+          
         
         bassNotes[i] *= bassVolume;
         hihatNotes[i] *= hihatVolume;
@@ -432,6 +431,10 @@
 +(float)getNote:(float*)scale :(int)size :(float)locationOnScale
 {
     int index = (int)(locationOnScale * (size - 1) + 0.5f);
+    
+    assert(index >= 0);
+    assert(index < size);
+    
     return scale[index];
 }
 

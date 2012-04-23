@@ -29,6 +29,7 @@ UIImage* scaleAndRotateImage(UIImage* image);
         NSLog(@"width: %u height: %u", width, height);
         
         _slices = [NSMutableArray arrayWithCapacity:width];
+        _numSlices = width;
         
         unsigned int red = 0;
         unsigned int green = 0;
@@ -78,14 +79,14 @@ UIImage* scaleAndRotateImage(UIImage* image);
         _deviationVal = sqrt(val / (float)width) / 255.0f;
         _deviationSat = sqrt(sat / (float)width) / 255.0f;
         
-        
-        _numSlices = width;
     }
     return self;
 }
 
 -(ImageSlice*)getSlice:(int)slice
 {
+    assert(slice < _numSlices);
+    assert(slice >= 0);
     return [_slices objectAtIndex:slice];
 }
 
