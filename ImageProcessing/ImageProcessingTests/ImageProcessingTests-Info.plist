@@ -18,5 +18,14 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>phototunes</key>
+			<string>None</string>
+			<key>CFBundleURLName</key>
+			<string>com.hearingpictures.phototunes</string>
+		</dict>
+	</array>
 </dict>
 </plist>

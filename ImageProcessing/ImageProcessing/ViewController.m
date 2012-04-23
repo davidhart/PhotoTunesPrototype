@@ -10,6 +10,7 @@
 #import "Util.h"
 #import "InstrumentSelector.h"
 #import "ProgressScreen.h"
+#import <SCUI.h>
 
 #import <objc/objc-auto.h>
 
@@ -122,6 +123,55 @@
     if (_repeatOn)
         [PdBase sendFloat: 1.0f toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
     
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];
+    NSString *savadataPath = [path stringByAppendingPathComponent:@"savedata.wav"];
+    
+    //NSString* urlAddress = [[NSBundle mainBundle] pathForResource:@"a" ofType:@"wav"];
+    
+    NSLog(@"%s", [savadataPath cString]);
+    
+    NSURL *trackURL = [NSURL fileURLWithPath:savadataPath]; // ... an URL to the audio file
+    
+    SCShareViewController* shareViewController = 
+        [SCShareViewController shareViewControllerWithFileURL:trackURL
+        completionHandler:^
+         (NSDictionary *trackInfo, NSError *error)
+         {
+             if (SC_CANCELED(error))
+             {
+                 NSLog(@"Canceled!");
+             }
+             else if (error)
+             {
+                 NSLog(@"Ooops, something went wrong: %@", [error localizedDescription]);
+             }
+             else
+             {
+                 // If you want to do something with the uploaded
+                 // track this is the right place for that.
+                 NSLog(@"Uploaded track: %@", trackInfo);
+             }
+        }];
+    
+    // If your app is a registered foursquare app, you can set the client id and secret.
+    // The user will then see a place picker where a location can be selected.
+    // If you don't set them, the user sees a plain plain text filed for the place.
+    /*
+     [shareViewController setFoursquareClientID:@"<foursquare client id>"
+     clientSecret:@"<foursquare client secret>"];
+     */
+    
+    // We can preset the title ...
+    [shareViewController setTitle:@"Created with the phototunes app!"];
+    
+    // ... and other options like the private flag.
+    [shareViewController setPrivate:NO];
+    
+    // Now present the share view controller.
+    [self presentModalViewController:shareViewController animated:YES];
+    
     [_progressScreen hide];
 }
 
@@ -133,6 +183,11 @@
 
 - (void)initialize: (PdAudioController*) audio
 {
+    // Initialise soundcloud API
+    [SCSoundCloud setClientID: @"c670c061ac40359ac3ca5f2213836714"
+                       secret: @"fe998800f4183f2109ffa0b84bbd8c3b"
+                  redirectURL: [NSURL URLWithString:@"phototunes://oauth"]];
+    
     _audio = audio;
     
     // Initialise song length
@@ -166,7 +221,7 @@
     // Setup path in appdata folder for streaming the audio
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
-    NSString *samplePath = [path stringByAppendingPathComponent:@"sample.wav"];
+    NSString *samplePath = [path stringByAppendingPathComponent:@"savedata.wav"];
     [PdBase sendMessage:samplePath withArguments:NULL toReceiver:[NSString stringWithFormat:@"%d-saveFile", _patch.dollarZero]];
     
     // Initialise default image
