@@ -69,6 +69,9 @@
 		BB873A5514E9215C00CE09FA /* a.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5414E9215C00CE09FA /* a.wav */; };
 		BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9AE722148D2868004E608A /* AudioToolbox.framework */; };
 		BB9AE725148D28DA004E608A /* soundsystem.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB9AE724148D28DA004E608A /* soundsystem.pd */; };
+		BBC0C4E3154ED9630024197E /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C4E2154ED9630024197E /* camera.png */; };
+		BBC0C4E6154EDBCA0024197E /* cameratiny.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C4E4154EDBCA0024197E /* cameratiny.png */; };
+		BBC0C4E7154EDBCA0024197E /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C4E5154EDBCA0024197E /* share.png */; };
 		BBCFADD01517471B00671008 /* InstrumentSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCFADCF1517471B00671008 /* InstrumentSelector.m */; };
 		BBCFADD3151773B500671008 /* ProgressScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCFADD2151773B500671008 /* ProgressScreen.m */; };
 		BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA514D2E81200D54C01 /* homeIcon.png */; };
@@ -270,6 +273,9 @@
 		BB873A5414E9215C00CE09FA /* a.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = a.wav; sourceTree = "<group>"; };
 		BB9AE722148D2868004E608A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BB9AE724148D28DA004E608A /* soundsystem.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = soundsystem.pd; sourceTree = "<group>"; };
+		BBC0C4E2154ED9630024197E /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		BBC0C4E4154EDBCA0024197E /* cameratiny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameratiny.png; sourceTree = "<group>"; };
+		BBC0C4E5154EDBCA0024197E /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		BBCFADCE1517471A00671008 /* InstrumentSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstrumentSelector.h; sourceTree = "<group>"; };
 		BBCFADCF1517471B00671008 /* InstrumentSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstrumentSelector.m; sourceTree = "<group>"; };
 		BBCFADD1151773B500671008 /* ProgressScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressScreen.h; sourceTree = "<group>"; };
@@ -392,6 +398,9 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BBC0C4E4154EDBCA0024197E /* cameratiny.png */,
+				BBC0C4E5154EDBCA0024197E /* share.png */,
+				BBC0C4E2154ED9630024197E /* camera.png */,
 				BB05616F154EA21000FE1640 /* phototunes.png */,
 				BB05616D154EA17D00FE1640 /* simplereplaybuttonblue.png */,
 				BB056169154E9BDE00FE1640 /* playbar.png */,
@@ -723,6 +732,9 @@
 				BB05616C154E9DD900FE1640 /* synth.wav in Resources */,
 				BB05616E154EA17D00FE1640 /* simplereplaybuttonblue.png in Resources */,
 				BB056170154EA21000FE1640 /* phototunes.png in Resources */,
+				BBC0C4E3154ED9630024197E /* camera.png in Resources */,
+				BBC0C4E6154EDBCA0024197E /* cameratiny.png in Resources */,
+				BBC0C4E7154EDBCA0024197E /* share.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

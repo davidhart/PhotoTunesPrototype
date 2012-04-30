@@ -53,9 +53,10 @@ UIImage* scaleAndRotateImage(UIImage* image);
             val += [slice getAverageVal];
         }
         
+        /*
         CGDataProviderRelease(provider);
         CFRelease(imageData);
-        
+        */
         _averageRed = (UInt8)(red / width);
         _averageGreen = (UInt8)(green / width);
         _averageBlue = (UInt8)(blue / width);
