@@ -77,9 +77,15 @@
     [PdBase sendFloat: _repeatOn ? 1.0f : 0.0f toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
     
     if (_repeatOn)
-        [buttonRepeat setTitle:@"1" forState:UIControlStateNormal];
+    {
+        [buttonRepeat setImage:[UIImage imageNamed:@"simplereplaybuttonblue.png"] forState:UIControlStateNormal];
+        
+    }
     else
-        [buttonRepeat setTitle:@"0" forState:UIControlStateNormal];
+    {
+        [buttonRepeat setImage:[UIImage imageNamed:@"replaybutton.png"] forState:UIControlStateNormal];
+        
+    }
 }
 
 -(void)stopPressed:(id)sender
@@ -127,10 +133,6 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *path = [paths objectAtIndex:0];
     NSString *savadataPath = [path stringByAppendingPathComponent:@"savedata.wav"];
-    
-    //NSString* urlAddress = [[NSBundle mainBundle] pathForResource:@"a" ofType:@"wav"];
-    
-    NSLog(@"%s", [savadataPath cString]);
     
     NSURL *trackURL = [NSURL fileURLWithPath:savadataPath]; // ... an URL to the audio file
     
@@ -191,7 +193,7 @@
     _audio = audio;
     
     // Initialise song length
-    _numNotes = 8;
+    _numNotes = 12;
     
     // 5 drums + 1 instrument
     _numIntruments = 6;
@@ -225,9 +227,13 @@
     [PdBase sendMessage:samplePath withArguments:NULL toReceiver:[NSString stringWithFormat:@"%d-saveFile", _patch.dollarZero]];
     
     // Initialise default image
-    UIImage* image = [UIImage imageNamed:@"images.jpeg"];
+    UIImage* image = [UIImage imageNamed:@"phototunes.png"];
     //UIImage* image = [UIImage imageNamed:@"test2.jpg"];
     [self setImage: image];
+    
+    // Hack for iPhone 4, fix the rectangle for the initial image
+    progress.frame = CGRectMake(31, 225, 257, 10);
+    
     
     _instrumentSelector = [[InstrumentSelector alloc] init: self];
     _progressScreen = [[ProgressScreen alloc] init: self];

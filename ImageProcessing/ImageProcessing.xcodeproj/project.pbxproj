@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		BB037C27151799FB00DE56C1 /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB037C26151799FB00DE56C1 /* test2.jpg */; };
+		BB056164154E993600FE1640 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056163154E993600FE1640 /* Default.png */; };
+		BB056166154E994800FE1640 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056165154E994800FE1640 /* Default@2x.png */; };
+		BB056168154E9AEE00FE1640 /* helpIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056167154E9AEE00FE1640 /* helpIcon.png */; };
+		BB05616A154E9BDE00FE1640 /* playbar.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056169154E9BDE00FE1640 /* playbar.png */; };
+		BB05616C154E9DD900FE1640 /* synth.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB05616B154E9DD900FE1640 /* synth.wav */; };
+		BB05616E154EA17D00FE1640 /* simplereplaybuttonblue.png in Resources */ = {isa = PBXBuildFile; fileRef = BB05616D154EA17D00FE1640 /* simplereplaybuttonblue.png */; };
+		BB056170154EA21000FE1640 /* phototunes.png in Resources */ = {isa = PBXBuildFile; fileRef = BB05616F154EA21000FE1640 /* phototunes.png */; };
 		BB2B1350150E443400443348 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB2B134F150E443400443348 /* AVFoundation.framework */; };
 		BB36870C150623D3002624BB /* simpleinstrument.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB36870B150623D3002624BB /* simpleinstrument.pd */; };
 		BB36870E150623DC002624BB /* filterzero.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB36870D150623DC002624BB /* filterzero.pd */; };
@@ -29,6 +36,12 @@
 		BB3ACB6E1483E614003014D1 /* ImageSlice.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3ACB6C1483E614003014D1 /* ImageSlice.m */; };
 		BB46572314CDAC9300318F89 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3ACB351483E5DD003014D1 /* CoreGraphics.framework */; };
 		BB46572614CDB41E00318F89 /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46572514CDB41E00318F89 /* Util.m */; };
+		BB51EF7C154E90D800139C27 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BB51EF79154E90D800139C27 /* icon.png */; };
+		BB51EF7D154E90D800139C27 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB51EF7A154E90D800139C27 /* icon@2x.png */; };
+		BB51EF8B154E94F500139C27 /* savebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = BB51EF8A154E94F500139C27 /* savebutton.png */; };
+		BB51EF8F154E982500139C27 /* Microphone_Icon_clip_art_small.png in Resources */ = {isa = PBXBuildFile; fileRef = BB51EF8E154E982500139C27 /* Microphone_Icon_clip_art_small.png */; };
+		BB51EF91154E98B400139C27 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BB51EF90154E98B400139C27 /* Default.png */; };
+		BB51EF93154E98B900139C27 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB51EF92154E98B900139C27 /* Default@2x.png */; };
 		BB61EB6B15455CFF0000F2FE /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB61EB5315455C910000F2FE /* libJSONKit.a */; };
 		BB61EB6C15455CFF0000F2FE /* libOAuth2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB61EB6115455C970000F2FE /* libOAuth2Client.a */; };
 		BB61EB6D15455CFF0000F2FE /* libOHAttributedLabel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB61EB6A15455C9D0000F2FE /* libOHAttributedLabel.a */; };
@@ -187,6 +200,13 @@
 
 /* Begin PBXFileReference section */
 		BB037C26151799FB00DE56C1 /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
+		BB056163154E993600FE1640 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BB056165154E994800FE1640 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BB056167154E9AEE00FE1640 /* helpIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpIcon.png; sourceTree = "<group>"; };
+		BB056169154E9BDE00FE1640 /* playbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbar.png; sourceTree = "<group>"; };
+		BB05616B154E9DD900FE1640 /* synth.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = synth.wav; sourceTree = "<group>"; };
+		BB05616D154EA17D00FE1640 /* simplereplaybuttonblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simplereplaybuttonblue.png; sourceTree = "<group>"; };
+		BB05616F154EA21000FE1640 /* phototunes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phototunes.png; sourceTree = "<group>"; };
 		BB2B134F150E443400443348 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BB36870B150623D3002624BB /* simpleinstrument.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simpleinstrument.pd; sourceTree = "<group>"; };
 		BB36870D150623DC002624BB /* filterzero.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = filterzero.pd; sourceTree = "<group>"; };
@@ -216,6 +236,12 @@
 		BB3ACB6C1483E614003014D1 /* ImageSlice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageSlice.m; sourceTree = "<group>"; };
 		BB46572414CDB41E00318F89 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		BB46572514CDB41E00318F89 /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
+		BB51EF79154E90D800139C27 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		BB51EF7A154E90D800139C27 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		BB51EF8A154E94F500139C27 /* savebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = savebutton.png; sourceTree = "<group>"; };
+		BB51EF8E154E982500139C27 /* Microphone_Icon_clip_art_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Microphone_Icon_clip_art_small.png; sourceTree = "<group>"; };
+		BB51EF90154E98B400139C27 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		BB51EF92154E98B900139C27 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BB61EB3515455C540000F2FE /* SoundCloudAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoundCloudAPI.xcodeproj; path = CocoaSoundCloudAPI/SoundCloudAPI.xcodeproj; sourceTree = "<group>"; };
 		BB61EB3E15455C890000F2FE /* SoundCloudUI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoundCloudUI.xcodeproj; path = CocoaSoundCloudUI/SoundCloudUI.xcodeproj; sourceTree = "<group>"; };
 		BB61EB4A15455C910000F2FE /* JSONKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSONKit.xcodeproj; path = JSONKit/JSONKit.xcodeproj; sourceTree = "<group>"; };
@@ -295,6 +321,10 @@
 		BB3ACB221483E5DD003014D1 = {
 			isa = PBXGroup;
 			children = (
+				BB056165154E994800FE1640 /* Default@2x.png */,
+				BB056163154E993600FE1640 /* Default.png */,
+				BB51EF92154E98B900139C27 /* Default@2x.png */,
+				BB51EF90154E98B400139C27 /* Default.png */,
 				BB61EB7C15455D6D0000F2FE /* Libs */,
 				BB3ACB371483E5DD003014D1 /* ImageProcessing */,
 				BB3ACB581483E5DE003014D1 /* ImageProcessingTests */,
@@ -362,6 +392,14 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB05616F154EA21000FE1640 /* phototunes.png */,
+				BB05616D154EA17D00FE1640 /* simplereplaybuttonblue.png */,
+				BB056169154E9BDE00FE1640 /* playbar.png */,
+				BB056167154E9AEE00FE1640 /* helpIcon.png */,
+				BB51EF8E154E982500139C27 /* Microphone_Icon_clip_art_small.png */,
+				BB51EF8A154E94F500139C27 /* savebutton.png */,
+				BB51EF79154E90D800139C27 /* icon.png */,
+				BB51EF7A154E90D800139C27 /* icon@2x.png */,
 				BB61EBA4154569CC0000F2FE /* SoundCloud.bundle */,
 				BB83378B150A5BF400D1E52E /* pausebutton.png */,
 				BB833789150A5B1A00D1E52E /* replaybutton.png */,
@@ -372,6 +410,7 @@
 				BB67251315064D9600D96D0D /* ride.wav */,
 				BB67251415064D9600D96D0D /* snare.wav */,
 				BB67251515064D9600D96D0D /* splash.wav */,
+				BB05616B154E9DD900FE1640 /* synth.wav */,
 				BB36870D150623DC002624BB /* filterzero.pd */,
 				BB36870B150623D3002624BB /* simpleinstrument.pd */,
 				BB037C26151799FB00DE56C1 /* test2.jpg */,
@@ -671,6 +710,19 @@
 				BB83378C150A5BF400D1E52E /* pausebutton.png in Resources */,
 				BB037C27151799FB00DE56C1 /* test2.jpg in Resources */,
 				BB61EBA5154569CC0000F2FE /* SoundCloud.bundle in Resources */,
+				BB51EF7C154E90D800139C27 /* icon.png in Resources */,
+				BB51EF7D154E90D800139C27 /* icon@2x.png in Resources */,
+				BB51EF8B154E94F500139C27 /* savebutton.png in Resources */,
+				BB51EF8F154E982500139C27 /* Microphone_Icon_clip_art_small.png in Resources */,
+				BB51EF91154E98B400139C27 /* Default.png in Resources */,
+				BB51EF93154E98B900139C27 /* Default@2x.png in Resources */,
+				BB056164154E993600FE1640 /* Default.png in Resources */,
+				BB056166154E994800FE1640 /* Default@2x.png in Resources */,
+				BB056168154E9AEE00FE1640 /* helpIcon.png in Resources */,
+				BB05616A154E9BDE00FE1640 /* playbar.png in Resources */,
+				BB05616C154E9DD900FE1640 /* synth.wav in Resources */,
+				BB05616E154EA17D00FE1640 /* simplereplaybuttonblue.png in Resources */,
+				BB056170154EA21000FE1640 /* phototunes.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

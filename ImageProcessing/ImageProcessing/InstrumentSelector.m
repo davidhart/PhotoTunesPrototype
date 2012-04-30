@@ -93,7 +93,7 @@
 // tell the picker the title for a given component
 -(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component 
 {    
-    NSString *instrumentList[] = {@"Guitar", @"Bell", @"Test 3", @"Test 4", @"Test 5"};
+    NSString *instrumentList[] = {@"Guitar", @"Bell", @"Electronic", @"Test 4", @"Test 5"};
     
     return instrumentList[row];
 } 
@@ -108,7 +108,7 @@
 // Done button on toolbar in UIPicker
 -(void)toolBarDone
 {
-    NSString *instrumentList[] = {@"guitar.wav", @"bell.aiff", @"Test 3", @"Test 4", @"Test 5"};
+    NSString *instrumentList[] = {@"guitar.wav", @"bell.aiff", @"synth.wav", @"Test 4", @"Test 5"};
     
     _activeSelection = _currentSelection;
     [_parent changeInstrument:instrumentList[_activeSelection]];

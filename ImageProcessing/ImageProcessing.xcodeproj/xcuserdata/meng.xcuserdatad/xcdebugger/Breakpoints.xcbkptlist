@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "ImageProcessing/ViewController.m"
-         timestampString = "356870286.657987"
+         timestampString = "357474632.863044"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "506"
-         endingLineNumber = "506"
+         startingLineNumber = "512"
+         endingLineNumber = "512"
          landmarkName = "-stoppedPlaying"
          landmarkType = "5">
       </FileBreakpoint>
