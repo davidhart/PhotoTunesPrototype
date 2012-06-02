@@ -36,8 +36,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="LibPdSharp">
-      <HintPath>libraries\LibPdSharp.dll</HintPath>
+    <Reference Include="LibPdSharp, Version=1.0.4534.38410, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\LibPdSharp.dll</HintPath>
     </Reference>
     <Reference Include="PortAudioSharp, Version=0.19.3.27472, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
