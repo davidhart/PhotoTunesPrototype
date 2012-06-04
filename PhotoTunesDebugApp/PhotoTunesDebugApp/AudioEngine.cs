@@ -13,8 +13,12 @@ namespace PhotoTunesDebugApp
         static IntPtr stream;
         static int handle;
 
-        // Keep this in static memory to stop it being garbage collected at runtime
-        static PortAudio.PaStreamCallbackDelegate delagate = AudioCallback;
+        // Keep these in static memory to stop it being garbage collected at runtime
+        static PortAudio.PaStreamCallbackDelegate renderCallback = AudioCallback;
+        static LibPDBinding.LibPDPrint printCallback = LibPD_Print;
+        static LibPDBinding.LibPDBang bangCallback = LibPD_Bang;
+        static LibPDBinding.LibPDFloat floatCallback = LibPD_Float;
+
 
         static Dictionary<string, Action<float>> floatHandlers = new Dictionary<string,Action<float>>();
         static Dictionary<string, Action> bangHandlers = new Dictionary<string, Action>();
@@ -47,24 +51,23 @@ namespace PhotoTunesDebugApp
         {
             LibPD.ReInit();
 
-            LibPD.Print += new LibPDPrint(LibPD_Print);
+            LibPD.Print += printCallback;
 
-            LibPD.ComputeAudio(true);
+            LibPD.Float += floatCallback;
+            LibPD.Bang += bangCallback;
 
             LibPD.OpenAudio(1, 2, 44100);
+            LibPD.ComputeAudio(true);
             handle = LibPD.OpenPatch("patch/soundsystem.pd");
 
             PortAudio.Pa_Initialize();
             PortAudio.Pa_OpenDefaultStream(out stream, 1, 2, (uint)PortAudio.PaSampleFormat.paFloat32,
                 44100,
                 256,
-                delagate,
+                renderCallback,
                 (IntPtr)null);
 
             PortAudio.Pa_StartStream(stream);
-
-            LibPD.Float += new LibPDFloat(LibPD_Float);
-            LibPD.Bang += new LibPDBang(LibPD_Bang);
         }
 
         static void  LibPD_Bang(string recv)
