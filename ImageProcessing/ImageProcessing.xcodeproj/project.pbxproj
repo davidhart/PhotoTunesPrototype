@@ -72,6 +72,7 @@
 		BBC0C4E3154ED9630024197E /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C4E2154ED9630024197E /* camera.png */; };
 		BBC0C4E6154EDBCA0024197E /* cameratiny.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C4E4154EDBCA0024197E /* cameratiny.png */; };
 		BBC0C4E7154EDBCA0024197E /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C4E5154EDBCA0024197E /* share.png */; };
+		BBC0C4E9154EE2FA0024197E /* folder.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C4E8154EE2FA0024197E /* folder.png */; };
 		BBCFADD01517471B00671008 /* InstrumentSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCFADCF1517471B00671008 /* InstrumentSelector.m */; };
 		BBCFADD3151773B500671008 /* ProgressScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCFADD2151773B500671008 /* ProgressScreen.m */; };
 		BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA514D2E81200D54C01 /* homeIcon.png */; };
@@ -276,6 +277,7 @@
 		BBC0C4E2154ED9630024197E /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		BBC0C4E4154EDBCA0024197E /* cameratiny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameratiny.png; sourceTree = "<group>"; };
 		BBC0C4E5154EDBCA0024197E /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		BBC0C4E8154EE2FA0024197E /* folder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = folder.png; sourceTree = "<group>"; };
 		BBCFADCE1517471A00671008 /* InstrumentSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstrumentSelector.h; sourceTree = "<group>"; };
 		BBCFADCF1517471B00671008 /* InstrumentSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstrumentSelector.m; sourceTree = "<group>"; };
 		BBCFADD1151773B500671008 /* ProgressScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressScreen.h; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BBC0C4E8154EE2FA0024197E /* folder.png */,
 				BBC0C4E4154EDBCA0024197E /* cameratiny.png */,
 				BBC0C4E5154EDBCA0024197E /* share.png */,
 				BBC0C4E2154ED9630024197E /* camera.png */,
@@ -735,6 +738,7 @@
 				BBC0C4E3154ED9630024197E /* camera.png in Resources */,
 				BBC0C4E6154EDBCA0024197E /* cameratiny.png in Resources */,
 				BBC0C4E7154EDBCA0024197E /* share.png in Resources */,
+				BBC0C4E9154EE2FA0024197E /* folder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1061,7 +1065,8 @@
 		BB873A3814E00F6200CE09FA /* Package */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: David Morris (GLQ83WZ2NR)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: University of Hull";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: University of Hull";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageProcessing/ImageProcessing-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1080,6 +1085,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "5ED5365F-0387-453B-863A-9F1FC1166914";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5ED5365F-0387-453B-863A-9F1FC1166914";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Package;

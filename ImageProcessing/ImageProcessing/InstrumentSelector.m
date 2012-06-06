@@ -108,7 +108,7 @@
 // Done button on toolbar in UIPicker
 -(void)toolBarDone
 {
-    NSString *instrumentList[] = {@"guitar.wav", @"bell.aiff", @"synth.wav", @"Test 4", @"Test 5"};
+    NSString *instrumentList[] = {@"a.wav", @"bell.aiff", @"synth.wav", @"Test 4", @"Test 5"};
     
     _activeSelection = _currentSelection;
     [_parent changeInstrument:instrumentList[_activeSelection]];
