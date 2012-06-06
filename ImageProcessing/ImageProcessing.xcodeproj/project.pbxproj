@@ -23,7 +23,7 @@
 		BB3ACB361483E5DD003014D1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3ACB351483E5DD003014D1 /* CoreGraphics.framework */; };
 		BB3ACB3C1483E5DD003014D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB3ACB3A1483E5DD003014D1 /* InfoPlist.strings */; };
 		BB3ACB3E1483E5DD003014D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3ACB3D1483E5DD003014D1 /* main.m */; };
-		BB3ACB421483E5DE003014D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3ACB411483E5DE003014D1 /* AppDelegate.m */; };
+		BB3ACB421483E5DE003014D1 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB3ACB411483E5DE003014D1 /* AppDelegate.mm */; };
 		BB3ACB451483E5DE003014D1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3ACB441483E5DE003014D1 /* ViewController.m */; };
 		BB3ACB481483E5DE003014D1 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB3ACB461483E5DE003014D1 /* ViewController_iPhone.xib */; };
 		BB3ACB4B1483E5DE003014D1 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB3ACB491483E5DE003014D1 /* ViewController_iPad.xib */; };
@@ -67,6 +67,7 @@
 		BB83BC5E14FBC09600226E16 /* libpd-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5ED0C14CD817E005DB0DC /* libpd-ios.a */; };
 		BB873A5314E9214D00CE09FA /* vocoder.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5214E9214D00CE09FA /* vocoder.pd */; };
 		BB873A5514E9215C00CE09FA /* a.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5414E9215C00CE09FA /* a.wav */; };
+		BB956B7C157F8D9E003A7E32 /* complexinstrument.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB956B7B157F8D9E003A7E32 /* complexinstrument.pd */; };
 		BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9AE722148D2868004E608A /* AudioToolbox.framework */; };
 		BB9AE725148D28DA004E608A /* soundsystem.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB9AE724148D28DA004E608A /* soundsystem.pd */; };
 		BBC0C4E3154ED9630024197E /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C4E2154ED9630024197E /* camera.png */; };
@@ -78,6 +79,16 @@
 		BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA514D2E81200D54C01 /* homeIcon.png */; };
 		BBD1BDA814D2E86C00D54C01 /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */; };
 		BBD3328314CD7C0900582A54 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BBD3328214CD7C0900582A54 /* images.jpeg */; };
+		BBF499DF157F80B400D891A7 /* AAFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499D1157F80B400D891A7 /* AAFilter.cpp */; };
+		BBF499E0157F80B400D891A7 /* cpu_detect_x86_gcc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499D3157F80B400D891A7 /* cpu_detect_x86_gcc.cpp */; };
+		BBF499E1157F80B400D891A7 /* FIFOSampleBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499D5157F80B400D891A7 /* FIFOSampleBuffer.cpp */; };
+		BBF499E2157F80B400D891A7 /* FIRFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499D6157F80B400D891A7 /* FIRFilter.cpp */; };
+		BBF499EC157F80C800D891A7 /* mmx_optimized.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499E3157F80C800D891A7 /* mmx_optimized.cpp */; };
+		BBF499ED157F80C800D891A7 /* RateTransposer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499E4157F80C800D891A7 /* RateTransposer.cpp */; };
+		BBF499EE157F80C800D891A7 /* SoundTouch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499E6157F80C800D891A7 /* SoundTouch.cpp */; };
+		BBF499EF157F80C800D891A7 /* soundtouch~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499E7157F80C800D891A7 /* soundtouch~.cpp */; };
+		BBF499F0157F80C800D891A7 /* sse_optimized.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499E9157F80C800D891A7 /* sse_optimized.cpp */; };
+		BBF499F1157F80C800D891A7 /* TDStretch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499EA157F80C800D891A7 /* TDStretch.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,7 +234,7 @@
 		BB3ACB3D1483E5DD003014D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BB3ACB3F1483E5DD003014D1 /* ImageProcessing-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageProcessing-Prefix.pch"; sourceTree = "<group>"; };
 		BB3ACB401483E5DD003014D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		BB3ACB411483E5DE003014D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BB3ACB411483E5DE003014D1 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		BB3ACB431483E5DE003014D1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BB3ACB441483E5DE003014D1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BB3ACB471483E5DE003014D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
@@ -272,6 +283,7 @@
 		BB873A3614DFF77400CE09FA /* ImageProcessing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ImageProcessing.entitlements; sourceTree = "<group>"; };
 		BB873A5214E9214D00CE09FA /* vocoder.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vocoder.pd; sourceTree = "<group>"; };
 		BB873A5414E9215C00CE09FA /* a.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = a.wav; sourceTree = "<group>"; };
+		BB956B7B157F8D9E003A7E32 /* complexinstrument.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = complexinstrument.pd; sourceTree = "<group>"; };
 		BB9AE722148D2868004E608A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BB9AE724148D28DA004E608A /* soundsystem.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = soundsystem.pd; sourceTree = "<group>"; };
 		BBC0C4E2154ED9630024197E /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
@@ -286,6 +298,28 @@
 		BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
 		BBD3328214CD7C0900582A54 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
 		BBE5ED0414CD817E005DB0DC /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = libpd/libpd.xcodeproj; sourceTree = "<group>"; };
+		BBF499D1157F80B400D891A7 /* AAFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AAFilter.cpp; path = ImageProcessing/Soundtouch/AAFilter.cpp; sourceTree = "<group>"; };
+		BBF499D2157F80B400D891A7 /* AAFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAFilter.h; path = ImageProcessing/Soundtouch/AAFilter.h; sourceTree = "<group>"; };
+		BBF499D3157F80B400D891A7 /* cpu_detect_x86_gcc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cpu_detect_x86_gcc.cpp; path = ImageProcessing/Soundtouch/cpu_detect_x86_gcc.cpp; sourceTree = "<group>"; };
+		BBF499D4157F80B400D891A7 /* cpu_detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpu_detect.h; path = ImageProcessing/Soundtouch/cpu_detect.h; sourceTree = "<group>"; };
+		BBF499D5157F80B400D891A7 /* FIFOSampleBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FIFOSampleBuffer.cpp; path = ImageProcessing/Soundtouch/FIFOSampleBuffer.cpp; sourceTree = "<group>"; };
+		BBF499D6157F80B400D891A7 /* FIRFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FIRFilter.cpp; path = ImageProcessing/Soundtouch/FIRFilter.cpp; sourceTree = "<group>"; };
+		BBF499D7157F80B400D891A7 /* FIRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FIRFilter.h; path = ImageProcessing/Soundtouch/FIRFilter.h; sourceTree = "<group>"; };
+		BBF499D9157F80B400D891A7 /* FIFOSampleBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIFOSampleBuffer.h; sourceTree = "<group>"; };
+		BBF499DA157F80B400D891A7 /* FIFOSamplePipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIFOSamplePipe.h; sourceTree = "<group>"; };
+		BBF499DB157F80B400D891A7 /* m_pd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m_pd.h; sourceTree = "<group>"; };
+		BBF499DC157F80B400D891A7 /* SoundTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundTouch.h; sourceTree = "<group>"; };
+		BBF499DD157F80B400D891A7 /* soundtouch_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundtouch_config.h; sourceTree = "<group>"; };
+		BBF499DE157F80B400D891A7 /* STTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTypes.h; sourceTree = "<group>"; };
+		BBF499E3157F80C800D891A7 /* mmx_optimized.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mmx_optimized.cpp; path = ImageProcessing/Soundtouch/mmx_optimized.cpp; sourceTree = "<group>"; };
+		BBF499E4157F80C800D891A7 /* RateTransposer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RateTransposer.cpp; path = ImageProcessing/Soundtouch/RateTransposer.cpp; sourceTree = "<group>"; };
+		BBF499E5157F80C800D891A7 /* RateTransposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RateTransposer.h; path = ImageProcessing/Soundtouch/RateTransposer.h; sourceTree = "<group>"; };
+		BBF499E6157F80C800D891A7 /* SoundTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundTouch.cpp; path = ImageProcessing/Soundtouch/SoundTouch.cpp; sourceTree = "<group>"; };
+		BBF499E7157F80C800D891A7 /* soundtouch~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "soundtouch~.cpp"; path = "ImageProcessing/Soundtouch/soundtouch~.cpp"; sourceTree = "<group>"; };
+		BBF499E8157F80C800D891A7 /* soundtouch~.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "soundtouch~.h"; path = "ImageProcessing/Soundtouch/soundtouch~.h"; sourceTree = "<group>"; };
+		BBF499E9157F80C800D891A7 /* sse_optimized.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sse_optimized.cpp; path = ImageProcessing/Soundtouch/sse_optimized.cpp; sourceTree = "<group>"; };
+		BBF499EA157F80C800D891A7 /* TDStretch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TDStretch.cpp; path = ImageProcessing/Soundtouch/TDStretch.cpp; sourceTree = "<group>"; };
+		BBF499EB157F80C800D891A7 /* TDStretch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDStretch.h; path = ImageProcessing/Soundtouch/TDStretch.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +363,7 @@
 		BB3ACB221483E5DD003014D1 = {
 			isa = PBXGroup;
 			children = (
+				BBF499D0157F808600D891A7 /* Soundtouch */,
 				BB056165154E994800FE1640 /* Default@2x.png */,
 				BB056163154E993600FE1640 /* Default.png */,
 				BB51EF92154E98B900139C27 /* Default@2x.png */,
@@ -373,7 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				BB3ACB401483E5DD003014D1 /* AppDelegate.h */,
-				BB3ACB411483E5DE003014D1 /* AppDelegate.m */,
+				BB3ACB411483E5DE003014D1 /* AppDelegate.mm */,
 				BBD1BDA514D2E81200D54C01 /* homeIcon.png */,
 				BB873A3614DFF77400CE09FA /* ImageProcessing.entitlements */,
 				BB3ACB691483E614003014D1 /* ImageProperties.h */,
@@ -400,6 +435,7 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB956B7B157F8D9E003A7E32 /* complexinstrument.pd */,
 				BBC0C4E8154EE2FA0024197E /* folder.png */,
 				BBC0C4E4154EDBCA0024197E /* cameratiny.png */,
 				BBC0C4E5154EDBCA0024197E /* share.png */,
@@ -521,6 +557,44 @@
 				BBE5ED0C14CD817E005DB0DC /* libpd-ios.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BBF499D0157F808600D891A7 /* Soundtouch */ = {
+			isa = PBXGroup;
+			children = (
+				BBF499E3157F80C800D891A7 /* mmx_optimized.cpp */,
+				BBF499E4157F80C800D891A7 /* RateTransposer.cpp */,
+				BBF499E5157F80C800D891A7 /* RateTransposer.h */,
+				BBF499E6157F80C800D891A7 /* SoundTouch.cpp */,
+				BBF499E7157F80C800D891A7 /* soundtouch~.cpp */,
+				BBF499E8157F80C800D891A7 /* soundtouch~.h */,
+				BBF499E9157F80C800D891A7 /* sse_optimized.cpp */,
+				BBF499EA157F80C800D891A7 /* TDStretch.cpp */,
+				BBF499EB157F80C800D891A7 /* TDStretch.h */,
+				BBF499D1157F80B400D891A7 /* AAFilter.cpp */,
+				BBF499D2157F80B400D891A7 /* AAFilter.h */,
+				BBF499D3157F80B400D891A7 /* cpu_detect_x86_gcc.cpp */,
+				BBF499D4157F80B400D891A7 /* cpu_detect.h */,
+				BBF499D5157F80B400D891A7 /* FIFOSampleBuffer.cpp */,
+				BBF499D6157F80B400D891A7 /* FIRFilter.cpp */,
+				BBF499D7157F80B400D891A7 /* FIRFilter.h */,
+				BBF499D8157F80B400D891A7 /* include */,
+			);
+			name = Soundtouch;
+			sourceTree = "<group>";
+		};
+		BBF499D8157F80B400D891A7 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				BBF499D9157F80B400D891A7 /* FIFOSampleBuffer.h */,
+				BBF499DA157F80B400D891A7 /* FIFOSamplePipe.h */,
+				BBF499DB157F80B400D891A7 /* m_pd.h */,
+				BBF499DC157F80B400D891A7 /* SoundTouch.h */,
+				BBF499DD157F80B400D891A7 /* soundtouch_config.h */,
+				BBF499DE157F80B400D891A7 /* STTypes.h */,
+			);
+			name = include;
+			path = ImageProcessing/Soundtouch/include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -739,6 +813,7 @@
 				BBC0C4E6154EDBCA0024197E /* cameratiny.png in Resources */,
 				BBC0C4E7154EDBCA0024197E /* share.png in Resources */,
 				BBC0C4E9154EE2FA0024197E /* folder.png in Resources */,
+				BB956B7C157F8D9E003A7E32 /* complexinstrument.pd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -774,13 +849,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB3ACB3E1483E5DD003014D1 /* main.m in Sources */,
-				BB3ACB421483E5DE003014D1 /* AppDelegate.m in Sources */,
+				BB3ACB421483E5DE003014D1 /* AppDelegate.mm in Sources */,
 				BB3ACB451483E5DE003014D1 /* ViewController.m in Sources */,
 				BB3ACB6D1483E614003014D1 /* ImageProperties.m in Sources */,
 				BB3ACB6E1483E614003014D1 /* ImageSlice.m in Sources */,
 				BB46572614CDB41E00318F89 /* Util.m in Sources */,
 				BBCFADD01517471B00671008 /* InstrumentSelector.m in Sources */,
 				BBCFADD3151773B500671008 /* ProgressScreen.m in Sources */,
+				BBF499DF157F80B400D891A7 /* AAFilter.cpp in Sources */,
+				BBF499E0157F80B400D891A7 /* cpu_detect_x86_gcc.cpp in Sources */,
+				BBF499E1157F80B400D891A7 /* FIFOSampleBuffer.cpp in Sources */,
+				BBF499E2157F80B400D891A7 /* FIRFilter.cpp in Sources */,
+				BBF499EC157F80C800D891A7 /* mmx_optimized.cpp in Sources */,
+				BBF499ED157F80C800D891A7 /* RateTransposer.cpp in Sources */,
+				BBF499EE157F80C800D891A7 /* SoundTouch.cpp in Sources */,
+				BBF499EF157F80C800D891A7 /* soundtouch~.cpp in Sources */,
+				BBF499F0157F80C800D891A7 /* sse_optimized.cpp in Sources */,
+				BBF499F1157F80C800D891A7 /* TDStretch.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,6 +1025,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: David Morris (GLQ83WZ2NR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Morris (GLQ83WZ2NR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageProcessing/ImageProcessing-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -957,6 +1043,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ED122D8E-B488-4842-9C40-668D600F2BE0";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED122D8E-B488-4842-9C40-668D600F2BE0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -986,6 +1074,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ED122D8E-B488-4842-9C40-668D600F2BE0";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED122D8E-B488-4842-9C40-668D600F2BE0";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1065,8 +1154,8 @@
 		BB873A3814E00F6200CE09FA /* Package */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: University of Hull";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: University of Hull";
+				CODE_SIGN_IDENTITY = "Mac Developer: David Morris (GLQ83WZ2NR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: David Morris (GLQ83WZ2NR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageProcessing/ImageProcessing-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1085,8 +1174,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5ED5365F-0387-453B-863A-9F1FC1166914";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5ED5365F-0387-453B-863A-9F1FC1166914";
+				PROVISIONING_PROFILE = "81C95199-832C-4AEB-9792-3512761DF0EE";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "ED122D8E-B488-4842-9C40-668D600F2BE0";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Package;

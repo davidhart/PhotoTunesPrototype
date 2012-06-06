@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "PdAudioController.h"
 #import "ViewController.h"
+#import "Soundtouch/Soundtouch~.h"
 
 @implementation AppDelegate
 
@@ -25,6 +26,8 @@
 	[audioController configureAmbientWithSampleRate:22050 numberChannels:1 mixingEnabled:YES];
 	[audioController setActive:YES];
 	[audioController print];
+    
+    soundtouch_tilde_setup();
 
     [viewController initialize: audioController];
     

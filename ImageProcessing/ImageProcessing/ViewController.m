@@ -84,7 +84,6 @@
     else
     {
         [buttonRepeat setImage:[UIImage imageNamed:@"replaybutton.png"] forState:UIControlStateNormal];
-        
     }
 }
 
@@ -383,10 +382,13 @@
     
     float* melodyNotes = values + _numNotes * 5;
     
+    float scale[] = { 0.25f, 0.5f, 0.75f, 1.0f, 1.25f, 1.5f, 1.75, 2.0f };
+    
+    /*
     float scale[] = { 400.0f, 550.0f, 650.0f, 700.0f, 750.0f, 900.0f, 1000.0f,
         1150.0f, 1250.0f, 1300.0f, 1400.0f, 1550.0f, 1650.0f, 1800.0f, 1900.0f,
         1950.0f, 2000.0f, 2150.0f, 2250.0f, 2400.0f, 2500.0f, 2550.0f, 2650.0f,
-        2800.0f, 2900.0f, 3050.0f };
+        2800.0f, 2900.0f, 3050.0f };*/
     
     const float bassVolume = 0.6f;
     const float hihatVolume = 0.6f;
@@ -444,8 +446,8 @@
         //END OF TOMS SHIT <-----
         
         bassNotes[i] = i % 4 == 0 ? 1.0f : 0.0f;
-        //hihatNotes[i] = [slice getAverageVal] < 60? 1.0f : 0.0f;
-        hihatNotes[i] = 1;
+        hihatNotes[i] = [slice getAverageVal] < 60? 1.0f : 0.0f;
+        //hihatNotes[i] = 1;
         rideNotes[i] =  1 - hihatNotes[i];
         snareNotes[i] = i % 4 == 2 ? 1.0f : 0.0f;
     
@@ -522,6 +524,11 @@
 -(void)changeInstrument:(NSString *)soundFile
 {
     [PdBase sendMessage:soundFile withArguments:NULL toReceiver:[NSString stringWithFormat:@"%d-soundfile5", _patch.dollarZero]];
+}
+
+- (void)receivePrint:(NSString *)message
+{
+    NSLog(message);
 }
 
 @end
