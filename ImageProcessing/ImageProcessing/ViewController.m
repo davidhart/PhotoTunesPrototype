@@ -12,8 +12,6 @@
 #import "ProgressScreen.h"
 #import <SCUI.h>
 
-#import <objc/objc-auto.h>
-
 @implementation ViewController
 
 @synthesize imageView;
@@ -34,12 +32,31 @@
 
 -(void)sliderDrumVolumeReleased:(id)sender
 {
-    [PdBase sendFloat: [sliderDrumVolume value] toReceiver:[NSString stringWithFormat:@"%d-drumVolume", _patch.dollarZero]];     
+    // Change the master volume of instruments 0 through to 4
+    
+    NSArray* receivers = [NSArray arrayWithObjects:@"%d-instrument0", @"%d-instrument1", @"%d-instrument2",
+                          @"%d-instrument3", @"%d-instrument4", nil];
+    
+    NSString* message = @"volume";
+    NSArray* args = [NSArray arrayWithObject:[NSNumber numberWithFloat:[sliderDrumVolume value]]];
+    
+    
+    for (int i = 0; i < [receivers count]; ++i)
+    {
+        NSString* receiver = [NSString stringWithFormat:[receivers objectAtIndex:i], _patch.dollarZero];
+        
+        [PdBase sendMessage: message withArguments:args toReceiver:receiver];
+    }
 }
 
 -(void)sliderMelodyVolumeReleased:(id)sender
 {
-    [PdBase sendFloat: [sliderMelodyVolume value] toReceiver:[NSString stringWithFormat:@"%d-melodyVolume", _patch.dollarZero]];  
+    // Change the master volume of instrument 5
+    NSString* receiver = [NSString stringWithFormat:@"%d-instrument5", _patch.dollarZero];
+    NSString* message = @"volume";
+    NSArray* args = [NSArray arrayWithObject:[NSNumber numberWithFloat:[sliderMelodyVolume value]]];    
+    
+    [PdBase sendMessage: message withArguments: args toReceiver: receiver];   
 }
 
 -(void)sliderSongLengthReleased:(id)sender
@@ -523,7 +540,10 @@
 
 -(void)changeInstrument:(NSString *)soundFile
 {
-    [PdBase sendMessage:soundFile withArguments:NULL toReceiver:[NSString stringWithFormat:@"%d-soundfile5", _patch.dollarZero]];
+    NSString* message = @"sample";
+    NSArray* args = [NSArray arrayWithObject: soundFile];
+    
+    [PdBase sendMessage:message withArguments:args toReceiver:[NSString stringWithFormat:@"%d-instrument5", _patch.dollarZero]];
 }
 
 - (void)receivePrint:(NSString *)message
