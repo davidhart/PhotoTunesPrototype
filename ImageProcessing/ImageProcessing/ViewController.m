@@ -420,13 +420,18 @@
     const float splashVariation = 0.5f;
     //float tempNum = 0;
     int prevSliceNumber = 0;
+    float* sliceAvArray = malloc(sizeof(float) * [_imagePropertes numSlices]);
+    float* ModifiedSliceAvArray = malloc(sizeof(float) * [_imagePropertes numSlices]);
+
+ 
     
+
     for (int i = 0; i < _numNotes; i++)
     {
         ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
         
         //OPTTIMISATION - move i != 0 check out of loop
-        //TOMS SHIT <-----
+        //TOMS SHIT <----- 
         int sliceBack;
         //ImageSlice* slice;
         if ( i != 0 )
@@ -445,22 +450,22 @@
                 numOfLoops++;    
             }
             sliceAv /= numOfLoops;
-            numOfLoops = 0;
-            melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :(sliceAv)];
-            NSLog(@"%f", sliceAv);
+            float valDev = [_imagePropertes getDeviationVal];
+            sliceAvArray[i] = sliceAv;
+            
             objc_collect(OBJC_COLLECT_IF_NEEDED);
             fflush(stderr);
         }
         else 
         {
-            slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];        
-            melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :([slice getAverageVal] / 255.0f)];
+            slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
+            sliceAvArray[i] = [slice getAverageVal] / 255.0f;
         }
         
         prevSliceNumber = (int)((i / (float)_numNotes) * [_imagePropertes numSlices]);
 
         
-        //END OF TOMS SHIT <-----
+
         
         bassNotes[i] = i % 4 == 0 ? 1.0f : 0.0f;
         hihatNotes[i] = [slice getAverageVal] < 60? 1.0f : 0.0f;
@@ -496,20 +501,132 @@
         splashNotes[i] *= splashVolume;
         
         
-        //melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :([slice getAverageVal] / 255.0f)];
-        //tempNum += 0.02;
-        
-        //melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :tempNum];
     }
+    
+    // MORE OF TOMS SHIT
+    //Gets Highest and lowest slices and maps to a range of 0 - 1
+    float lowSlice = 0;
+    float highSlice = 0;
+    for (int j=0; j<_numNotes; j++) 
+    {          
+
+        if(sliceAvArray[j] < lowSlice||j==0)
+        {
+            lowSlice = (float)sliceAvArray[j];
+            
+        }
+        if(sliceAvArray[j] > highSlice||j==0)
+        {
+            highSlice = (float)sliceAvArray[j];
+        }
+        
+    }
+    for (int i = 0; i < _numNotes; i++)
+    {
+        sliceAvArray[i]= (sliceAvArray[i]-lowSlice)/(highSlice-lowSlice);
+    }
+    
+    ModifiedSliceAvArray[0] = 0.5;
+    for (int i = 0; i < _numNotes; i++)
+    {
+        
+        float step = sliceAvArray[i+1] - sliceAvArray[i];
+
+        if(step>0)
+        {
+        if(fabs(step) < 0.01)
+        {
+            ModifiedSliceAvArray[i+1] = 0.05 + ModifiedSliceAvArray[i];
+
+        }
+        else if (fabs(step) < 0.05) {
+            ModifiedSliceAvArray[i+1] = 0.10 + ModifiedSliceAvArray[i];
+
+        }
+        else if (fabs(step) < 0.1) {
+
+
+            ModifiedSliceAvArray[i+1] = 0.15 + ModifiedSliceAvArray[i];
+
+        }
+        else {
+            ModifiedSliceAvArray[i+1] = 0.30 + ModifiedSliceAvArray[i];
+
+
+        }
+        if(ModifiedSliceAvArray[i+1] > 1.0 && i > 0)
+        {
+
+            ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i-1];
+
+        }
+        else if (ModifiedSliceAvArray[i+1] > 1.0) {
+            ModifiedSliceAvArray[i+1] = 0.5;
+        }
+            if(ModifiedSliceAvArray[i+1] < 0.0 && i > 0)
+            {
+                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i-1];
+
+            }            
+            else if (ModifiedSliceAvArray[i+1] < 0.0) {
+                ModifiedSliceAvArray[i+1] = 0.5;
+            }
+        }
+        else {
+            if(fabs(step) < 0.01)
+            {
+                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i] - 0.05;
+
+            }
+            else if (fabs(step) < 0.05) {
+                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i]- 0.10;
+
+            }
+            else if (fabs(step) < 0.1) {
+                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i]- 0.15;
+
+            }
+            else {
+                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i]- 0.30;
+
+            }
+            
+            if(ModifiedSliceAvArray[i+1] > 1.0 && i > 0)
+            {
+                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i-1];
+
+            }
+            else if (ModifiedSliceAvArray[i+1] > 1.0) {
+                ModifiedSliceAvArray[i+1] = 0.5;
+            }
+            if(ModifiedSliceAvArray[i+1] < 0.0 && i > 0)
+            {
+                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i-1];
+            }
+            else if (ModifiedSliceAvArray[i+1] < 0.0) {
+                ModifiedSliceAvArray[i+1] = 0.5;
+            }
+        }
+    
+
+
+    melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :(ModifiedSliceAvArray[i])];
+
+    }
+    
+    for (int i =0; i < _numNotes; i++) 
+
     
     [PdBase sendFloat:_numNotes toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
     [PdBase copyArray:values toArrayNamed:@"pattern" withOffset:0 count:_numNotes * _numIntruments];
     
     free(values);
+    free(sliceAvArray);
 }
 
 +(float)getNote:(float*)scale :(int)size :(float)locationOnScale
 {
+
     int index = (int)(locationOnScale * (size - 1) + 0.5f);
     
     assert(index >= 0);

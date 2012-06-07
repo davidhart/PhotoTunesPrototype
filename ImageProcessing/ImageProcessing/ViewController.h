@@ -36,6 +36,9 @@
     @private float _currentDrumVolume;
     @private float _currentMelodyVolume;
     
+    @private float _lowestSlice;
+    @private float _highestSlice;
+    
     @private bool _repeatOn;
     @private bool _playing;
 }
