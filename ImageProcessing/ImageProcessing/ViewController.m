@@ -173,6 +173,8 @@
              }
         }];
     
+    [shareViewController setCoverImage: [imageView image]];
+    
     // If your app is a registered foursquare app, you can set the client id and secret.
     // The user will then see a place picker where a location can be selected.
     // If you don't set them, the user sees a plain plain text filed for the place.
@@ -399,7 +401,7 @@
     
     float* melodyNotes = values + _numNotes * 5;
     
-    float scale[] = { 0.25f, 0.5f, 0.75f, 1.0f, 1.25f, 1.5f, 1.75, 2.0f };
+    float scale[] = { 0.25f, 0.5f, 0.0f, 0.75f, 0.0f, 1.0f, 0.0f, 1.25f, 1.5f, 0.0f, 0.0f, 1.75, 2.0f };
     
     /*
     float scale[] = { 400.0f, 550.0f, 650.0f, 700.0f, 750.0f, 900.0f, 1000.0f,
@@ -453,8 +455,6 @@
             float valDev = [_imagePropertes getDeviationVal];
             sliceAvArray[i] = sliceAv;
             
-            objc_collect(OBJC_COLLECT_IF_NEEDED);
-            fflush(stderr);
         }
         else 
         {
