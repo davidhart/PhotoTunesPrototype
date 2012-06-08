@@ -133,5 +133,10 @@ namespace PhotoTunesDebugApp
         {
             LibPD.Unsubscribe(name);
         }
+
+        public static void LoadInstrument(int instrumentNumber, string instrument)
+        {
+            LibPD.SendMessage(PrependDollarZero("soundfile" + instrumentNumber), instrument, new object[] { });
+        }
     }
 }
