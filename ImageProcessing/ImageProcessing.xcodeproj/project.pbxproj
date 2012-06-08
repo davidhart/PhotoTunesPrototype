@@ -300,28 +300,28 @@
 		BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
 		BBD3328214CD7C0900582A54 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
 		BBE5ED0414CD817E005DB0DC /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = libpd/libpd.xcodeproj; sourceTree = "<group>"; };
-		BBF499D1157F80B400D891A7 /* AAFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AAFilter.cpp; path = ImageProcessing/Soundtouch/AAFilter.cpp; sourceTree = "<group>"; };
-		BBF499D2157F80B400D891A7 /* AAFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAFilter.h; path = ImageProcessing/Soundtouch/AAFilter.h; sourceTree = "<group>"; };
-		BBF499D3157F80B400D891A7 /* cpu_detect_x86_gcc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cpu_detect_x86_gcc.cpp; path = ImageProcessing/Soundtouch/cpu_detect_x86_gcc.cpp; sourceTree = "<group>"; };
-		BBF499D4157F80B400D891A7 /* cpu_detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpu_detect.h; path = ImageProcessing/Soundtouch/cpu_detect.h; sourceTree = "<group>"; };
-		BBF499D5157F80B400D891A7 /* FIFOSampleBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FIFOSampleBuffer.cpp; path = ImageProcessing/Soundtouch/FIFOSampleBuffer.cpp; sourceTree = "<group>"; };
-		BBF499D6157F80B400D891A7 /* FIRFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FIRFilter.cpp; path = ImageProcessing/Soundtouch/FIRFilter.cpp; sourceTree = "<group>"; };
-		BBF499D7157F80B400D891A7 /* FIRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FIRFilter.h; path = ImageProcessing/Soundtouch/FIRFilter.h; sourceTree = "<group>"; };
+		BBF499D1157F80B400D891A7 /* AAFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AAFilter.cpp; sourceTree = "<group>"; };
+		BBF499D2157F80B400D891A7 /* AAFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAFilter.h; sourceTree = "<group>"; };
+		BBF499D3157F80B400D891A7 /* cpu_detect_x86_gcc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cpu_detect_x86_gcc.cpp; sourceTree = "<group>"; };
+		BBF499D4157F80B400D891A7 /* cpu_detect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpu_detect.h; sourceTree = "<group>"; };
+		BBF499D5157F80B400D891A7 /* FIFOSampleBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FIFOSampleBuffer.cpp; sourceTree = "<group>"; };
+		BBF499D6157F80B400D891A7 /* FIRFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FIRFilter.cpp; sourceTree = "<group>"; };
+		BBF499D7157F80B400D891A7 /* FIRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIRFilter.h; sourceTree = "<group>"; };
 		BBF499D9157F80B400D891A7 /* FIFOSampleBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIFOSampleBuffer.h; sourceTree = "<group>"; };
 		BBF499DA157F80B400D891A7 /* FIFOSamplePipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FIFOSamplePipe.h; sourceTree = "<group>"; };
 		BBF499DB157F80B400D891A7 /* m_pd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = m_pd.h; sourceTree = "<group>"; };
 		BBF499DC157F80B400D891A7 /* SoundTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundTouch.h; sourceTree = "<group>"; };
 		BBF499DD157F80B400D891A7 /* soundtouch_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = soundtouch_config.h; sourceTree = "<group>"; };
 		BBF499DE157F80B400D891A7 /* STTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STTypes.h; sourceTree = "<group>"; };
-		BBF499E3157F80C800D891A7 /* mmx_optimized.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = mmx_optimized.cpp; path = ImageProcessing/Soundtouch/mmx_optimized.cpp; sourceTree = "<group>"; };
-		BBF499E4157F80C800D891A7 /* RateTransposer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RateTransposer.cpp; path = ImageProcessing/Soundtouch/RateTransposer.cpp; sourceTree = "<group>"; };
-		BBF499E5157F80C800D891A7 /* RateTransposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RateTransposer.h; path = ImageProcessing/Soundtouch/RateTransposer.h; sourceTree = "<group>"; };
-		BBF499E6157F80C800D891A7 /* SoundTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SoundTouch.cpp; path = ImageProcessing/Soundtouch/SoundTouch.cpp; sourceTree = "<group>"; };
-		BBF499E7157F80C800D891A7 /* soundtouch~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "soundtouch~.cpp"; path = "ImageProcessing/Soundtouch/soundtouch~.cpp"; sourceTree = "<group>"; };
-		BBF499E8157F80C800D891A7 /* soundtouch~.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "soundtouch~.h"; path = "ImageProcessing/Soundtouch/soundtouch~.h"; sourceTree = "<group>"; };
-		BBF499E9157F80C800D891A7 /* sse_optimized.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = sse_optimized.cpp; path = ImageProcessing/Soundtouch/sse_optimized.cpp; sourceTree = "<group>"; };
-		BBF499EA157F80C800D891A7 /* TDStretch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TDStretch.cpp; path = ImageProcessing/Soundtouch/TDStretch.cpp; sourceTree = "<group>"; };
-		BBF499EB157F80C800D891A7 /* TDStretch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TDStretch.h; path = ImageProcessing/Soundtouch/TDStretch.h; sourceTree = "<group>"; };
+		BBF499E3157F80C800D891A7 /* mmx_optimized.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mmx_optimized.cpp; sourceTree = "<group>"; };
+		BBF499E4157F80C800D891A7 /* RateTransposer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RateTransposer.cpp; sourceTree = "<group>"; };
+		BBF499E5157F80C800D891A7 /* RateTransposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RateTransposer.h; sourceTree = "<group>"; };
+		BBF499E6157F80C800D891A7 /* SoundTouch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundTouch.cpp; sourceTree = "<group>"; };
+		BBF499E7157F80C800D891A7 /* soundtouch~.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "soundtouch~.cpp"; sourceTree = "<group>"; };
+		BBF499E8157F80C800D891A7 /* soundtouch~.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "soundtouch~.h"; sourceTree = "<group>"; };
+		BBF499E9157F80C800D891A7 /* sse_optimized.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sse_optimized.cpp; sourceTree = "<group>"; };
+		BBF499EA157F80C800D891A7 /* TDStretch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TDStretch.cpp; sourceTree = "<group>"; };
+		BBF499EB157F80C800D891A7 /* TDStretch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDStretch.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -584,6 +584,7 @@
 				BBF499D8157F80B400D891A7 /* include */,
 			);
 			name = Soundtouch;
+			path = ImageProcessing/Soundtouch;
 			sourceTree = "<group>";
 		};
 		BBF499D8157F80B400D891A7 /* include */ = {
@@ -596,8 +597,7 @@
 				BBF499DD157F80B400D891A7 /* soundtouch_config.h */,
 				BBF499DE157F80B400D891A7 /* STTypes.h */,
 			);
-			name = include;
-			path = ImageProcessing/Soundtouch/include;
+			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
