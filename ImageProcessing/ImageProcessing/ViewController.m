@@ -401,6 +401,7 @@
     
     float* melodyNotes = values + _numNotes * 5;
     
+    //float scale[] = { 1.0f, 1.0f, 1.0f, 0.0f, 1.0f };
     float scale[] = { 0.25f, 0.5f, 0.0f, 0.75f, 0.0f, 1.0f, 0.0f, 1.25f, 1.5f, 0.0f, 0.0f, 1.75, 2.0f };
     
     /*
