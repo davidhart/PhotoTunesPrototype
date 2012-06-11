@@ -281,5 +281,35 @@ namespace PhotoTunesDebugApp
                 chart1.Series[e.Index].Enabled = true;
             }
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AudioEngine.SetInstrumentMode(0, comboBox1.SelectedIndex);
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AudioEngine.SetInstrumentMode(1, comboBox1.SelectedIndex);
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AudioEngine.SetInstrumentMode(2, comboBox3.SelectedIndex);
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AudioEngine.SetInstrumentMode(3, comboBox4.SelectedIndex);
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AudioEngine.SetInstrumentMode(4, comboBox5.SelectedIndex);
+        }
+
+        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AudioEngine.SetInstrumentMode(5, comboBox6.SelectedIndex);
+        }
     }
 }

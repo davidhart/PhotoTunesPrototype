@@ -136,7 +136,12 @@ namespace PhotoTunesDebugApp
 
         public static void LoadInstrument(int instrumentNumber, string instrument)
         {
-            LibPD.SendMessage(PrependDollarZero("soundfile" + instrumentNumber), instrument, new object[] { });
+            LibPD.SendMessage(PrependDollarZero("instrument" + instrumentNumber), "sample", new object[] { instrument });
+        }
+
+        public static void SetInstrumentMode(int instrumentNumber, int mode)
+        {
+            LibPD.SendMessage(PrependDollarZero("instrument" + instrumentNumber), "mode", new object[] { mode });
         }
     }
 }
