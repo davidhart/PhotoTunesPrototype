@@ -16,7 +16,7 @@
 #X obj 368 9 inlet;
 #X obj 368 60 s \$0-read-sample;
 #X obj 178 153 inlet;
-#X obj 68 383 outlet~;
+#X obj 67 429 outlet~;
 #X obj 368 36 route sample;
 #X obj 291 36 s \$0-option;
 #X obj 173 329 r \$0-option;
@@ -32,12 +32,19 @@
 #X obj 1125 191 s \$0-option;
 #X msg 1125 168 parent \$1;
 #X obj 1125 122 loadbang;
-#X obj 178 199 toggleout;
+#X obj 178 192 toggleout;
 #X obj 369 329 r \$0-option;
-#X obj 264 351 instrumentinternal;
 #X msg 135 330 kill;
 #X msg 350 302 kill;
 #X obj 68 351 instrumentinternal;
+#X obj 68 391 +~;
+#X obj 264 351 instrumentinternal;
+#X obj 240 466 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 367 465 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X floatatom 54 235 5 0 0 0 - - -;
+#X floatatom 301 227 5 0 0 0 - - -;
 #X connect 0 0 2 0;
 #X connect 0 1 9 0;
 #X connect 1 0 8 0;
@@ -57,7 +64,7 @@
 #X connect 14 0 19 0;
 #X connect 16 0 33 0;
 #X connect 18 0 15 0;
-#X connect 20 0 38 1;
+#X connect 20 0 37 1;
 #X connect 21 0 27 0;
 #X connect 22 0 23 0;
 #X connect 24 0 22 0;
@@ -65,12 +72,17 @@
 #X connect 29 0 31 0;
 #X connect 31 0 30 0;
 #X connect 32 0 29 0;
+#X connect 33 0 36 0;
 #X connect 33 0 37 0;
-#X connect 33 0 38 0;
+#X connect 33 0 42 0;
 #X connect 33 1 35 0;
-#X connect 33 1 36 0;
-#X connect 34 0 35 1;
-#X connect 35 0 17 0;
-#X connect 36 0 38 1;
-#X connect 37 0 35 1;
+#X connect 33 1 39 0;
+#X connect 33 1 43 0;
+#X connect 34 0 39 1;
+#X connect 35 0 37 1;
+#X connect 35 0 40 0;
+#X connect 36 0 39 1;
+#X connect 36 0 41 0;
+#X connect 37 0 38 0;
 #X connect 38 0 17 0;
+#X connect 39 0 38 1;
