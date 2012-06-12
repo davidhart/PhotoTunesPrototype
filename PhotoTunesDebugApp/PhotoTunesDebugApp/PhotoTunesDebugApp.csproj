@@ -64,6 +64,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImageFilter.cs" />
     <Compile Include="ImageProperties.cs" />
     <Compile Include="ImageSlice.cs" />
     <Compile Include="Program.cs" />

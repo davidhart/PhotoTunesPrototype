@@ -12,6 +12,9 @@ namespace PhotoTunesDebugApp
 {
     public partial class Form1 : Form
     {
+        Image imageVanilla;
+        Image imageFiltered;
+
         bool playing;
         bool repeat;
         int playbackProgressValue;
@@ -23,6 +26,7 @@ namespace PhotoTunesDebugApp
         Color playbackColor;
 
         ImageProperties imageprop = new ImageProperties();
+        ImageProperties filteredimageprop = new ImageProperties();
 
         public Form1()
         {
@@ -203,9 +207,12 @@ namespace PhotoTunesDebugApp
             if (result == DialogResult.OK)
             {
                 Image image = Image.FromFile(openFileDialog1.FileName);
-                pictureBox.Image = image;
+                imageVanilla = ImageFilter.Downsample(image, 320); // TODO: downsample
+                imageFiltered = ImageFilter.SobelFilter(imageVanilla);
+
+                pictureBox.Image = imageVanilla;
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                updateSongNotes(image);
+                updateSongNotes();
             }
         }
 
@@ -215,21 +222,22 @@ namespace PhotoTunesDebugApp
             pictureBox.Image = null;
         }
 
-        private void updateSongNotes(Image image)
+        private void updateSongNotes()
         {
             //ImageSlice slice = new ImageSlice();
 
             //slice.init(image, 4);
 
-            imageprop.init(image);
+            imageprop.init(imageVanilla);
+            filteredimageprop.init(imageFiltered);
 
             updateChart();
         }
 
         private void updateChart()
         {
-            string[] seriesArray = { "Red", "Green", "Blue", "Hue", "Sat", "Val" };
-            Color[] colourArray = { Color.Red, Color.Green, Color.Blue, Color.Purple, Color.Orange, Color.Black };
+            string[] seriesArray = { "Red", "Green", "Blue", "Hue", "Sat", "Val", "filtered val" };
+            Color[] colourArray = { Color.Red, Color.Green, Color.Blue, Color.Purple, Color.Orange, Color.Black, Color.HotPink };
             float[,] pointArray = new float[imageprop.getNumSlices(), seriesArray.Length];
 
             this.chart1.Series.Clear();
@@ -250,6 +258,7 @@ namespace PhotoTunesDebugApp
                 pointArray[j, 3] = imageprop.getSlice(j).getAverageHue();
                 pointArray[j, 4] = imageprop.getSlice(j).getAverageSat();
                 pointArray[j, 5] = imageprop.getSlice(j).getAverageVal();
+                pointArray[j, 6] = filteredimageprop.getSlice(j).getAverageVal();
             }
 
             for (int i = 0; i < seriesArray.Length; i++)
@@ -264,22 +273,19 @@ namespace PhotoTunesDebugApp
                     series.Points.Add(pointArray[j, i]);
                 }
 
-                chart1.Series[i].Enabled = false;
+                chart1.Series[i].Enabled = isSeriesEnabled(i);
                 chart1.Series[i].LegendText = "";
             }
         }
 
+        private bool isSeriesEnabled(int index)
+        {
+            return checkListChart.GetItemCheckState(index) == CheckState.Checked;
+        }
+
         private void checkListChart_SelectedIndexValueChanged(object sender, ItemCheckEventArgs e)
         {
-            //This shouldn't work.  If stuff breaks check here first!
-            if (checkListChart.GetItemCheckState(e.Index) == CheckState.Checked)
-            {
-                chart1.Series[e.Index].Enabled = false;
-            }
-            else if (checkListChart.GetItemCheckState(e.Index) == CheckState.Unchecked)
-            {
-                chart1.Series[e.Index].Enabled = true;
-            }
+            chart1.Series[e.Index].Enabled = e.NewValue == CheckState.Checked;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -310,6 +316,14 @@ namespace PhotoTunesDebugApp
         private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
         {
             AudioEngine.SetInstrumentMode(5, comboBox6.SelectedIndex);
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+            if (pictureBox.Image == imageVanilla)
+                pictureBox.Image = imageFiltered;
+            else
+                pictureBox.Image = imageVanilla;
         }
     }
 }

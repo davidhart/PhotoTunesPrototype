@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.playPauseButton = new System.Windows.Forms.Button();
             this.songDataGrid = new System.Windows.Forms.DataGridView();
             this.playbackProgress = new System.Windows.Forms.ProgressBar();
@@ -58,9 +58,7 @@
             // 
             // playPauseButton
             // 
-            this.playPauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.playPauseButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.playPauseButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.playPauseButton.Location = new System.Drawing.Point(12, 184);
             this.playPauseButton.Name = "playPauseButton";
@@ -246,6 +244,7 @@
             this.pictureBox.Size = new System.Drawing.Size(327, 162);
             this.pictureBox.TabIndex = 17;
             this.pictureBox.TabStop = false;
+            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
             // openFileDialog1
             // 
@@ -263,10 +262,10 @@
             // 
             // chart1
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chart1.Legends.Add(legend6);
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
             this.chart1.Location = new System.Drawing.Point(424, 381);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(327, 190);
@@ -282,10 +281,11 @@
             "Blue",
             "Hue",
             "Sat",
-            "Val"});
-            this.checkListChart.Location = new System.Drawing.Point(363, 381);
+            "Val",
+            "Filtered Val"});
+            this.checkListChart.Location = new System.Drawing.Point(331, 381);
             this.checkListChart.Name = "checkListChart";
-            this.checkListChart.Size = new System.Drawing.Size(55, 94);
+            this.checkListChart.Size = new System.Drawing.Size(87, 109);
             this.checkListChart.TabIndex = 20;
             this.checkListChart.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkListChart_SelectedIndexValueChanged);
             // 
