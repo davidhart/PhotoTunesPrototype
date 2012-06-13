@@ -51,14 +51,19 @@
             this.gridLoadButton = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.checkListChart = new System.Windows.Forms.CheckedListBox();
+            this.trackBarLength = new System.Windows.Forms.TrackBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.trackBarTempo = new System.Windows.Forms.TrackBar();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.songDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarLength)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarTempo)).BeginInit();
             this.SuspendLayout();
             // 
             // playPauseButton
             // 
-            this.playPauseButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.playPauseButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.playPauseButton.Location = new System.Drawing.Point(12, 184);
             this.playPauseButton.Name = "playPauseButton";
@@ -141,7 +146,7 @@
             // 
             // loadDrumTextbox
             // 
-            this.loadDrumTextbox.Location = new System.Drawing.Point(318, 261);
+            this.loadDrumTextbox.Location = new System.Drawing.Point(318, 260);
             this.loadDrumTextbox.Name = "loadDrumTextbox";
             this.loadDrumTextbox.Size = new System.Drawing.Size(100, 23);
             this.loadDrumTextbox.TabIndex = 8;
@@ -289,11 +294,55 @@
             this.checkListChart.TabIndex = 20;
             this.checkListChart.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkListChart_SelectedIndexValueChanged);
             // 
+            // trackBarLength
+            // 
+            this.trackBarLength.Location = new System.Drawing.Point(12, 249);
+            this.trackBarLength.Maximum = 20;
+            this.trackBarLength.Minimum = 2;
+            this.trackBarLength.Name = "trackBarLength";
+            this.trackBarLength.Size = new System.Drawing.Size(192, 45);
+            this.trackBarLength.TabIndex = 21;
+            this.trackBarLength.Value = 2;
+            this.trackBarLength.Scroll += new System.EventHandler(this.trackBarLength_Scroll);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(210, 251);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Length";
+            // 
+            // trackBarTempo
+            // 
+            this.trackBarTempo.Location = new System.Drawing.Point(12, 300);
+            this.trackBarTempo.Maximum = 1000;
+            this.trackBarTempo.Minimum = 1;
+            this.trackBarTempo.Name = "trackBarTempo";
+            this.trackBarTempo.Size = new System.Drawing.Size(192, 45);
+            this.trackBarTempo.TabIndex = 23;
+            this.trackBarTempo.Value = 1;
+            this.trackBarTempo.Scroll += new System.EventHandler(this.trackBarTempo_Scroll);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(210, 302);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Tempo";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(818, 637);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.trackBarTempo);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.trackBarLength);
             this.Controls.Add(this.checkListChart);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.gridLoadButton);
@@ -320,6 +369,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.songDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarLength)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarTempo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,6 +399,10 @@
         private System.Windows.Forms.Button gridLoadButton;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.CheckedListBox checkListChart;
+        private System.Windows.Forms.TrackBar trackBarLength;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TrackBar trackBarTempo;
+        private System.Windows.Forms.Label label2;
     }
 }
 

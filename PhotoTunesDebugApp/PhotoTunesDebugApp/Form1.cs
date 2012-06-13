@@ -44,7 +44,10 @@ namespace PhotoTunesDebugApp
             AudioEngine.SubscribeFloat(AudioEngine.PrependDollarZero("notifyProgress"), OnProgressFloat);
             AudioEngine.SubscribeBang("stopPlayback", OnStopBang);
 
-            SetupTrack();
+            SetupTrack(6, 8);
+
+            trackBarLength.TickStyle = TickStyle.None;
+            trackBarTempo.TickStyle = TickStyle.None;
         }
 
         public void OnProgressFloat(float value)
@@ -85,10 +88,10 @@ namespace PhotoTunesDebugApp
             SetPlaying(false);
         }
 
-        public void SetupTrack()
+        public void SetupTrack(int instruments, int length)
         {
-            numInstruments = 6;
-            songLength = 8;
+            numInstruments = instruments;
+            songLength = length;
 
             float[] data = new float[numInstruments * songLength];
 
@@ -324,6 +327,19 @@ namespace PhotoTunesDebugApp
                 pictureBox.Image = imageFiltered;
             else
                 pictureBox.Image = imageVanilla;
+        }
+
+        private void trackBarLength_Scroll(object sender, EventArgs e)
+        {
+            AudioEngine.SendMessage("stopPlayback");
+            SetPlaying(false);
+            SetupTrack(6, trackBarLength.Value);
+        }
+
+        private void trackBarTempo_Scroll(object sender, EventArgs e)
+        {
+            float tempo = 60000.0f / (((float)trackBarTempo.Value / 1000) * 400.0f + 60.0f);
+            AudioEngine.SendFloat(AudioEngine.PrependDollarZero("tempo"), tempo);
         }
     }
 }

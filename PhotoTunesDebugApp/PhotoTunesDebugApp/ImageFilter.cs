@@ -100,9 +100,9 @@ namespace PhotoTunesDebugApp
             dataOut[pO + 2] = dataIn[pO+2];
             dataOut[pO + 3] = 255;*/
 
-            dataOut[pO] = Clamp255(bH + bV);
-            dataOut[pO + 1] = Clamp255(gH + gV);
-            dataOut[pO + 2] = Clamp255(rH + rV);
+            dataOut[pO] = Clamp255((int)Math.Sqrt(bH * bH + bV * bV));
+            dataOut[pO + 1] = Clamp255((int)Math.Sqrt(gH * gH + gV * gV));
+            dataOut[pO + 2] = Clamp255((int)Math.Sqrt(rH * rH + rV * rV));
             dataOut[pO + 3] = 255;
         }
 
