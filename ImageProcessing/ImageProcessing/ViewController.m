@@ -27,6 +27,9 @@
 @synthesize sliderMelodyVolume;
 @synthesize sliderSongLength;
 
+@synthesize achievementsScrollView;
+@synthesize achievementsToolbar;
+
 -(void)sliderTempoReleased:(id)sender
 { 
     [PdBase sendFloat: 60000.0f / ([sliderTempo value] * 400.0f + 60.0f) toReceiver:[NSString stringWithFormat:@"%d-tempo", _patch.dollarZero]];
@@ -258,6 +261,8 @@
     
     _instrumentSelector = [[InstrumentSelector alloc] init: self];
     _progressScreen = [[ProgressScreen alloc] init: self];
+    
+    _acheivementsView = [[AchievementsView alloc] init: self];
     
     [_audio setActive:YES];
 }

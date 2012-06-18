@@ -11,6 +11,7 @@
 #import "PdFile.h"
 #import "PdAudioController.h"
 #import "PdBase.h"
+#import "AchievementsView.h"
 
 @class InstrumentSelector;
 @class ProgressScreen;
@@ -41,6 +42,8 @@
     
     @private bool _repeatOn;
     @private bool _playing;
+    
+    @private AchievementsView* _acheivementsView;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;
@@ -53,6 +56,9 @@
 @property (nonatomic, retain) IBOutlet UISlider* sliderDrumVolume;
 @property (nonatomic, retain) IBOutlet UISlider* sliderMelodyVolume;
 @property (nonatomic, retain) IBOutlet UISlider* sliderSongLength;
+
+@property (nonatomic, retain) IBOutlet UIToolbar* achievementsToolbar;
+@property (nonatomic, retain) IBOutlet UIScrollView* achievementsScrollView;
 
 -(void)initialize: (PdAudioController*) audio;
 
