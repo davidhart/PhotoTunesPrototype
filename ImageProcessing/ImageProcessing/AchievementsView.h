@@ -9,12 +9,20 @@
     @private UIImageView* _icon;
     @private UIImageView* _iconOverlay;
     
+    @private UILabel* _titleLabel;
+    @private UILabel* _scoreLabel;
+    @private UILabel* _descriptionLabel;
+    
     @private bool _unlocked;
 }
 
 -(id)init: (CGRect) frame;
 
 -(void)setUnlocked:(bool)unlocked;
+-(void)setTitle:(NSString*)title;
+-(void)setDescription:(NSString*)description;
+-(void)setPoints:(int)points;
+-(void)setIcon:(NSString*)icon;
 
 -(UIControl*) GetUIControl;
 
@@ -29,5 +37,74 @@
 }
 
 -(id)init: (ViewController*) view;
+-(int)addAchievement: (NSString*) title: (NSString*)descr: (NSString*)icon: (int) points;
+
+@end
+
+@class AchievementsTracker;
+
+@interface BaseTracker : NSObject
+{
+    @private AchievementsTracker* _tracker;
+    @private int _index;
+    @private bool _unlocked;
+}
+
+-(void)unlock;
+-(bool)isUnlocked;
+
+-(void)setParent: (AchievementsTracker*) tracker;
+-(void)setIndex: (int) index;
+
+-(void)tempoChanged;
+-(void)drumVolChanged;
+-(void)melodyVolumeChanged;
+-(void)lengthChanged;
+-(void)instrumentChanged;
+-(void)imageChanged;
+
+@end
+
+@interface AchievementsTracker : NSObject
+{
+    @private AchievementsView* _achievementsView;
+    @private NSMutableArray* _trackers;
+}
+
+-(id)init:(ViewController*) view;
+
+-(void)tempoChanged;
+-(void)drumVolChanged;
+-(void)melodyVolumeChanged;
+-(void)lengthChanged;
+-(void)instrumentChanged;
+-(void)imageChanged;
+
+-(void)unlockAchievement:(int) index;
+
+@end
+
+///////////////////////////////////
+// Achievement specific trackers
+///////////////////////////////////
+
+@interface PerfectionistAchievementTracker : BaseTracker
+{
+    @private bool _tempoChanged;
+    @private bool _drumVolumeChanged;
+    @private bool _melodyVolumeChanged;
+    @private bool _lengthChanged;
+    @private bool _instrumentChanged;
+}
+
+@end
+
+@interface PhotocountTracker : BaseTracker
+{
+    @private int _count;
+    @private int _unlockCount;
+}
+
+-(void)setUnlockCount:(int)unlockCount;
 
 @end

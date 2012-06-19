@@ -43,7 +43,7 @@
     @private bool _repeatOn;
     @private bool _playing;
     
-    @private AchievementsView* _acheivementsView;
+    @private AchievementsTracker* _achievements;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;

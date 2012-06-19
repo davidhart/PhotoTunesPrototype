@@ -33,6 +33,8 @@
 -(void)sliderTempoReleased:(id)sender
 { 
     [PdBase sendFloat: 60000.0f / ([sliderTempo value] * 400.0f + 60.0f) toReceiver:[NSString stringWithFormat:@"%d-tempo", _patch.dollarZero]];
+    
+    [_achievements tempoChanged];
 }
 
 -(void)sliderDrumVolumeReleased:(id)sender
@@ -51,7 +53,9 @@
         NSString* receiver = [NSString stringWithFormat:[receivers objectAtIndex:i], _patch.dollarZero];
         
         [PdBase sendMessage: message withArguments:args toReceiver:receiver];
-    }   
+    }
+    
+    [_achievements drumVolChanged];
 }
 
 -(void)sliderMelodyVolumeReleased:(id)sender
@@ -61,7 +65,9 @@
     NSString* message = @"volume";
     NSArray* args = [NSArray arrayWithObject:[NSNumber numberWithFloat:[sliderMelodyVolume value]]];    
     
-    [PdBase sendMessage: message withArguments: args toReceiver: receiver];   
+    [PdBase sendMessage: message withArguments: args toReceiver: receiver];
+    
+    [_achievements melodyVolumeChanged];
 }
 
 -(void)sliderSongLengthReleased:(id)sender
@@ -69,6 +75,8 @@
     _numNotes = (int)(sliderSongLength.value + 0.5f) * 4; // 4 notes per notch on slider
     
     [self updateSongValues];
+    
+    [_achievements lengthChanged];
 }
 
 -(void)sliderSongLengthChanged:(id)sender
@@ -262,7 +270,7 @@
     _instrumentSelector = [[InstrumentSelector alloc] init: self];
     _progressScreen = [[ProgressScreen alloc] init: self];
     
-    _acheivementsView = [[AchievementsView alloc] init: self];
+    _achievements = [[AchievementsTracker alloc] init: self];
     
     [_audio setActive:YES];
 }
@@ -361,6 +369,8 @@
     [picker dismissModalViewControllerAnimated:YES];
  
     [self setImage: image];
+    
+    [_achievements imageChanged];
     
     self.selectedIndex = 0;
     
@@ -671,6 +681,8 @@
     NSArray* args = [NSArray arrayWithObject: soundFile];
     
     [PdBase sendMessage:message withArguments:args toReceiver:[NSString stringWithFormat:@"%d-instrument5", _patch.dollarZero]];
+    
+    [_achievements instrumentChanged];
 }
 - (void)receivePrint:(NSString *)message
 {
