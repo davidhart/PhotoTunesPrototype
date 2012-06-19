@@ -1,18 +1,8 @@
-//
-//  ViewController.m
-//  ImageProcessing
-//
-//  Created by MEng on 28/11/2011.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
-//
-
 #import "ViewController.h"
 #import "Util.h"
 #import "InstrumentSelector.h"
 #import "ProgressScreen.h"
 #import <SCUI.h>
-
-#import <objc/objc-auto.h>
 
 @implementation ViewController
 
@@ -29,6 +19,11 @@
 
 @synthesize achievementsScrollView;
 @synthesize achievementsToolbar;
+
+@synthesize mainScrollView;
+@synthesize mainView;
+
+@synthesize instrumentSelector;
 
 -(void)sliderTempoReleased:(id)sender
 { 
@@ -136,7 +131,18 @@
 
 -(void)instrumentsPressed:(id)sender
 {
-    [_instrumentSelector show];
+    [instrumentSelector show];
+}
+
+-(void)customisePressed:(id)sender
+{
+    // Scroll down to "customise" section and display scrollbar
+    
+    // What the christ how does this even...    
+    [UIView animateWithDuration:.35 animations:^{
+        self.mainScrollView.contentOffset = CGPointMake(0, mainScrollView.frame.size.height);
+        [mainScrollView flashScrollIndicators];
+    }];
 }
 
 -(void)recordPressed:(id)sender
@@ -217,6 +223,9 @@
 
 - (void)initialize: (PdAudioController*) audio
 {
+    [mainScrollView addSubview: mainView];
+    mainScrollView.contentSize = mainView.frame.size;
+
     // Initialise soundcloud API
     [SCSoundCloud setClientID: @"c670c061ac40359ac3ca5f2213836714"
                        secret: @"fe998800f4183f2109ffa0b84bbd8c3b"
@@ -264,10 +273,11 @@
     [self setImage: image];
     
     // Hack for iPhone 4, fix the rectangle for the initial image
-    progress.frame = CGRectMake(31, 225, 257, 10);
+    //progress.frame = CGRectMake(31, 225, 257, 10);
+    
+    [instrumentSelector setParent: self];
     
     
-    _instrumentSelector = [[InstrumentSelector alloc] init: self];
     _progressScreen = [[ProgressScreen alloc] init: self];
     
     _achievements = [[AchievementsTracker alloc] init: self];

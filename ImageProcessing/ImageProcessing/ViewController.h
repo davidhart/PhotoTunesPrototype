@@ -26,7 +26,7 @@
 
     @private UIImagePickerController* imagePickerController;
     
-    @private InstrumentSelector* _instrumentSelector;
+    //@private InstrumentSelector* _instrumentSelector;
     @private ProgressScreen* _progressScreen;
     
     @private float _progressValue;
@@ -60,6 +60,11 @@
 @property (nonatomic, retain) IBOutlet UIToolbar* achievementsToolbar;
 @property (nonatomic, retain) IBOutlet UIScrollView* achievementsScrollView;
 
+@property (nonatomic, retain) IBOutlet UIScrollView* mainScrollView;
+@property (nonatomic, retain) IBOutlet UIView* mainView;
+
+@property (nonatomic, retain) IBOutlet InstrumentSelector* instrumentSelector;
+
 -(void)initialize: (PdAudioController*) audio;
 
 -(IBAction)playPressed:(id) sender;
@@ -78,6 +83,8 @@
 -(IBAction)instrumentsPressed:(id)sender;
 
 -(IBAction)recordPressed:(id) sender;
+
+-(IBAction)customisePressed:(id) sender;
 
 -(void)receiveFloat:(float)received fromSource:(NSString *)source;
 

@@ -10,7 +10,7 @@
 
 @class ViewController;
 
-@interface InstrumentSelector : NSObject <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface InstrumentSelector : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 {
     @private int _activeSelection;
     @private int _currentSelection;
@@ -22,7 +22,12 @@
     @private __unsafe_unretained ViewController* _parent;
 }
 
--(id)init:(ViewController*) parent;
+//-(id)init:(ViewController*) parent;
+
+-(IBAction)select:(id)sender;
+-(IBAction)cancel:(id)sender;
+
+-(void)setParent:(ViewController*) parent;
 
 -(void)show;
 -(void)hide;
