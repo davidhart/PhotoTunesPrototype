@@ -15,7 +15,10 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.2 r9819"
-   sodipodi:docname="divider.svg">
+   sodipodi:docname="divider.svg"
+   inkscape:export-filename="/Users/user/Desktop/phototunes/ImageProcessing/ImageProcessing/divider.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <linearGradient
@@ -29,19 +32,6 @@
          offset="1"
          id="stop3776" />
     </linearGradient>
-    <filter
-       inkscape:collect="always"
-       id="filter3866"
-       x="-0.007990933"
-       width="1.0159819"
-       y="-0.37935928"
-       height="1.7587185"
-       color-interpolation-filters="sRGB">
-      <feGaussianBlur
-         inkscape:collect="always"
-         stdDeviation="1.0725925"
-         id="feGaussianBlur3868" />
-    </filter>
     <filter
        inkscape:collect="always"
        id="filter3900"
@@ -100,15 +90,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="252.94485"
+     inkscape:cx="72.616012"
      inkscape:cy="19.777267"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1920"
-     inkscape:window-height="1148"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-width="1024"
+     inkscape:window-height="678"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
@@ -135,7 +125,7 @@
        x="0"
        y="931.96118" />
     <rect
-       style="opacity:0.3539823;fill:url(#radialGradient3930);fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter3940)"
+       style="opacity:0.18965517;fill:url(#radialGradient3930);fill-opacity:1;fill-rule:evenodd;stroke:none;filter:url(#filter3940)"
        id="rect3770"
        width="321.07144"
        height="42.142857"
