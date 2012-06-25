@@ -103,12 +103,12 @@
     
     if (_repeatOn)
     {
-        [buttonRepeat setImage:[UIImage imageNamed:@"simplereplaybuttonblue.png"] forState:UIControlStateNormal];
+        [buttonRepeat setImage:[UIImage imageNamed:@"repeatonbutton.png"] forState:UIControlStateNormal];
         
     }
     else
     {
-        [buttonRepeat setImage:[UIImage imageNamed:@"replaybutton.png"] forState:UIControlStateNormal];
+        [buttonRepeat setImage:[UIImage imageNamed:@"repeatoffbutton.png"] forState:UIControlStateNormal];
         
     }
 }

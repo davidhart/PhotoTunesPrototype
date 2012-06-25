@@ -13,7 +13,6 @@
 		BB056168154E9AEE00FE1640 /* helpIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056167154E9AEE00FE1640 /* helpIcon.png */; };
 		BB05616A154E9BDE00FE1640 /* playbar.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056169154E9BDE00FE1640 /* playbar.png */; };
 		BB05616C154E9DD900FE1640 /* synth.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB05616B154E9DD900FE1640 /* synth.wav */; };
-		BB05616E154EA17D00FE1640 /* simplereplaybuttonblue.png in Resources */ = {isa = PBXBuildFile; fileRef = BB05616D154EA17D00FE1640 /* simplereplaybuttonblue.png */; };
 		BB056170154EA21000FE1640 /* phototunes.png in Resources */ = {isa = PBXBuildFile; fileRef = BB05616F154EA21000FE1640 /* phototunes.png */; };
 		BB0897FA158238DF0019E7FF /* instrumentinternal.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB0897F9158238DF0019E7FF /* instrumentinternal.pd */; };
 		BB0897FC158239060019E7FF /* toggleout.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB0897FB158239060019E7FF /* toggleout.pd */; };
@@ -62,7 +61,6 @@
 		BB67251A15064D9600D96D0D /* splash.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB67251515064D9600D96D0D /* splash.wav */; };
 		BB833786150A5AA000D1E52E /* playbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = BB833785150A5AA000D1E52E /* playbutton.png */; };
 		BB833788150A5AFB00D1E52E /* stopbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = BB833787150A5AFB00D1E52E /* stopbutton.png */; };
-		BB83378A150A5B1A00D1E52E /* replaybutton.png in Resources */ = {isa = PBXBuildFile; fileRef = BB833789150A5B1A00D1E52E /* replaybutton.png */; };
 		BB83378C150A5BF400D1E52E /* pausebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = BB83378B150A5BF400D1E52E /* pausebutton.png */; };
 		BB83BC5814F28F2200226E16 /* polytracker.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB83BC5714F28F2200226E16 /* polytracker.pd */; };
 		BB83BC5A14F2904D00226E16 /* bell.aiff in Resources */ = {isa = PBXBuildFile; fileRef = BB83BC5914F2904D00226E16 /* bell.aiff */; };
@@ -95,6 +93,8 @@
 		CE2E20E1158B5A7100FD7BF9 /* ach-locked-base.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2E20DE158B5A7100FD7BF9 /* ach-locked-base.png */; };
 		CE2E20E2158B5A7100FD7BF9 /* ach-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2E20DF158B5A7100FD7BF9 /* ach-overlay.png */; };
 		CE2E20E3158B5A7100FD7BF9 /* ach-unlocked-base.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2E20E0158B5A7100FD7BF9 /* ach-unlocked-base.png */; };
+		CEEE28A41598B95C00C741AE /* repeatoffbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEE28A21598B95C00C741AE /* repeatoffbutton.png */; };
+		CEEE28A51598B95C00C741AE /* repeatonbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEE28A31598B95C00C741AE /* repeatonbutton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,7 +226,6 @@
 		BB056167154E9AEE00FE1640 /* helpIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpIcon.png; sourceTree = "<group>"; };
 		BB056169154E9BDE00FE1640 /* playbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbar.png; sourceTree = "<group>"; };
 		BB05616B154E9DD900FE1640 /* synth.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = synth.wav; sourceTree = "<group>"; };
-		BB05616D154EA17D00FE1640 /* simplereplaybuttonblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = simplereplaybuttonblue.png; sourceTree = "<group>"; };
 		BB05616F154EA21000FE1640 /* phototunes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phototunes.png; sourceTree = "<group>"; };
 		BB0897F9158238DF0019E7FF /* instrumentinternal.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = instrumentinternal.pd; sourceTree = "<group>"; };
 		BB0897FB158239060019E7FF /* toggleout.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = toggleout.pd; sourceTree = "<group>"; };
@@ -284,7 +283,6 @@
 		BB67251515064D9600D96D0D /* splash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = splash.wav; sourceTree = "<group>"; };
 		BB833785150A5AA000D1E52E /* playbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbutton.png; sourceTree = "<group>"; };
 		BB833787150A5AFB00D1E52E /* stopbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stopbutton.png; sourceTree = "<group>"; };
-		BB833789150A5B1A00D1E52E /* replaybutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = replaybutton.png; sourceTree = "<group>"; };
 		BB83378B150A5BF400D1E52E /* pausebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pausebutton.png; sourceTree = "<group>"; };
 		BB83BC5714F28F2200226E16 /* polytracker.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = polytracker.pd; sourceTree = "<group>"; };
 		BB83BC5914F2904D00226E16 /* bell.aiff */ = {isa = PBXFileReference; lastKnownFileType = audio.aiff; path = bell.aiff; sourceTree = "<group>"; };
@@ -333,6 +331,8 @@
 		CE2E20DE158B5A7100FD7BF9 /* ach-locked-base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ach-locked-base.png"; sourceTree = "<group>"; };
 		CE2E20DF158B5A7100FD7BF9 /* ach-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ach-overlay.png"; sourceTree = "<group>"; };
 		CE2E20E0158B5A7100FD7BF9 /* ach-unlocked-base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ach-unlocked-base.png"; sourceTree = "<group>"; };
+		CEEE28A21598B95C00C741AE /* repeatoffbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = repeatoffbutton.png; sourceTree = "<group>"; };
+		CEEE28A31598B95C00C741AE /* repeatonbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = repeatonbutton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -450,6 +450,8 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CEEE28A21598B95C00C741AE /* repeatoffbutton.png */,
+				CEEE28A31598B95C00C741AE /* repeatonbutton.png */,
 				BB2B6C30158F65B700AEBC52 /* ach1.png */,
 				CE2E20DE158B5A7100FD7BF9 /* ach-locked-base.png */,
 				CE2E20DF158B5A7100FD7BF9 /* ach-overlay.png */,
@@ -462,7 +464,6 @@
 				BBC0C4E5154EDBCA0024197E /* share.png */,
 				BBC0C4E2154ED9630024197E /* camera.png */,
 				BB05616F154EA21000FE1640 /* phototunes.png */,
-				BB05616D154EA17D00FE1640 /* simplereplaybuttonblue.png */,
 				BB056169154E9BDE00FE1640 /* playbar.png */,
 				BB056167154E9AEE00FE1640 /* helpIcon.png */,
 				BB51EF8E154E982500139C27 /* Microphone_Icon_clip_art_small.png */,
@@ -471,7 +472,6 @@
 				BB51EF7A154E90D800139C27 /* icon@2x.png */,
 				BB61EBA4154569CC0000F2FE /* SoundCloud.bundle */,
 				BB83378B150A5BF400D1E52E /* pausebutton.png */,
-				BB833789150A5B1A00D1E52E /* replaybutton.png */,
 				BB833787150A5AFB00D1E52E /* stopbutton.png */,
 				BB833785150A5AA000D1E52E /* playbutton.png */,
 				BB67251115064D9600D96D0D /* bass.wav */,
@@ -811,7 +811,6 @@
 				BB67251A15064D9600D96D0D /* splash.wav in Resources */,
 				BB833786150A5AA000D1E52E /* playbutton.png in Resources */,
 				BB833788150A5AFB00D1E52E /* stopbutton.png in Resources */,
-				BB83378A150A5B1A00D1E52E /* replaybutton.png in Resources */,
 				BB83378C150A5BF400D1E52E /* pausebutton.png in Resources */,
 				BB037C27151799FB00DE56C1 /* test2.jpg in Resources */,
 				BB61EBA5154569CC0000F2FE /* SoundCloud.bundle in Resources */,
@@ -826,7 +825,6 @@
 				BB056168154E9AEE00FE1640 /* helpIcon.png in Resources */,
 				BB05616A154E9BDE00FE1640 /* playbar.png in Resources */,
 				BB05616C154E9DD900FE1640 /* synth.wav in Resources */,
-				BB05616E154EA17D00FE1640 /* simplereplaybuttonblue.png in Resources */,
 				BB056170154EA21000FE1640 /* phototunes.png in Resources */,
 				BBC0C4E3154ED9630024197E /* camera.png in Resources */,
 				BBC0C4E6154EDBCA0024197E /* cameratiny.png in Resources */,
@@ -839,6 +837,8 @@
 				CE2E20E2158B5A7100FD7BF9 /* ach-overlay.png in Resources */,
 				CE2E20E3158B5A7100FD7BF9 /* ach-unlocked-base.png in Resources */,
 				BB2B6C31158F65B700AEBC52 /* ach1.png in Resources */,
+				CEEE28A41598B95C00C741AE /* repeatoffbutton.png in Resources */,
+				CEEE28A51598B95C00C741AE /* repeatonbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
