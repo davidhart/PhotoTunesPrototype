@@ -1,6 +1,7 @@
 #import "ViewController.h"
 #import "Util.h"
 #import "InstrumentSelector.h"
+#import "ImageLoading.h"
 #import "ProgressScreen.h"
 #import "SplashScreen.h"
 #import <SCUI.h>
@@ -26,6 +27,7 @@
 
 @synthesize instrumentSelector;
 @synthesize splashScreen;
+@synthesize imageLoading;
 
 -(void)sliderTempoReleased:(id)sender
 { 
@@ -123,17 +125,30 @@
 
 -(void)cameraPressed:(id)sender
 { 
-    [self activateImageChooser: YES];
+    //[imageLoading hide];
+    [self dismissViewControllerAnimated:YES completion:^{
+                                                            [self activateImageChooser: YES];
+                                                        }];
 }
 
 -(void)loadPressed:(id)sender
 {
-    [self activateImageChooser: NO];
+    //[imageLoading hide];
+    //[self activateImageChooser: NO];
+    
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self activateImageChooser: NO];
+    }];
 }
 
 -(void)instrumentsPressed:(id)sender
 {
     [instrumentSelector show];
+}
+
+-(void)imageLoadPressed:(id)sender
+{
+    [imageLoading show];
 }
 
 -(void)customisePressed:(id)sender
@@ -300,8 +315,8 @@
     // Hack for iPhone 4, fix the rectangle for the initial image
     //progress.frame = CGRectMake(31, 225, 257, 10);
     
-    [instrumentSelector setParent: self];
-    
+    [instrumentSelector setParent: self]; 
+    [imageLoading setParent: self];
     
     _progressScreen = [[ProgressScreen alloc] init: self];
     

@@ -90,6 +90,7 @@
 		BBF499EF157F80C800D891A7 /* soundtouch~.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499E7157F80C800D891A7 /* soundtouch~.cpp */; };
 		BBF499F0157F80C800D891A7 /* sse_optimized.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499E9157F80C800D891A7 /* sse_optimized.cpp */; };
 		BBF499F1157F80C800D891A7 /* TDStretch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499EA157F80C800D891A7 /* TDStretch.cpp */; };
+		BBFA9AF4159B307200376623 /* ImageLoading.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFA9AF3159B307200376623 /* ImageLoading.m */; };
 		CE2E20DD158B4C1200FD7BF9 /* AchievementsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2E20DC158B4C1200FD7BF9 /* AchievementsView.m */; };
 		CE2E20E1158B5A7100FD7BF9 /* ach-locked-base.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2E20DE158B5A7100FD7BF9 /* ach-locked-base.png */; };
 		CE2E20E2158B5A7100FD7BF9 /* ach-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2E20DF158B5A7100FD7BF9 /* ach-overlay.png */; };
@@ -330,6 +331,8 @@
 		BBF499E9157F80C800D891A7 /* sse_optimized.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sse_optimized.cpp; sourceTree = "<group>"; };
 		BBF499EA157F80C800D891A7 /* TDStretch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TDStretch.cpp; sourceTree = "<group>"; };
 		BBF499EB157F80C800D891A7 /* TDStretch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDStretch.h; sourceTree = "<group>"; };
+		BBFA9AF2159B307200376623 /* ImageLoading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLoading.h; sourceTree = "<group>"; };
+		BBFA9AF3159B307200376623 /* ImageLoading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLoading.m; sourceTree = "<group>"; };
 		CE2E20DB158B4C1200FD7BF9 /* AchievementsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AchievementsView.h; sourceTree = "<group>"; };
 		CE2E20DC158B4C1200FD7BF9 /* AchievementsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AchievementsView.m; sourceTree = "<group>"; };
 		CE2E20DE158B5A7100FD7BF9 /* ach-locked-base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ach-locked-base.png"; sourceTree = "<group>"; };
@@ -450,6 +453,8 @@
 				BB3ACB381483E5DD003014D1 /* Supporting Files */,
 				CE2E20DB158B4C1200FD7BF9 /* AchievementsView.h */,
 				CE2E20DC158B4C1200FD7BF9 /* AchievementsView.m */,
+				BBFA9AF2159B307200376623 /* ImageLoading.h */,
+				BBFA9AF3159B307200376623 /* ImageLoading.m */,
 			);
 			path = ImageProcessing;
 			sourceTree = "<group>";
@@ -902,6 +907,7 @@
 				BBF499F1157F80C800D891A7 /* TDStretch.cpp in Sources */,
 				CE2E20DD158B4C1200FD7BF9 /* AchievementsView.m in Sources */,
 				BB96872A1599DD850008501C /* SplashScreen.m in Sources */,
+				BBFA9AF4159B307200376623 /* ImageLoading.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

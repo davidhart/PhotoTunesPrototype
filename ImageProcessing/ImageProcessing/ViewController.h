@@ -16,6 +16,7 @@
 @class InstrumentSelector;
 @class ProgressScreen;
 @class SplashScreen;
+@class ImageLoading;
 
 @interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
@@ -68,6 +69,8 @@
 
 @property (nonatomic, retain) IBOutlet InstrumentSelector* instrumentSelector;
 @property (nonatomic, retain) IBOutlet SplashScreen* splashScreen;
+@property (nonatomic, retain) IBOutlet ImageLoading* imageLoading;
+
 
 -(void)initialize: (PdAudioController*) audio;
 
@@ -77,6 +80,7 @@
 
 -(IBAction)cameraPressed:(id) sender;
 -(IBAction)loadPressed:(id)sender;
+-(IBAction)imageLoadPressed:(id)sender;
 
 -(IBAction)sliderTempoReleased:(id) sender;
 -(IBAction)sliderDrumVolumeReleased:(id) sender;
