@@ -15,6 +15,7 @@
 
 @class InstrumentSelector;
 @class ProgressScreen;
+@class SplashScreen;
 
 @interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
@@ -43,6 +44,8 @@
     @private bool _repeatOn;
     @private bool _playing;
     
+    @private bool _helpVisible;
+    
     @private AchievementsTracker* _achievements;
 }
 
@@ -64,6 +67,7 @@
 @property (nonatomic, retain) IBOutlet UIView* mainView;
 
 @property (nonatomic, retain) IBOutlet InstrumentSelector* instrumentSelector;
+@property (nonatomic, retain) IBOutlet SplashScreen* splashScreen;
 
 -(void)initialize: (PdAudioController*) audio;
 
@@ -79,6 +83,8 @@
 -(IBAction)sliderMelodyVolumeReleased:(id) sender;
 -(IBAction)sliderSongLengthReleased:(id) sender;
 -(IBAction)sliderSongLengthChanged:(id)sender;
+
+-(IBAction)toggleHelp:(id)sender;
 
 -(IBAction)instrumentsPressed:(id)sender;
 

@@ -2,6 +2,7 @@
 #import "Util.h"
 #import "InstrumentSelector.h"
 #import "ProgressScreen.h"
+#import "SplashScreen.h"
 #import <SCUI.h>
 
 @implementation ViewController
@@ -24,6 +25,7 @@
 @synthesize mainView;
 
 @synthesize instrumentSelector;
+@synthesize splashScreen;
 
 -(void)sliderTempoReleased:(id)sender
 { 
@@ -145,6 +147,14 @@
     }];
 }
 
+-(void)scrollUp
+{
+    if (self.mainScrollView.contentOffset.y != 0)
+    {
+        self.mainScrollView.contentOffset = CGPointMake(0, 0);
+    }
+}
+
 -(void)recordPressed:(id)sender
 {
     // Make sure looping is disabled while recording
@@ -157,6 +167,21 @@
     [_progressScreen setTitle: @"Saving"];
     [_progressScreen setProgress:0];
     [_progressScreen show];
+}
+
+-(void)toggleHelp:(id)sender
+{
+    _helpVisible = !_helpVisible;
+    
+    if (_helpVisible)
+    {
+        [mainView addSubview: splashScreen];
+    }
+    else
+    {
+        [splashScreen removeFromSuperview];
+    }
+    
 }
 
 -(void)recordDone
@@ -283,6 +308,9 @@
     _achievements = [[AchievementsTracker alloc] init: self];
     
     [_audio setActive:YES];
+    
+    _helpVisible = true;
+    [mainView addSubview: splashScreen];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -379,6 +407,7 @@
     [picker dismissModalViewControllerAnimated:YES];
  
     [self setImage: image];
+    [self scrollUp];
     
     [_achievements imageChanged];
     

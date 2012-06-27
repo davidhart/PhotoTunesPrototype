@@ -68,6 +68,7 @@
 		BB873A5314E9214D00CE09FA /* vocoder.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5214E9214D00CE09FA /* vocoder.pd */; };
 		BB873A5514E9215C00CE09FA /* a.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB873A5414E9215C00CE09FA /* a.wav */; };
 		BB956B7E1580E6D1003A7E32 /* instrument.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB956B7D1580E6D1003A7E32 /* instrument.pd */; };
+		BB96872A1599DD850008501C /* SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9687291599DD850008501C /* SplashScreen.m */; };
 		BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9AE722148D2868004E608A /* AudioToolbox.framework */; };
 		BB9AE725148D28DA004E608A /* soundsystem.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB9AE724148D28DA004E608A /* soundsystem.pd */; };
 		BBC0C4E3154ED9630024197E /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C4E2154ED9630024197E /* camera.png */; };
@@ -291,6 +292,8 @@
 		BB873A5214E9214D00CE09FA /* vocoder.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vocoder.pd; sourceTree = "<group>"; };
 		BB873A5414E9215C00CE09FA /* a.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = a.wav; sourceTree = "<group>"; };
 		BB956B7D1580E6D1003A7E32 /* instrument.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = instrument.pd; sourceTree = "<group>"; };
+		BB9687281599DD850008501C /* SplashScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SplashScreen.h; path = ImageProcessing/SplashScreen.h; sourceTree = "<group>"; };
+		BB9687291599DD850008501C /* SplashScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SplashScreen.m; path = ImageProcessing/SplashScreen.m; sourceTree = "<group>"; };
 		BB9AE722148D2868004E608A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BB9AE724148D28DA004E608A /* soundsystem.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = soundsystem.pd; sourceTree = "<group>"; };
 		BBC0C4E2154ED9630024197E /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
@@ -378,6 +381,8 @@
 		BB3ACB221483E5DD003014D1 = {
 			isa = PBXGroup;
 			children = (
+				BB9687281599DD850008501C /* SplashScreen.h */,
+				BB9687291599DD850008501C /* SplashScreen.m */,
 				BBF499D0157F808600D891A7 /* Soundtouch */,
 				BB056165154E994800FE1640 /* Default@2x.png */,
 				BB056163154E993600FE1640 /* Default.png */,
@@ -896,6 +901,7 @@
 				BBF499F0157F80C800D891A7 /* sse_optimized.cpp in Sources */,
 				BBF499F1157F80C800D891A7 /* TDStretch.cpp in Sources */,
 				CE2E20DD158B4C1200FD7BF9 /* AchievementsView.m in Sources */,
+				BB96872A1599DD850008501C /* SplashScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
