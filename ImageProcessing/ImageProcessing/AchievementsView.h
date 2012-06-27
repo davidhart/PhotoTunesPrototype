@@ -24,6 +24,12 @@
 -(void)setPoints:(int)points;
 -(void)setIcon:(NSString*)icon;
 
+-(UIImage*)GetIcon;
+-(UIImage*)GetIconOverlay;
+
+-(NSString*)GetTitle;
+-(NSString*)GetDesc;
+
 -(UIControl*) GetUIControl;
 
 @end
@@ -34,6 +40,16 @@
     @private UIToolbar* _achievementsToolbar;
     
     @private NSMutableArray* _achievementViews;
+    
+    @private UIImageView* _achieveUnlocked;
+    
+    @private UIImageView* _base;
+    @private UIImageView* _icon;
+    @private UIImageView* _iconOverlay;
+    
+    @private UILabel* _titleLabel;
+    @private UILabel* _scoreLabel;
+    @private UILabel* _descriptionLabel;
 }
 
 -(id)init: (ViewController*) view;

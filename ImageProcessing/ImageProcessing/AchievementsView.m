@@ -29,6 +29,8 @@ const float ACHIEVEMENT_ICON_Y_OFFSET = 18;
 const float ACHIEVEMENT_ICON_WIDTH = 53;
 const float ACHIEVEMENT_ICON_HEIGHT = 53;
 
+const float STATUS_BAR_Y_OFFSET = 20;
+
 UIImage* g_AchievementOverlayImage;
 UIImage* g_AchievementLockedBaseImage;
 UIImage* g_AchievementUnlockedBaseImage;
@@ -171,6 +173,24 @@ UIImage* g_AchievementUnlockedBaseImage;
     _icon.image = [UIImage imageNamed: icon];
 }
 
+-(UIImage*)GetIcon
+{
+    return _icon.image;
+}
+-(UIImage*)GetIconOverlay
+{
+    return _iconOverlay.image;
+}
+
+-(NSString*)GetTitle
+{
+    return _titleLabel.text;
+}
+-(NSString*)GetDesc
+{
+    return _descriptionLabel.text; 
+}
+
 @end
 
 // UI Object to control all displayed achievements
@@ -186,6 +206,61 @@ UIImage* g_AchievementUnlockedBaseImage;
         _achievementsToolbar = view.achievementsToolbar;
         
         _achievementViews = [[NSMutableArray alloc] init];
+        
+        _achieveUnlocked = [[UIImageView alloc] initWithFrame:CGRectMake(0, -78 - STATUS_BAR_Y_OFFSET, _achievementsView.frame.size.width, 78)];
+        
+        _achieveUnlocked.image = [UIImage imageNamed:@"achievement-toast-base.png"];
+        
+        // Icon graphic
+        CGRect iconRect = CGRectMake(12,
+                                     12,
+                                     ACHIEVEMENT_ICON_WIDTH + 2,
+                                     ACHIEVEMENT_ICON_HEIGHT + 3);
+        
+        _icon = [[UIImageView alloc] initWithFrame:iconRect];
+        //_icon.image = ;
+        _icon.backgroundColor = [UIColor purpleColor];
+        [_achieveUnlocked addSubview: _icon];
+        
+        // Overlay graphic
+        CGRect overlayRect = CGRectMake(0, 0, _achievementsView.frame.size.width, 78);
+        
+        _iconOverlay = [[UIImageView alloc] initWithFrame: overlayRect];
+        _iconOverlay.image = [UIImage imageNamed:@"achievement-toast-overlay.png"];
+        [_achieveUnlocked addSubview: _iconOverlay];
+        
+        // Title label
+        CGRect titleRect = CGRectMake(ACHIEVEMENT_TITLE_X_OFFSET, 
+                                      ACHIEVEMENT_TITLE_Y_OFFSET, 
+                                      ACHIEVEMENT_TITLE_WIDTH,
+                                      ACHIEVEMENT_TITLE_HEIGHT);
+        
+        _titleLabel = [[UILabel alloc] initWithFrame: titleRect];
+        _titleLabel.text = @"Default Title";
+        _titleLabel.textColor = [UIColor whiteColor];
+        _titleLabel.backgroundColor = [UIColor clearColor];
+        _titleLabel.font = [UIFont fontWithName: _titleLabel.font.familyName size: 20];
+        
+        [_achieveUnlocked addSubview: _titleLabel];
+        
+        // Description label
+        CGRect descRect = CGRectMake(ACHIEVEMENT_DESC_X_OFFSET - 1, 
+                                     ACHIEVEMENT_DESC_Y_OFFSET - 7, 
+                                     ACHIEVEMENT_DESC_WIDTH, 
+                                     ACHIEVEMENT_DESC_HEIGHT);
+        
+        _descriptionLabel = [[UILabel alloc] initWithFrame: descRect];
+        _descriptionLabel.text = @"Default description";
+        _descriptionLabel.textColor = [UIColor whiteColor];
+        _descriptionLabel.backgroundColor = [UIColor clearColor];
+        _descriptionLabel.lineBreakMode = UILineBreakModeWordWrap;
+        _descriptionLabel.numberOfLines = 2;
+        _descriptionLabel.font = [UIFont fontWithName: _descriptionLabel.font.familyName size: 14];
+
+        
+        [_achieveUnlocked addSubview: _descriptionLabel];
+        
+        [view.view addSubview: _achieveUnlocked];
     }
     
     return self;
@@ -237,6 +312,25 @@ UIImage* g_AchievementUnlockedBaseImage;
     AchievementView* ach = [_achievementViews objectAtIndex: index];
     
     [ach setUnlocked: true];
+    
+    _titleLabel.text = [ach GetTitle];
+    _descriptionLabel.text = [ach GetDesc];
+    _icon.image = [ach GetIcon];
+    
+    //ANIMATE HERE
+    [UIView animateWithDuration:.5 animations:^{
+        _achieveUnlocked.frame = CGRectMake(0, STATUS_BAR_Y_OFFSET, _achievementsView.frame.size.width, 78);
+    } completion:
+     ^(BOOL finished)
+    { 
+        [UIView animateWithDuration:0.5 delay:3 options:UIViewAnimationCurveLinear animations:
+         ^{ _achieveUnlocked.frame =
+             CGRectMake(0, -78 - STATUS_BAR_Y_OFFSET, _achievementsView.frame.size.width, 78);
+         } 
+        completion: nil];
+    } 
+     ];
+    
 }
 
 @end
