@@ -43,6 +43,17 @@
 		BB51EF8F154E982500139C27 /* Microphone_Icon_clip_art_small.png in Resources */ = {isa = PBXBuildFile; fileRef = BB51EF8E154E982500139C27 /* Microphone_Icon_clip_art_small.png */; };
 		BB51EF91154E98B400139C27 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BB51EF90154E98B400139C27 /* Default.png */; };
 		BB51EF93154E98B900139C27 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB51EF92154E98B900139C27 /* Default@2x.png */; };
+		BB57BE92159B3C0100FE45A8 /* arrow1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE89159B3C0100FE45A8 /* arrow1.png */; };
+		BB57BE93159B3C0100FE45A8 /* arrow2.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE8A159B3C0100FE45A8 /* arrow2.png */; };
+		BB57BE94159B3C0100FE45A8 /* arrow3.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE8B159B3C0100FE45A8 /* arrow3.png */; };
+		BB57BE95159B3C0100FE45A8 /* arrow4.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE8C159B3C0100FE45A8 /* arrow4.png */; };
+		BB57BE96159B3C0100FE45A8 /* arrow5.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE8D159B3C0100FE45A8 /* arrow5.png */; };
+		BB57BE97159B3C0100FE45A8 /* arrow6.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE8E159B3C0100FE45A8 /* arrow6.png */; };
+		BB57BE98159B3C0100FE45A8 /* arrow7.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE8F159B3C0100FE45A8 /* arrow7.png */; };
+		BB57BE99159B3C0100FE45A8 /* arrow8.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE90159B3C0100FE45A8 /* arrow8.png */; };
+		BB57BE9A159B3C0100FE45A8 /* arrow9.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE91159B3C0100FE45A8 /* arrow9.png */; };
+		BB57BE9D159B475600FE45A8 /* achievement-toast-base.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE9B159B475600FE45A8 /* achievement-toast-base.png */; };
+		BB57BE9E159B475600FE45A8 /* achievement-toast-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE9C159B475600FE45A8 /* achievement-toast-overlay.png */; };
 		BB61EB6B15455CFF0000F2FE /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB61EB5315455C910000F2FE /* libJSONKit.a */; };
 		BB61EB6C15455CFF0000F2FE /* libOAuth2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB61EB6115455C970000F2FE /* libOAuth2Client.a */; };
 		BB61EB6D15455CFF0000F2FE /* libOHAttributedLabel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB61EB6A15455C9D0000F2FE /* libOHAttributedLabel.a */; };
@@ -267,6 +278,17 @@
 		BB51EF8E154E982500139C27 /* Microphone_Icon_clip_art_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Microphone_Icon_clip_art_small.png; sourceTree = "<group>"; };
 		BB51EF90154E98B400139C27 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BB51EF92154E98B900139C27 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BB57BE89159B3C0100FE45A8 /* arrow1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow1.png; sourceTree = "<group>"; };
+		BB57BE8A159B3C0100FE45A8 /* arrow2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow2.png; sourceTree = "<group>"; };
+		BB57BE8B159B3C0100FE45A8 /* arrow3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow3.png; sourceTree = "<group>"; };
+		BB57BE8C159B3C0100FE45A8 /* arrow4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow4.png; sourceTree = "<group>"; };
+		BB57BE8D159B3C0100FE45A8 /* arrow5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow5.png; sourceTree = "<group>"; };
+		BB57BE8E159B3C0100FE45A8 /* arrow6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow6.png; sourceTree = "<group>"; };
+		BB57BE8F159B3C0100FE45A8 /* arrow7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow7.png; sourceTree = "<group>"; };
+		BB57BE90159B3C0100FE45A8 /* arrow8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow8.png; sourceTree = "<group>"; };
+		BB57BE91159B3C0100FE45A8 /* arrow9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow9.png; sourceTree = "<group>"; };
+		BB57BE9B159B475600FE45A8 /* achievement-toast-base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievement-toast-base.png"; sourceTree = "<group>"; };
+		BB57BE9C159B475600FE45A8 /* achievement-toast-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievement-toast-overlay.png"; sourceTree = "<group>"; };
 		BB61EB3515455C540000F2FE /* SoundCloudAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoundCloudAPI.xcodeproj; path = CocoaSoundCloudAPI/SoundCloudAPI.xcodeproj; sourceTree = "<group>"; };
 		BB61EB3E15455C890000F2FE /* SoundCloudUI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoundCloudUI.xcodeproj; path = CocoaSoundCloudUI/SoundCloudUI.xcodeproj; sourceTree = "<group>"; };
 		BB61EB4A15455C910000F2FE /* JSONKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSONKit.xcodeproj; path = JSONKit/JSONKit.xcodeproj; sourceTree = "<group>"; };
@@ -462,6 +484,17 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB57BE9B159B475600FE45A8 /* achievement-toast-base.png */,
+				BB57BE9C159B475600FE45A8 /* achievement-toast-overlay.png */,
+				BB57BE89159B3C0100FE45A8 /* arrow1.png */,
+				BB57BE8A159B3C0100FE45A8 /* arrow2.png */,
+				BB57BE8B159B3C0100FE45A8 /* arrow3.png */,
+				BB57BE8C159B3C0100FE45A8 /* arrow4.png */,
+				BB57BE8D159B3C0100FE45A8 /* arrow5.png */,
+				BB57BE8E159B3C0100FE45A8 /* arrow6.png */,
+				BB57BE8F159B3C0100FE45A8 /* arrow7.png */,
+				BB57BE90159B3C0100FE45A8 /* arrow8.png */,
+				BB57BE91159B3C0100FE45A8 /* arrow9.png */,
 				CEEE28A61598C04900C741AE /* divider.png */,
 				CEEE28A21598B95C00C741AE /* repeatoffbutton.png */,
 				CEEE28A31598B95C00C741AE /* repeatonbutton.png */,
@@ -853,6 +886,17 @@
 				CEEE28A41598B95C00C741AE /* repeatoffbutton.png in Resources */,
 				CEEE28A51598B95C00C741AE /* repeatonbutton.png in Resources */,
 				CEEE28A71598C04900C741AE /* divider.png in Resources */,
+				BB57BE92159B3C0100FE45A8 /* arrow1.png in Resources */,
+				BB57BE93159B3C0100FE45A8 /* arrow2.png in Resources */,
+				BB57BE94159B3C0100FE45A8 /* arrow3.png in Resources */,
+				BB57BE95159B3C0100FE45A8 /* arrow4.png in Resources */,
+				BB57BE96159B3C0100FE45A8 /* arrow5.png in Resources */,
+				BB57BE97159B3C0100FE45A8 /* arrow6.png in Resources */,
+				BB57BE98159B3C0100FE45A8 /* arrow7.png in Resources */,
+				BB57BE99159B3C0100FE45A8 /* arrow8.png in Resources */,
+				BB57BE9A159B3C0100FE45A8 /* arrow9.png in Resources */,
+				BB57BE9D159B475600FE45A8 /* achievement-toast-base.png in Resources */,
+				BB57BE9E159B475600FE45A8 /* achievement-toast-overlay.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
