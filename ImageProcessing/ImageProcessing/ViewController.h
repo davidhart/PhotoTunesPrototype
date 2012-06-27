@@ -48,6 +48,9 @@
     @private bool _helpVisible;
     
     @private AchievementsTracker* _achievements;
+    
+    @private UIImage* _helpofficon;
+    @private UIImage* _helponicon;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;
@@ -55,6 +58,7 @@
 
 @property (nonatomic, retain) IBOutlet UIButton* buttonPlay;
 @property (nonatomic, retain) IBOutlet UIButton* buttonRepeat;
+@property (nonatomic, retain) IBOutlet UIButton* buttonHelp;
 
 @property (nonatomic, retain) IBOutlet UISlider* sliderTempo;
 @property (nonatomic, retain) IBOutlet UISlider* sliderDrumVolume;
@@ -70,7 +74,6 @@
 @property (nonatomic, retain) IBOutlet InstrumentSelector* instrumentSelector;
 @property (nonatomic, retain) IBOutlet SplashScreen* splashScreen;
 @property (nonatomic, retain) IBOutlet ImageLoading* imageLoading;
-
 
 -(void)initialize: (PdAudioController*) audio;
 

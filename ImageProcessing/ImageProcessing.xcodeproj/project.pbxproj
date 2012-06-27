@@ -54,6 +54,8 @@
 		BB57BE9A159B3C0100FE45A8 /* arrow9.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE91159B3C0100FE45A8 /* arrow9.png */; };
 		BB57BE9D159B475600FE45A8 /* achievement-toast-base.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE9B159B475600FE45A8 /* achievement-toast-base.png */; };
 		BB57BE9E159B475600FE45A8 /* achievement-toast-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE9C159B475600FE45A8 /* achievement-toast-overlay.png */; };
+		BB57BEA1159B50FD00FE45A8 /* helpoffbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BE9F159B50FD00FE45A8 /* helpoffbutton.png */; };
+		BB57BEA2159B50FD00FE45A8 /* helponbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = BB57BEA0159B50FD00FE45A8 /* helponbutton.png */; };
 		BB61EB6B15455CFF0000F2FE /* libJSONKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB61EB5315455C910000F2FE /* libJSONKit.a */; };
 		BB61EB6C15455CFF0000F2FE /* libOAuth2Client.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB61EB6115455C970000F2FE /* libOAuth2Client.a */; };
 		BB61EB6D15455CFF0000F2FE /* libOHAttributedLabel.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB61EB6A15455C9D0000F2FE /* libOHAttributedLabel.a */; };
@@ -289,6 +291,8 @@
 		BB57BE91159B3C0100FE45A8 /* arrow9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow9.png; sourceTree = "<group>"; };
 		BB57BE9B159B475600FE45A8 /* achievement-toast-base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievement-toast-base.png"; sourceTree = "<group>"; };
 		BB57BE9C159B475600FE45A8 /* achievement-toast-overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "achievement-toast-overlay.png"; sourceTree = "<group>"; };
+		BB57BE9F159B50FD00FE45A8 /* helpoffbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpoffbutton.png; sourceTree = "<group>"; };
+		BB57BEA0159B50FD00FE45A8 /* helponbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helponbutton.png; sourceTree = "<group>"; };
 		BB61EB3515455C540000F2FE /* SoundCloudAPI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoundCloudAPI.xcodeproj; path = CocoaSoundCloudAPI/SoundCloudAPI.xcodeproj; sourceTree = "<group>"; };
 		BB61EB3E15455C890000F2FE /* SoundCloudUI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SoundCloudUI.xcodeproj; path = CocoaSoundCloudUI/SoundCloudUI.xcodeproj; sourceTree = "<group>"; };
 		BB61EB4A15455C910000F2FE /* JSONKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JSONKit.xcodeproj; path = JSONKit/JSONKit.xcodeproj; sourceTree = "<group>"; };
@@ -484,6 +488,8 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB57BE9F159B50FD00FE45A8 /* helpoffbutton.png */,
+				BB57BEA0159B50FD00FE45A8 /* helponbutton.png */,
 				BB57BE9B159B475600FE45A8 /* achievement-toast-base.png */,
 				BB57BE9C159B475600FE45A8 /* achievement-toast-overlay.png */,
 				BB57BE89159B3C0100FE45A8 /* arrow1.png */,
@@ -897,6 +903,8 @@
 				BB57BE9A159B3C0100FE45A8 /* arrow9.png in Resources */,
 				BB57BE9D159B475600FE45A8 /* achievement-toast-base.png in Resources */,
 				BB57BE9E159B475600FE45A8 /* achievement-toast-overlay.png in Resources */,
+				BB57BEA1159B50FD00FE45A8 /* helpoffbutton.png in Resources */,
+				BB57BEA2159B50FD00FE45A8 /* helponbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

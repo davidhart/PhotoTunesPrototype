@@ -13,6 +13,7 @@
 
 @synthesize buttonPlay;
 @synthesize buttonRepeat;
+@synthesize buttonHelp;
 
 @synthesize sliderTempo;
 @synthesize sliderDrumVolume;
@@ -191,10 +192,12 @@
     if (_helpVisible)
     {
         [mainView addSubview: splashScreen];
+        [buttonHelp setImage: _helponicon forState: UIControlStateNormal];
     }
     else
     {
         [splashScreen removeFromSuperview];
+        [buttonHelp setImage: _helpofficon forState:UIControlStateNormal];
     }
     
 }
@@ -281,6 +284,12 @@
     
     _repeatOn = false;
     _playing = false;
+    _helpVisible = true;
+    
+    _helponicon = [UIImage imageNamed: @"helponbutton.png"];
+    _helpofficon = [UIImage imageNamed: @"helpoffbutton.png"];
+    
+    [mainView addSubview: splashScreen];
     
     // Init camera picker
     imagePickerController = [[UIImagePickerController alloc] init];
@@ -323,9 +332,6 @@
     _achievements = [[AchievementsTracker alloc] init: self];
     
     [_audio setActive:YES];
-    
-    _helpVisible = true;
-    [mainView addSubview: splashScreen];
 }
 
 - (void)viewWillAppear:(BOOL)animated
