@@ -34,7 +34,7 @@ empty -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 75 -75 tgl 32 0 \$0-loopPlayback empty loop 17 7 0 10 -262144
 -1 -1 0 1;
 #X text 480 -59 Playback Controls;
-#N canvas 775 143 751 551 init 0;
+#N canvas 775 143 751 551 init 1;
 #X obj 40 65 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 37 31 loadbang;
@@ -78,7 +78,7 @@ empty -2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 639 329 s \$0-instrument4;
 #X obj 808 281 loadbang;
 #X obj 808 329 s \$0-instrument5;
-#X msg 808 305 sample a.wav \, mode 2;
+#X msg 808 305 sample a1.wav \, mode 2;
 #X connect 0 0 23 0;
 #X connect 0 0 15 0;
 #X connect 0 0 6 0;

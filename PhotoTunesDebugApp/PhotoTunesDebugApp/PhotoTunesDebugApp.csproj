@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AudioEngine.cs" />
+    <Compile Include="DrumsWrap.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +94,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="patch\a1.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="patch\hihat.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

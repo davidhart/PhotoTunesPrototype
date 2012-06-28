@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.playPauseButton = new System.Windows.Forms.Button();
             this.songDataGrid = new System.Windows.Forms.DataGridView();
             this.playbackProgress = new System.Windows.Forms.ProgressBar();
@@ -55,11 +55,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.trackBarTempo = new System.Windows.Forms.TrackBar();
             this.label2 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.songDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTempo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // playPauseButton
@@ -85,14 +90,14 @@
             this.songDataGrid.Name = "songDataGrid";
             this.songDataGrid.RowHeadersVisible = false;
             this.songDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.songDataGrid.Size = new System.Drawing.Size(561, 150);
+            this.songDataGrid.Size = new System.Drawing.Size(1328, 150);
             this.songDataGrid.TabIndex = 1;
             // 
             // playbackProgress
             // 
-            this.playbackProgress.Location = new System.Drawing.Point(12, 162);
+            this.playbackProgress.Location = new System.Drawing.Point(793, 575);
             this.playbackProgress.Name = "playbackProgress";
-            this.playbackProgress.Size = new System.Drawing.Size(561, 12);
+            this.playbackProgress.Size = new System.Drawing.Size(673, 21);
             this.playbackProgress.TabIndex = 2;
             // 
             // stopButton
@@ -142,7 +147,7 @@
             this.drumTextBox.Name = "drumTextBox";
             this.drumTextBox.Size = new System.Drawing.Size(100, 71);
             this.drumTextBox.TabIndex = 7;
-            this.drumTextBox.Text = "ride.wav\r\nbass.wav\r\nsnare.wav\r\nsplash.wav\r\nhihat.wav";
+            this.drumTextBox.Text = "bass.wav\r\nhihat.wav\r\nride.wav\r\nsnare.wav\r\nsplash.wav";
             // 
             // loadDrumTextbox
             // 
@@ -161,7 +166,7 @@
             "Off",
             "Volume",
             "Pitch"});
-            this.comboBox1.Location = new System.Drawing.Point(579, 12);
+            this.comboBox1.Location = new System.Drawing.Point(1361, 12);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 9;
@@ -174,7 +179,7 @@
             "Off",
             "Volume",
             "Pitch"});
-            this.comboBox2.Location = new System.Drawing.Point(579, 35);
+            this.comboBox2.Location = new System.Drawing.Point(1361, 35);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 10;
@@ -187,7 +192,7 @@
             "Off",
             "Volume",
             "Pitch"});
-            this.comboBox3.Location = new System.Drawing.Point(579, 58);
+            this.comboBox3.Location = new System.Drawing.Point(1361, 58);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 21);
             this.comboBox3.TabIndex = 11;
@@ -200,7 +205,7 @@
             "Off",
             "Volume",
             "Pitch"});
-            this.comboBox4.Location = new System.Drawing.Point(579, 81);
+            this.comboBox4.Location = new System.Drawing.Point(1361, 81);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(121, 21);
             this.comboBox4.TabIndex = 12;
@@ -213,7 +218,7 @@
             "Off",
             "Volume",
             "Pitch"});
-            this.comboBox5.Location = new System.Drawing.Point(579, 104);
+            this.comboBox5.Location = new System.Drawing.Point(1361, 104);
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(121, 21);
             this.comboBox5.TabIndex = 13;
@@ -226,7 +231,7 @@
             "Off",
             "Volume",
             "Pitch"});
-            this.comboBox6.Location = new System.Drawing.Point(579, 127);
+            this.comboBox6.Location = new System.Drawing.Point(1361, 127);
             this.comboBox6.Name = "comboBox6";
             this.comboBox6.Size = new System.Drawing.Size(121, 21);
             this.comboBox6.TabIndex = 14;
@@ -244,9 +249,10 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(424, 213);
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox.Location = new System.Drawing.Point(793, 177);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(327, 162);
+            this.pictureBox.Size = new System.Drawing.Size(673, 402);
             this.pictureBox.TabIndex = 17;
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
@@ -267,13 +273,13 @@
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
-            this.chart1.Location = new System.Drawing.Point(424, 381);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(793, 590);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(327, 190);
+            this.chart1.Size = new System.Drawing.Size(673, 430);
             this.chart1.TabIndex = 19;
             this.chart1.Text = "chart1";
             // 
@@ -288,9 +294,9 @@
             "Sat",
             "Val",
             "Filtered Val"});
-            this.checkListChart.Location = new System.Drawing.Point(331, 381);
+            this.checkListChart.Location = new System.Drawing.Point(680, 593);
             this.checkListChart.Name = "checkListChart";
-            this.checkListChart.Size = new System.Drawing.Size(87, 109);
+            this.checkListChart.Size = new System.Drawing.Size(107, 424);
             this.checkListChart.TabIndex = 20;
             this.checkListChart.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkListChart_SelectedIndexValueChanged);
             // 
@@ -334,11 +340,55 @@
             this.label2.TabIndex = 24;
             this.label2.Text = "Tempo";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(793, 593);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dataGridView1.Size = new System.Drawing.Size(673, 21);
+            this.dataGridView1.TabIndex = 25;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(318, 302);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Rock";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(318, 331);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "Dance";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(318, 361);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 28;
+            this.button3.Text = "8-Bit";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 637);
+            this.ClientSize = new System.Drawing.Size(1503, 1025);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.trackBarTempo);
             this.Controls.Add(this.label1);
@@ -365,12 +415,14 @@
             this.Controls.Add(this.playPauseButton);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.songDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTempo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,6 +455,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TrackBar trackBarTempo;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }
 
