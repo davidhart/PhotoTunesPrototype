@@ -66,7 +66,6 @@ namespace PhotoTunesDebugApp
                 256,
                 renderCallback,
                 (IntPtr)null);
-
             PortAudio.Pa_StartStream(stream);
         }
 
