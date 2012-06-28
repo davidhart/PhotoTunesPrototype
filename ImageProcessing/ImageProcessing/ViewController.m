@@ -6,6 +6,15 @@
 #import "SplashScreen.h"
 #import <SCUI.h>
 
+NSString *instrumentNames[] = {@"Guitar", @"Bell", @"Electronic", @"Test 4", @"Test 5"};
+NSString *instrumentFiles[] = {@"a.wav", @"bell.aiff", @"synth.wav", @"Test 4", @"Test 5"};
+
+NSString* drumPackNames[] = {@"Standard", @"Tribal"};
+
+NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav", @"splash.wav",
+                        @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnare.wav", @"tsplash.wav"};
+
+
 @implementation ViewController
 
 @synthesize imageView;
@@ -14,6 +23,8 @@
 @synthesize buttonPlay;
 @synthesize buttonRepeat;
 @synthesize buttonHelp;
+@synthesize buttonPrimaryInstrument;
+@synthesize buttonDrums;
 
 @synthesize sliderTempo;
 @synthesize sliderDrumVolume;
@@ -29,6 +40,9 @@
 @synthesize instrumentSelector;
 @synthesize splashScreen;
 @synthesize imageLoading;
+
+@synthesize progressView;
+@synthesize shareView;
 
 -(void)sliderTempoReleased:(id)sender
 { 
@@ -144,6 +158,15 @@
 
 -(void)instrumentsPressed:(id)sender
 {
+    [instrumentSelector setPickerNames:[NSArray arrayWithObjects: instrumentNames count: 3]];
+    [instrumentSelector setCompletionHandler: self : @selector(changePrimaryInstrument)];
+    [instrumentSelector show];
+}
+
+-(void)drumsPressed:(id)sender
+{
+    [instrumentSelector setPickerNames:[NSArray arrayWithObjects: drumPackNames count: 2]];
+    [instrumentSelector setCompletionHandler: self :@selector(changeDrums)];
     [instrumentSelector show];
 }
 
@@ -171,7 +194,12 @@
     }
 }
 
--(void)recordPressed:(id)sender
+-(void)sharePressed:(id)sender
+{
+    [self presentModalViewController: shareView animated: YES];
+}
+
+-(void)beginRecording
 {
     // Make sure looping is disabled while recording
     if (_repeatOn)
@@ -180,9 +208,7 @@
     // Start recording
     [PdBase sendBangToReceiver: @"recordSong"];
     
-    [_progressScreen setTitle: @"Saving"];
-    [_progressScreen setProgress:0];
-    [_progressScreen show];
+    [self presentModalViewController:progressView animated: YES];
 }
 
 -(void)toggleHelp:(id)sender
@@ -252,10 +278,11 @@
     // ... and other options like the private flag.
     [shareViewController setPrivate:NO];
     
-    // Now present the share view controller.
-    [self presentModalViewController:shareViewController animated:YES];
-    
-    [_progressScreen hide];
+    // Hide the saving progressbar view
+    [self dismissViewControllerAnimated: YES completion:^{
+        // Now present the share view controller.
+        [self presentModalViewController:shareViewController animated:YES];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -327,8 +354,6 @@
     [instrumentSelector setParent: self]; 
     [imageLoading setParent: self];
     
-    _progressScreen = [[ProgressScreen alloc] init: self];
-    
     _achievements = [[AchievementsTracker alloc] init: self];
     
     [_audio setActive:YES];
@@ -391,15 +416,9 @@
 {
     float temp = _progressValue / (_numNotes - 1);
     
-    if ([_progressScreen isVisible])
-    {
-        if (temp != 0)
-            [_progressScreen setProgress:temp];
-    }
-    else
-    {
-        [progress setProgress: temp];
-    }
+    [progressView setProgress:temp];
+    
+    [progress setProgress: temp];
 }
 
 -(void)activateImageChooser:(BOOL) camera
@@ -725,18 +744,21 @@
 
 -(void)stoppedPlaying
 {
-    if (_progressValue == _numNotes - 1)
-    {
-        _progressValue = 0;
-        [self updateProgressView];
-    }
+    // Reset the progress bar only, to prevent saving screen
+    // resetting it's saving progress
+    _progressValue = 0;
+    progress.progress = 0;
 
     [buttonPlay setImage:[UIImage imageNamed:@"playbutton.png"] forState:UIControlStateNormal];
     _playing = false;
 }
 
--(void)changeInstrument:(NSString *)soundFile
+-(void)changePrimaryInstrument
 {
+    NSString* instrumentName = instrumentNames[[instrumentSelector getSelectionIndex]];
+    [buttonPrimaryInstrument setTitle:instrumentName forState:UIControlStateNormal];
+    
+    NSString* soundFile = instrumentFiles[[instrumentSelector getSelectionIndex]];
     NSString* message = @"sample";
     NSArray* args = [NSArray arrayWithObject: soundFile];
     
@@ -744,6 +766,27 @@
     
     [_achievements instrumentChanged];
 }
+
+-(void)changeDrums
+{
+    int selection = [instrumentSelector getSelectionIndex];
+    
+    NSString* packName = drumPackNames[selection];
+    [buttonDrums setTitle:packName forState:UIControlStateNormal];
+    
+    NSString* message = @"sample";
+    
+    for (int i = 0; i < 5; ++i)
+    {
+        NSString* soundFile = drumPackFiles[selection*5 + i];
+        NSArray* args = [NSArray arrayWithObject: soundFile];
+                                            
+        NSString* reciever = [NSString stringWithFormat:@"%d-instrument%d", _patch.dollarZero, i];
+        
+        [PdBase sendMessage: message withArguments:args toReceiver: reciever];
+    }
+}
+
 - (void)receivePrint:(NSString *)message
 {
     NSLog(message);

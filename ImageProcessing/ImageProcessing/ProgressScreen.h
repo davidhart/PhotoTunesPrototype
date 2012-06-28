@@ -9,24 +9,25 @@
 #import <Foundation/Foundation.h>
 
 @class ViewController;
+@class ProgressView;
 
-@interface ProgressScreen : NSObject
-{
-    @private UIToolbar* _toolbar;
-    @private UIView* _subView;
-    @private UILabel* _titleLabel;
-    @private UIProgressView* _progressView;
-    
-    @private __unsafe_unretained ViewController* _parent;
-}
 
--(id)init:(ViewController*)parent;
+@interface ShareView : UIViewController
 
--(void)show;
--(void)hide;
--(bool)isVisible;
+@property (nonatomic, retain) IBOutlet ProgressView* progressView;
+@property (nonatomic, retain) IBOutlet ViewController* parent;
 
--(void)setTitle:(NSString*) title;
+-(IBAction)cancel:(id)sender;
+-(IBAction)saveAndUpload:(id)sender;
+
+@end
+
+
+@interface ProgressView : UIViewController
+
+@property (nonatomic, retain) IBOutlet UIProgressView* progressBar;
+@property (nonatomic, retain) IBOutlet ViewController* parent;
+
 -(void)setProgress:(float)progress;
 
 @end

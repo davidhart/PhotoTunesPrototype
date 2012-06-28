@@ -13,28 +13,25 @@ const float SELECTOR_HEIGHT = 120.0f;
 
 @implementation InstrumentSelector
 
--(void)setParent:(ViewController *)parent
-{
-    _parent = parent;
-}
+@synthesize parent;
+@synthesize pickerWheel;
 
-// tell the picker how many components it will have
+// Tell the picker how many components each option has
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView 
 { 
     return 1;
 } 
 
+// Tell the picker the number of options
 -(NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component
 {    
-    return 5;
+    return [_options count];
 }
 
-// tell the picker the title for a given component
+// Tell the picker the title for a given component
 -(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component 
-{    
-    NSString *instrumentList[] = {@"Guitar", @"Bell", @"Electronic", @"Test 4", @"Test 5"};
-    
-    return instrumentList[row];
+{
+    return [_options objectAtIndex: row];
 } 
 
 // tell the picker the width of each row for a given component
@@ -52,14 +49,13 @@ const float SELECTOR_HEIGHT = 120.0f;
 
 -(void)show
 {
-    [_parent presentModalViewController: self animated:YES];
-    
-    [_myPickerView selectRow:_currentSelection inComponent:0 animated:NO];
+    [parent presentModalViewController: self animated:YES];
+    [pickerWheel selectRow:_currentSelection inComponent:0 animated:NO];
 }
 
 -(void)hide
 {    
-    [_parent dismissModalViewControllerAnimated: YES];
+    [parent dismissModalViewControllerAnimated: YES];
 }
 
 -(void)cancel:(id)sender
@@ -69,12 +65,28 @@ const float SELECTOR_HEIGHT = 120.0f;
 
 -(void)select:(id)sender
 {
-    NSString *instrumentList[] = {@"a.wav", @"bell.aiff", @"synth.wav", @"Test 4", @"Test 5"};
-    
     _activeSelection = _currentSelection;
-    [_parent changeInstrument:instrumentList[_activeSelection]];
+
+    [_completionObject performSelector:_onCompletion];
     
     [self hide];
+}
+
+-(void)setPickerNames:(NSArray *)names
+{
+    _options = names;
+    [pickerWheel reloadAllComponents];
+}
+
+-(void)setCompletionHandler:(NSObject*)object: (SEL)onCompletion
+{
+    _completionObject = object;
+    _onCompletion = onCompletion;
+}
+
+-(int)getSelectionIndex
+{
+    return _currentSelection;
 }
 
 @end

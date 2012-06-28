@@ -14,9 +14,11 @@
 #import "AchievementsView.h"
 
 @class InstrumentSelector;
-@class ProgressScreen;
 @class SplashScreen;
 @class ImageLoading;
+
+@class ProgressView;
+@class ShareView;
 
 @interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 {
@@ -29,7 +31,6 @@
     @private UIImagePickerController* imagePickerController;
     
     //@private InstrumentSelector* _instrumentSelector;
-    @private ProgressScreen* _progressScreen;
     
     @private float _progressValue;
     @private int _numNotes;
@@ -59,6 +60,8 @@
 @property (nonatomic, retain) IBOutlet UIButton* buttonPlay;
 @property (nonatomic, retain) IBOutlet UIButton* buttonRepeat;
 @property (nonatomic, retain) IBOutlet UIButton* buttonHelp;
+@property (nonatomic, retain) IBOutlet UIButton* buttonPrimaryInstrument;
+@property (nonatomic, retain) IBOutlet UIButton* buttonDrums;
 
 @property (nonatomic, retain) IBOutlet UISlider* sliderTempo;
 @property (nonatomic, retain) IBOutlet UISlider* sliderDrumVolume;
@@ -74,6 +77,9 @@
 @property (nonatomic, retain) IBOutlet InstrumentSelector* instrumentSelector;
 @property (nonatomic, retain) IBOutlet SplashScreen* splashScreen;
 @property (nonatomic, retain) IBOutlet ImageLoading* imageLoading;
+
+@property (nonatomic, retain) IBOutlet ProgressView* progressView;
+@property (nonatomic, retain) IBOutlet ShareView* shareView;
 
 -(void)initialize: (PdAudioController*) audio;
 
@@ -94,14 +100,17 @@
 -(IBAction)toggleHelp:(id)sender;
 
 -(IBAction)instrumentsPressed:(id)sender;
+-(IBAction)drumsPressed:(id)sender;
 
--(IBAction)recordPressed:(id) sender;
+-(IBAction)sharePressed:(id) sender;
 
 -(IBAction)customisePressed:(id) sender;
 
 -(void)receiveFloat:(float)received fromSource:(NSString *)source;
 
 -(void)updateProgressView;
+
+-(void)beginRecording;
 
 +(float)getNote:(float*)scale :(int)size :(float)locationOnScale;
 
@@ -116,6 +125,7 @@
 -(void)setImage:(UIImage*) image;
 -(void)updateSongValues;
 
--(void)changeInstrument:(NSString*) soundFile;
+-(void)changePrimaryInstrument;
+-(void)changeDrums;
 
 @end
