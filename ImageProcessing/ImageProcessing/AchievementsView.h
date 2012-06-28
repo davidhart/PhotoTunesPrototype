@@ -62,11 +62,12 @@
 @interface BaseTracker : NSObject
 {
     @private AchievementsTracker* _tracker;
-    @private int _index;
+    @protected int _index;
     @private bool _unlocked;
 }
 
 -(void)unlock;
+-(void)silentUnlock;
 -(bool)isUnlocked;
 
 -(void)setParent: (AchievementsTracker*) tracker;
@@ -78,6 +79,8 @@
 -(void)lengthChanged;
 -(void)instrumentChanged;
 -(void)imageChanged;
+
+-(void)loadSavedAchievement;
 
 @end
 
@@ -97,6 +100,7 @@
 -(void)imageChanged;
 
 -(void)unlockAchievement:(int) index;
+-(void)silentUnlockAchievement:(int)index;
 
 @end
 
@@ -113,6 +117,8 @@
     @private bool _instrumentChanged;
 }
 
+-(void)loadSavedAchievement;
+
 @end
 
 @interface PhotocountTracker : BaseTracker
@@ -122,5 +128,7 @@
 }
 
 -(void)setUnlockCount:(int)unlockCount;
+
+-(void)loadSavedAchievement;
 
 @end
