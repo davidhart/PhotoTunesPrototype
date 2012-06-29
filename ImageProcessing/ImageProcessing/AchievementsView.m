@@ -202,6 +202,7 @@ UIImage* g_AchievementUnlockedBaseImage;
     
     if (self)
     {
+        _view = view;
         _achievementsView = view.achievementsScrollView;
         _achievementsToolbar = view.achievementsToolbar;
         
@@ -340,6 +341,18 @@ UIImage* g_AchievementUnlockedBaseImage;
     [ach setUnlocked: true];
 }
 
+-(void)setScore:(int)score
+{
+    NSString* string = [NSString stringWithFormat: @"%d Points", score];
+    _view.achPagePoints.title = string;
+}
+
+-(void)setAchUnlocked:(int)achUnlocked
+{
+    NSString* string = [NSString stringWithFormat: @"%d/%d", achUnlocked, [_achievementViews count]];
+    _view.achPageUnlocks.title = string;
+}
+
 @end
 
 @implementation AchievementsTracker
@@ -382,6 +395,29 @@ UIImage* g_AchievementUnlockedBaseImage;
     return self;
 }
 
+-(void)updateProgressLabels
+{
+    int unlocked = 0;
+    int score = 0;
+    
+    for (int i = 0; i < [_trackers count]; ++i)
+    {
+        BaseTracker* tracker = [_trackers objectAtIndex: i];
+        
+        if ([tracker isUnlocked])
+        {
+            unlocked++;
+            
+            score += tracker->score;
+        }
+    }
+    
+    // TODO: subtract points spent in store
+    
+    [_achievementsView setAchUnlocked: unlocked];
+    [_achievementsView setScore: score];
+}
+
 -(void)addAchievement:(BaseTracker*)tracker: (NSString*)title: (NSString*)descr: (NSString*)image: (int)points
 {    
     int index = [_achievementsView addAchievement:title: descr: image: points];
@@ -389,18 +425,25 @@ UIImage* g_AchievementUnlockedBaseImage;
     [tracker setParent: self];
     [tracker setIndex: index];
     [tracker loadSavedAchievement];
+    tracker->score = points;
     
     [_trackers addObject: tracker];
+    
+    [self updateProgressLabels];
 }
 
 -(void)unlockAchievement:(int)index
 {
     [_achievementsView unlockAchievement: index];
+    
+    [self updateProgressLabels];
 }
 
 -(void)silentUnlockAchievement:(int)index
 {
     [_achievementsView silentUnlockAchievement: index];
+    
+    [self updateProgressLabels];
 }
 
 -(void)tempoChanged
@@ -463,14 +506,14 @@ UIImage* g_AchievementUnlockedBaseImage;
 
 -(void)unlock
 {
-    [_tracker unlockAchievement: _index];
     _unlocked = true;
+    [_tracker unlockAchievement: _index];
 }
 
 -(void)silentUnlock
 {
-    [_tracker silentUnlockAchievement: _index];
     _unlocked = true;
+    [_tracker silentUnlockAchievement: _index];
 }
 
 -(bool)isUnlocked
@@ -506,18 +549,12 @@ UIImage* g_AchievementUnlockedBaseImage;
 {
     _tempoChanged = true;
     
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setBool:_tempoChanged forKey:@"_tempoChangedBool"];
-    
     [self evaluateCondition];
 }
 
 -(void)drumVolChanged
 {
     _drumVolumeChanged = true;
-    
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setBool:_drumVolumeChanged forKey:@"_drumVolumeChangedBool"];
     
     [self evaluateCondition];
 }
@@ -526,9 +563,6 @@ UIImage* g_AchievementUnlockedBaseImage;
 {
     _melodyVolumeChanged = true;
     
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setBool:_melodyVolumeChanged forKey:@"_melodyVolumeChangedBool"];
-    
     [self evaluateCondition];
 }
 
@@ -536,18 +570,12 @@ UIImage* g_AchievementUnlockedBaseImage;
 {
     _lengthChanged = true;
     
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setBool:_lengthChanged forKey:@"_lengthChangedBool"];
-    
     [self evaluateCondition];
 }
 
 -(void)instrumentChanged
 {
     _instrumentChanged = true;
-    
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setBool:_instrumentChanged forKey:@"_instrumentChangedBool"];
     
     [self evaluateCondition];
 }
@@ -559,13 +587,6 @@ UIImage* g_AchievementUnlockedBaseImage;
     _melodyVolumeChanged = false;
     _lengthChanged = false;
     _instrumentChanged = false;
-    
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setBool:_tempoChanged forKey:@"_tempoChangedBool"];
-    [prefs setBool:_drumVolumeChanged forKey:@"_drumVolumeChangedBool"];
-    [prefs setBool:_melodyVolumeChanged forKey:@"_melodyVolumeChangedBool"];
-    [prefs setBool:_lengthChanged forKey:@"_lengthChangedBool"];
-    [prefs setBool:_instrumentChanged forKey:@"_instrumentChangedBool"];
 }
 
 -(void)evaluateCondition
@@ -594,15 +615,11 @@ UIImage* g_AchievementUnlockedBaseImage;
     if (_isAchievementUnlocked)
         [self silentUnlock];
     
-    else 
-    {
-        _tempoChanged = [prefs boolForKey:@"_tempoChangedBool"];
-        _drumVolumeChanged = [prefs boolForKey:@"_drumVolumeChangedBool"];
-        _melodyVolumeChanged = [prefs boolForKey:@"_melodyVolumeChangedBool"];
-        _lengthChanged = [prefs boolForKey:@"_lengthChangedBool"];
-        _instrumentChanged = [prefs boolForKey:@"_instrumentChangedBool"];
-        [self evaluateCondition];
-    }
+    _tempoChanged = false;
+    _drumVolumeChanged = false;
+    _melodyVolumeChanged = false;
+    _lengthChanged = false;
+    _instrumentChanged = false;
 }
 
 @end

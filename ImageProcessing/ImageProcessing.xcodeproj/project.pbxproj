@@ -89,6 +89,10 @@
 		BB96872A1599DD850008501C /* SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9687291599DD850008501C /* SplashScreen.m */; };
 		BB9AE723148D2868004E608A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9AE722148D2868004E608A /* AudioToolbox.framework */; };
 		BB9AE725148D28DA004E608A /* soundsystem.pd in Resources */ = {isa = PBXBuildFile; fileRef = BB9AE724148D28DA004E608A /* soundsystem.pd */; };
+		BBAFEFD4159DD8B700AEFB88 /* lead.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAFEFD0159DD6DB00AEFB88 /* lead.wav */; };
+		BBAFEFDB159DD97900AEFB88 /* bass.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAFEFD5159DD96700AEFB88 /* bass.wav */; };
+		BBAFEFDC159DD97900AEFB88 /* snare.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAFEFD6159DD96700AEFB88 /* snare.wav */; };
+		BBAFEFDD159DD97900AEFB88 /* splash.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAFEFD7159DD96700AEFB88 /* splash.wav */; };
 		BBC0C4E3154ED9630024197E /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C4E2154ED9630024197E /* camera.png */; };
 		BBC0C4E6154EDBCA0024197E /* cameratiny.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C4E4154EDBCA0024197E /* cameratiny.png */; };
 		BBC0C4E7154EDBCA0024197E /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C4E5154EDBCA0024197E /* share.png */; };
@@ -240,6 +244,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		BBAFEFD3159DD8A700AEFB88 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = 8bit;
+			dstSubfolderSpec = 7;
+			files = (
+				BBAFEFDB159DD97900AEFB88 /* bass.wav in CopyFiles */,
+				BBAFEFDC159DD97900AEFB88 /* snare.wav in CopyFiles */,
+				BBAFEFDD159DD97900AEFB88 /* splash.wav in CopyFiles */,
+				BBAFEFD4159DD8B700AEFB88 /* lead.wav in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		BB037C26151799FB00DE56C1 /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
 		BB056163154E993600FE1640 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -333,6 +353,10 @@
 		BB9687291599DD850008501C /* SplashScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SplashScreen.m; path = ImageProcessing/SplashScreen.m; sourceTree = "<group>"; };
 		BB9AE722148D2868004E608A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BB9AE724148D28DA004E608A /* soundsystem.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = soundsystem.pd; sourceTree = "<group>"; };
+		BBAFEFD0159DD6DB00AEFB88 /* lead.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lead.wav; sourceTree = "<group>"; };
+		BBAFEFD5159DD96700AEFB88 /* bass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bass.wav; sourceTree = "<group>"; };
+		BBAFEFD6159DD96700AEFB88 /* snare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = snare.wav; sourceTree = "<group>"; };
+		BBAFEFD7159DD96700AEFB88 /* splash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = splash.wav; sourceTree = "<group>"; };
 		BBC0C4E2154ED9630024197E /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
 		BBC0C4E4154EDBCA0024197E /* cameratiny.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameratiny.png; sourceTree = "<group>"; };
 		BBC0C4E5154EDBCA0024197E /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
@@ -498,6 +522,7 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BBAFEFCF159DD6DB00AEFB88 /* 8bit */,
 				BB57BEA3159CA1B500FE45A8 /* tbass.wav */,
 				BB57BEA4159CA1B500FE45A8 /* thihat.wav */,
 				BB57BEA5159CA1B500FE45A8 /* tride.wav */,
@@ -638,6 +663,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		BBAFEFCF159DD6DB00AEFB88 /* 8bit */ = {
+			isa = PBXGroup;
+			children = (
+				BBAFEFD5159DD96700AEFB88 /* bass.wav */,
+				BBAFEFD6159DD96700AEFB88 /* snare.wav */,
+				BBAFEFD7159DD96700AEFB88 /* splash.wav */,
+				BBAFEFD0159DD6DB00AEFB88 /* lead.wav */,
+			);
+			path = 8bit;
+			sourceTree = "<group>";
+		};
 		BBE5ED0514CD817E005DB0DC /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,6 +730,7 @@
 				BB3ACB291483E5DD003014D1 /* Sources */,
 				BB3ACB2A1483E5DD003014D1 /* Frameworks */,
 				BB3ACB2B1483E5DD003014D1 /* Resources */,
+				BBAFEFD3159DD8A700AEFB88 /* CopyFiles */,
 			);
 			buildRules = (
 			);

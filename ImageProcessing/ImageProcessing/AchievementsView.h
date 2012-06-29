@@ -36,6 +36,7 @@
 
 @interface AchievementsView : NSObject
 {
+    // Toolbar labels   
     @private UIScrollView* _achievementsView;
     @private UIToolbar* _achievementsToolbar;
     
@@ -50,10 +51,15 @@
     @private UILabel* _titleLabel;
     @private UILabel* _scoreLabel;
     @private UILabel* _descriptionLabel;
+    
+    @private ViewController* _view;
 }
 
 -(id)init: (ViewController*) view;
 -(int)addAchievement: (NSString*) title: (NSString*)descr: (NSString*)icon: (int) points;
+
+-(void)setScore:(int)score;
+-(void)setAchUnlocked:(int)achUnlocked;
 
 @end
 
@@ -64,6 +70,8 @@
     @private AchievementsTracker* _tracker;
     @protected int _index;
     @private bool _unlocked;
+    
+    @public int score;
 }
 
 -(void)unlock;

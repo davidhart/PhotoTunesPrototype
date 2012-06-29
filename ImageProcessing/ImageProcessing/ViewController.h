@@ -81,6 +81,11 @@
 @property (nonatomic, retain) IBOutlet ProgressView* progressView;
 @property (nonatomic, retain) IBOutlet ShareView* shareView;
 
+@property (nonatomic, retain) IBOutlet UIBarItem* achPagePoints;
+@property (nonatomic, retain) IBOutlet UIBarItem* achPageUnlocks;
+
+@property (nonatomic, retain) IBOutlet UITabBar* mainTabBar;
+
 -(void)initialize: (PdAudioController*) audio;
 
 -(IBAction)playPressed:(id) sender;

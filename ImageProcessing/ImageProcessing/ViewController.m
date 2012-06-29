@@ -6,13 +6,14 @@
 #import "SplashScreen.h"
 #import <SCUI.h>
 
-NSString *instrumentNames[] = {@"Guitar", @"Bell", @"Electronic", @"Test 4", @"Test 5"};
-NSString *instrumentFiles[] = {@"a.wav", @"bell.aiff", @"synth.wav", @"Test 4", @"Test 5"};
+NSString *instrumentNames[] = {@"Guitar", @"Bell", @"Electronic", @"8Bit"};
+NSString *instrumentFiles[] = {@"a.wav", @"bell.aiff", @"synth.wav", @"8bit/lead.wav"};
 
-NSString* drumPackNames[] = {@"Standard", @"Tribal"};
+NSString* drumPackNames[] = {@"Standard", @"Tribal", @"8Bit"};
 
 NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav", @"splash.wav",
-                        @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnare.wav", @"tsplash.wav"};
+                        @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnare.wav", @"tsplash.wav",
+                        @"8bit/bass.wav", @"8bit/snare.wav", @"8bit/ride.wav", @"8bit/snare.wav", @"8bit/splash.wav"};
 
 
 @implementation ViewController
@@ -43,6 +44,11 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 
 @synthesize progressView;
 @synthesize shareView;
+
+@synthesize achPagePoints;
+@synthesize achPageUnlocks;
+
+@synthesize mainTabBar;
 
 -(void)sliderTempoReleased:(id)sender
 { 
@@ -158,14 +164,14 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 
 -(void)instrumentsPressed:(id)sender
 {
-    [instrumentSelector setPickerNames:[NSArray arrayWithObjects: instrumentNames count: 3]];
+    [instrumentSelector setPickerNames:[NSArray arrayWithObjects: instrumentNames count: sizeof(instrumentNames)/sizeof(NSString*)]];
     [instrumentSelector setCompletionHandler: self : @selector(changePrimaryInstrument)];
     [instrumentSelector show];
 }
 
 -(void)drumsPressed:(id)sender
 {
-    [instrumentSelector setPickerNames:[NSArray arrayWithObjects: drumPackNames count: 2]];
+    [instrumentSelector setPickerNames:[NSArray arrayWithObjects: drumPackNames count: sizeof(drumPackNames)/sizeof(NSString*)]];
     [instrumentSelector setCompletionHandler: self :@selector(changeDrums)];
     [instrumentSelector show];
 }
