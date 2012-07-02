@@ -120,6 +120,11 @@
 		CEEE28A41598B95C00C741AE /* repeatoffbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEE28A21598B95C00C741AE /* repeatoffbutton.png */; };
 		CEEE28A51598B95C00C741AE /* repeatonbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEE28A31598B95C00C741AE /* repeatonbutton.png */; };
 		CEEE28A71598C04900C741AE /* divider.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEE28A61598C04900C741AE /* divider.png */; };
+		CEF4A81215A1E49D00CD5CB1 /* widebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF4A81115A1E49D00CD5CB1 /* widebutton.png */; };
+		CEF4A81415A1E6E100CD5CB1 /* tallbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF4A81315A1E6E100CD5CB1 /* tallbutton.png */; };
+		CEF4A81615A1ED7100CD5CB1 /* customiseicon.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF4A81515A1ED7100CD5CB1 /* customiseicon.png */; };
+		CEF4A81815A1F47200CD5CB1 /* badgesicon.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF4A81715A1F47200CD5CB1 /* badgesicon.png */; };
+		CEF4A81A15A1FD5600CD5CB1 /* storeicon.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF4A81915A1FD5600CD5CB1 /* storeicon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -401,6 +406,11 @@
 		CEEE28A21598B95C00C741AE /* repeatoffbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = repeatoffbutton.png; sourceTree = "<group>"; };
 		CEEE28A31598B95C00C741AE /* repeatonbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = repeatonbutton.png; sourceTree = "<group>"; };
 		CEEE28A61598C04900C741AE /* divider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = divider.png; sourceTree = "<group>"; };
+		CEF4A81115A1E49D00CD5CB1 /* widebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = widebutton.png; sourceTree = "<group>"; };
+		CEF4A81315A1E6E100CD5CB1 /* tallbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tallbutton.png; sourceTree = "<group>"; };
+		CEF4A81515A1ED7100CD5CB1 /* customiseicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = customiseicon.png; sourceTree = "<group>"; };
+		CEF4A81715A1F47200CD5CB1 /* badgesicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badgesicon.png; sourceTree = "<group>"; };
+		CEF4A81915A1FD5600CD5CB1 /* storeicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storeicon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -522,6 +532,11 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CEF4A81915A1FD5600CD5CB1 /* storeicon.png */,
+				CEF4A81715A1F47200CD5CB1 /* badgesicon.png */,
+				CEF4A81515A1ED7100CD5CB1 /* customiseicon.png */,
+				CEF4A81315A1E6E100CD5CB1 /* tallbutton.png */,
+				CEF4A81115A1E49D00CD5CB1 /* widebutton.png */,
 				BBAFEFCF159DD6DB00AEFB88 /* 8bit */,
 				BB57BEA3159CA1B500FE45A8 /* tbass.wav */,
 				BB57BEA4159CA1B500FE45A8 /* thihat.wav */,
@@ -962,6 +977,11 @@
 				BB57BEAA159CA1B600FE45A8 /* tride.wav in Resources */,
 				BB57BEAB159CA1B600FE45A8 /* tsnare.wav in Resources */,
 				BB57BEAC159CA1B600FE45A8 /* tsplash.wav in Resources */,
+				CEF4A81215A1E49D00CD5CB1 /* widebutton.png in Resources */,
+				CEF4A81415A1E6E100CD5CB1 /* tallbutton.png in Resources */,
+				CEF4A81615A1ED7100CD5CB1 /* customiseicon.png in Resources */,
+				CEF4A81815A1F47200CD5CB1 /* badgesicon.png in Resources */,
+				CEF4A81A15A1FD5600CD5CB1 /* storeicon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
