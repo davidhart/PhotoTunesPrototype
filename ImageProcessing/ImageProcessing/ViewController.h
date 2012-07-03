@@ -12,6 +12,7 @@
 #import "PdAudioController.h"
 #import "PdBase.h"
 #import "AchievementsView.h"
+#import "StoreView.h"
 
 @class InstrumentSelector;
 @class SplashScreen;
@@ -49,6 +50,7 @@
     @private bool _helpVisible;
     
     @private AchievementsTracker* _achievements;
+    @private StoreTracker* _store;
     
     @private UIImage* _helpofficon;
     @private UIImage* _helponicon;
@@ -70,6 +72,10 @@
 
 @property (nonatomic, retain) IBOutlet UIToolbar* achievementsToolbar;
 @property (nonatomic, retain) IBOutlet UIScrollView* achievementsScrollView;
+
+@property (nonatomic, retain) IBOutlet UIScrollView* storeScrollView;
+@property (nonatomic, retain) IBOutlet UIBarItem* storePagePoints;
+@property (nonatomic, retain) IBOutlet UIBarItem* storePageUnlocks;
 
 @property (nonatomic, retain) IBOutlet UIScrollView* mainScrollView;
 @property (nonatomic, retain) IBOutlet UIView* mainView;

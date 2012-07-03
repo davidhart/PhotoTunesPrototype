@@ -48,6 +48,10 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 @synthesize achPagePoints;
 @synthesize achPageUnlocks;
 
+@synthesize storeScrollView;
+@synthesize storePagePoints;
+@synthesize storePageUnlocks;
+
 @synthesize mainTabBar;
 
 -(void)sliderTempoReleased:(id)sender
@@ -361,6 +365,7 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
     [imageLoading setParent: self];
     
     _achievements = [[AchievementsTracker alloc] init: self];
+    _store = [[StoreTracker alloc] init: self];
     
     [_audio setActive:YES];
 }
@@ -795,6 +800,6 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 
 - (void)receivePrint:(NSString *)message
 {
-    NSLog(message);
+    NSLog(@"%@", message);
 }
 @end

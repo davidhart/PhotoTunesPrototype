@@ -210,6 +210,7 @@ UIImage* g_AchievementUnlockedBaseImage;
         
         _achieveUnlocked = [[UIImageView alloc] initWithFrame:CGRectMake(0, -78 - STATUS_BAR_Y_OFFSET, _achievementsView.frame.size.width, 78)];
         
+        // Create toast popup controls...
         _achieveUnlocked.image = [UIImage imageNamed:@"achievement-toast-base.png"];
         
         // Icon graphic
@@ -258,9 +259,9 @@ UIImage* g_AchievementUnlockedBaseImage;
         _descriptionLabel.numberOfLines = 2;
         _descriptionLabel.font = [UIFont fontWithName: _descriptionLabel.font.familyName size: 14];
 
-        
         [_achieveUnlocked addSubview: _descriptionLabel];
-        
+       
+        // Add toast popup control to main view
         [view.view addSubview: _achieveUnlocked];
     }
     

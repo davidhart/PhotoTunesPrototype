@@ -48,9 +48,13 @@ const float SELECTOR_HEIGHT = 120.0f;
 } 
 
 -(void)show
-{
+{    
     [parent presentModalViewController: self animated:YES];
-    [pickerWheel selectRow:_currentSelection inComponent:0 animated:NO];
+    
+    // Doesn't remember selection anymore as this class is reused
+    // for both drum and lead instrument selection
+    _currentSelection = 0;
+    [pickerWheel selectRow:0 inComponent:0 animated:NO];
 }
 
 -(void)hide

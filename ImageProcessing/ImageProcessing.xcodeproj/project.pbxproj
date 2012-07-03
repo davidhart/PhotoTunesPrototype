@@ -125,6 +125,7 @@
 		CEF4A81615A1ED7100CD5CB1 /* customiseicon.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF4A81515A1ED7100CD5CB1 /* customiseicon.png */; };
 		CEF4A81815A1F47200CD5CB1 /* badgesicon.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF4A81715A1F47200CD5CB1 /* badgesicon.png */; };
 		CEF4A81A15A1FD5600CD5CB1 /* storeicon.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF4A81915A1FD5600CD5CB1 /* storeicon.png */; };
+		CEF4A81D15A204AB00CD5CB1 /* StoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF4A81C15A204AB00CD5CB1 /* StoreView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -411,6 +412,8 @@
 		CEF4A81515A1ED7100CD5CB1 /* customiseicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = customiseicon.png; sourceTree = "<group>"; };
 		CEF4A81715A1F47200CD5CB1 /* badgesicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badgesicon.png; sourceTree = "<group>"; };
 		CEF4A81915A1FD5600CD5CB1 /* storeicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storeicon.png; sourceTree = "<group>"; };
+		CEF4A81B15A204AB00CD5CB1 /* StoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreView.h; sourceTree = "<group>"; };
+		CEF4A81C15A204AB00CD5CB1 /* StoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -500,9 +503,14 @@
 		BB3ACB371483E5DD003014D1 /* ImageProcessing */ = {
 			isa = PBXGroup;
 			children = (
+				BB3ACB381483E5DD003014D1 /* Supporting Files */,
+				CE2E20DB158B4C1200FD7BF9 /* AchievementsView.h */,
+				CE2E20DC158B4C1200FD7BF9 /* AchievementsView.m */,
 				BB3ACB401483E5DD003014D1 /* AppDelegate.h */,
 				BB3ACB411483E5DE003014D1 /* AppDelegate.mm */,
 				BBD1BDA514D2E81200D54C01 /* homeIcon.png */,
+				BBFA9AF2159B307200376623 /* ImageLoading.h */,
+				BBFA9AF3159B307200376623 /* ImageLoading.m */,
 				BB873A3614DFF77400CE09FA /* ImageProcessing.entitlements */,
 				BB3ACB691483E614003014D1 /* ImageProperties.h */,
 				BB3ACB6A1483E614003014D1 /* ImageProperties.m */,
@@ -514,17 +522,14 @@
 				BBCFADD1151773B500671008 /* ProgressScreen.h */,
 				BBCFADD2151773B500671008 /* ProgressScreen.m */,
 				BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */,
+				CEF4A81B15A204AB00CD5CB1 /* StoreView.h */,
+				CEF4A81C15A204AB00CD5CB1 /* StoreView.m */,
 				BB46572414CDB41E00318F89 /* Util.h */,
 				BB46572514CDB41E00318F89 /* Util.m */,
 				BB3ACB431483E5DE003014D1 /* ViewController.h */,
 				BB3ACB441483E5DE003014D1 /* ViewController.m */,
 				BB3ACB491483E5DE003014D1 /* ViewController_iPad.xib */,
 				BB3ACB461483E5DE003014D1 /* ViewController_iPhone.xib */,
-				BB3ACB381483E5DD003014D1 /* Supporting Files */,
-				CE2E20DB158B4C1200FD7BF9 /* AchievementsView.h */,
-				CE2E20DC158B4C1200FD7BF9 /* AchievementsView.m */,
-				BBFA9AF2159B307200376623 /* ImageLoading.h */,
-				BBFA9AF3159B307200376623 /* ImageLoading.m */,
 			);
 			path = ImageProcessing;
 			sourceTree = "<group>";
@@ -532,19 +537,12 @@
 		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CEF4A81915A1FD5600CD5CB1 /* storeicon.png */,
-				CEF4A81715A1F47200CD5CB1 /* badgesicon.png */,
-				CEF4A81515A1ED7100CD5CB1 /* customiseicon.png */,
-				CEF4A81315A1E6E100CD5CB1 /* tallbutton.png */,
-				CEF4A81115A1E49D00CD5CB1 /* widebutton.png */,
 				BBAFEFCF159DD6DB00AEFB88 /* 8bit */,
-				BB57BEA3159CA1B500FE45A8 /* tbass.wav */,
-				BB57BEA4159CA1B500FE45A8 /* thihat.wav */,
-				BB57BEA5159CA1B500FE45A8 /* tride.wav */,
-				BB57BEA6159CA1B600FE45A8 /* tsnare.wav */,
-				BB57BEA7159CA1B600FE45A8 /* tsplash.wav */,
-				BB57BE9F159B50FD00FE45A8 /* helpoffbutton.png */,
-				BB57BEA0159B50FD00FE45A8 /* helponbutton.png */,
+				BB873A5414E9215C00CE09FA /* a.wav */,
+				CE2E20DE158B5A7100FD7BF9 /* ach-locked-base.png */,
+				CE2E20DF158B5A7100FD7BF9 /* ach-overlay.png */,
+				CE2E20E0158B5A7100FD7BF9 /* ach-unlocked-base.png */,
+				BB2B6C30158F65B700AEBC52 /* ach1.png */,
 				BB57BE9B159B475600FE45A8 /* achievement-toast-base.png */,
 				BB57BE9C159B475600FE45A8 /* achievement-toast-overlay.png */,
 				BB57BE89159B3C0100FE45A8 /* arrow1.png */,
@@ -556,48 +554,55 @@
 				BB57BE8F159B3C0100FE45A8 /* arrow7.png */,
 				BB57BE90159B3C0100FE45A8 /* arrow8.png */,
 				BB57BE91159B3C0100FE45A8 /* arrow9.png */,
-				CEEE28A61598C04900C741AE /* divider.png */,
-				CEEE28A21598B95C00C741AE /* repeatoffbutton.png */,
-				CEEE28A31598B95C00C741AE /* repeatonbutton.png */,
-				BB2B6C30158F65B700AEBC52 /* ach1.png */,
-				CE2E20DE158B5A7100FD7BF9 /* ach-locked-base.png */,
-				CE2E20DF158B5A7100FD7BF9 /* ach-overlay.png */,
-				CE2E20E0158B5A7100FD7BF9 /* ach-unlocked-base.png */,
-				BB0897FB158239060019E7FF /* toggleout.pd */,
-				BB0897F9158238DF0019E7FF /* instrumentinternal.pd */,
-				BB956B7D1580E6D1003A7E32 /* instrument.pd */,
-				BBC0C4E8154EE2FA0024197E /* folder.png */,
-				BBC0C4E4154EDBCA0024197E /* cameratiny.png */,
-				BBC0C4E5154EDBCA0024197E /* share.png */,
+				CEF4A81715A1F47200CD5CB1 /* badgesicon.png */,
+				BB67251115064D9600D96D0D /* bass.wav */,
+				BB83BC5914F2904D00226E16 /* bell.aiff */,
 				BBC0C4E2154ED9630024197E /* camera.png */,
-				BB05616F154EA21000FE1640 /* phototunes.png */,
-				BB056169154E9BDE00FE1640 /* playbar.png */,
+				BBC0C4E4154EDBCA0024197E /* cameratiny.png */,
+				CEF4A81515A1ED7100CD5CB1 /* customiseicon.png */,
+				CEEE28A61598C04900C741AE /* divider.png */,
+				BB36870D150623DC002624BB /* filterzero.pd */,
+				BBC0C4E8154EE2FA0024197E /* folder.png */,
 				BB056167154E9AEE00FE1640 /* helpIcon.png */,
-				BB51EF8E154E982500139C27 /* Microphone_Icon_clip_art_small.png */,
-				BB51EF8A154E94F500139C27 /* savebutton.png */,
+				BB57BE9F159B50FD00FE45A8 /* helpoffbutton.png */,
+				BB57BEA0159B50FD00FE45A8 /* helponbutton.png */,
+				BB67251215064D9600D96D0D /* hihat.wav */,
 				BB51EF79154E90D800139C27 /* icon.png */,
 				BB51EF7A154E90D800139C27 /* icon@2x.png */,
-				BB61EBA4154569CC0000F2FE /* SoundCloud.bundle */,
-				BB83378B150A5BF400D1E52E /* pausebutton.png */,
-				BB833787150A5AFB00D1E52E /* stopbutton.png */,
-				BB833785150A5AA000D1E52E /* playbutton.png */,
-				BB67251115064D9600D96D0D /* bass.wav */,
-				BB67251215064D9600D96D0D /* hihat.wav */,
-				BB67251315064D9600D96D0D /* ride.wav */,
-				BB67251415064D9600D96D0D /* snare.wav */,
-				BB67251515064D9600D96D0D /* splash.wav */,
-				BB05616B154E9DD900FE1640 /* synth.wav */,
-				BB36870D150623DC002624BB /* filterzero.pd */,
-				BB037C26151799FB00DE56C1 /* test2.jpg */,
-				BB83BC5914F2904D00226E16 /* bell.aiff */,
-				BB83BC5714F28F2200226E16 /* polytracker.pd */,
-				BB873A5414E9215C00CE09FA /* a.wav */,
-				BB873A5214E9214D00CE09FA /* vocoder.pd */,
-				BB9AE724148D28DA004E608A /* soundsystem.pd */,
 				BB3ACB391483E5DD003014D1 /* ImageProcessing-Info.plist */,
-				BB3ACB3A1483E5DD003014D1 /* InfoPlist.strings */,
-				BB3ACB3D1483E5DD003014D1 /* main.m */,
 				BB3ACB3F1483E5DD003014D1 /* ImageProcessing-Prefix.pch */,
+				BB3ACB3A1483E5DD003014D1 /* InfoPlist.strings */,
+				BB956B7D1580E6D1003A7E32 /* instrument.pd */,
+				BB0897F9158238DF0019E7FF /* instrumentinternal.pd */,
+				BB3ACB3D1483E5DD003014D1 /* main.m */,
+				BB51EF8E154E982500139C27 /* Microphone_Icon_clip_art_small.png */,
+				BB83378B150A5BF400D1E52E /* pausebutton.png */,
+				BB05616F154EA21000FE1640 /* phototunes.png */,
+				BB056169154E9BDE00FE1640 /* playbar.png */,
+				BB833785150A5AA000D1E52E /* playbutton.png */,
+				BB83BC5714F28F2200226E16 /* polytracker.pd */,
+				CEEE28A21598B95C00C741AE /* repeatoffbutton.png */,
+				CEEE28A31598B95C00C741AE /* repeatonbutton.png */,
+				BB67251315064D9600D96D0D /* ride.wav */,
+				BB51EF8A154E94F500139C27 /* savebutton.png */,
+				BBC0C4E5154EDBCA0024197E /* share.png */,
+				BB67251415064D9600D96D0D /* snare.wav */,
+				BB61EBA4154569CC0000F2FE /* SoundCloud.bundle */,
+				BB9AE724148D28DA004E608A /* soundsystem.pd */,
+				BB67251515064D9600D96D0D /* splash.wav */,
+				BB833787150A5AFB00D1E52E /* stopbutton.png */,
+				CEF4A81915A1FD5600CD5CB1 /* storeicon.png */,
+				BB05616B154E9DD900FE1640 /* synth.wav */,
+				CEF4A81315A1E6E100CD5CB1 /* tallbutton.png */,
+				BB57BEA3159CA1B500FE45A8 /* tbass.wav */,
+				BB037C26151799FB00DE56C1 /* test2.jpg */,
+				BB57BEA4159CA1B500FE45A8 /* thihat.wav */,
+				BB0897FB158239060019E7FF /* toggleout.pd */,
+				BB57BEA5159CA1B500FE45A8 /* tride.wav */,
+				BB57BEA6159CA1B600FE45A8 /* tsnare.wav */,
+				BB57BEA7159CA1B600FE45A8 /* tsplash.wav */,
+				BB873A5214E9214D00CE09FA /* vocoder.pd */,
+				CEF4A81115A1E49D00CD5CB1 /* widebutton.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1037,6 +1042,7 @@
 				CE2E20DD158B4C1200FD7BF9 /* AchievementsView.m in Sources */,
 				BB96872A1599DD850008501C /* SplashScreen.m in Sources */,
 				BBFA9AF4159B307200376623 /* ImageLoading.m in Sources */,
+				CEF4A81D15A204AB00CD5CB1 /* StoreView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
