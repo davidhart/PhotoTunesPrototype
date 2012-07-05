@@ -23,7 +23,7 @@
     [self.window makeKeyAndVisible];
     
     audioController = [[PdAudioController alloc] init];
-	[audioController configureAmbientWithSampleRate:22050 numberChannels:1 mixingEnabled:YES];
+	[audioController configureAmbientWithSampleRate:48000 numberChannels:2 mixingEnabled:YES];
 	[audioController setActive:YES];
 	[audioController print];
     

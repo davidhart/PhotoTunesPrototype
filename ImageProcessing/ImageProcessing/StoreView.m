@@ -32,7 +32,7 @@ UIImage* g_storeOverlayImage;
 
 @implementation StoreItemView
 
--(id)init:(CGRect)rect
+-(id)init:(CGRect)rect:(int)index
 {
     self = [super init];
     
@@ -42,6 +42,7 @@ UIImage* g_storeOverlayImage;
         
         _score = 0;
         _unlocked = false;
+        _index = index;
         
         // Base image / control
         _base = [[UIImageView alloc] initWithFrame:rect];
@@ -107,7 +108,13 @@ UIImage* g_storeOverlayImage;
         [_buyButton addTarget: self action:@selector(onBuy:) forControlEvents:UIControlEventTouchUpInside];
         _buyButton.frame = buyRect;
         [_buyButton setTitle: @"Buy 50" forState:UIControlStateNormal];
-        [_base addSubview: _buyButton];   
+        [_base addSubview: _buyButton];
+        
+        // Load unlock state
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        bool isUnlocked = [prefs boolForKey:
+                           [NSString stringWithFormat: @"_unlock%d", _index]];
+        [self setUnlocked: isUnlocked];
     }
     
     return self;
@@ -115,15 +122,27 @@ UIImage* g_storeOverlayImage;
         
 -(void)onBuy:(id)sender
 {
-    // TODO: check if we have enough points
+    // If we have enough points
+    if ([_parent getPoints] >= _score)
+    {    
+        NSString* message = [NSString stringWithFormat: @"Buy '%@' for %d points?", _titleLabel.text, _score];
     
-    NSString* message = [NSString stringWithFormat: @"Buy '%@' for %d points?", _titleLabel.text, _score];
-    
-    UIAlertView* alert = [[UIAlertView alloc]
+        UIAlertView* alert = [[UIAlertView alloc]
                           initWithTitle: @"Are you sure?" 
                           message: message delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles: @"Buy", nil];
     
-    [alert show];
+        [alert show];
+    }
+    else
+    {
+        NSString* message = [NSString stringWithFormat: @"You need %d points before you can unlock '%@'", _score, _titleLabel.text];
+        
+        UIAlertView* alert = [[UIAlertView alloc]
+                              initWithTitle: @"Unlock more badges first!" 
+                              message: message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        
+        [alert show];
+    }
 }
 
 -(UIView*)getBaseView
@@ -156,6 +175,18 @@ UIImage* g_storeOverlayImage;
     _unlocked = unlocked;
     
     _base.image = [self getBaseImage];
+    
+    // Hide buy button on unlocked items
+    _buyButton.hidden = unlocked;
+    
+    // Save unlock state
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    [prefs setBool:_unlocked forKey:[NSString stringWithFormat: @"_unlock%d", _index]];
+}
+
+-(bool)isUnlocked
+{
+    return _unlocked;
 }
 
 -(void)setTitle:(NSString *)title
@@ -180,13 +211,32 @@ UIImage* g_storeOverlayImage;
     [_buyButton setTitle: [NSString stringWithFormat: @"Buy %d", score] forState:UIControlStateNormal];
 }
 
+-(int)getScore
+{
+    return _score;
+}
+
+-(void)setParent:(StoreView *)parent
+{
+    _parent = parent;
+}
+
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1)
     {
-        NSLog(@"buy");
-        // buy
+        [self unlock];
     }
+}
+
+-(void)unlock
+{
+    [self setUnlocked: YES];
+    
+    [_parent onUnlock];
+    
+    // Write config?
+    // Update something global?
 }
 
 @end
@@ -201,6 +251,7 @@ UIImage* g_storeOverlayImage;
     {
         _scrollView = parent.storeScrollView;
         _storeItemViews = [[NSMutableArray alloc] init];
+        _view = parent;
     }
     
     return self;
@@ -209,15 +260,20 @@ UIImage* g_storeOverlayImage;
 -(void)addItem:(NSString *)title: (NSString *)description: (NSString*)icon: (int)cost
 {
     CGRect rect = [self getRectForItem: [_storeItemViews count]];
-    StoreItemView* item = [[StoreItemView alloc] init: rect];
+    
+    int index = [_storeItemViews count];
+    
+    StoreItemView* item = [[StoreItemView alloc] init: rect: index];
     
     [item setTitle: title];
     [item setScore: cost];
     [item setDesc: description];
     [item setIcon: icon];
+    [item setParent: self];
     
     [_storeItemViews addObject: item];
     [_scrollView addSubview: [item getBaseView]];
+    [_view updateStoreAndAchievements];    
     
     [self resizeScrollView];
 }
@@ -242,6 +298,31 @@ UIImage* g_storeOverlayImage;
                       STOREITEM_HEIGHT);
 }
 
+-(void)setPoints:(int)points
+{
+    _points = points;
+}
+
+-(int)getPoints
+{
+    return _points;
+}
+
+-(void)onUnlock
+{
+    [_view updateStoreAndAchievements];
+}
+
+-(StoreItemView*)getStoreItem:(int)index
+{
+    return (StoreItemView*)[_storeItemViews objectAtIndex: index];
+}
+
+-(int)getTotalItems
+{
+    return [_storeItemViews count];
+}
+
 @end
 
 
@@ -254,20 +335,59 @@ UIImage* g_storeOverlayImage;
     if (self)
     {
         _storeView = [[StoreView alloc] init: parent];
-        _storeItems = [[NSMutableArray alloc] init];
         
         [_storeView addItem:@"8bit Lead" :@"Recreate the sound of the 8bit era with this instrument": @"ach1.png" :10];
         
         [_storeView addItem:@"8bit Drum Pack": @"Recreate the sound of the 8bit era with this drum pack":
-         @"ach1.png": 10];
+         @"ach1.png": 20];
     }
     
     return self;
 }
 
--(void)addItem:(NSString*)title: (NSString*)desc: (NSString*) icon: (int)score: (StoreItemTracker*)tracker
+-(void)addItem:(NSString*)title: (NSString*)desc: (NSString*) icon: (int)score
 {
     [_storeView addItem: title: desc: icon: score];
+}
+
+-(void)setPoints:(int)points
+{
+    [_storeView setPoints: points];
+}
+
+-(int)getCostOfUnlockedItems
+{
+    int cost = 0;
+    
+    for (int i = 0; i < [self getTotalItems]; ++i)
+    {
+        StoreItemView* item = [_storeView getStoreItem: i];
+        
+        if ([item isUnlocked])
+            cost += [item getScore];        
+    }
+    
+    return cost;
+}
+
+-(int)getTotalItems
+{
+    return [_storeView getTotalItems];
+}
+
+-(int)getItemsUnlocked
+{
+    int items = 0;
+    
+    for (int i = 0; i < [self getTotalItems]; ++i)
+    {
+        StoreItemView* item = [_storeView getStoreItem: i];
+        
+        if ([item isUnlocked])
+            items++;
+    }
+    
+    return items;
 }
 
 @end

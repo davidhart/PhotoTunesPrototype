@@ -87,6 +87,8 @@ using namespace soundtouch;
 #define TEST_FLOAT_EQUAL(a, b)  (fabs(a - b) < 1e-10)
 
 
+extern "C" void soundtouch_ac_test();
+
 /// Print library version string for autoconf
 extern "C" void soundtouch_ac_test()
 {

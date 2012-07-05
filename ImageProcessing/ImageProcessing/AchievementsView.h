@@ -2,6 +2,7 @@
 #import <UIKit/UIKit.h>
 
 @class ViewController;
+@class StoreTracker;
 
 @interface AchievementView : NSObject
 {
@@ -96,6 +97,7 @@
 {
     @private AchievementsView* _achievementsView;
     @private NSMutableArray* _trackers;
+    @private ViewController* _view;
 }
 
 -(id)init:(ViewController*) view;
@@ -109,6 +111,10 @@
 
 -(void)unlockAchievement:(int) index;
 -(void)silentUnlockAchievement:(int)index;
+
+-(int)getUnlockedPoints;
+-(int)getUnlockedAchievements;
+-(int)getTotalAchievements;
 
 @end
 

@@ -364,8 +364,14 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
     [instrumentSelector setParent: self]; 
     [imageLoading setParent: self];
     
-    _achievements = [[AchievementsTracker alloc] init: self];
+    // Hack: prevents "updateStoreAndAchievements" accessing either class until both
+    // are loaded
+    _store = nil;
+    _achievements = nil;
+    
     _store = [[StoreTracker alloc] init: self];
+    _achievements = [[AchievementsTracker alloc] init: self];
+    [self updateStoreAndAchievements];
     
     [_audio setActive:YES];
 }
@@ -802,4 +808,40 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 {
     NSLog(@"%@", message);
 }
+
+-(void)updateStoreAndAchievements
+{
+    // Ignore updates when both the store and achivements systems are not loaded
+    if (_store == nil)
+        return;
+    
+    if (_achievements == nil)
+        return;
+    
+    int points = [_achievements getUnlockedPoints];
+    int costs = [_store getCostOfUnlockedItems];
+
+    int available = points - costs;
+    
+    // Update available points labels and for store logic
+    NSString* pointsLabel = [NSString stringWithFormat: @"%d Points", available];
+    
+    storePagePoints.title = pointsLabel;
+    achPagePoints.title = pointsLabel;
+    
+    [_store setPoints: available];
+    
+    NSString* achUnlockedLabel = [NSString stringWithFormat: @"%d/%d", 
+                                  [_achievements getUnlockedAchievements],
+                                  [_achievements getTotalAchievements]];
+    
+    achPageUnlocks.title = achUnlockedLabel;
+    
+    NSString* storeUnlockedLabel = [NSString stringWithFormat: @"%d/%d",
+                                    [_store getItemsUnlocked],
+                                    [_store getTotalItems]];
+    
+    storePageUnlocks.title = storeUnlockedLabel;
+}
+
 @end

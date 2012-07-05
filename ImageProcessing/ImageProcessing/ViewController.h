@@ -139,4 +139,6 @@
 -(void)changePrimaryInstrument;
 -(void)changeDrums;
 
+-(void)updateStoreAndAchievements;
+
 @end

@@ -1,6 +1,6 @@
 //
 #import "AchievementsView.h"
-
+#import "StoreView.h"
 #import "ViewController.h"
 
 
@@ -150,7 +150,7 @@ UIImage* g_AchievementUnlockedBaseImage;
     
     _base.image = [self GetBaseImage];
     
-    NSLog(@"unlocked %s", [_titleLabel.text cString]);
+    NSLog(@"unlocked %@", _titleLabel.text);
 }
 
 -(void)setTitle:(NSString*)title
@@ -366,6 +366,7 @@ UIImage* g_AchievementUnlockedBaseImage;
     {
         _achievementsView = [[AchievementsView alloc] init: viewController];
         _trackers = [[NSMutableArray alloc] init];
+        _view = viewController;
         
         // Add achievements
         [self addAchievement: [PerfectionistAchievementTracker alloc]:
@@ -396,27 +397,38 @@ UIImage* g_AchievementUnlockedBaseImage;
     return self;
 }
 
--(void)updateProgressLabels
+-(int)getTotalAchievements
+{
+    return [_trackers count];
+}
+
+-(int)getUnlockedAchievements
 {
     int unlocked = 0;
-    int score = 0;
-    
-    for (int i = 0; i < [_trackers count]; ++i)
+    for (int i = 0; i < [self getTotalAchievements]; ++i)
     {
         BaseTracker* tracker = [_trackers objectAtIndex: i];
         
         if ([tracker isUnlocked])
-        {
             unlocked++;
-            
-            score += tracker->score;
-        }
     }
     
-    // TODO: subtract points spent in store
+    return unlocked;
+}
+
+-(int)getUnlockedPoints
+{
+    int points = 0;
     
-    [_achievementsView setAchUnlocked: unlocked];
-    [_achievementsView setScore: score];
+    for (int i = 0; i < [self getTotalAchievements]; ++i)
+    {
+        BaseTracker* tracker = [_trackers objectAtIndex: i];
+        
+        if ([tracker isUnlocked])
+          points += tracker->score;
+    }
+    
+    return points;
 }
 
 -(void)addAchievement:(BaseTracker*)tracker: (NSString*)title: (NSString*)descr: (NSString*)image: (int)points
@@ -430,21 +442,21 @@ UIImage* g_AchievementUnlockedBaseImage;
     
     [_trackers addObject: tracker];
     
-    [self updateProgressLabels];
+    [_view updateStoreAndAchievements];
 }
 
 -(void)unlockAchievement:(int)index
 {
     [_achievementsView unlockAchievement: index];
     
-    [self updateProgressLabels];
+    [_view updateStoreAndAchievements];
 }
 
 -(void)silentUnlockAchievement:(int)index
 {
     [_achievementsView silentUnlockAchievement: index];
     
-    [self updateProgressLabels];
+    [_view updateStoreAndAchievements];
 }
 
 -(void)tempoChanged

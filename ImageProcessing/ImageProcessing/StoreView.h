@@ -1,14 +1,7 @@
-//
-//  StoreView.h
-//  ImageProcessing
-//
-//  Created by user on 02/07/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 @class ViewController;
+@class StoreView;
 
 @interface StoreItemView : NSObject<UIAlertViewDelegate>
 {
@@ -23,9 +16,12 @@
     
     @private bool _unlocked;
     @private int _score;
+    @private int _index;
+    
+    @private StoreView* _parent;
 }
 
--(id)init:(CGRect)rect;
+-(id)init:(CGRect)rect:(int)index;
 -(UIView*)getBaseView;
 
 -(UIImage*)getBaseImage;
@@ -33,10 +29,15 @@
 +(void)initImages;
 
 -(void)setUnlocked:(bool)unlocked;
+-(bool)isUnlocked;
+
 -(void)setTitle:(NSString*)title;
 -(void)setDesc:(NSString*)description;
 -(void)setIcon:(NSString*)icon;
 -(void)setScore:(int)score;
+-(int)getScore;
+
+-(void)setParent:(StoreView*)parent;
 
 @end
 
@@ -44,6 +45,10 @@
 {
     @private UIScrollView* _scrollView;
     @private NSMutableArray* _storeItemViews;
+    
+    @private int _points;
+    
+    @private ViewController* _view;
 }
 
 -(id)init:(ViewController*)parent;
@@ -53,22 +58,27 @@
 
 -(void)resizeScrollView;
 
-@end
+-(void)setPoints:(int)points;
+-(int)getPoints;
 
+-(void)onUnlock;
 
-@interface StoreItemTracker : NSObject
-
--(id)init;
--(void)unlock;
+-(StoreItemView*)getStoreItem:(int)index;
+-(int)getTotalItems;
 
 @end
 
 @interface StoreTracker : NSObject
 {
     StoreView* _storeView;
-    NSMutableArray* _storeItems;
 }
 
 -(id)init:(ViewController*)parent;
+
+-(void)setPoints:(int)points;
+
+-(int)getCostOfUnlockedItems;
+-(int)getTotalItems;
+-(int)getItemsUnlocked;
 
 @end

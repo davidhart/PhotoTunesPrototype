@@ -1,11 +1,3 @@
-//
-//  ProgressScreen.h
-//  ImageProcessing
-//
-//  Created by MEng on 19/03/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 @class ViewController;
