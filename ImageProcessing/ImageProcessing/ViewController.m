@@ -5,6 +5,7 @@
 #import "ProgressScreen.h"
 #import "SplashScreen.h"
 #import <SCUI.h>
+#import "SongGeneration.h"
 
 NSString *instrumentNames[] = {@"Guitar", @"Bell", @"Electronic", @"8Bit"};
 NSString *instrumentFiles[] = {@"a.wav", @"bell.aiff", @"synth.wav", @"8bit/lead.wav"};
@@ -210,15 +211,15 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 }
 
 -(void)beginRecording
-{
+{    
+    [self presentModalViewController:progressView animated: YES];
+    
     // Make sure looping is disabled while recording
     if (_repeatOn)
         [PdBase sendFloat: 0.0f toReceiver:[NSString stringWithFormat:@"%d-loopPlayback", _patch.dollarZero]];
     
     // Start recording
     [PdBase sendBangToReceiver: @"recordSong"];
-    
-    [self presentModalViewController:progressView animated: YES];
 }
 
 -(void)toggleHelp:(id)sender
@@ -507,248 +508,13 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
     [self stopPressed:self];
     float* values = malloc(_numNotes * sizeof(float) * _numIntruments);
     
-    float* bassNotes = values;
-    float* hihatNotes = values + _numNotes;
-    float* rideNotes = values + _numNotes * 2;
-    float* snareNotes = values + _numNotes * 3;
-    float* splashNotes = values + _numNotes * 4;
-    
-    float* melodyNotes = values + _numNotes * 5;
-    
-    //float scale[] = { 0.25f,0.0f, 0.5f, 0.0f,0.0f, 0.75f, 0.0f, 1.0f, 0.0f, 1.25f,0.0f, 1.5f, 0.0f, 0.0f, 1.75, 2.0f,0.0f };
-    
-    // C SCALE 
-    float scale[] = {0.5f, 0.56122f, 0.6299f, 0.6674f, 0.7491f, 0.8408f, 0.9438f, 1.0f, 1.1124f, 1.2600f, 1.3348f,1.4983f, 1.684f, 1.8877f};
-    
-    
-    const float bassVolume = 0.6f;
-    const float hihatVolume = 0.6f;
-    const float rideVolume = 0.6f;
-    const float snareVolume = 0.6f;
-    const float splashVolume = 0.6f;
-    
-    const float bassVariation = 0.5;
-    const float hihatVariation = 0.5f;
-    const float rideVariation = 0.5f;
-    const float snareVariation = 0.5f;
-    const float splashVariation = 0.5f;
-    //float tempNum = 0;
-    int prevSliceNumber = 0;
-    float* sliceAvArray = malloc(sizeof(float) * [_imagePropertes numSlices]);
-    float* ModifiedSliceAvArray = malloc(sizeof(float) * [_imagePropertes numSlices]);
-    float debugCounter =0.0;
-
- 
-    
-
-    for (int i = 0; i < _numNotes; i++)
-    {
-        ImageSlice* slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
-        
-        //OPTTIMISATION - move i != 0 check out of loop
-        //TOMS SHIT <----- 
-        int sliceBack;
-        //ImageSlice* slice;
-        if ( i != 0 )
-        {
-            sliceBack = (int)(((i / (float)_numNotes) * ([_imagePropertes numSlices])) - prevSliceNumber) - 1;
-
-            float sliceAv = 0;
-            int numOfLoops = 0;
-
-            for (int j = i; (j - i) < sliceBack; j++)
-            {
-                //-2 due to end slice and due to not wanting to go as far back as previous slice
-                int sliceIndex = (int)(((i) / (float)_numNotes) * ([_imagePropertes numSlices]-1)-j-1);
-                slice = [_imagePropertes getSlice: sliceIndex];
-                sliceAv += ([slice getAverageVal] / 255.0f);
-                numOfLoops++;    
-            }
-            sliceAv /= numOfLoops;
-            sliceAvArray[i] = sliceAv;
-            
-
-        }
-        else 
-        {
-            slice = [_imagePropertes getSlice: (int)((i / (float)_numNotes) * ([_imagePropertes numSlices]-1))];
-            sliceAvArray[i] = [slice getAverageVal] / 255.0f;
-        }
-        
-        prevSliceNumber = (int)((i / (float)_numNotes) * [_imagePropertes numSlices]);
-
-        
-
-        
-        bassNotes[i] = i % 4 == 0 ? 1.0f : 0.0f;
-        //hihatNotes[i] = [slice getAverageVal] < 60? 1.0f : 0.0f;
-        hihatNotes[i] = 1;
-        rideNotes[i] =  1 - hihatNotes[i];
-        snareNotes[i] = i % 4 == 2 ? 1.0f : 0.0f;
-    
-        float change = ([slice getAverageSat] - [_imagePropertes getAverageSat]) / 255.0f;
-        float splash = fabs(change) > ([_imagePropertes getDeviationSat]) ? 1.0f : 0.0f;
-        splashNotes[i] = splash;
-        
-        
-        if (bassNotes[i] > 0)
-            bassNotes[i] += - bassVariation / 2 - bassVariation * [slice getAverageRed] / 255.0f;
-        
-        if (hihatNotes[i] > 0)
-            hihatNotes[i] += - hihatVariation / 2 + hihatVariation * [slice getAverageGreen] / 255.0f;
-        
-        if (rideNotes[i] > 0)
-            rideNotes[i] += - rideVariation / 2 - rideVariation * [slice getAverageBlue] / 255.0f;
-        
-        if (snareNotes[i] > 0)
-            snareNotes[i] += - rideVariation / 2 - snareVariation * [slice getAverageRed] / 255.0f;
-        
-        if (splashNotes[i] > 0)
-            splashNotes[i] += - splashVariation / 2 - splashVariation * [slice getAverageGreen] / 255.0f;
-          
-        
-        bassNotes[i] *= bassVolume;
-        hihatNotes[i] *= hihatVolume;
-        rideNotes[i] *= rideVolume;
-        snareNotes[i] *= snareVolume;
-        splashNotes[i] *= splashVolume;
-        
-        
-    }
-    
-    // MORE OF TOMS SHIT
-    //Gets Highest and lowest slices and maps to a range of 0 - 1
-    float lowSlice = 0;
-    float highSlice = 0;
-    for (int j=0; j<_numNotes; j++) 
-    {          
-
-        if(sliceAvArray[j] < lowSlice||j==0)
-        {
-            lowSlice = (float)sliceAvArray[j];
-            
-        }
-        if(sliceAvArray[j] > highSlice||j==0)
-        {
-            highSlice = (float)sliceAvArray[j];
-        }
-        
-    }
-    for (int i = 0; i < _numNotes; i++)
-    {
-        sliceAvArray[i]= (sliceAvArray[i]-lowSlice)/(highSlice-lowSlice);
-    }
-    
-    ModifiedSliceAvArray[0] = 0.5;
-    for (int i = 0; i < _numNotes; i++)
-    {
-        
-        float step = sliceAvArray[i+1] - sliceAvArray[i];
-
-        if(step>0)
-        {
-        if(fabs(step) < 0.01)
-        {
-            ModifiedSliceAvArray[i+1] = 0.05 + ModifiedSliceAvArray[i];
-
-        }
-        else if (fabs(step) < 0.05) {
-            ModifiedSliceAvArray[i+1] = 0.10 + ModifiedSliceAvArray[i];
-
-        }
-        else if (fabs(step) < 0.1) {
-
-
-            ModifiedSliceAvArray[i+1] = 0.15 + ModifiedSliceAvArray[i];
-
-        }
-        else {
-            ModifiedSliceAvArray[i+1] = 0.30 + ModifiedSliceAvArray[i];
-
-
-        }
-        if(ModifiedSliceAvArray[i+1] > 1.0 && i > 0)
-        {
-
-            ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i-1];
-
-        }
-        else if (ModifiedSliceAvArray[i+1] > 1.0) {
-            ModifiedSliceAvArray[i+1] = 0.5;
-        }
-            if(ModifiedSliceAvArray[i+1] < 0.0 && i > 0)
-            {
-                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i-1];
-
-            }            
-            else if (ModifiedSliceAvArray[i+1] < 0.0) {
-                ModifiedSliceAvArray[i+1] = 0.5;
-            }
-        }
-        else {
-            if(fabs(step) < 0.01)
-            {
-                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i] - 0.05;
-
-            }
-            else if (fabs(step) < 0.05) {
-                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i]- 0.10;
-
-            }
-            else if (fabs(step) < 0.1) {
-                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i]- 0.15;
-
-            }
-            else {
-                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i]- 0.30;
-
-            }
-            
-            if(ModifiedSliceAvArray[i+1] > 1.0 && i > 0)
-            {
-                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i-1];
-
-            }
-            else if (ModifiedSliceAvArray[i+1] > 1.0) {
-                ModifiedSliceAvArray[i+1] = 0.5;
-            }
-            if(ModifiedSliceAvArray[i+1] < 0.0 && i > 0)
-            {
-                ModifiedSliceAvArray[i+1] = ModifiedSliceAvArray[i-1];
-            }
-            else if (ModifiedSliceAvArray[i+1] < 0.0) {
-                ModifiedSliceAvArray[i+1] = 0.5;
-            }
-        }
-    
-
-       
-    melodyNotes[i] = [ViewController getNote:scale :sizeof(scale)/sizeof(float) :(ModifiedSliceAvArray[i])];
-        //melodyNotes[i] = 1.4983;
-
- NSLog(@"%f",melodyNotes[i]);        debugCounter += 0.05;
-
-    }
-    
-    for (int i =0; i < _numNotes; i++) 
+    [SongGeneration GenerateSong:_numNotes :_imagePropertes : values];
 
     
     [PdBase sendFloat:_numNotes toReceiver:[NSString stringWithFormat:@"%d-length", _patch.dollarZero]];
     [PdBase copyArray:values toArrayNamed:@"pattern" withOffset:0 count:_numNotes * _numIntruments];
     
     free(values);
-    free(sliceAvArray);
-}
-
-+(float)getNote:(float*)scale :(int)size :(float)locationOnScale
-{
-
-    int index = (int)(locationOnScale * (size - 1) + 0.5f);
-    
-    assert(index >= 0);
-    assert(index < size);
-    
-    return scale[index];
 }
 
 -(void)startedPlaying

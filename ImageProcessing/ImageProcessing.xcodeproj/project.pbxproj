@@ -126,6 +126,7 @@
 		CEF4A81815A1F47200CD5CB1 /* badgesicon.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF4A81715A1F47200CD5CB1 /* badgesicon.png */; };
 		CEF4A81A15A1FD5600CD5CB1 /* storeicon.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF4A81915A1FD5600CD5CB1 /* storeicon.png */; };
 		CEF4A81D15A204AB00CD5CB1 /* StoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF4A81C15A204AB00CD5CB1 /* StoreView.m */; };
+		CEF4A82215A63F2E00CD5CB1 /* SongGeneration.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF4A82115A63F2E00CD5CB1 /* SongGeneration.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -414,6 +415,8 @@
 		CEF4A81915A1FD5600CD5CB1 /* storeicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storeicon.png; sourceTree = "<group>"; };
 		CEF4A81B15A204AB00CD5CB1 /* StoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreView.h; sourceTree = "<group>"; };
 		CEF4A81C15A204AB00CD5CB1 /* StoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreView.m; sourceTree = "<group>"; };
+		CEF4A82015A63F2D00CD5CB1 /* SongGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongGeneration.h; sourceTree = "<group>"; };
+		CEF4A82115A63F2E00CD5CB1 /* SongGeneration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SongGeneration.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -530,6 +533,8 @@
 				BB3ACB441483E5DE003014D1 /* ViewController.m */,
 				BB3ACB491483E5DE003014D1 /* ViewController_iPad.xib */,
 				BB3ACB461483E5DE003014D1 /* ViewController_iPhone.xib */,
+				CEF4A82015A63F2D00CD5CB1 /* SongGeneration.h */,
+				CEF4A82115A63F2E00CD5CB1 /* SongGeneration.m */,
 			);
 			path = ImageProcessing;
 			sourceTree = "<group>";
@@ -1043,6 +1048,7 @@
 				BB96872A1599DD850008501C /* SplashScreen.m in Sources */,
 				BBFA9AF4159B307200376623 /* ImageLoading.m in Sources */,
 				CEF4A81D15A204AB00CD5CB1 /* StoreView.m in Sources */,
+				CEF4A82215A63F2E00CD5CB1 /* SongGeneration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

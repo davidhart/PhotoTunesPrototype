@@ -123,8 +123,6 @@
 
 -(void)beginRecording;
 
-+(float)getNote:(float*)scale :(int)size :(float)locationOnScale;
-
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo;
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker;
 
