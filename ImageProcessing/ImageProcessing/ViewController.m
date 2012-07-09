@@ -20,7 +20,6 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 @implementation ViewController
 
 @synthesize imageView;
-@synthesize progress;
 
 @synthesize buttonPlay;
 @synthesize buttonRepeat;
@@ -146,7 +145,6 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 -(void)stopPressed:(id)sender
 { 
     [PdBase sendBangToReceiver:@"stopPlayback"];
-    [progress setProgress: 0];
 }
 
 -(void)cameraPressed:(id)sender
@@ -304,6 +302,12 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 
 - (void)initialize: (PdAudioController*) audio
 {
+    _seekbarView = [[UIView alloc] init];
+    [_seekbarView setBackgroundColor: [UIColor whiteColor]];
+    _seekbarView.frame = CGRectMake(0, 0, 20, 20);
+
+    [imageView addSubview: _seekbarView];
+    
     [mainScrollView addSubview: mainView];
     mainScrollView.contentSize = mainView.frame.size;
 
@@ -356,17 +360,13 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
     
     // Initialise default image
     UIImage* image = [UIImage imageNamed:@"phototunes.png"];
-    //UIImage* image = [UIImage imageNamed:@"test2.jpg"];
     [self setImage: image];
-    
-    // Hack for iPhone 4, fix the rectangle for the initial image
-    //progress.frame = CGRectMake(31, 225, 257, 10);
     
     [instrumentSelector setParent: self]; 
     [imageLoading setParent: self];
     
-    // Hack: prevents "updateStoreAndAchievements" accessing either class until both
-    // are loaded
+    // Hack: prevents "updateStoreAndAchievements" accessing either
+    // class until both are loaded
     _store = nil;
     _achievements = nil;
     
@@ -434,9 +434,27 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 {
     float temp = _progressValue / (_numNotes - 1);
     
-    [progressView setProgress:temp];
+    float barWidth = _onScreenImageRect.size.width / _numNotes;
     
-    [progress setProgress: temp];
+    CGRect rect = CGRectMake(_onScreenImageRect.origin.x + (int)(_progressValue * barWidth), 
+                             _onScreenImageRect.origin.y, 
+                             (int)barWidth, 
+                             _onScreenImageRect.size.height);
+    
+    _seekbarView.frame = rect;
+    
+    [_seekbarView.layer removeAllAnimations];
+    [_seekbarView setAlpha:0.8f];
+    
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+        [_seekbarView setAlpha:0.0f];
+    }
+    completion:^(BOOL finished) {
+        
+    }];
+    
+    // Update saving screen progress bar
+    [progressView setProgress:temp];
 }
 
 -(void)activateImageChooser:(BOOL) camera
@@ -492,11 +510,8 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
     // Update the song
     [self updateSongValues];
     
-    // Resize progress bar to fit underneath scaled image
-    CGRect onScreenRect = [Util frameForImage:image inImageViewAspectFit:imageView];
-    onScreenRect.origin.y = onScreenRect.origin.y + onScreenRect.size.height;
-    onScreenRect.size.height = 10; //progress.frame.size.height;
-    progress.frame = onScreenRect;
+    // Calculate visible rectangle
+    _onScreenImageRect = [Util frameForImage:image inImageViewAspectFit:imageView];
     
     // Stop playback
     [self stopPressed: self];
@@ -530,7 +545,6 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
     // Reset the progress bar only, to prevent saving screen
     // resetting it's saving progress
     _progressValue = 0;
-    progress.progress = 0;
 
     [buttonPlay setImage:[UIImage imageNamed:@"playbutton.png"] forState:UIControlStateNormal];
     _playing = false;

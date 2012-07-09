@@ -398,7 +398,6 @@
 					<int key="NSvFlags">266</int>
 					<string key="NSFrame">{{0, 431}, {320, 49}}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSNextKeyView"/>
 					<string key="NSReuseIdentifierKey">_NS:473</string>
 					<object class="NSColor" key="IBUIBackgroundColor">
 						<int key="NSColorSpace">3</int>
@@ -415,7 +414,6 @@
 				<int key="NSvFlags">292</int>
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSNextKeyView"/>
 				<string key="NSReuseIdentifierKey">_NS:180</string>
 				<object class="NSColor" key="IBUIBackgroundColor" id="912753420">
 					<int key="NSColorSpace">1</int>
@@ -472,7 +470,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{320, 286}</string>
 						<reference key="NSSuperview" ref="600579092"/>
-						<reference key="NSNextKeyView" ref="122025938"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:567</string>
 						<int key="IBUIContentMode">1</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -562,7 +560,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{26, 769}, {268, 23}}</string>
 						<reference key="NSSuperview" ref="600579092"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:623</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -791,19 +788,6 @@
 						<reference key="IBUIFontDescription" ref="61449691"/>
 						<reference key="IBUIFont" ref="128233737"/>
 					</object>
-					<object class="IBUIProgressView" id="122025938">
-						<reference key="NSNextResponder" ref="600579092"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 283}, {320, 11}}</string>
-						<reference key="NSSuperview" ref="600579092"/>
-						<reference key="NSNextKeyView" ref="926011102"/>
-						<string key="NSReuseIdentifierKey">_NS:677</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<int key="IBUIProgressViewStyle">1</int>
-						<reference key="IBUIProgressTintColor" ref="814971570"/>
-						<reference key="IBUITrackTintColor" ref="492288872"/>
-					</object>
 					<object class="IBUIButton" id="274833700">
 						<reference key="NSNextResponder" ref="600579092"/>
 						<int key="NSvFlags">292</int>
@@ -876,7 +860,6 @@
 							<int key="NSvFlags">266</int>
 							<string key="NSFrame">{{0, 416}, {320, 44}}</string>
 							<reference key="NSSuperview" ref="125577522"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="IBUIOpaque">NO</bool>
 							<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -1294,7 +1277,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{162, 689}, {66, 57}}</string>
 						<reference key="NSSuperview" ref="392693822"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="IBUIContentMode">9</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -1378,7 +1360,6 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{34, 209}, {253, 161}}</string>
 							<reference key="NSSuperview" ref="121258743"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:225</string>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -1447,7 +1428,6 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{20, 64}, {280, 376}}</string>
 							<reference key="NSSuperview" ref="825473276"/>
-							<reference key="NSNextKeyView"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="IBUIOpaque">NO</bool>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -1494,10 +1474,9 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUILabel" id="751160382">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<string key="NSFrameSize">{42, 29}</string>
-				<reference key="NSSuperview"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIClipsSubviews">YES</bool>
@@ -1701,14 +1680,6 @@
 						<reference key="destination" ref="895356034"/>
 					</object>
 					<int key="connectionID">323</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">progress</string>
-						<reference key="source" ref="626395789"/>
-						<reference key="destination" ref="122025938"/>
-					</object>
-					<int key="connectionID">324</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -2244,7 +2215,6 @@
 						<int key="objectID">292</int>
 						<reference key="object" ref="600579092"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="122025938"/>
 							<reference ref="280117315"/>
 							<reference ref="895356034"/>
 							<reference ref="491345233"/>
@@ -2316,11 +2286,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">315</int>
 						<reference key="object" ref="724560607"/>
-						<reference key="parent" ref="600579092"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">317</int>
-						<reference key="object" ref="122025938"/>
 						<reference key="parent" ref="600579092"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -2772,7 +2737,6 @@
 				<string key="309.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="310.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="315.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<string key="317.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="326.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="327.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="329.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

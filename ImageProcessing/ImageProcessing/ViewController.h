@@ -26,7 +26,6 @@
     @private PdFile * _patch;
     @private __unsafe_unretained PdAudioController * _audio;
     @private UIImageView* imageView;
-    @private UIProgressView* progress;
     @private ImageProperties* _imagePropertes;
 
     @private UIImagePickerController* imagePickerController;
@@ -54,10 +53,12 @@
     
     @private UIImage* _helpofficon;
     @private UIImage* _helponicon;
+    
+    @private UIView* _seekbarView;
+    @private CGRect _onScreenImageRect;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;
-@property (nonatomic, retain) IBOutlet UIProgressView* progress;
 
 @property (nonatomic, retain) IBOutlet UIButton* buttonPlay;
 @property (nonatomic, retain) IBOutlet UIButton* buttonRepeat;
