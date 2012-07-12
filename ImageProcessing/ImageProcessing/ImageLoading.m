@@ -9,17 +9,15 @@
 #import "ImageLoading.h"
 #import "ViewController.h"
 
-@interface ImageLoading ()
-
-@end
-
 @implementation ImageLoading
+
+@synthesize adbanner;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        //[adbanner removeFromSuperview];
     }
     return self;
 }
@@ -48,17 +46,34 @@
 
 -(void)show
 {
+    //[self.view addSubview: adbanner];
     [_parent presentModalViewController: self animated:YES];
 }
 
 -(void)hide
 {    
+    //[adbanner removeFromSuperview];
     [_parent dismissModalViewControllerAnimated: YES];
 }
 
 -(void)cancel:(id)sender
 {
     [self hide];
+}
+
+-(BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave
+{
+    return YES;
+}
+
+-(void)bannerViewDidLoadAd:(ADBannerView*)banner
+{
+
+}
+
+-(void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+
 }
 
 @end
