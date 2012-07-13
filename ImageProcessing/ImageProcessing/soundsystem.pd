@@ -1,4 +1,4 @@
-#N canvas 226 80 1576 962 10;
+#N canvas 0 22 1576 962 10;
 #X obj 483 -33 r stopPlayback;
 #X msg 683 -10 1;
 #X msg 580 -10 0;
@@ -19,17 +19,22 @@
 #X obj 580 15 change;
 #X obj 600 -60 hsl 195 15 0 120 0 0 \$0-notifyProgress \$0-notifyProgress
 empty -2 -8 0 10 -262144 -1 -1 1132 1;
-#N canvas 174 282 450 300 counter 0;
+#N canvas 541 335 450 300 counter 0;
 #X obj 140 63 inlet;
 #X obj 96 63 inlet;
 #X obj 100 143 outlet;
 #X obj 152 117 + 1;
 #X obj 101 98 float;
+#X obj 188 63 inlet;
+#X obj 188 85 t f f;
 #X connect 0 0 4 0;
 #X connect 1 0 4 1;
 #X connect 3 0 4 1;
 #X connect 4 0 3 0;
 #X connect 4 0 2 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 6 1 4 1;
 #X restore 483 65 pd counter;
 #X obj 75 -75 tgl 32 0 \$0-loopPlayback empty loop 17 7 0 10 -262144
 -1 -1 0 1;
@@ -212,6 +217,11 @@ empty -2 -8 0 10 -262144 -1 -1 1132 1;
 #X msg 904 480 2;
 #X msg 803 478 0;
 #X obj 1353 60 delay 750;
+#X obj 384 -9 r \$0-scratch;
+#X msg 343 -8 4;
+#X obj 382 43 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 382 66 s startPlayback;
 #X connect 0 0 11 0;
 #X connect 0 0 2 0;
 #X connect 1 0 14 0;
@@ -315,4 +325,9 @@ empty -2 -8 0 10 -262144 -1 -1 1132 1;
 #X connect 105 0 96 0;
 #X connect 106 0 96 0;
 #X connect 107 0 63 0;
+#X connect 108 0 16 2;
+#X connect 108 0 110 0;
+#X connect 109 0 16 2;
+#X connect 109 0 110 0;
+#X connect 110 0 111 0;
 #X coords 0 0 1 1 85 60 0;

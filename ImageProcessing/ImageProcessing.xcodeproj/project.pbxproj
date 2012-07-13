@@ -1232,6 +1232,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1263,6 +1264,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1305,14 +1307,14 @@
 			};
 			name = Release;
 		};
-		BB873A3714E00F6200CE09FA /* Package */ = {
+		BBD2DF4B15B0647200DF30C5 /* Distribute */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: University of Hull";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = NO;
@@ -1331,20 +1333,21 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				LLVM_LTO = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5ED5365F-0387-453B-863A-9F1FC1166914";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Package;
+			name = Distribute;
 		};
-		BB873A3814E00F6200CE09FA /* Package */ = {
+		BBD2DF4C15B0647200DF30C5 /* Distribute */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: University of Hull";
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageProcessing/ImageProcessing-Prefix.pch";
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"./libpd/objc/**",
 					"./CocoaSoundCloudUI/**",
@@ -1361,13 +1364,13 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5ED5365F-0387-453B-863A-9F1FC1166914";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
-			name = Package;
+			name = Distribute;
 		};
-		BB873A3914E00F6200CE09FA /* Package */ = {
+		BBD2DF4D15B0647200DF30C5 /* Distribute */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ImageProcessing.app/ImageProcessing";
@@ -1384,7 +1387,7 @@
 				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = octest;
 			};
-			name = Package;
+			name = Distribute;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1394,7 +1397,7 @@
 			buildConfigurations = (
 				BB3ACB611483E5DE003014D1 /* Debug */,
 				BB3ACB621483E5DE003014D1 /* Release */,
-				BB873A3714E00F6200CE09FA /* Package */,
+				BBD2DF4B15B0647200DF30C5 /* Distribute */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1404,7 +1407,7 @@
 			buildConfigurations = (
 				BB3ACB641483E5DE003014D1 /* Debug */,
 				BB3ACB651483E5DE003014D1 /* Release */,
-				BB873A3814E00F6200CE09FA /* Package */,
+				BBD2DF4C15B0647200DF30C5 /* Distribute */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1414,7 +1417,7 @@
 			buildConfigurations = (
 				BB3ACB671483E5DE003014D1 /* Debug */,
 				BB3ACB681483E5DE003014D1 /* Release */,
-				BB873A3914E00F6200CE09FA /* Package */,
+				BBD2DF4D15B0647200DF30C5 /* Distribute */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

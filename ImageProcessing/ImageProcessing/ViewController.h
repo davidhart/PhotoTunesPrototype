@@ -95,6 +95,8 @@
 
 -(void)initialize: (PdAudioController*) audio;
 
+-(IBAction)scratchPressed:(id) sender;
+
 -(IBAction)playPressed:(id) sender;
 -(IBAction)stopPressed:(id) sender;
 -(IBAction)repeatPressed:(id)sender;
@@ -110,6 +112,9 @@
 -(IBAction)sliderSongLengthChanged:(id)sender;
 
 -(IBAction)toggleHelp:(id)sender;
+-(void)enableHelp:(bool)help;
+
+-(void)scrollUp;
 
 -(IBAction)instrumentsPressed:(id)sender;
 -(IBAction)drumsPressed:(id)sender;

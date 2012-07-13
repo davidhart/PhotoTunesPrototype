@@ -54,9 +54,16 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 
 @synthesize mainTabBar;
 
++(float)BPMtoInterval:(float)bpm
+{
+    return 60000.0f / bpm;
+}
+
 -(void)sliderTempoReleased:(id)sender
-{ 
-    [PdBase sendFloat: 60000.0f / ([sliderTempo value] * 400.0f + 60.0f) toReceiver:[NSString stringWithFormat:@"%d-tempo", _patch.dollarZero]];
+{
+    float bpm = [sliderTempo value] * 500.0f + 90.0f;
+    float interval = [ViewController BPMtoInterval: bpm];
+    [PdBase sendFloat: interval toReceiver:[NSString stringWithFormat:@"%d-tempo", _patch.dollarZero]];
     
     [_achievements tempoChanged];
 }
@@ -203,6 +210,16 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
     }
 }
 
+-(void)scratchPressed:(id)sender
+{
+    _progressValue -= 4;
+    
+    if (_progressValue < 0)
+        _progressValue = 0;
+    
+    [PdBase sendFloat: _progressValue toReceiver: [NSString stringWithFormat:@"%d-scratch", _patch.dollarZero]];
+}
+
 -(void)sharePressed:(id)sender
 {
     [self presentModalViewController: shareView animated: YES];
@@ -222,7 +239,12 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 
 -(void)toggleHelp:(id)sender
 {
-    _helpVisible = !_helpVisible;
+    [self enableHelp:!_helpVisible];    
+}
+
+-(void)enableHelp:(bool)help
+{
+    _helpVisible = help;
     
     if (_helpVisible)
     {
@@ -234,7 +256,6 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
         [splashScreen removeFromSuperview];
         [buttonHelp setImage: _helpofficon forState:UIControlStateNormal];
     }
-    
 }
 
 -(void)recordDone
@@ -304,7 +325,7 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 {
     _seekbarView = [[UIView alloc] init];
     [_seekbarView setBackgroundColor: [UIColor whiteColor]];
-    _seekbarView.frame = CGRectMake(0, 0, 20, 20);
+    _seekbarView.frame = CGRectMake(0, 0, 0, 0);
 
     [imageView addSubview: _seekbarView];
     
@@ -373,6 +394,14 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
     _store = [[StoreTracker alloc] init: self];
     _achievements = [[AchievementsTracker alloc] init: self];
     [self updateStoreAndAchievements];
+    
+    // Take initial values from UI
+    [self sliderTempoReleased:self];
+    [self sliderTempoReleased:self];
+    [self sliderDrumVolumeReleased:self];
+    [self sliderMelodyVolumeReleased:self];
+    [self sliderSongLengthReleased:self];
+    [self sliderSongLengthChanged:self];
     
     [_audio setActive:YES];
 }

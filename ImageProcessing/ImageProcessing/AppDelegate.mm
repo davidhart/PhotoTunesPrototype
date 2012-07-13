@@ -23,7 +23,7 @@
     [self.window makeKeyAndVisible];
     
     audioController = [[PdAudioController alloc] init];
-	[audioController configureAmbientWithSampleRate:24000 numberChannels:2 mixingEnabled:YES];
+	[audioController configureAmbientWithSampleRate:22050 numberChannels:1 mixingEnabled:YES];
 	[audioController setActive:YES];
 	[audioController print];
     
@@ -62,6 +62,9 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    
+    [viewController enableHelp:true];
+    [viewController scrollUp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

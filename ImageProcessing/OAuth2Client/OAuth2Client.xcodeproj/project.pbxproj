@@ -531,6 +531,7 @@
 					Foundation,
 				);
 				PRODUCT_NAME = OAuth2Client;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -558,6 +559,7 @@
 					Foundation,
 				);
 				PRODUCT_NAME = OAuth2Client;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
