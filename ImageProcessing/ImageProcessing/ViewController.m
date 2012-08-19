@@ -6,15 +6,16 @@
 #import "SplashScreen.h"
 #import <SCUI.h>
 #import "SongGeneration.h"
+#import <AssetsLibrary/ALAssetsLibrary.h>
 
-NSString *instrumentNames[] = {@"Guitar", @"Bell", @"Electronic", @"8Bit"};
-NSString *instrumentFiles[] = {@"a.wav", @"bell.aiff", @"synth.wav", @"8bit/lead.wav"};
+NSString *instrumentNames[] = {@"8Bit", @"Guitar", @"Bell", @"Electronic"};
+NSString *instrumentFiles[] = {@"8bit/lead.wav", @"a.wav", @"bell.aiff", @"synth.wav"};
 
-NSString* drumPackNames[] = {@"Standard", @"Tribal", @"8Bit"};
+NSString* drumPackNames[] = {@"Tribal", @"Standard", @"8Bit"};
 
-NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav", @"splash.wav",
-                        @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnare.wav", @"tsplash.wav",
-                        @"8bit/bass.wav", @"8bit/snare.wav", @"8bit/ride.wav", @"8bit/snare.wav", @"8bit/splash.wav"};
+NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnare.wav", @"tsplash.wav",
+                            @"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav", @"splash.wav",
+                            @"8bit/bass.wav", @"8bit/snare.wav", @"8bit/ride.wav", @"8bit/snare.wav", @"8bit/splash.wav"};
 
 
 @implementation ViewController
@@ -53,6 +54,13 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 @synthesize storePageUnlocks;
 
 @synthesize mainTabBar;
+
+@synthesize scratchButton;
+
+@synthesize overlayTextStep1;
+@synthesize overlayTextStep2;
+@synthesize overlayImageStep1;
+@synthesize overlayImageStep2;
 
 +(float)BPMtoInterval:(float)bpm
 {
@@ -195,7 +203,6 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 {
     // Scroll down to "customise" section and display scrollbar
     
-    // What the christ how does this even...    
     [UIView animateWithDuration:.35 animations:^{
         self.mainScrollView.contentOffset = CGPointMake(0, mainScrollView.frame.size.height);
         [mainScrollView flashScrollIndicators];
@@ -218,6 +225,14 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
         _progressValue = 0;
     
     [PdBase sendFloat: _progressValue toReceiver: [NSString stringWithFormat:@"%d-scratch", _patch.dollarZero]];
+    
+    [self startedPlaying];
+    
+    scratchButton.alpha = 1.0f;
+    
+    [UIView animateWithDuration:.2f animations:^{
+        scratchButton.alpha = 0.65f;
+    }];
 }
 
 -(void)sharePressed:(id)sender
@@ -403,7 +418,13 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
     [self sliderSongLengthReleased:self];
     [self sliderSongLengthChanged:self];
     
+    // Override pd defaults
+    [self setPercussiveInstrument:0];
+    [self setPrimaryInstrument:0];
+    
     [_audio setActive:YES];
+    
+    [self startFlashHelpText];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -488,7 +509,10 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 
 -(void)activateImageChooser:(BOOL) camera
 {
+    // Stop playback
     [self stopPressed:self];
+    
+    // Disable audio
     [_audio setActive:NO];
     
     if(camera)
@@ -509,15 +533,22 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
         didFinishPickingImage:(UIImage *)image
                   editingInfo:(NSDictionary *)editingInfo
 {
-    [picker dismissModalViewControllerAnimated:YES];
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+    {
+        [self saveImageToCollection:image];
+    }
  
     [self setImage: image];
     [self scrollUp];
     
     [_achievements imageChanged];
     
-    self.selectedIndex = 0;
+    [picker dismissModalViewControllerAnimated:YES];
     
+    // Switch to home tab
+    self.selectedIndex = 0;
+
+    // Renable audio
     [_audio setActive:YES];
 }
 
@@ -544,6 +575,10 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
     
     // Stop playback
     [self stopPressed: self];
+    
+    // Change help hint to step 2
+    _flashingHelpText = overlayTextStep2;
+    _flashingHelpImage = overlayImageStep2;
 }
 
 -(void)updateSongValues
@@ -581,7 +616,14 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
 
 -(void)changePrimaryInstrument
 {
-    NSString* instrumentName = instrumentNames[[instrumentSelector getSelectionIndex]];
+    [self setPrimaryInstrument:[instrumentSelector getSelectionIndex]];
+    
+    [_achievements instrumentChanged];
+}
+
+-(void)setPrimaryInstrument:(int)index
+{
+    NSString* instrumentName = instrumentNames[index];
     [buttonPrimaryInstrument setTitle:instrumentName forState:UIControlStateNormal];
     
     NSString* soundFile = instrumentFiles[[instrumentSelector getSelectionIndex]];
@@ -589,24 +631,27 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
     NSArray* args = [NSArray arrayWithObject: soundFile];
     
     [PdBase sendMessage:message withArguments:args toReceiver:[NSString stringWithFormat:@"%d-instrument5", _patch.dollarZero]];
-    
-    [_achievements instrumentChanged];
 }
 
 -(void)changeDrums
 {
-    int selection = [instrumentSelector getSelectionIndex];
-    
-    NSString* packName = drumPackNames[selection];
+    [self setPercussiveInstrument:[instrumentSelector getSelectionIndex]];
+
+    // TODO: update achievements
+}
+
+-(void)setPercussiveInstrument:(int)index
+{    
+    NSString* packName = drumPackNames[index];
     [buttonDrums setTitle:packName forState:UIControlStateNormal];
     
     NSString* message = @"sample";
     
     for (int i = 0; i < 5; ++i)
     {
-        NSString* soundFile = drumPackFiles[selection*5 + i];
+        NSString* soundFile = drumPackFiles[index*5 + i];
         NSArray* args = [NSArray arrayWithObject: soundFile];
-                                            
+        
         NSString* reciever = [NSString stringWithFormat:@"%d-instrument%d", _patch.dollarZero, i];
         
         [PdBase sendMessage: message withArguments:args toReceiver: reciever];
@@ -651,6 +696,50 @@ NSString* drumPackFiles[] = {@"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav
                                     [_store getTotalItems]];
     
     storePageUnlocks.title = storeUnlockedLabel;
+}
+
+-(void)startFlashHelpText
+{
+    _helpTextTimer = [NSTimer scheduledTimerWithTimeInterval:2.0f target:self 
+                                                    selector:@selector(onFlashHelpText) userInfo:NULL repeats:YES];
+    
+    _flashingHelpText = overlayTextStep1;
+    _flashingHelpImage = overlayImageStep1;
+}
+
+-(void)onFlashHelpText
+{
+    // Fade text out then in
+    [UIView animateWithDuration:0.4f animations:
+           ^{
+               _flashingHelpText.alpha = 0.0f;
+               _flashingHelpImage.alpha = 0.0f;
+            }
+    completion:
+     ^(BOOL finished)
+            {
+                [UIView animateWithDuration:0.4f animations:
+                   ^{
+                       _flashingHelpText.alpha = 1.0f;
+                       _flashingHelpImage.alpha = 1.0f;
+                    }
+                 ];
+                
+            }
+     ];
+}
+
+-(void)saveImageToCollection:(UIImage *)image
+{
+    ALAssetsLibrary* library = [[ALAssetsLibrary alloc] init];
+    
+    [library writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error) {
+       if (error)
+       {
+           // TODO: do something
+       }
+    }
+    ];
 }
 
 @end

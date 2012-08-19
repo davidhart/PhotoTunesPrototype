@@ -56,6 +56,10 @@
     
     @private UIView* _seekbarView;
     @private CGRect _onScreenImageRect;
+    
+    @private NSTimer* _helpTextTimer;
+    @private UILabel* _flashingHelpText;
+    @private UIImageView* _flashingHelpImage;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;
@@ -92,6 +96,13 @@
 @property (nonatomic, retain) IBOutlet UIBarItem* achPageUnlocks;
 
 @property (nonatomic, retain) IBOutlet UITabBar* mainTabBar;
+
+@property (nonatomic, retain) IBOutlet UIButton* scratchButton;
+
+@property (nonatomic, retain) IBOutlet UILabel* overlayTextStep1;
+@property (nonatomic, retain) IBOutlet UILabel* overlayTextStep2;
+@property (nonatomic, retain) IBOutlet UIImageView* overlayImageStep1;
+@property (nonatomic, retain) IBOutlet UIImageView* overlayImageStep2;
 
 -(void)initialize: (PdAudioController*) audio;
 
@@ -144,5 +155,13 @@
 -(void)changeDrums;
 
 -(void)updateStoreAndAchievements;
+
+-(void)startFlashHelpText;
+-(void)onFlashHelpText;
+
+-(void)saveImageToCollection:(UIImage*)image;
+
+-(void)setPrimaryInstrument:(int)index;
+-(void)setPercussiveInstrument:(int)index;
 
 @end

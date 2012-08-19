@@ -23,7 +23,13 @@
     [self.window makeKeyAndVisible];
     
     audioController = [[PdAudioController alloc] init];
-	[audioController configureAmbientWithSampleRate:22050 numberChannels:1 mixingEnabled:YES];
+    
+    //
+    // Sample rates
+    //   For VM: 24000
+    //   For iPhone: 22050
+    
+	[audioController configureAmbientWithSampleRate:24000 numberChannels:1 mixingEnabled:YES];
 	[audioController setActive:YES];
 	[audioController print];
     
