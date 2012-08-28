@@ -8,14 +8,19 @@
 #import "SongGeneration.h"
 #import <AssetsLibrary/ALAssetsLibrary.h>
 
-NSString *instrumentNames[] = {@"8Bit", @"Guitar", @"Bell", @"Electronic"};
-NSString *instrumentFiles[] = {@"8bit/lead.wav", @"a.wav", @"bell.aiff", @"synth.wav"};
+NSString *instrumentNames[] = {@"8Bit",                 @"Electric Guitar",     @"Steel Drum", 
+                               @"Trumpet",              @"Sitar",               @"Electronic",
+                               @"Flute",                @"Harp",                @"Saxophone"};
+
+NSString *instrumentFiles[] = {@"8bit/lead.wav",        @"e-guitar.wav",        @"steel-drum.wav", 
+                               @"trumpet.wav",          @"sitar-short.wav",     @"synth.wav",
+                               @"flute.wav",            @"harp.wav",            @"saxophone.wav"};
 
 NSString* drumPackNames[] = {@"Tribal", @"Standard", @"8Bit"};
 
 NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnare.wav", @"tsplash.wav",
                             @"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav", @"splash.wav",
-                            @"8bit/bass.wav", @"8bit/snare.wav", @"8bit/ride.wav", @"8bit/snare.wav", @"8bit/splash.wav"};
+                            @"8bit/bass.wav", @"8bit/hit.wav", @"8bit/ride.wav", @"8bit/snare.wav", @"8bit/splash.wav"};
 
 
 @implementation ViewController
