@@ -505,7 +505,7 @@ UIImage* g_AchievementUnlockedBaseImage;
     }
 }
 
--(void)drumChanged
+-(void)drumsChanged
 {
     for (int i = 0; i < [_trackers count]; ++i)
     {
@@ -560,7 +560,7 @@ UIImage* g_AchievementUnlockedBaseImage;
 -(void)melodyVolumeChanged { }
 -(void)lengthChanged { }
 -(void)instrumentChanged { }
--(void)drumChanged { }
+-(void)drumsChanged { }
 -(void)imageChanged { }
 -(void)loadSavedAchievement { }
 
