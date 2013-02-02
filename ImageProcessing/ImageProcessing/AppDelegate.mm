@@ -28,11 +28,11 @@
     // Sample rates
     //   For VM: 24000
     //   For iPhone: 22050
+    // Single channel
     
-	[audioController configureAmbientWithSampleRate:24000 numberChannels:1 mixingEnabled:YES];
+	[audioController configureAmbientWithSampleRate:22050 numberChannels:1 mixingEnabled:YES];
 	[audioController setActive:YES];
 	[audioController print];
-    
     soundtouch_tilde_setup();
 
     [viewController initialize: audioController];

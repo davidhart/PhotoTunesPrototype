@@ -87,6 +87,7 @@
 -(void)melodyVolumeChanged;
 -(void)lengthChanged;
 -(void)instrumentChanged;
+-(void)drumsChanged;
 -(void)imageChanged;
 
 -(void)loadSavedAchievement;
@@ -108,6 +109,7 @@
 -(void)lengthChanged;
 -(void)instrumentChanged;
 -(void)imageChanged;
+-(void)drumsChanged;
 
 -(void)unlockAchievement:(int) index;
 -(void)silentUnlockAchievement:(int)index;
@@ -129,6 +131,7 @@
     @private bool _melodyVolumeChanged;
     @private bool _lengthChanged;
     @private bool _instrumentChanged;
+    @private bool _drumChanged;
 }
 
 -(void)loadSavedAchievement;

@@ -642,7 +642,7 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
 {
     [self setPercussiveInstrument:[instrumentSelector getSelectionIndex]];
 
-    // TODO: update achievements
+    [_achievements drumsChanged];
 }
 
 -(void)setPercussiveInstrument:(int)index
@@ -665,7 +665,7 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
 
 - (void)receivePrint:(NSString *)message
 {
-    NSLog(@"%@", message);
+    NSLog(@"PD: %@", message);
 }
 
 -(void)updateStoreAndAchievements

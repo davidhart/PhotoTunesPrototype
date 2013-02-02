@@ -27,7 +27,6 @@
 		BB3ACB421483E5DE003014D1 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = BB3ACB411483E5DE003014D1 /* AppDelegate.mm */; };
 		BB3ACB451483E5DE003014D1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3ACB441483E5DE003014D1 /* ViewController.m */; };
 		BB3ACB481483E5DE003014D1 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB3ACB461483E5DE003014D1 /* ViewController_iPhone.xib */; };
-		BB3ACB4B1483E5DE003014D1 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB3ACB491483E5DE003014D1 /* ViewController_iPad.xib */; };
 		BB3ACB531483E5DE003014D1 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3ACB521483E5DE003014D1 /* SenTestingKit.framework */; };
 		BB3ACB541483E5DE003014D1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3ACB311483E5DD003014D1 /* UIKit.framework */; };
 		BB3ACB551483E5DE003014D1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB3ACB331483E5DD003014D1 /* Foundation.framework */; };
@@ -100,7 +99,6 @@
 		BBCFADD3151773B500671008 /* ProgressScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCFADD2151773B500671008 /* ProgressScreen.m */; };
 		BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA514D2E81200D54C01 /* homeIcon.png */; };
 		BBD1BDA814D2E86C00D54C01 /* settingsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */; };
-		BBD3328314CD7C0900582A54 /* images.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = BBD3328214CD7C0900582A54 /* images.jpeg */; };
 		BBF499DF157F80B400D891A7 /* AAFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499D1157F80B400D891A7 /* AAFilter.cpp */; };
 		BBF499E0157F80B400D891A7 /* cpu_detect_x86_gcc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499D3157F80B400D891A7 /* cpu_detect_x86_gcc.cpp */; };
 		BBF499E1157F80B400D891A7 /* FIFOSampleBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BBF499D5157F80B400D891A7 /* FIFOSampleBuffer.cpp */; };
@@ -284,8 +282,8 @@
 
 /* Begin PBXFileReference section */
 		BB037C26151799FB00DE56C1 /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
-		BB056163154E993600FE1640 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		BB056165154E994800FE1640 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BB056163154E993600FE1640 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		BB056165154E994800FE1640 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		BB056167154E9AEE00FE1640 /* helpIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpIcon.png; sourceTree = "<group>"; };
 		BB056169154E9BDE00FE1640 /* playbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbar.png; sourceTree = "<group>"; };
 		BB05616B154E9DD900FE1640 /* synth.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = synth.wav; sourceTree = "<group>"; };
@@ -308,7 +306,6 @@
 		BB3ACB431483E5DE003014D1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BB3ACB441483E5DE003014D1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BB3ACB471483E5DE003014D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
-		BB3ACB4A1483E5DE003014D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
 		BB3ACB511483E5DE003014D1 /* ImageProcessingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageProcessingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3ACB521483E5DE003014D1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		BB3ACB5A1483E5DE003014D1 /* ImageProcessingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImageProcessingTests-Info.plist"; sourceTree = "<group>"; };
@@ -325,8 +322,8 @@
 		BB51EF7A154E90D800139C27 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		BB51EF8A154E94F500139C27 /* savebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = savebutton.png; sourceTree = "<group>"; };
 		BB51EF8E154E982500139C27 /* Microphone_Icon_clip_art_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Microphone_Icon_clip_art_small.png; sourceTree = "<group>"; };
-		BB51EF90154E98B400139C27 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		BB51EF92154E98B900139C27 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		BB51EF90154E98B400139C27 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		BB51EF92154E98B900139C27 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		BB57BE89159B3C0100FE45A8 /* arrow1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow1.png; sourceTree = "<group>"; };
 		BB57BE8A159B3C0100FE45A8 /* arrow2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow2.png; sourceTree = "<group>"; };
 		BB57BE8B159B3C0100FE45A8 /* arrow3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow3.png; sourceTree = "<group>"; };
@@ -388,7 +385,6 @@
 		BBCFADD2151773B500671008 /* ProgressScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressScreen.m; sourceTree = "<group>"; };
 		BBD1BDA514D2E81200D54C01 /* homeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homeIcon.png; sourceTree = "<group>"; };
 		BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settingsIcon.png; sourceTree = "<group>"; };
-		BBD3328214CD7C0900582A54 /* images.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = images.jpeg; sourceTree = "<group>"; };
 		BBE5ED0414CD817E005DB0DC /* libpd.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libpd.xcodeproj; path = libpd/libpd.xcodeproj; sourceTree = "<group>"; };
 		BBF499D1157F80B400D891A7 /* AAFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AAFilter.cpp; sourceTree = "<group>"; };
 		BBF499D2157F80B400D891A7 /* AAFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAFilter.h; sourceTree = "<group>"; };
@@ -485,16 +481,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6DCC93BA16BD406400005A1F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BB873A3614DFF77400CE09FA /* ImageProcessing.entitlements */,
+				BB3ACB3A1483E5DD003014D1 /* InfoPlist.strings */,
+				BB3ACB391483E5DD003014D1 /* ImageProcessing-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6DCC93BB16BD409C00005A1F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				BB3ACB461483E5DE003014D1 /* ViewController_iPhone.xib */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		BB3ACB221483E5DD003014D1 = {
 			isa = PBXGroup;
 			children = (
-				BBF499D0157F808600D891A7 /* Soundtouch */,
-				BB056165154E994800FE1640 /* Default@2x.png */,
-				BB056163154E993600FE1640 /* Default.png */,
-				BB51EF92154E98B900139C27 /* Default@2x.png */,
-				BB51EF90154E98B400139C27 /* Default.png */,
 				BB61EB7C15455D6D0000F2FE /* Libs */,
-				BB3ACB371483E5DD003014D1 /* ImageProcessing */,
+				BB3ACB371483E5DD003014D1 /* Source */,
 				BB3ACB581483E5DE003014D1 /* ImageProcessingTests */,
 				BB3ACB301483E5DD003014D1 /* Frameworks */,
 				BB3ACB2E1483E5DD003014D1 /* Products */,
@@ -531,25 +540,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BB3ACB371483E5DD003014D1 /* ImageProcessing */ = {
+		BB3ACB371483E5DD003014D1 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BB3ACB381483E5DD003014D1 /* Supporting Files */,
+				BB3ACB381483E5DD003014D1 /* Assets */,
+				BBF499D0157F808600D891A7 /* Soundtouch */,
+				6DCC93BA16BD406400005A1F /* Supporting Files */,
+				6DCC93BB16BD409C00005A1F /* UI */,
 				CE2E20DB158B4C1200FD7BF9 /* AchievementsView.h */,
 				CE2E20DC158B4C1200FD7BF9 /* AchievementsView.m */,
 				BB3ACB401483E5DD003014D1 /* AppDelegate.h */,
 				BB3ACB411483E5DE003014D1 /* AppDelegate.mm */,
-				BBD1BDA514D2E81200D54C01 /* homeIcon.png */,
 				BBFA9AF2159B307200376623 /* ImageLoading.h */,
 				BBFA9AF3159B307200376623 /* ImageLoading.m */,
-				BB873A3614DFF77400CE09FA /* ImageProcessing.entitlements */,
+				BB3ACB3F1483E5DD003014D1 /* ImageProcessing-Prefix.pch */,
 				BB3ACB691483E614003014D1 /* ImageProperties.h */,
 				BB3ACB6A1483E614003014D1 /* ImageProperties.m */,
-				BBD3328214CD7C0900582A54 /* images.jpeg */,
 				BB3ACB6B1483E614003014D1 /* ImageSlice.h */,
 				BB3ACB6C1483E614003014D1 /* ImageSlice.m */,
 				BBCFADCE1517471A00671008 /* InstrumentSelector.h */,
 				BBCFADCF1517471B00671008 /* InstrumentSelector.m */,
+				BB3ACB3D1483E5DD003014D1 /* main.m */,
 				BBCFADD1151773B500671008 /* ProgressScreen.h */,
 				BBCFADD2151773B500671008 /* ProgressScreen.m */,
 				BBD1BDA714D2E86C00D54C01 /* settingsIcon.png */,
@@ -563,34 +574,16 @@
 				BB46572514CDB41E00318F89 /* Util.m */,
 				BB3ACB431483E5DE003014D1 /* ViewController.h */,
 				BB3ACB441483E5DE003014D1 /* ViewController.m */,
-				BB3ACB491483E5DE003014D1 /* ViewController_iPad.xib */,
-				BB3ACB461483E5DE003014D1 /* ViewController_iPhone.xib */,
 			);
+			name = Source;
 			path = ImageProcessing;
 			sourceTree = "<group>";
 		};
-		BB3ACB381483E5DD003014D1 /* Supporting Files */ = {
+		BB3ACB381483E5DD003014D1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				CED47A2A15E3C69200F82579 /* steel-drum.wav */,
-				CED47A2B15E3C69200F82579 /* trumpet.wav */,
-				CED47A2815E3C68200F82579 /* sitar-short.wav */,
-				CED47A2215E3C66C00F82579 /* flute.wav */,
-				CED47A2315E3C66C00F82579 /* harp.wav */,
-				CED47A2415E3C66C00F82579 /* saxophone.wav */,
-				CED47A2015E3C5CF00F82579 /* e-guitar.wav */,
-				BB61EBA4154569CC0000F2FE /* SoundCloud.bundle */,
-				BB037C26151799FB00DE56C1 /* test2.jpg */,
-				BB3ACB3D1483E5DD003014D1 /* main.m */,
-				BB3ACB3F1483E5DD003014D1 /* ImageProcessing-Prefix.pch */,
-				BB36870D150623DC002624BB /* filterzero.pd */,
-				BB956B7D1580E6D1003A7E32 /* instrument.pd */,
-				BB0897F9158238DF0019E7FF /* instrumentinternal.pd */,
-				BB83BC5714F28F2200226E16 /* polytracker.pd */,
-				BB9AE724148D28DA004E608A /* soundsystem.pd */,
-				BB0897FB158239060019E7FF /* toggleout.pd */,
-				BB873A5214E9214D00CE09FA /* vocoder.pd */,
-				BB3ACB391483E5DD003014D1 /* ImageProcessing-Info.plist */,
+				BBAFEFCF159DD6DB00AEFB88 /* 8bit */,
+				BB873A5414E9215C00CE09FA /* a.wav */,
 				CE2E20DE158B5A7100FD7BF9 /* ach-locked-base.png */,
 				CE2E20DF158B5A7100FD7BF9 /* ach-overlay.png */,
 				CE2E20E0158B5A7100FD7BF9 /* ach-unlocked-base.png */,
@@ -607,46 +600,64 @@
 				BB57BE90159B3C0100FE45A8 /* arrow8.png */,
 				BB57BE91159B3C0100FE45A8 /* arrow9.png */,
 				CEF4A81715A1F47200CD5CB1 /* badgesicon.png */,
+				BB67251115064D9600D96D0D /* bass.wav */,
 				BBC0C4E2154ED9630024197E /* camera.png */,
 				BBC0C4E4154EDBCA0024197E /* cameratiny.png */,
 				CEF4A81515A1ED7100CD5CB1 /* customiseicon.png */,
+				BB056163154E993600FE1640 /* Default.png */,
+				BB056165154E994800FE1640 /* Default@2x.png */,
+				BB51EF92154E98B900139C27 /* Default@2x.png */,
 				CEEE28A61598C04900C741AE /* divider.png */,
+				CED47A2015E3C5CF00F82579 /* e-guitar.wav */,
+				BB36870D150623DC002624BB /* filterzero.pd */,
+				CED47A2215E3C66C00F82579 /* flute.wav */,
 				BBC0C4E8154EE2FA0024197E /* folder.png */,
+				CED47A2315E3C66C00F82579 /* harp.wav */,
 				BB056167154E9AEE00FE1640 /* helpIcon.png */,
 				BB57BE9F159B50FD00FE45A8 /* helpoffbutton.png */,
 				BB57BEA0159B50FD00FE45A8 /* helponbutton.png */,
+				BB67251215064D9600D96D0D /* hihat.wav */,
+				BBD1BDA514D2E81200D54C01 /* homeIcon.png */,
 				BB51EF79154E90D800139C27 /* icon.png */,
 				BB51EF7A154E90D800139C27 /* icon@2x.png */,
+				BB956B7D1580E6D1003A7E32 /* instrument.pd */,
+				BB0897F9158238DF0019E7FF /* instrumentinternal.pd */,
 				BB51EF8E154E982500139C27 /* Microphone_Icon_clip_art_small.png */,
 				BB83378B150A5BF400D1E52E /* pausebutton.png */,
 				BB05616F154EA21000FE1640 /* phototunes.png */,
 				BB056169154E9BDE00FE1640 /* playbar.png */,
 				BB833785150A5AA000D1E52E /* playbutton.png */,
+				BB83BC5714F28F2200226E16 /* polytracker.pd */,
 				CEEE28A21598B95C00C741AE /* repeatoffbutton.png */,
 				CEEE28A31598B95C00C741AE /* repeatonbutton.png */,
+				BB67251315064D9600D96D0D /* ride.wav */,
 				BB51EF8A154E94F500139C27 /* savebutton.png */,
+				CED47A2415E3C66C00F82579 /* saxophone.wav */,
 				CEE1EF8415E06F5700DB31A3 /* scratchicon.png */,
 				BBC0C4E5154EDBCA0024197E /* share.png */,
+				CED47A2815E3C68200F82579 /* sitar-short.wav */,
+				BB67251415064D9600D96D0D /* snare.wav */,
+				BB61EBA4154569CC0000F2FE /* SoundCloud.bundle */,
+				BB9AE724148D28DA004E608A /* soundsystem.pd */,
+				BB67251515064D9600D96D0D /* splash.wav */,
+				CED47A2A15E3C69200F82579 /* steel-drum.wav */,
 				BB833787150A5AFB00D1E52E /* stopbutton.png */,
 				CEF4A81915A1FD5600CD5CB1 /* storeicon.png */,
-				CEF4A81315A1E6E100CD5CB1 /* tallbutton.png */,
-				CEF4A81115A1E49D00CD5CB1 /* widebutton.png */,
-				BB873A5414E9215C00CE09FA /* a.wav */,
-				BB67251115064D9600D96D0D /* bass.wav */,
-				BB67251215064D9600D96D0D /* hihat.wav */,
-				BB67251315064D9600D96D0D /* ride.wav */,
-				BB67251415064D9600D96D0D /* snare.wav */,
-				BB67251515064D9600D96D0D /* splash.wav */,
 				BB05616B154E9DD900FE1640 /* synth.wav */,
+				CEF4A81315A1E6E100CD5CB1 /* tallbutton.png */,
 				BB57BEA3159CA1B500FE45A8 /* tbass.wav */,
+				BB037C26151799FB00DE56C1 /* test2.jpg */,
 				BB57BEA4159CA1B500FE45A8 /* thihat.wav */,
+				BB0897FB158239060019E7FF /* toggleout.pd */,
 				BB57BEA5159CA1B500FE45A8 /* tride.wav */,
+				CED47A2B15E3C69200F82579 /* trumpet.wav */,
 				BB57BEA6159CA1B600FE45A8 /* tsnare.wav */,
 				BB57BEA7159CA1B600FE45A8 /* tsplash.wav */,
-				BBAFEFCF159DD6DB00AEFB88 /* 8bit */,
-				BB3ACB3A1483E5DD003014D1 /* InfoPlist.strings */,
+				BB873A5214E9214D00CE09FA /* vocoder.pd */,
+				CEF4A81115A1E49D00CD5CB1 /* widebutton.png */,
+				BB51EF90154E98B400139C27 /* Default.png */,
 			);
-			name = "Supporting Files";
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		BB3ACB581483E5DE003014D1 /* ImageProcessingTests */ = {
@@ -767,8 +778,7 @@
 				BBF499D7157F80B400D891A7 /* FIRFilter.h */,
 				BBF499D8157F80B400D891A7 /* include */,
 			);
-			name = Soundtouch;
-			path = ImageProcessing/Soundtouch;
+			path = Soundtouch;
 			sourceTree = "<group>";
 		};
 		BBF499D8157F80B400D891A7 /* include */ = {
@@ -962,9 +972,7 @@
 			files = (
 				BB3ACB3C1483E5DD003014D1 /* InfoPlist.strings in Resources */,
 				BB3ACB481483E5DE003014D1 /* ViewController_iPhone.xib in Resources */,
-				BB3ACB4B1483E5DE003014D1 /* ViewController_iPad.xib in Resources */,
 				BB9AE725148D28DA004E608A /* soundsystem.pd in Resources */,
-				BBD3328314CD7C0900582A54 /* images.jpeg in Resources */,
 				BBD1BDA614D2E81200D54C01 /* homeIcon.png in Resources */,
 				BBD1BDA814D2E86C00D54C01 /* settingsIcon.png in Resources */,
 				BB873A5314E9214D00CE09FA /* vocoder.pd in Resources */,
@@ -1163,14 +1171,6 @@
 				BB3ACB471483E5DE003014D1 /* en */,
 			);
 			name = ViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		BB3ACB491483E5DE003014D1 /* ViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BB3ACB4A1483E5DE003014D1 /* en */,
-			);
-			name = ViewController_iPad.xib;
 			sourceTree = "<group>";
 		};
 		BB3ACB5B1483E5DE003014D1 /* InfoPlist.strings */ = {

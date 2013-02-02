@@ -356,6 +356,7 @@ UIImage* g_AchievementUnlockedBaseImage;
 
 @end
 
+// Achievements Database
 @implementation AchievementsTracker
 
 -(id)init:(ViewController*)viewController
@@ -504,6 +505,15 @@ UIImage* g_AchievementUnlockedBaseImage;
     }
 }
 
+-(void)drumChanged
+{
+    for (int i = 0; i < [_trackers count]; ++i)
+    {
+        BaseTracker* t = [_trackers objectAtIndex: i];
+        [t drumsChanged];
+    }
+}
+
 -(void)imageChanged
 {
     for (int i = 0; i < [_trackers count]; ++i)
@@ -550,8 +560,8 @@ UIImage* g_AchievementUnlockedBaseImage;
 -(void)melodyVolumeChanged { }
 -(void)lengthChanged { }
 -(void)instrumentChanged { }
+-(void)drumChanged { }
 -(void)imageChanged { }
-
 -(void)loadSavedAchievement { }
 
 @end
@@ -593,6 +603,13 @@ UIImage* g_AchievementUnlockedBaseImage;
     [self evaluateCondition];
 }
 
+-(void)drumChanged
+{
+    _drumChanged = true;
+    
+    [self evaluateCondition];
+}
+
 -(void)imageChanged
 {
     _tempoChanged = false;
@@ -600,6 +617,7 @@ UIImage* g_AchievementUnlockedBaseImage;
     _melodyVolumeChanged = false;
     _lengthChanged = false;
     _instrumentChanged = false;
+    _drumChanged = false;
 }
 
 -(void)evaluateCondition
@@ -610,7 +628,8 @@ UIImage* g_AchievementUnlockedBaseImage;
             _drumVolumeChanged &&
             _melodyVolumeChanged &&
             _lengthChanged &&
-            _instrumentChanged)
+            _instrumentChanged &&
+            _drumChanged)
         {
             [self unlock];
             
