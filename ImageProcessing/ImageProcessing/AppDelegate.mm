@@ -19,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self.window addSubview:[self.viewController view]];
+    [self.window setRootViewController:viewController];
     [self.window makeKeyAndVisible];
     
     audioController = [[PdAudioController alloc] init];
@@ -32,7 +32,9 @@
     
 	[audioController configureAmbientWithSampleRate:22050 numberChannels:1 mixingEnabled:YES];
 	[audioController setActive:YES];
-	[audioController print];
+	
+    //[audioController print];
+    
     soundtouch_tilde_setup();
 
     [viewController initialize: audioController];

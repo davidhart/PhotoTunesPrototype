@@ -26,7 +26,7 @@ UIImage* scaleAndRotateImage(UIImage* image);
         
         uint width = CGImageGetWidth(_image.CGImage);
         uint height = CGImageGetHeight(_image.CGImage);
-        NSLog(@"width: %u height: %u", width, height);
+        //NSLog(@"width: %u height: %u", width, height);
         
         _slices = [NSMutableArray arrayWithCapacity:width];
         _numSlices = width;
