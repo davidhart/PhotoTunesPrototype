@@ -1,11 +1,3 @@
-//
-//  Util.h
-//  ImageProcessing
-//
-//  Created by MEng on 23/01/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import <Foundation/Foundation.h>
 
 struct RGBfloat

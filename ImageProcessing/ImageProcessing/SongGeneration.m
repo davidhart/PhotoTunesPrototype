@@ -1,11 +1,3 @@
-//
-//  SongGeneration.m
-//  ImageProcessing
-//
-//  Created by user on 05/07/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "SongGeneration.h"
 #import "ImageProperties.h"
 

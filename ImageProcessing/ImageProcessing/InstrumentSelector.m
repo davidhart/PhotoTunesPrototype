@@ -1,11 +1,3 @@
-//
-//  InstrumentSelector.m
-//  ImageProcessing
-//
-//  Created by MEng on 19/03/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
-
 #import "InstrumentSelector.h"
 #import "ViewController.h"
 
@@ -71,7 +63,10 @@ const float SELECTOR_HEIGHT = 120.0f;
 {
     _activeSelection = _currentSelection;
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     [_completionObject performSelector:_onCompletion];
+#pragma clang diagnostic pop
     
     [self hide];
 }
