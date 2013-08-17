@@ -11,9 +11,8 @@
 @class ImageLoading;
 
 @class ProgressView;
-@class ShareView;
 
-@interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 {
     @private PdFile * _patch;
     @private __unsafe_unretained PdAudioController * _audio;
@@ -82,7 +81,6 @@
 @property (nonatomic, retain) IBOutlet ImageLoading* imageLoading;
 
 @property (nonatomic, retain) IBOutlet ProgressView* progressView;
-@property (nonatomic, retain) IBOutlet ShareView* shareView;
 
 @property (nonatomic, retain) IBOutlet UIBarItem* achPagePoints;
 @property (nonatomic, retain) IBOutlet UIBarItem* achPageUnlocks;

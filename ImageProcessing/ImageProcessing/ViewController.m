@@ -49,7 +49,6 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
 @synthesize imageLoading;
 
 @synthesize progressView;
-@synthesize shareView;
 
 @synthesize achPagePoints;
 @synthesize achPageUnlocks;
@@ -242,7 +241,27 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
 
 -(void)sharePressed:(id)sender
 {
-    [self presentModalViewController: shareView animated: YES];
+    //[self presentModalViewController: shareView animated: YES];
+    
+    UIAlertView* alert = [[UIAlertView alloc] init];
+    [alert setTitle: @"Save and upload?"];
+    [alert setMessage: @"Save and share with soundcloud? This operation may take some time"];
+    
+    [alert addButtonWithTitle: @"Cancel"];
+    [alert addButtonWithTitle: @"Ok"];
+    [alert setDelegate: self];
+    [alert show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    // Yes pressed
+    if (buttonIndex == 1)
+    {
+        [self beginRecording];
+    }
+    
+    [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
 }
 
 -(void)beginRecording
