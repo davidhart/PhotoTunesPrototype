@@ -293,7 +293,7 @@
 		BB2B134F150E443400443348 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BB2B6C30158F65B700AEBC52 /* ach1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ach1.png; sourceTree = "<group>"; };
 		BB36870D150623DC002624BB /* filterzero.pd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = filterzero.pd; sourceTree = "<group>"; };
-		BB3ACB2D1483E5DD003014D1 /* ImageProcessing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageProcessing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB3ACB2D1483E5DD003014D1 /* hearmypicture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hearmypicture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3ACB311483E5DD003014D1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BB3ACB331483E5DD003014D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BB3ACB351483E5DD003014D1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -513,7 +513,7 @@
 		BB3ACB2E1483E5DD003014D1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BB3ACB2D1483E5DD003014D1 /* ImageProcessing.app */,
+				BB3ACB2D1483E5DD003014D1 /* hearmypicture.app */,
 				BB3ACB511483E5DE003014D1 /* ImageProcessingTests.octest */,
 			);
 			name = Products;
@@ -797,9 +797,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BB3ACB2C1483E5DD003014D1 /* ImageProcessing */ = {
+		BB3ACB2C1483E5DD003014D1 /* hearmypicture */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB3ACB631483E5DE003014D1 /* Build configuration list for PBXNativeTarget "ImageProcessing" */;
+			buildConfigurationList = BB3ACB631483E5DE003014D1 /* Build configuration list for PBXNativeTarget "hearmypicture" */;
 			buildPhases = (
 				BB3ACB291483E5DD003014D1 /* Sources */,
 				BB3ACB2A1483E5DD003014D1 /* Frameworks */,
@@ -816,14 +816,14 @@
 				BB61EBA0154568390000F2FE /* PBXTargetDependency */,
 				BB83BC5D14FBC04A00226E16 /* PBXTargetDependency */,
 			);
-			name = ImageProcessing;
+			name = hearmypicture;
 			productName = ImageProcessing;
-			productReference = BB3ACB2D1483E5DD003014D1 /* ImageProcessing.app */;
+			productReference = BB3ACB2D1483E5DD003014D1 /* hearmypicture.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BB3ACB501483E5DE003014D1 /* ImageProcessingTests */ = {
+		BB3ACB501483E5DE003014D1 /* hearmypicturetests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB3ACB661483E5DE003014D1 /* Build configuration list for PBXNativeTarget "ImageProcessingTests" */;
+			buildConfigurationList = BB3ACB661483E5DE003014D1 /* Build configuration list for PBXNativeTarget "hearmypicturetests" */;
 			buildPhases = (
 				BB3ACB4C1483E5DE003014D1 /* Sources */,
 				BB3ACB4D1483E5DE003014D1 /* Frameworks */,
@@ -835,7 +835,7 @@
 			dependencies = (
 				BB3ACB571483E5DE003014D1 /* PBXTargetDependency */,
 			);
-			name = ImageProcessingTests;
+			name = hearmypicturetests;
 			productName = ImageProcessingTests;
 			productReference = BB3ACB511483E5DE003014D1 /* ImageProcessingTests.octest */;
 			productType = "com.apple.product-type.bundle";
@@ -848,7 +848,7 @@
 			attributes = {
 				LastUpgradeCheck = 0430;
 			};
-			buildConfigurationList = BB3ACB271483E5DD003014D1 /* Build configuration list for PBXProject "ImageProcessing" */;
+			buildConfigurationList = BB3ACB271483E5DD003014D1 /* Build configuration list for PBXProject "hearmypicture" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -886,8 +886,8 @@
 			);
 			projectRoot = "";
 			targets = (
-				BB3ACB2C1483E5DD003014D1 /* ImageProcessing */,
-				BB3ACB501483E5DE003014D1 /* ImageProcessingTests */,
+				BB3ACB2C1483E5DD003014D1 /* hearmypicture */,
+				BB3ACB501483E5DE003014D1 /* hearmypicturetests */,
 			);
 		};
 /* End PBXProject section */
@@ -1121,7 +1121,7 @@
 /* Begin PBXTargetDependency section */
 		BB3ACB571483E5DE003014D1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = BB3ACB2C1483E5DD003014D1 /* ImageProcessing */;
+			target = BB3ACB2C1483E5DD003014D1 /* hearmypicture */;
 			targetProxy = BB3ACB561483E5DE003014D1 /* PBXContainerItemProxy */;
 		};
 		BB61EB98154568390000F2FE /* PBXTargetDependency */ = {
@@ -1190,8 +1190,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1215,6 +1215,8 @@
 				INSTALL_PATH = /Applications;
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				LLVM_LTO = NO;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1226,8 +1228,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = NO;
@@ -1246,6 +1248,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				LLVM_LTO = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1357,8 +1361,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_FLOATING_POINT_LIBRARY_CALLS = NO;
@@ -1377,6 +1381,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.0;
 				LLVM_LTO = NO;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1386,8 +1392,8 @@
 		BBD2DF4C15B0647200DF30C5 /* Distribute */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: University of Hull";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageProcessing/ImageProcessing-Prefix.pch";
@@ -1408,7 +1414,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "5ED5365F-0387-453B-863A-9F1FC1166914";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1436,7 +1443,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BB3ACB271483E5DD003014D1 /* Build configuration list for PBXProject "ImageProcessing" */ = {
+		BB3ACB271483E5DD003014D1 /* Build configuration list for PBXProject "hearmypicture" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB3ACB611483E5DE003014D1 /* Debug */,
@@ -1446,7 +1453,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB3ACB631483E5DE003014D1 /* Build configuration list for PBXNativeTarget "ImageProcessing" */ = {
+		BB3ACB631483E5DE003014D1 /* Build configuration list for PBXNativeTarget "hearmypicture" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB3ACB641483E5DE003014D1 /* Debug */,
@@ -1456,7 +1463,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB3ACB661483E5DE003014D1 /* Build configuration list for PBXNativeTarget "ImageProcessingTests" */ = {
+		BB3ACB661483E5DE003014D1 /* Build configuration list for PBXNativeTarget "hearmypicturetests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB3ACB671483E5DE003014D1 /* Debug */,
