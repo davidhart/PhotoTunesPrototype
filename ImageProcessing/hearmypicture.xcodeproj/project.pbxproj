@@ -306,7 +306,7 @@
 		BB3ACB431483E5DE003014D1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		BB3ACB441483E5DE003014D1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		BB3ACB471483E5DE003014D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
-		BB3ACB511483E5DE003014D1 /* ImageProcessingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageProcessingTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB3ACB511483E5DE003014D1 /* ImageProcessingTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ImageProcessingTests.octest; path = hearmypicturetests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3ACB521483E5DE003014D1 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		BB3ACB5A1483E5DE003014D1 /* ImageProcessingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImageProcessingTests-Info.plist"; sourceTree = "<group>"; };
 		BB3ACB5C1483E5DE003014D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
