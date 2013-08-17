@@ -7,7 +7,7 @@
     @private int _activeSelection;
     @private int _currentSelection;
     
-    @private NSArray* _options;
+    @private NSMutableArray* _options;
     @private NSObject* _completionObject;
     @private SEL _onCompletion;
 }
@@ -18,8 +18,8 @@
 -(IBAction)select:(id)sender;
 -(IBAction)cancel:(id)sender;
 
--(void)setCompletionHandler:(NSObject*)object: (SEL)onCompletion;
--(void)setPickerNames:(NSArray*)options;
+-(void)setCompletionHandler:(NSObject*)object :(SEL)onCompletion;
+-(void)setPickerNames:(NSMutableArray*)options;
 
 -(int)getSelectionIndex;
 

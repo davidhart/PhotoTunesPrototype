@@ -90,6 +90,12 @@
 -(void)drumsChanged;
 -(void)imageChanged;
 
+-(void)loadOneImage;
+-(void)takeOnePhoto;
+
+-(void)uploadOneSong;
+-(void)playOneSong;
+
 -(void)loadSavedAchievement;
 
 @end
@@ -110,6 +116,12 @@
 -(void)instrumentChanged;
 -(void)imageChanged;
 -(void)drumsChanged;
+
+-(void)loadOneImage;
+-(void)takeOnePhoto;
+
+-(void)uploadOneSong;
+-(void)playOneSong;
 
 -(void)unlockAchievement:(int) index;
 -(void)silentUnlockAchievement:(int)index;
@@ -149,3 +161,39 @@
 -(void)loadSavedAchievement;
 
 @end
+
+@interface LoadOneImageAchievementTracker : BaseTracker
+{
+    @private bool _oneLoad;
+}
+
+-(void)loadSavedAchievement;
+
+@end
+
+@interface TakeOnePhotoAchievementTracker : BaseTracker
+{
+    @private bool _onePhoto;
+}
+
+-(void)loadSavedAchievement;
+
+@end;
+
+@interface UploadOneSongAchievementTracker : BaseTracker
+{
+@private bool _uploadSong;
+}
+
+-(void)loadSavedAchievement;
+
+@end
+
+@interface PlayOneSongAchievementTracker : BaseTracker
+{
+@private bool _playSong;
+}
+
+-(void)loadSavedAchievement;
+
+@end;

@@ -12,6 +12,28 @@
 
 @class ProgressView;
 
+@interface InstrumentPack : NSObject
+{
+    @public NSString* Key;
+    @public NSString* DisplayName;
+    @public NSString* WaveFile;
+};
+
+-(InstrumentPack*)init: (NSString*)key :(NSString*)displayName :(NSString*)waveFile;
+
+@end
+
+@interface  DrumPack : NSObject
+{
+    @public NSString* Key;
+    @public NSString* DisplayName;
+    @public NSMutableArray* WaveFiles;
+};
+
+-(DrumPack*)init: (NSString*)key :(NSString*)displayName :(NSMutableArray*)waveFile;
+
+@end
+
 @interface ViewController : UITabBarController <PdReceiverDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate>
 {
     @private PdFile * _patch;
@@ -21,12 +43,15 @@
 
     @private UIImagePickerController* imagePickerController;
     
-    //@private InstrumentSelector* _instrumentSelector;
-    
     @private float _progressValue;
     @private int _numNotes;
     @private int _numIntruments;
     @private int _activeInstrument;
+    
+    //0 Nothing
+    //1 Load photo
+    //2 Take photo
+    @private int _lastTypeLoaded;
  
     @private float _currentDrumVolume;
     @private float _currentMelodyVolume;
@@ -51,6 +76,12 @@
     @private NSTimer* _helpTextTimer;
     @private UILabel* _flashingHelpText;
     @private UIImageView* _flashingHelpImage;
+    
+    @private NSMutableArray* _instruments;
+    @private NSMutableArray* _drums;
+    
+    @private NSMutableArray* _defaultInstruments;
+    @private NSMutableArray* _defaultDrums;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView* imageView;

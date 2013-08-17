@@ -110,10 +110,13 @@ UIImage* g_storeOverlayImage;
         [_buyButton setTitle: @"Buy 50" forState:UIControlStateNormal];
         [_base addSubview: _buyButton];
         
+        NSLog(@"LoadingInit: unlock%d", _index);
+        
         // Load unlock state
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         bool isUnlocked = [prefs boolForKey:
-                           [NSString stringWithFormat: @"_unlock%d", _index]];
+                           [NSString stringWithFormat: @"%@", _instName]];
+        
         [self setUnlocked: isUnlocked];
     }
     
@@ -179,9 +182,9 @@ UIImage* g_storeOverlayImage;
     // Hide buy button on unlocked items
     _buyButton.hidden = unlocked;
     
-    // Save unlock state
+    // Save unlock state_instName
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setBool:_unlocked forKey:[NSString stringWithFormat: @"_unlock%d", _index]];
+    [prefs setBool:_unlocked forKey:[NSString stringWithFormat: @"%@", _instName]];
 }
 
 -(bool)isUnlocked
@@ -211,6 +214,11 @@ UIImage* g_storeOverlayImage;
     [_buyButton setTitle: [NSString stringWithFormat: @"Buy %d", score] forState:UIControlStateNormal];
 }
 
+-(void)setInstName:(NSString *)description
+{
+    _instName = description;
+}
+
 -(int)getScore
 {
     return _score;
@@ -231,7 +239,7 @@ UIImage* g_storeOverlayImage;
 
 -(void)unlock
 {
-    [self setUnlocked: YES];
+    [self setUnlocked: true];
     
     [_parent onUnlock];
     
@@ -257,7 +265,7 @@ UIImage* g_storeOverlayImage;
     return self;
 }
 
--(void)addItem:(NSString *)title: (NSString *)description: (NSString*)icon: (int)cost
+-(void)addItem:(NSString *)title: (NSString *)description: (NSString*)icon: (int)cost: (NSString*)InstName
 {
     CGRect rect = [self getRectForItem: [_storeItemViews count]];
     
@@ -269,6 +277,7 @@ UIImage* g_storeOverlayImage;
     [item setScore: cost];
     [item setDesc: description];
     [item setIcon: icon];
+    [item setInstName: InstName];
     [item setParent: self];
     
     [_storeItemViews addObject: item];
@@ -336,18 +345,18 @@ UIImage* g_storeOverlayImage;
     {
         _storeView = [[StoreView alloc] init: parent];
         
-        [_storeView addItem:@"8bit Lead" :@"Recreate the sound of the 8bit era with this instrument": @"ach1.png" :10];
+        [_storeView addItem:@"8bit Lead" :@"Recreate the sound of the 8bit era with this instrument": @"ach1.png" :10 :@"INST8-BIT"];
         
         [_storeView addItem:@"8bit Drum Pack": @"Recreate the sound of the 8bit era with this drum pack":
-         @"ach1.png": 20];
+         @"ach1.png": 20: @"DRUMSTAND"];
     }
     
     return self;
 }
 
--(void)addItem:(NSString*)title: (NSString*)desc: (NSString*) icon: (int)score
+-(void)addItem:(NSString*)title: (NSString*)desc: (NSString*) icon: (int)score: (NSString*)InstName
 {
-    [_storeView addItem: title: desc: icon: score];
+    [_storeView addItem: title: desc: icon: score: InstName];
 }
 
 -(void)setPoints:(int)points

@@ -17,6 +17,7 @@
     @private bool _unlocked;
     @private int _score;
     @private int _index;
+    @private NSString* _instName;
     
     @private StoreView* _parent;
 }
@@ -35,6 +36,7 @@
 -(void)setDesc:(NSString*)description;
 -(void)setIcon:(NSString*)icon;
 -(void)setScore:(int)score;
+-(void)setInstName:(NSString*)InstName;
 -(int)getScore;
 
 -(void)setParent:(StoreView*)parent;
@@ -53,7 +55,7 @@
 
 -(id)init:(ViewController*)parent;
 -(CGRect)getRectForItem:(int)index;
--(void)addItem:(NSString*) title: (NSString*) description: (NSString*)icon: (int)cost;
+-(void)addItem:(NSString*) title: (NSString*) description: (NSString*)icon: (int)cost: (NSString*)InstName;
 
 
 -(void)resizeScrollView;

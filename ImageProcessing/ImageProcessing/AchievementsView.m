@@ -376,22 +376,68 @@ UIImage* g_AchievementUnlockedBaseImage;
                        10];
         
         PhotocountTracker* tracker = [PhotocountTracker alloc];
-        [tracker setUnlockCount: 5];
+        [tracker setUnlockCount: 10];
         [self addAchievement: tracker :
                         @"Explorer":
-                        @"Load 5 images": 
+                        @"Load 10 images":
                         @"ach1.png": 
                         10];
         
         tracker = [PhotocountTracker alloc];
-        [tracker setUnlockCount: 10];
+        [tracker setUnlockCount: 50];
         [self addAchievement: tracker :
                         @"Pioneer":
-                        @"Load 10 images": 
+                        @"Load 50 images": 
                         @"ach1.png": 
                         20];
     
+        tracker = [PhotocountTracker alloc];
+        [tracker setUnlockCount: 100];
+        [self addAchievement: tracker :
+                        @"Generic":
+                        @"Load 100 images":
+                        @"ach1.png":
+                        1];
         
+        tracker = [PhotocountTracker alloc];
+        [tracker setUnlockCount: 250];
+        [self addAchievement: tracker :
+                        @"Generic":
+                        @"Load 250 images":
+                        @"ach1.png":
+                        1];
+        
+        tracker = [PhotocountTracker alloc];
+        [tracker setUnlockCount: 1000];
+        [self addAchievement: tracker :
+                        @"Generic":
+                        @"Load 1000 images":
+                        @"ach1.png":
+                        1];
+        
+        [self addAchievement: [LoadOneImageAchievementTracker alloc]:
+                        @"Load One Image":
+                        @"Load One Image":
+                        @"ach1.png":
+                        1];
+        
+        [self addAchievement: [TakeOnePhotoAchievementTracker alloc]:
+                        @"Take One Photo":
+                        @"Take One Photo":
+                        @"ach1.png":
+                        1];
+        
+        [self addAchievement: [UploadOneSongAchievementTracker alloc]:
+                        @"Upload One Song":
+                        @"Upload One Song":
+                        @"ach1.png":
+                        1];
+        
+        [self addAchievement: [PlayOneSongAchievementTracker alloc]:
+                        @"Play One Song":
+                        @"Play One Song":
+                        @"ach1.png":
+                        100];
     }
     
     return self;
@@ -522,6 +568,42 @@ UIImage* g_AchievementUnlockedBaseImage;
     }
 }
 
+-(void)loadOneImage
+{
+    for (int i = 0; i < [_trackers count]; ++i)
+    {
+        BaseTracker* t = [_trackers objectAtIndex: i];
+        [t loadOneImage];
+    }
+}
+
+-(void)takeOnePhoto
+{
+    for (int i = 0; i < [_trackers count]; ++i)
+    {
+        BaseTracker* t = [_trackers objectAtIndex: i];
+        [t takeOnePhoto];
+    }
+}
+
+-(void)uploadOneSong
+{
+    for (int i = 0; i < [_trackers count]; ++i)
+    {
+        BaseTracker* t = [_trackers objectAtIndex: i];
+        [t uploadOneSong];
+    }
+}
+
+-(void)playOneSong
+{
+    for (int i = 0; i < [_trackers count]; ++i)
+    {
+        BaseTracker* t = [_trackers objectAtIndex: i];
+        [t playOneSong];
+    }
+}
+
 @end
 
 @implementation BaseTracker
@@ -563,6 +645,12 @@ UIImage* g_AchievementUnlockedBaseImage;
 -(void)imageChanged { }
 -(void)loadSavedAchievement { }
 
+-(void)loadOneImage { }
+-(void)takeOnePhoto { }
+
+-(void)uploadOneSong { }
+-(void)playOneSong { }
+
 @end
 
 @implementation PerfectionistAchievementTracker
@@ -602,7 +690,7 @@ UIImage* g_AchievementUnlockedBaseImage;
     [self evaluateCondition];
 }
 
--(void)drumChanged
+-(void)drumsChanged
 {
     _drumChanged = true;
     
@@ -695,6 +783,151 @@ UIImage* g_AchievementUnlockedBaseImage;
     {
         _count = [prefs integerForKey:[NSString stringWithFormat: @"_PhotoCountTracker%d", _index]];
     }
+}
+
+@end
+
+
+@implementation LoadOneImageAchievementTracker
+
+-(void)loadOneImage
+{
+    _oneLoad = true;
+    
+    [self evaluateCondition];
+}
+
+-(void)evaluateCondition
+{
+    if (![self isUnlocked])
+    {
+        if (_oneLoad)
+        {
+            [self unlock];
+            
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            [prefs setBool:true forKey:@"_oneLoadUnlockedBool"];
+        }
+    }
+}
+
+-(void)loadSavedAchievement
+{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    bool _isAchievementUnlocked = [prefs boolForKey:@"_oneLoadUnlockedBool"];
+    
+    if (_isAchievementUnlocked)
+        [self silentUnlock];
+    
+    _oneLoad = false;
+}
+
+@end
+
+@implementation TakeOnePhotoAchievementTracker
+
+-(void)takeOnePhoto
+{
+    _onePhoto = true;
+    
+    [self evaluateCondition];
+}
+
+-(void)evaluateCondition
+{
+    if (![self isUnlocked])
+    {
+        if (_onePhoto)
+        {
+            [self unlock];
+            
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            [prefs setBool:true forKey:@"_onePhotoUnlockedBool"];
+        }
+    }
+}
+
+-(void)loadSavedAchievement
+{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    bool _isAchievementUnlocked = [prefs boolForKey:@"_onePhotoUnlockedBool"];
+    
+    if (_isAchievementUnlocked)
+        [self silentUnlock];
+    
+    _onePhoto = false;
+}
+
+@end
+
+@implementation UploadOneSongAchievementTracker
+
+-(void)uploadOneSong
+{
+    _uploadSong = true;
+    
+    [self evaluateCondition];
+}
+
+-(void)evaluateCondition
+{
+    if (![self isUnlocked])
+    {
+        if (_uploadSong)
+        {
+            [self unlock];
+            
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            [prefs setBool:true forKey:@"_oneUploadUnlockedBool"];
+        }
+    }
+}
+
+-(void)loadSavedAchievement
+{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    bool _isAchievementUnlocked = [prefs boolForKey:@"_oneUploadUnlockedBool"];
+    
+    if (_isAchievementUnlocked)
+        [self silentUnlock];
+    
+    _uploadSong = false;
+}
+
+@end
+
+@implementation PlayOneSongAchievementTracker
+
+-(void)playOneSong
+{
+    _playSong = true;
+    
+    [self evaluateCondition];
+}
+
+-(void)evaluateCondition
+{
+    if (![self isUnlocked])
+    {
+        if (_playSong)
+        {
+            [self unlock];
+            
+            NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+            [prefs setBool:true forKey:@"_onePlayUnlockedBool"];
+        }
+    }
+}
+
+-(void)loadSavedAchievement
+{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    bool _isAchievementUnlocked = [prefs boolForKey:@"_onePlayUnlockedBool"];
+    
+    if (_isAchievementUnlocked)
+        [self silentUnlock];
+    
+    _playSong = false;
 }
 
 @end

@@ -71,13 +71,13 @@ const float SELECTOR_HEIGHT = 120.0f;
     [self hide];
 }
 
--(void)setPickerNames:(NSArray *)names
+-(void)setPickerNames:(NSMutableArray *)names
 {
     _options = names;
     [pickerWheel reloadAllComponents];
 }
 
--(void)setCompletionHandler:(NSObject*)object: (SEL)onCompletion
+-(void)setCompletionHandler :(NSObject*)object : (SEL)onCompletion
 {
     _completionObject = object;
     _onCompletion = onCompletion;

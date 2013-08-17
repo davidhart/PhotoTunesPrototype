@@ -8,19 +8,31 @@
 #import "SongGeneration.h"
 #import <AssetsLibrary/ALAssetsLibrary.h>
 
-NSString *instrumentNames[] = {@"8Bit",                 @"Electric Guitar",     @"Steel Drum", 
-                               @"Trumpet",              @"Sitar",               @"Electronic",
-                               @"Flute",                @"Harp",                @"Saxophone"};
+@implementation InstrumentPack
 
-NSString *instrumentFiles[] = {@"8bit/lead.wav",        @"e-guitar.wav",        @"steel-drum.wav", 
-                               @"trumpet.wav",          @"sitar-short.wav",     @"synth.wav",
-                               @"flute.wav",            @"harp.wav",            @"saxophone.wav"};
+-(InstrumentPack*)init:(NSString *)key :(NSString *)displayName :(NSString *)waveFile
+{
+    Key = key;
+    DisplayName = displayName;
+    WaveFile = waveFile;
+    
+    return self;
+}
 
-NSString* drumPackNames[] = {@"Tribal", @"Standard", @"8Bit"};
+@end
 
-NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnare.wav", @"tsplash.wav",
-                            @"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav", @"splash.wav",
-                            @"8bit/bass.wav", @"8bit/hit.wav", @"8bit/ride.wav", @"8bit/snare.wav", @"8bit/splash.wav"};
+@implementation DrumPack
+
+-(DrumPack*)init:(NSString *)key :(NSString *)displayName :(NSMutableArray *)waveFiles
+{
+    Key = key;
+    DisplayName = displayName;
+    WaveFiles = waveFiles;
+    
+    return self;
+}
+
+@end
 
 
 @implementation ViewController
@@ -128,8 +140,10 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
 }
 
 -(void)playPressed:(id)sender
-{ 
+{
     _playing = !_playing;
+    
+    [_achievements playOneSong];
     
     if (_playing)
     {
@@ -186,14 +200,27 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
 
 -(void)instrumentsPressed:(id)sender
 {
-    [instrumentSelector setPickerNames:[NSArray arrayWithObjects: instrumentNames count: sizeof(instrumentNames)/sizeof(NSString*)]];
+    for(int i = 0; i < 2; i++)
+    {
+        // Load unlock state
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        bool isUnlocked = [prefs boolForKey:
+                           [NSString stringWithFormat: @"_unlock%d", i]];
+        
+        if (isUnlocked)
+        {
+            
+        }
+    }
+    
+    [instrumentSelector setPickerNames: [self getUnlockedInstrumentNames]];
     [instrumentSelector setCompletionHandler: self : @selector(changePrimaryInstrument)];
     [instrumentSelector show];
 }
 
 -(void)drumsPressed:(id)sender
 {
-    [instrumentSelector setPickerNames:[NSArray arrayWithObjects: drumPackNames count: sizeof(drumPackNames)/sizeof(NSString*)]];
+    [instrumentSelector setPickerNames: [self getUnlockedDrumNames]];
     [instrumentSelector setCompletionHandler: self :@selector(changeDrums)];
     [instrumentSelector show];
 }
@@ -325,6 +352,7 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
              }
              else
              {
+                 [_achievements uploadOneSong];
                  // If you want to do something with the uploaded
                  // track this is the right place for that.
                  NSLog(@"Uploaded track: %@", trackInfo);
@@ -342,7 +370,7 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
      */
     
     // We can preset the title ...
-    [shareViewController setTitle:@"Created with the phototunes app!"];
+    [shareViewController setTitle:@"Created with the Hear My Picture app!"];
     
     // ... and other options like the private flag.
     [shareViewController setPrivate:NO];
@@ -362,6 +390,36 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
 
 - (void)initialize: (PdAudioController*) audio
 {
+    _instruments = [[NSMutableArray alloc] init];
+    
+    [_instruments addObject: [[InstrumentPack alloc] init: @"INST8-BIT": @"8-Bit": @"8bit/lead.wav"]];
+    [_instruments addObject: [[InstrumentPack alloc] init: @"INSTEGTAR": @"Electric Guitar": @"e-guitar.wav"]];
+    [_instruments addObject: [[InstrumentPack alloc] init: @"INSTSTEEL": @"Steel Drum": @"steel-drum.wav"]];
+    [_instruments addObject: [[InstrumentPack alloc] init: @"INSTTRUMP": @"Trumpet": @"trumpet.wav"]];
+    [_instruments addObject: [[InstrumentPack alloc] init: @"INSTSITAR": @"Sitar": @"sitar-short.wav"]];
+    [_instruments addObject: [[InstrumentPack alloc] init: @"INSTSYNTH": @"Electronic": @"synth.wav"]];
+    [_instruments addObject: [[InstrumentPack alloc] init: @"INSTFLUTE": @"Flute": @"flute.wav"]];
+    [_instruments addObject: [[InstrumentPack alloc] init: @"INSTHARP": @"Harp": @"harp.wav"]];
+    [_instruments addObject: [[InstrumentPack alloc] init: @"INSTSAXO": @"Saxophone": @"saxophone.wav"]];
+    
+    _defaultInstruments = [[NSMutableArray alloc] initWithObjects: @"INSTEGTAR", @"INSTTRUMP", @"INSTSYNTH", nil];
+    
+    _drums = [[NSMutableArray alloc] init];
+    
+    [_drums addObject: [[DrumPack alloc] init: @"DRUMTRIBE": @"Tribal":
+                        [NSArray arrayWithObjects: @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnare.wav", @"tsplash.wav", nil]]];
+    
+    [_drums addObject: [[DrumPack alloc] init: @"DRUMSTAND": @"Standard":
+                        [NSArray arrayWithObjects: @"bass.wav", @"hihat.wav", @"ride.wav", @"snare.wav", @"splash.wav", nil]]];
+    
+    [_drums addObject: [[DrumPack alloc] init: @"DRUM8-BIT": @"8Bit":
+                        [NSArray arrayWithObjects: @"8bit/bass.wav", @"8bit/hit.wav", @"8bit/ride.wav", @"8bit/snare.wav", @"8bit/splash.wav", nil]]];
+    
+    _defaultDrums = [[NSMutableArray alloc] initWithObjects:@"DRUMSTAND", nil];
+    
+    
+    _lastTypeLoaded = 0;
+    
     _seekbarView = [[UIView alloc] init];
     [_seekbarView setBackgroundColor: [UIColor whiteColor]];
     _seekbarView.frame = CGRectMake(0, 0, 0, 0);
@@ -542,11 +600,13 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
     if(camera)
     {
 #if !TARGET_IPHONE_SIMULATOR	
+        _lastTypeLoaded = 2;
         imagePickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
 #endif        
     }
     else
     {
+        _lastTypeLoaded = 1;
         imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     
@@ -566,6 +626,17 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
     [self scrollUp];
     
     [_achievements imageChanged];
+    
+    if (_lastTypeLoaded == 1)
+    {
+        [_achievements loadOneImage];
+        _lastTypeLoaded = 0;
+    }
+    else if (_lastTypeLoaded == 2)
+    {
+        [_achievements takeOnePhoto];
+        _lastTypeLoaded = 0;
+    }
     
     [picker dismissModalViewControllerAnimated:YES];
     
@@ -633,7 +704,7 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
     // Reset the progress bar only, to prevent saving screen
     // resetting it's saving progress
     _progressValue = 0;
-
+    
     [buttonPlay setImage:[UIImage imageNamed:@"playbutton.png"] forState:UIControlStateNormal];
     _playing = false;
 }
@@ -647,10 +718,14 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
 
 -(void)setPrimaryInstrument:(int)index
 {
-    NSString* instrumentName = instrumentNames[index];
+    NSMutableArray* instruments = [self getUnlockedInstruments];
+    InstrumentPack* instrument = (InstrumentPack*)[instruments objectAtIndex:index];
+    
+    
+    NSString* instrumentName = instrument->DisplayName;
     [buttonPrimaryInstrument setTitle:instrumentName forState:UIControlStateNormal];
     
-    NSString* soundFile = instrumentFiles[[instrumentSelector getSelectionIndex]];
+    NSString* soundFile = instrument->WaveFile;
     NSString* message = @"sample";
     NSArray* args = [NSArray arrayWithObject: soundFile];
     
@@ -665,15 +740,18 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
 }
 
 -(void)setPercussiveInstrument:(int)index
-{    
-    NSString* packName = drumPackNames[index];
-    [buttonDrums setTitle:packName forState:UIControlStateNormal];
+{
+    NSMutableArray* drums = [self getUnlockedDrums];
+    
+    DrumPack* drumPack = (DrumPack*) [drums objectAtIndex: index];
+    
+    [buttonDrums setTitle: drumPack->DisplayName forState:UIControlStateNormal];
     
     NSString* message = @"sample";
     
     for (int i = 0; i < 5; ++i)
     {
-        NSString* soundFile = drumPackFiles[index*5 + i];
+        NSString* soundFile = (NSString*)[drumPack->WaveFiles objectAtIndex:i];
         NSArray* args = [NSArray arrayWithObject: soundFile];
         
         NSString* reciever = [NSString stringWithFormat:@"%d-instrument%d", _patch.dollarZero, i];
@@ -765,5 +843,106 @@ NSString* drumPackFiles[] = { @"tbass.wav", @"thihat.wav", @"tride.wav", @"tsnar
     }
     ];
 }
+
+-(bool)isInstrumentUnlockedByDefault: (NSString*) instrument
+{
+    for(int i = 0; i < [_defaultInstruments count]; ++i)
+    {
+        if ([(NSString*)[_defaultInstruments objectAtIndex: i] isEqualToString: instrument])
+        {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+-(bool)isDrumUnlockedByDefault: (NSString*) instrument
+{
+    for(int i = 0; i < [_defaultDrums count]; ++i)
+    {
+        if ([(NSString*)[_defaultDrums objectAtIndex: i] isEqualToString: instrument])
+        {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+-(NSMutableArray*)getUnlockedInstruments
+{
+    NSMutableArray* array = [[NSMutableArray alloc] init];
+    NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
+    
+    for (int i = 0; i < [_instruments count]; ++i)
+    {
+        InstrumentPack* instrument = [_instruments objectAtIndex: i];
+        
+        bool unlockedByDefault = [self isInstrumentUnlockedByDefault: instrument->Key];
+        bool unlockedWithPoints = [prefs boolForKey:[NSString stringWithFormat: @"%@", instrument->Key]];
+        
+        if ( unlockedByDefault || unlockedWithPoints )
+        {
+            [array addObject: instrument];
+        }
+    }
+    
+    return array;
+}
+
+-(NSMutableArray*)getUnlockedDrums
+{
+    NSMutableArray* array = [[NSMutableArray alloc] init];
+    NSUserDefaults* prefs = [NSUserDefaults standardUserDefaults];
+    
+    for (int i = 0; i < [_drums count]; ++i)
+    {
+        DrumPack* drumPack = (DrumPack*)[_drums objectAtIndex: i];
+        
+        bool unlockedByDefault = [self isDrumUnlockedByDefault: drumPack->Key];
+        bool unlockedWithPoints = [prefs boolForKey: [NSString stringWithFormat: @"%@", drumPack->Key]];
+        
+        if ( unlockedByDefault || unlockedWithPoints )
+        {
+            [array addObject: drumPack];
+        }
+    }
+    
+    return array;
+}
+
+-(NSMutableArray*)getUnlockedInstrumentNames
+{
+    NSMutableArray* unlockedInstruments = [self getUnlockedInstruments];
+    
+    NSMutableArray* array = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [unlockedInstruments count]; i++)
+    {
+        InstrumentPack* instrument = (InstrumentPack*)[unlockedInstruments objectAtIndex:i];
+        
+        [array addObject: instrument->DisplayName];
+    }
+    
+    return array;
+}
+
+-(NSMutableArray*)getUnlockedDrumNames
+{
+    NSMutableArray* unlockedDrums = [self getUnlockedDrums];
+    
+    NSMutableArray* array = [[NSMutableArray alloc] init];
+    
+    for (int i = 0; i < [unlockedDrums count]; i++)
+    {
+        DrumPack* drum = (DrumPack*)[unlockedDrums objectAtIndex:i];
+        
+        [array addObject: drum->DisplayName];
+    }
+    
+    return array;
+}
+
 
 @end
