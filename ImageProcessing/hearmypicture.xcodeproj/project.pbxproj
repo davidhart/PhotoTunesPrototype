@@ -19,8 +19,6 @@
 		6DDE842117C0C95A00836377 /* dsnare.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6DDE841617C0C93600836377 /* dsnare.wav */; };
 		6DDE842517C0DBB300836377 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE842417C0DBB200836377 /* Default-568h@2x.png */; };
 		BB037C27151799FB00DE56C1 /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB037C26151799FB00DE56C1 /* test2.jpg */; };
-		BB056164154E993600FE1640 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056163154E993600FE1640 /* Default.png */; };
-		BB056166154E994800FE1640 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056165154E994800FE1640 /* Default@2x.png */; };
 		BB056168154E9AEE00FE1640 /* helpIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056167154E9AEE00FE1640 /* helpIcon.png */; };
 		BB05616A154E9BDE00FE1640 /* playbar.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056169154E9BDE00FE1640 /* playbar.png */; };
 		BB05616C154E9DD900FE1640 /* synth.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB05616B154E9DD900FE1640 /* synth.wav */; };
@@ -126,7 +124,6 @@
 		CE2E20E2158B5A7100FD7BF9 /* ach-overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2E20DF158B5A7100FD7BF9 /* ach-overlay.png */; };
 		CE2E20E3158B5A7100FD7BF9 /* ach-unlocked-base.png in Resources */ = {isa = PBXBuildFile; fileRef = CE2E20E0158B5A7100FD7BF9 /* ach-unlocked-base.png */; };
 		CED47A1D15E3C4BC00F82579 /* hit.wav in Resources */ = {isa = PBXBuildFile; fileRef = CED47A1C15E3C4BC00F82579 /* hit.wav */; };
-		CED47A1F15E3C4C400F82579 /* ride.wav in Resources */ = {isa = PBXBuildFile; fileRef = CED47A1E15E3C4C400F82579 /* ride.wav */; };
 		CED47A2115E3C5CF00F82579 /* e-guitar.wav in Resources */ = {isa = PBXBuildFile; fileRef = CED47A2015E3C5CF00F82579 /* e-guitar.wav */; };
 		CED47A2515E3C66C00F82579 /* flute.wav in Resources */ = {isa = PBXBuildFile; fileRef = CED47A2215E3C66C00F82579 /* flute.wav */; };
 		CED47A2615E3C66C00F82579 /* harp.wav in Resources */ = {isa = PBXBuildFile; fileRef = CED47A2315E3C66C00F82579 /* harp.wav */; };
@@ -1041,8 +1038,6 @@
 				BB51EF8F154E982500139C27 /* Microphone_Icon_clip_art_small.png in Resources */,
 				BB51EF91154E98B400139C27 /* Default.png in Resources */,
 				BB51EF93154E98B900139C27 /* Default@2x.png in Resources */,
-				BB056164154E993600FE1640 /* Default.png in Resources */,
-				BB056166154E994800FE1640 /* Default@2x.png in Resources */,
 				BB056168154E9AEE00FE1640 /* helpIcon.png in Resources */,
 				BB05616A154E9BDE00FE1640 /* playbar.png in Resources */,
 				BB05616C154E9DD900FE1640 /* synth.wav in Resources */,
@@ -1086,7 +1081,6 @@
 				CEF4A81A15A1FD5600CD5CB1 /* storeicon.png in Resources */,
 				CEE1EF8515E06F5700DB31A3 /* scratchicon.png in Resources */,
 				CED47A1D15E3C4BC00F82579 /* hit.wav in Resources */,
-				CED47A1F15E3C4C400F82579 /* ride.wav in Resources */,
 				CED47A2115E3C5CF00F82579 /* e-guitar.wav in Resources */,
 				CED47A2515E3C66C00F82579 /* flute.wav in Resources */,
 				CED47A2615E3C66C00F82579 /* harp.wav in Resources */,
