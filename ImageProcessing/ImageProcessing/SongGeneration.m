@@ -317,7 +317,8 @@ static float step4 = 0.20f;
         const float splashVariation = 0.5f;
         
         float change = [slice getAverageSat] - [image getAverageSat];;
-        float splash = fabs(change) > ([image getDeviationSat]*10) ? 1.0f : 0.0f;
+        float devSat = [image getDeviationSat];
+        float splash = fabs(change) > fabs(50) ? 1.0f : 0.0f;
         
         //switch (mode)
         {
