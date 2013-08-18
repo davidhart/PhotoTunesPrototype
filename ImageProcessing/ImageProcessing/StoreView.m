@@ -32,7 +32,7 @@ UIImage* g_storeOverlayImage;
 
 @implementation StoreItemView
 
--(id)init:(CGRect)rect:(int)index
+-(id)init:(CGRect)rect :(int)index
 {
     self = [super init];
     
@@ -265,7 +265,7 @@ UIImage* g_storeOverlayImage;
     return self;
 }
 
--(void)addItem:(NSString *)title: (NSString *)description: (NSString*)icon: (int)cost: (NSString*)InstName
+-(void)addItem:(NSString *)title :(NSString *)description :(NSString*)icon :(int)cost :(NSString*)InstName
 {
     CGRect rect = [self getRectForItem: [_storeItemViews count]];
     
@@ -348,13 +348,13 @@ UIImage* g_storeOverlayImage;
         [_storeView addItem:@"8bit Lead" :@"Recreate the sound of the 8bit era with this instrument": @"ach1.png" :10 :@"INST8-BIT"];
         
         [_storeView addItem:@"8bit Drum Pack": @"Recreate the sound of the 8bit era with this drum pack":
-         @"ach1.png": 20: @"DRUMSTAND"];
+         @"ach1.png": 20: @"DRUM8-BIT"];
     }
     
     return self;
 }
 
--(void)addItem:(NSString*)title: (NSString*)desc: (NSString*) icon: (int)score: (NSString*)InstName
+-(void)addItem:(NSString*)title :(NSString*)desc :(NSString*) icon :(int)score :(NSString*)InstName
 {
     [_storeView addItem: title: desc: icon: score: InstName];
 }

@@ -22,7 +22,7 @@
     @private StoreView* _parent;
 }
 
--(id)init:(CGRect)rect:(int)index;
+-(id)init:(CGRect)rect :(int)index;
 -(UIView*)getBaseView;
 
 -(UIImage*)getBaseImage;
