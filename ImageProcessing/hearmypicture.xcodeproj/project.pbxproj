@@ -17,6 +17,7 @@
 		6DDE841F17C0C95A00836377 /* dhihat.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6DDE841417C0C93600836377 /* dhihat.wav */; };
 		6DDE842017C0C95A00836377 /* dride.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6DDE841517C0C93600836377 /* dride.wav */; };
 		6DDE842117C0C95A00836377 /* dsnare.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6DDE841617C0C93600836377 /* dsnare.wav */; };
+		6DDE842517C0DBB300836377 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE842417C0DBB200836377 /* Default-568h@2x.png */; };
 		BB037C27151799FB00DE56C1 /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB037C26151799FB00DE56C1 /* test2.jpg */; };
 		BB056164154E993600FE1640 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056163154E993600FE1640 /* Default.png */; };
 		BB056166154E994800FE1640 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056165154E994800FE1640 /* Default@2x.png */; };
@@ -310,6 +311,7 @@
 		6DDE841417C0C93600836377 /* dhihat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dhihat.wav; path = dance/dhihat.wav; sourceTree = "<group>"; };
 		6DDE841517C0C93600836377 /* dride.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dride.wav; path = dance/dride.wav; sourceTree = "<group>"; };
 		6DDE841617C0C93600836377 /* dsnare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dsnare.wav; path = dance/dsnare.wav; sourceTree = "<group>"; };
+		6DDE842417C0DBB200836377 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BB037C26151799FB00DE56C1 /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
 		BB056163154E993600FE1640 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		BB056165154E994800FE1640 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 		BB3ACB221483E5DD003014D1 = {
 			isa = PBXGroup;
 			children = (
+				6DDE842417C0DBB200836377 /* Default-568h@2x.png */,
 				BB61EB7C15455D6D0000F2FE /* Libs */,
 				BB3ACB371483E5DD003014D1 /* Source */,
 				BB3ACB581483E5DE003014D1 /* ImageProcessingTests */,
@@ -1096,6 +1099,7 @@
 				6DDE841917C0C93600836377 /* dhihat.wav in Resources */,
 				6DDE841A17C0C93600836377 /* dride.wav in Resources */,
 				6DDE841B17C0C93600836377 /* dsnare.wav in Resources */,
+				6DDE842517C0DBB300836377 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
