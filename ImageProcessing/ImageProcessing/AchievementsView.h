@@ -57,7 +57,7 @@
 }
 
 -(id)init: (ViewController*) view;
--(int)addAchievement: (NSString*) title: (NSString*)descr: (NSString*)icon: (int) points;
+-(int)addAchievement: (NSString*) title :(NSString*)descr :(NSString*)icon :(int)points;
 
 -(void)setScore:(int)score;
 -(void)setAchUnlocked:(int)achUnlocked;

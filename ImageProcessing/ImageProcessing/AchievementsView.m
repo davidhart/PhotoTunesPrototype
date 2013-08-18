@@ -477,7 +477,7 @@ UIImage* g_AchievementUnlockedBaseImage;
     return points;
 }
 
--(void)addAchievement:(BaseTracker*)tracker: (NSString*)title: (NSString*)descr: (NSString*)image: (int)points
+-(void)addAchievement:(BaseTracker*)tracker :(NSString*)title :(NSString*)descr :(NSString*)image :(int)points
 {    
     int index = [_achievementsView addAchievement:title: descr: image: points];
     

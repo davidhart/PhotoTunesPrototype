@@ -55,7 +55,7 @@
 
 -(id)init:(ViewController*)parent;
 -(CGRect)getRectForItem:(int)index;
--(void)addItem:(NSString*) title: (NSString*) description: (NSString*)icon: (int)cost: (NSString*)InstName;
+-(void)addItem:(NSString*) title :(NSString*) description :(NSString*)icon :(int)cost :(NSString*)InstName;
 
 
 -(void)resizeScrollView;

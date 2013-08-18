@@ -13,7 +13,7 @@
     @private UInt8 _averageVal;
 }
 
--(id)init:(const UInt8*)data: (uint)stride: (uint)height;
+-(id)init :(const UInt8*)data :(uint)stride :(uint)height;
 -(void)log;
 
 -(UInt8)getAverageRed;

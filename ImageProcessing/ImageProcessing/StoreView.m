@@ -366,7 +366,7 @@ UIImage* g_storeOverlayImage;
         [_storeView addItem:@"8bit Drum Pack": @"Recreate the sound of the 8bit era with this drum pack":
          @"ach1.png": 20: @"DRUM8-BIT"];
         
-        [_storeView addItem:@"Dance Drum Kit": @"": @"ach1.png": 20: @"DRUMDANCE"];
+        [_storeView addItem:@"Dance Drum Kit": @"": @"ach1.png": 20: @"DRUMDANC"];
         
         [_storeView addItem:@"Tribal Drums": @"": @"ach1.png": 20: @"DRUMTRIBE"];
     }

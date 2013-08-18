@@ -3,7 +3,7 @@
 
 @implementation ImageSlice
 
--(id)init:(const UInt8*)data: (uint)stride: (uint)height
+-(id)init:(const UInt8*)data :(uint)stride :(uint)height
 {
     self = [super init];
     
