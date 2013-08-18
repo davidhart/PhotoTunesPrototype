@@ -32,7 +32,7 @@ UIImage* g_storeOverlayImage;
 
 @implementation StoreItemView
 
--(id)init:(CGRect)rect :(int)index
+-(id)init:(CGRect)rect :(int)index :(NSString*)instName
 {
     self = [super init];
     
@@ -43,6 +43,7 @@ UIImage* g_storeOverlayImage;
         _score = 0;
         _unlocked = false;
         _index = index;
+        _instName = instName;
         
         // Base image / control
         _base = [[UIImageView alloc] initWithFrame:rect];
@@ -214,11 +215,6 @@ UIImage* g_storeOverlayImage;
     [_buyButton setTitle: [NSString stringWithFormat: @"Buy %d", score] forState:UIControlStateNormal];
 }
 
--(void)setInstName:(NSString *)description
-{
-    _instName = description;
-}
-
 -(int)getScore
 {
     return _score;
@@ -271,13 +267,12 @@ UIImage* g_storeOverlayImage;
     
     int index = [_storeItemViews count];
     
-    StoreItemView* item = [[StoreItemView alloc] init: rect: index];
+    StoreItemView* item = [[StoreItemView alloc] init: rect: index: InstName];
     
     [item setTitle: title];
     [item setScore: cost];
     [item setDesc: description];
     [item setIcon: icon];
-    [item setInstName: InstName];
     [item setParent: self];
     
     [_storeItemViews addObject: item];
