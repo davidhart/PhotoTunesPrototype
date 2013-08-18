@@ -308,10 +308,9 @@
 		6DDE841417C0C93600836377 /* dhihat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dhihat.wav; path = dance/dhihat.wav; sourceTree = "<group>"; };
 		6DDE841517C0C93600836377 /* dride.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dride.wav; path = dance/dride.wav; sourceTree = "<group>"; };
 		6DDE841617C0C93600836377 /* dsnare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dsnare.wav; path = dance/dsnare.wav; sourceTree = "<group>"; };
-		6DDE842417C0DBB200836377 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		6DDE842417C0DBB200836377 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		BB037C26151799FB00DE56C1 /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
 		BB056163154E993600FE1640 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
-		BB056165154E994800FE1640 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		BB056167154E9AEE00FE1640 /* helpIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpIcon.png; sourceTree = "<group>"; };
 		BB056169154E9BDE00FE1640 /* playbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playbar.png; sourceTree = "<group>"; };
 		BB05616B154E9DD900FE1640 /* synth.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = synth.wav; sourceTree = "<group>"; };
@@ -542,7 +541,6 @@
 		BB3ACB221483E5DD003014D1 = {
 			isa = PBXGroup;
 			children = (
-				6DDE842417C0DBB200836377 /* Default-568h@2x.png */,
 				BB61EB7C15455D6D0000F2FE /* Libs */,
 				BB3ACB371483E5DD003014D1 /* Source */,
 				BB3ACB581483E5DE003014D1 /* ImageProcessingTests */,
@@ -622,8 +620,8 @@
 		BB3ACB381483E5DD003014D1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				6DDE841117C0C92500836377 /* dance */,
 				BBAFEFCF159DD6DB00AEFB88 /* 8bit */,
+				6DDE841117C0C92500836377 /* dance */,
 				BB873A5414E9215C00CE09FA /* a.wav */,
 				CE2E20DE158B5A7100FD7BF9 /* ach-locked-base.png */,
 				CE2E20DF158B5A7100FD7BF9 /* ach-overlay.png */,
@@ -645,8 +643,8 @@
 				BBC0C4E2154ED9630024197E /* camera.png */,
 				BBC0C4E4154EDBCA0024197E /* cameratiny.png */,
 				CEF4A81515A1ED7100CD5CB1 /* customiseicon.png */,
+				6DDE842417C0DBB200836377 /* Default-568h@2x.png */,
 				BB056163154E993600FE1640 /* Default.png */,
-				BB056165154E994800FE1640 /* Default@2x.png */,
 				BB51EF92154E98B900139C27 /* Default@2x.png */,
 				CEEE28A61598C04900C741AE /* divider.png */,
 				CED47A2015E3C5CF00F82579 /* e-guitar.wav */,
@@ -697,6 +695,7 @@
 				BB57BEA7159CA1B600FE45A8 /* tsplash.wav */,
 				BB873A5214E9214D00CE09FA /* vocoder.pd */,
 				CEF4A81115A1E49D00CD5CB1 /* widebutton.png */,
+				BB51EF92154E98B900139C27 /* Default@2x.png */,
 				BB51EF90154E98B400139C27 /* Default.png */,
 			);
 			name = Assets;
