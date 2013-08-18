@@ -392,17 +392,18 @@
 {
     _instruments = [[NSMutableArray alloc] init];
     
+    
+    [_instruments addObject: [[InstrumentPack alloc] init: @"INSTSYNTH": @"Electronic": @"synth.wav"]];
     [_instruments addObject: [[InstrumentPack alloc] init: @"INST8-BIT": @"8-Bit": @"8bit/lead.wav"]];
     [_instruments addObject: [[InstrumentPack alloc] init: @"INSTEGTAR": @"Electric Guitar": @"e-guitar.wav"]];
     [_instruments addObject: [[InstrumentPack alloc] init: @"INSTSTEEL": @"Steel Drum": @"steel-drum.wav"]];
     [_instruments addObject: [[InstrumentPack alloc] init: @"INSTTRUMP": @"Trumpet": @"trumpet.wav"]];
     [_instruments addObject: [[InstrumentPack alloc] init: @"INSTSITAR": @"Sitar": @"sitar-short.wav"]];
-    [_instruments addObject: [[InstrumentPack alloc] init: @"INSTSYNTH": @"Electronic": @"synth.wav"]];
     [_instruments addObject: [[InstrumentPack alloc] init: @"INSTFLUTE": @"Flute": @"flute.wav"]];
     [_instruments addObject: [[InstrumentPack alloc] init: @"INSTHARP": @"Harp": @"harp.wav"]];
     [_instruments addObject: [[InstrumentPack alloc] init: @"INSTSAXO": @"Saxophone": @"saxophone.wav"]];
     
-    _defaultInstruments = [[NSMutableArray alloc] initWithObjects: @"INSTEGTAR", @"INSTTRUMP", @"INSTSYNTH", nil];
+    _defaultInstruments = [[NSMutableArray alloc] initWithObjects: @"INSTSYNTH", @"INSTTRUMP", nil];
     
     _drums = [[NSMutableArray alloc] init];
     
@@ -418,7 +419,7 @@
     [_drums addObject: [[DrumPack alloc] init: @"DRUMDANC": @"Dance":
                         [NSArray arrayWithObjects: @"dance/dbass.wav", @"dance/dhihat.wav", @"dance/dride.wav", @"dance/dsnare.wav", @"dance/dcrash.wav", nil]]];
     
-    _defaultDrums = [[NSMutableArray alloc] initWithObjects:@"DRUMSTAND", @"DRUMDANC", nil];
+    _defaultDrums = [[NSMutableArray alloc] initWithObjects:@"DRUMSTAND", nil];
     
     
     _lastTypeLoaded = 0;

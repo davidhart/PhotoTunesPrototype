@@ -345,10 +345,30 @@ UIImage* g_storeOverlayImage;
     {
         _storeView = [[StoreView alloc] init: parent];
         
+        // SETUP UNLOCKS!
+        
+        // Lead instruments
         [_storeView addItem:@"8bit Lead" :@"Recreate the sound of the 8bit era with this instrument": @"ach1.png" :10 :@"INST8-BIT"];
         
+        [_storeView addItem:@"Steel Drum" :@"Unlock the sound of the carribean": @"ach1.png" :10 :@"INSTSTEEL"];
+        
+        [_storeView addItem:@"Electric Guitar" :@"Ride the lightning with the electric guitar": @"ach1.png" :10 :@"INSTEGTAR"];
+        
+        [_storeView addItem:@"Sitar" :@"It's a sitar": @"ach1.png" :10 :@"INSTSITAR"];
+        
+        [_storeView addItem:@"Flute" :@"It's a flute": @"ach1.png" :10 :@"INSTFLUTE"];
+        
+        [_storeView addItem:@"Harp" :@"It's a harp": @"ach1.png" :10 :@"INSTHARP"];
+        
+        [_storeView addItem:@"Saxophone" :@"Jazz it up with the saxophone": @"ach1.png" :10 :@"INSTSAXO"];
+        
+        // Drums
         [_storeView addItem:@"8bit Drum Pack": @"Recreate the sound of the 8bit era with this drum pack":
          @"ach1.png": 20: @"DRUM8-BIT"];
+        
+        [_storeView addItem:@"Dance Drum Kit": @"": @"ach1.png": 20: @"DRUMDANCE"];
+        
+        [_storeView addItem:@"Tribal Drums": @"": @"ach1.png": 20: @"DRUMTRIBE"];
     }
     
     return self;
