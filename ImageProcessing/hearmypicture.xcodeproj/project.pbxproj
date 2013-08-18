@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6DDE841717C0C93600836377 /* dbass.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE841217C0C93600836377 /* dbass.wav */; };
+		6DDE841817C0C93600836377 /* dcrash.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE841317C0C93600836377 /* dcrash.wav */; };
+		6DDE841917C0C93600836377 /* dhihat.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE841417C0C93600836377 /* dhihat.wav */; };
+		6DDE841A17C0C93600836377 /* dride.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE841517C0C93600836377 /* dride.wav */; };
+		6DDE841B17C0C93600836377 /* dsnare.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6DDE841617C0C93600836377 /* dsnare.wav */; };
+		6DDE841D17C0C95A00836377 /* dbass.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6DDE841217C0C93600836377 /* dbass.wav */; };
+		6DDE841E17C0C95A00836377 /* dcrash.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6DDE841317C0C93600836377 /* dcrash.wav */; };
+		6DDE841F17C0C95A00836377 /* dhihat.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6DDE841417C0C93600836377 /* dhihat.wav */; };
+		6DDE842017C0C95A00836377 /* dride.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6DDE841517C0C93600836377 /* dride.wav */; };
+		6DDE842117C0C95A00836377 /* dsnare.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6DDE841617C0C93600836377 /* dsnare.wav */; };
 		BB037C27151799FB00DE56C1 /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB037C26151799FB00DE56C1 /* test2.jpg */; };
 		BB056164154E993600FE1640 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056163154E993600FE1640 /* Default.png */; };
 		BB056166154E994800FE1640 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB056165154E994800FE1640 /* Default@2x.png */; };
@@ -263,6 +273,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		6DDE841C17C0C94900836377 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = dance;
+			dstSubfolderSpec = 7;
+			files = (
+				6DDE841D17C0C95A00836377 /* dbass.wav in CopyFiles */,
+				6DDE841E17C0C95A00836377 /* dcrash.wav in CopyFiles */,
+				6DDE841F17C0C95A00836377 /* dhihat.wav in CopyFiles */,
+				6DDE842017C0C95A00836377 /* dride.wav in CopyFiles */,
+				6DDE842117C0C95A00836377 /* dsnare.wav in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BBAFEFD3159DD8A700AEFB88 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -281,6 +305,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6DDE841217C0C93600836377 /* dbass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dbass.wav; path = dance/dbass.wav; sourceTree = "<group>"; };
+		6DDE841317C0C93600836377 /* dcrash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dcrash.wav; path = dance/dcrash.wav; sourceTree = "<group>"; };
+		6DDE841417C0C93600836377 /* dhihat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dhihat.wav; path = dance/dhihat.wav; sourceTree = "<group>"; };
+		6DDE841517C0C93600836377 /* dride.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dride.wav; path = dance/dride.wav; sourceTree = "<group>"; };
+		6DDE841617C0C93600836377 /* dsnare.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dsnare.wav; path = dance/dsnare.wav; sourceTree = "<group>"; };
 		BB037C26151799FB00DE56C1 /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
 		BB056163154E993600FE1640 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		BB056165154E994800FE1640 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
@@ -499,6 +528,18 @@
 			name = UI;
 			sourceTree = "<group>";
 		};
+		6DDE841117C0C92500836377 /* dance */ = {
+			isa = PBXGroup;
+			children = (
+				6DDE841217C0C93600836377 /* dbass.wav */,
+				6DDE841317C0C93600836377 /* dcrash.wav */,
+				6DDE841417C0C93600836377 /* dhihat.wav */,
+				6DDE841517C0C93600836377 /* dride.wav */,
+				6DDE841617C0C93600836377 /* dsnare.wav */,
+			);
+			name = dance;
+			sourceTree = "<group>";
+		};
 		BB3ACB221483E5DD003014D1 = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +622,7 @@
 		BB3ACB381483E5DD003014D1 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				6DDE841117C0C92500836377 /* dance */,
 				BBAFEFCF159DD6DB00AEFB88 /* 8bit */,
 				BB873A5414E9215C00CE09FA /* a.wav */,
 				CE2E20DE158B5A7100FD7BF9 /* ach-locked-base.png */,
@@ -805,6 +847,7 @@
 				BB3ACB2A1483E5DD003014D1 /* Frameworks */,
 				BB3ACB2B1483E5DD003014D1 /* Resources */,
 				BBAFEFD3159DD8A700AEFB88 /* CopyFiles */,
+				6DDE841C17C0C94900836377 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -1048,6 +1091,11 @@
 				CED47A2915E3C68200F82579 /* sitar-short.wav in Resources */,
 				CED47A2C15E3C69200F82579 /* steel-drum.wav in Resources */,
 				CED47A2D15E3C69200F82579 /* trumpet.wav in Resources */,
+				6DDE841717C0C93600836377 /* dbass.wav in Resources */,
+				6DDE841817C0C93600836377 /* dcrash.wav in Resources */,
+				6DDE841917C0C93600836377 /* dhihat.wav in Resources */,
+				6DDE841A17C0C93600836377 /* dride.wav in Resources */,
+				6DDE841B17C0C93600836377 /* dsnare.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

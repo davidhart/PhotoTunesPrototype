@@ -415,7 +415,10 @@
     [_drums addObject: [[DrumPack alloc] init: @"DRUM8-BIT": @"8Bit":
                         [NSArray arrayWithObjects: @"8bit/bass.wav", @"8bit/hit.wav", @"8bit/ride.wav", @"8bit/snare.wav", @"8bit/splash.wav", nil]]];
     
-    _defaultDrums = [[NSMutableArray alloc] initWithObjects:@"DRUMSTAND", nil];
+    [_drums addObject: [[DrumPack alloc] init: @"DRUMDANC": @"Dance":
+                        [NSArray arrayWithObjects: @"dance/dbass.wav", @"dance/dhihat.wav", @"dance/dride.wav", @"dance/dsnare.wav", @"dance/dcrash.wav", nil]]];
+    
+    _defaultDrums = [[NSMutableArray alloc] initWithObjects:@"DRUMSTAND", @"DRUMDANC", nil];
     
     
     _lastTypeLoaded = 0;
